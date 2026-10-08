@@ -66,7 +66,7 @@
 | 38 | **DroneRFc-MM** | 2026 | 虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明 | 浙江大学全省空域感知与自主无人系统重点实验室 | [链接](https://www.scidb.cn/detail?dataSetId=0af05173ce5d45528ebd707d67f3d641) |
 | 39 | **EM-134K** | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun | Tsinghua University / BUPT / Tianjin University / IMECAS 等 | [链接](https://em-merlin.github.io/) |
 | 40 | **EM-Bench** | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun | Tsinghua University / BUPT / Tianjin University / IMECAS 等 | [链接](https://em-merlin.github.io/) |
-| 41 | **FlyAwareV2** | 2026 | Federico Barbato, Matteo Caligiuri, Pietro Zanuttigh | University of Padova | [链接](https://medialab.dei.unipd.it/paper_data/FlyAwareV2) |
+| 41 | **FlyAwareV2** | 2026 | Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh | University of Padova | [链接](https://medialab.dei.unipd.it/paper_data/FlyAwareV2) |
 | 42 | **ITU-ARIS Acoustic** | 2026 | İhsan Mert Muhacıroğlu, Tayfun Akgül | Istanbul Technical University (ARIS Lab) | [链接](https://zenodo.org/records/22682339) |
 | 43 | **Multimodal-NF** | 2026 | Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin | Southeast University | [链接](https://lmyxxn.github.io/6GXLMIMODatasets/) |
 | 44 | **PML-CellularEye** | 2026 | Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You | Purple Mountain Laboratories / Southeast University | [链接](https://github.com/ffxu1024/CellularEye_web) |
@@ -121,7 +121,7 @@
 | DroneRFc-MM | 2026 | ✓ | △ | ✓ | ✓ | ✓ | ✓ | × | × | 反无人机多模态实测数据集（六类传感器同步观测城市低空目标） |
 | EM-134K | 2026 | × | △ | × | × | △ | × | × | × | 电磁信号-文本配对预训练集（13.4万对，源自3500万信号） |
 | EM-Bench | 2026 | × | △ | × | × | △ | × | × | × | 电磁信号理解与推理评测基准（4200+问答，3级14子任务） |
-| FlyAwareV2 | 2026 | ✓ | × | ✓ | × | × | × | ✓ | × | 城市场景理解的多模态无人机数据（真实+合成，含天气昼夜） |
+| FlyAwareV2 | 2026 | ✓ | × | ✓ | × | × | × | ✓ | × | 城市场景理解的多模态跨域无人机数据（真实+合成，含天气昼夜；真实样本深度为单目估计） |
 | ITU-ARIS Acoustic | 2026 | ✓ | × | × | × | × | × | × | ✓ | 户外无人机声学探测数据集（无人机/背景两类，5491段） |
 | Multimodal-NF | 2026 | ✓ | ✓ | ✓ | ✓ | × | ✓ | △ | × | 近场低空XL-MIMO |
 | PML-CellularEye | 2026 | ✓ | △ | △ | × | △ | ✓ | ✓ | × | 实测基站侧低空ISAC数据 |
@@ -413,11 +413,11 @@
 - **说明**：电磁信号**理解与推理评测基准**，含 4200+ 条专家校验问答，按 3 个层级、14 个子任务组织：感知（信号刻画、干扰识别、片段检测）与推理（雷达/通信场景下的干扰与抗干扰策略生成）。
 
 ### 41. FlyAwareV2 (2026)
-- **作者**：Federico Barbato, Matteo Caligiuri, Pietro Zanuttigh
+- **作者**：Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh
 - **机构**：University of Padova
 - **出处**：Signal Processing: Image Communication (2026) · [论文](https://doi.org/10.1016/j.image.2026.117483)
 - **官网**：[主链接](https://medialab.dei.unipd.it/paper_data/FlyAwareV2)
-- **说明**：面向城市场景理解的多模态跨域无人机数据集，融合真实与合成影像，提供 RGB/深度/语义标注与天气、昼夜变化。
+- **说明**：面向城市场景理解的多模态跨域无人机数据集，融合真实与合成影像，提供 RGB/深度/语义标注与天气、昼夜变化。合成样本的深度由 CARLA/UE 渲染引擎的 3D 几何直接导出；真实样本（训练集取自 VisDrone、测试集取自 UAVid）原本无深度标注，改用 **Marigold 单目深度估计**生成，因此真实部分深度为**估计值而非传感器实测**，且统一逐样本归一化到 [0,1] 后绝对尺度已被去除。
 
 ### 42. ITU-ARIS Acoustic (2026)
 - **作者**：İhsan Mert Muhacıroğlu, Tayfun Akgül

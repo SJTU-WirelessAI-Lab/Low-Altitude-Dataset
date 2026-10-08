@@ -423,12 +423,12 @@ const DATASETS = [
   },
   {
     id: 'flyawarev2', name: 'FlyAwareV2', year: 2026,
-    authors: 'Federico Barbato, Matteo Caligiuri, Pietro Zanuttigh',
+    authors: 'Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh',
     org: 'University of Padova',
     venue: 'Signal Processing: Image Communication (2026)',
     site: 'https://medialab.dei.unipd.it/paper_data/FlyAwareV2',
     paper: 'https://doi.org/10.1016/j.image.2026.117483',
-    focusZh: '城市场景理解的多模态无人机数据（真实+合成，含天气昼夜）',
+    focusZh: '城市场景理解的多模态跨域无人机数据（真实+合成，含天气昼夜；真实样本深度为单目估计）',
     focusEn: 'Multimodal cross-domain UAV urban-scene dataset',
     modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
   },
