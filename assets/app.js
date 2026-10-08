@@ -521,6 +521,61 @@ const DATASETS = [
     focusEn: 'Low-altitude UAV single-object tracking benchmark',
     modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
+  {
+    id: 'mamimo-uav', name: 'MaMIMO-UAV 3D CSI', year: 2023,
+    authors: 'Achiel Colpaert, Cel Thys, Zhuangzhuang Cui, Sofie Pollin',
+    org: 'KU Leuven (ESAT)',
+    venue: 'IEEE TVT 73(5): 6061–6072 (2024) · KU Leuven RDR',
+    site: 'https://doi.org/10.48804/0IMQDF',
+    paper: 'https://doi.org/10.1109/TVT.2023.3340447',
+    focusZh: '鲁汶大学：无人机与8×8 Massive MIMO基站的3D非平稳信道CSI（校园飞行轨迹）',
+    focusEn: '3D non-stationary UAV–MaMIMO channel CSI',
+    modality: { la: 1, csi: 1, rgb: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+  },
+  {
+    id: 'mamimo-a2g-uav', name: '3D MaMIMO A2G UAV CSI', year: 2025,
+    authors: 'Achiel Colpaert, Sofie Pollin',
+    org: 'KU Leuven (ESAT)',
+    venue: 'KU Leuven RDR (2025)',
+    site: 'https://doi.org/10.48804/MTNAEG',
+    paper: 'https://doi.org/10.48804/MTNAEG',
+    focusZh: '鲁汶大学：GPS标注的无人机–64天线Massive MIMO空对地信道CSI（校园环境，46 GB）',
+    focusEn: 'GPS-labeled UAV–MaMIMO air-to-ground CSI',
+    modality: { la: 1, csi: 1, rgb: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+  },
+  {
+    id: 'ku-leuven-drone-rf', name: 'KU Leuven Drone RF', year: 2024,
+    authors: 'Sanjoy Basak, Sofie Pollin, Bart Scheers',
+    org: 'KU Leuven (ESAT) / Royal Military Academy',
+    venue: 'KU Leuven RDR (2024) · ICACT 2023',
+    site: 'https://doi.org/10.48804/HZRVNZ',
+    paper: 'https://doi.org/10.23919/ICACT56868.2023.10079363',
+    focusZh: '鲁汶大学：半电波暗室采集的无人机射频I/Q（100 MSps @2.44 GHz，43.5 GB）',
+    focusEn: 'Drone RF I/Q in a semi-anechoic chamber',
+    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+  {
+    id: 'lund-drone-audio', name: 'Lund UAV Audio', year: 2025,
+    authors: 'Erik Tegler, Max Modig, Per Skarin, Kalle Åström, Magnus Oskarsson, Gabrielle Flood',
+    org: 'Lund University / SAAB',
+    venue: 'CVPRW 2025 (Anti-UAV)',
+    site: 'https://vision.maths.lth.se/drone_sound/',
+    paper: 'https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Tegler_Detection_and_Localization_of_Drones_and_UAVs_Using_Sound_and_CVPRW_2025_paper.html',
+    focusZh: '隆德大学：无人机自噪声的12元麦克风阵列测向定位（真实飞行+真值位置，17.7 GiB）',
+    focusEn: 'Mic-array DOA drone localization from sound',
+    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 0, imu: .5, weather: 0, acoustic: 1 }
+  },
+  {
+    id: 'luvira', name: 'LuViRA', year: 2024,
+    authors: 'Ilayda Yaman, Guoda Tian, Martin Larsson, Patrik Persson, et al. (Lund University)',
+    org: 'Lund University',
+    venue: 'ICRA 2024 · arXiv:2302.05309',
+    site: 'https://github.com/ilaydayaman/LuViRA_Dataset',
+    paper: 'https://arxiv.org/abs/2302.05309',
+    focusZh: '隆德大学：视觉+5G Massive MIMO射频+音频三模态同步室内定位（非低空）',
+    focusEn: 'Synchronized vision/radio/audio indoor localization',
+    modality: { la: 0, csi: 1, rgb: 1, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 1 }
+  },
 
   {
     id: 'lambda', name: 'LAMBDA', year: 2026,
