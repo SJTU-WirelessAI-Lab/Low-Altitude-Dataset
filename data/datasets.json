@@ -2,19 +2,56 @@
   "meta": {
     "title": "Low-Altitude Datasets",
     "titleZh": "低空数据集",
-    "source": "LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication (arXiv:2607.03826), Table 1",
+    "source": "LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication (arXiv:2607.03826), Table 1 + curator-verified additions",
     "sourceUrl": "https://arxiv.org/abs/2607.03826",
     "generated": "2026-10-08",
-    "legend": { "1": "included", "0.5": "limited / partial", "0": "absent or not applicable" }
+    "legend": {
+      "0": "absent or not applicable",
+      "1": "included",
+      "0.5": "limited / partial"
+    }
   },
   "modalities": [
-    { "key": "la", "zh": "低空", "en": "Low-altitude" },
-    { "key": "csi", "zh": "CSI信道", "en": "CSI" },
-    { "key": "rgb", "zh": "RGB/深度", "en": "RGB/Depth" },
-    { "key": "lidar", "zh": "LiDAR", "en": "LiDAR" },
-    { "key": "radar", "zh": "雷达", "en": "Radar" },
-    { "key": "imu", "zh": "IMU/GPS", "en": "IMU/GPS" },
-    { "key": "weather", "zh": "天气/时间", "en": "Weather/Time" }
+    {
+      "key": "la",
+      "zh": "低空",
+      "en": "Low-altitude"
+    },
+    {
+      "key": "csi",
+      "zh": "CSI信道",
+      "en": "CSI"
+    },
+    {
+      "key": "rgb",
+      "zh": "RGB/深度",
+      "en": "RGB/Depth"
+    },
+    {
+      "key": "lidar",
+      "zh": "LiDAR",
+      "en": "LiDAR"
+    },
+    {
+      "key": "radar",
+      "zh": "雷达",
+      "en": "Radar"
+    },
+    {
+      "key": "imu",
+      "zh": "IMU/GPS",
+      "en": "IMU/GPS"
+    },
+    {
+      "key": "weather",
+      "zh": "天气/时间",
+      "en": "Weather/Time"
+    },
+    {
+      "key": "acoustic",
+      "zh": "声学",
+      "en": "Acoustic"
+    }
   ],
   "datasets": [
     {
@@ -28,7 +65,16 @@
       "paper": "https://doi.org/10.1109/CVPR.2012.6248074",
       "focusZh": "地面自动驾驶感知基准",
       "focusEn": "Terrestrial autonomous-driving perception",
-      "modality": { "la": 0, "csi": 0, "rgb": 1, "lidar": 1, "radar": 0, "imu": 1, "weather": 0.5 }
+      "modality": {
+        "la": 0,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 1,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "deepmimo",
@@ -41,7 +87,16 @@
       "paper": "https://doi.org/10.48550/arXiv.1902.06435",
       "focusZh": "可配置射线追踪信道数据集",
       "focusEn": "Configurable ray-tracing channels",
-      "modality": { "la": 0, "csi": 1, "rgb": 0, "lidar": 0, "radar": 0, "imu": 0, "weather": 0.5 }
+      "modality": {
+        "la": 0,
+        "csi": 1,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "viwi",
@@ -54,7 +109,16 @@
       "paper": "https://doi.org/10.1109/VTC2020-Spring48590.2020.9128579",
       "focusZh": "视觉辅助无线通信",
       "focusEn": "Vision-aided wireless communications",
-      "modality": { "la": 0, "csi": 1, "rgb": 1, "lidar": 0.5, "radar": 0, "imu": 0, "weather": 0.5 }
+      "modality": {
+        "la": 0,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 0.5,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "opv2v",
@@ -67,7 +131,16 @@
       "paper": "https://doi.org/10.1109/ICRA46639.2022.9812038",
       "focusZh": "车车协同感知",
       "focusEn": "V2V cooperative perception",
-      "modality": { "la": 0, "csi": 0, "rgb": 1, "lidar": 1, "radar": 0, "imu": 0.5, "weather": 0.5 }
+      "modality": {
+        "la": 0,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 0.5,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "dairv2x",
@@ -81,7 +154,16 @@
       "paper": "https://doi.org/10.1109/CVPR52688.2022.02067",
       "focusZh": "真实车路协同感知",
       "focusEn": "Real-world vehicle-infrastructure perception",
-      "modality": { "la": 0, "csi": 0, "rgb": 1, "lidar": 1, "radar": 0, "imu": 0.5, "weather": 0.5 }
+      "modality": {
+        "la": 0,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 0.5,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "eflash",
@@ -94,7 +176,16 @@
       "paper": "https://doi.org/10.1109/MCOM.002.2200028",
       "focusZh": "实测毫米波V2X波束选择",
       "focusEn": "Real-world mmWave V2X beam selection",
-      "modality": { "la": 0, "csi": 0.5, "rgb": 0.5, "lidar": 1, "radar": 0, "imu": 1, "weather": 0.5 }
+      "modality": {
+        "la": 0,
+        "csi": 0.5,
+        "rgb": 0.5,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 1,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "waird",
@@ -107,7 +198,16 @@
       "paper": "https://ieeexplore.ieee.org/document/9880684",
       "focusZh": "真实地图上的无线AI信道",
       "focusEn": "Wireless AI channels over real-world maps",
-      "modality": { "la": 0, "csi": 1, "rgb": 0, "lidar": 0, "radar": 0, "imu": 0, "weather": 0 }
+      "modality": {
+        "la": 0,
+        "csi": 1,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
     },
     {
       "id": "m3sc",
@@ -120,7 +220,16 @@
       "paper": "https://doi.org/10.23919/JCC.fa.2023-0268.202311",
       "focusZh": "混合多模态通感一体化数据",
       "focusEn": "Mixed multimodal ISAC data",
-      "modality": { "la": 0, "csi": 1, "rgb": 1, "lidar": 1, "radar": 1, "imu": 0, "weather": 1 }
+      "modality": {
+        "la": 0,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      }
     },
     {
       "id": "deepsense6g",
@@ -133,7 +242,16 @@
       "paper": "https://doi.org/10.1109/MCOM.006.2200730",
       "focusZh": "实测多模态无线测量",
       "focusEn": "Real-world multimodal wireless measurements",
-      "modality": { "la": 0.5, "csi": 0.5, "rgb": 1, "lidar": 1, "radar": 1, "imu": 0.5, "weather": 0.5 }
+      "modality": {
+        "la": 0.5,
+        "csi": 0.5,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 0.5,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "sdcd",
@@ -141,12 +259,21 @@
       "year": 2024,
       "authors": "Jihao Li, Jincheng Hu, Yanjun Huang, Zheng Chen, Bingzhao Gao, Jingjing Jiang, Yuanjian Zhang",
       "org": "University of Southampton / Tongji University",
-      "venue": "Scientific Data 11:301, 2024",
+      "venue": "Scientific Data 11:301 (2024)",
       "site": "https://github.com/ReparkHjc/SDCD",
       "paper": "https://doi.org/10.1038/s41597-024-03025-5",
       "focusZh": "合成数字城市RGB-深度鲁棒性",
       "focusEn": "Synthetic digital-city RGB-depth robustness",
-      "modality": { "la": 0, "csi": 0, "rgb": 1, "lidar": 0, "radar": 0, "imu": 0, "weather": 1 }
+      "modality": {
+        "la": 0,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      }
     },
     {
       "id": "deepverse6g",
@@ -154,13 +281,22 @@
       "year": 2024,
       "authors": "Umut Demirhan, Abdelrahman Taha, Ahmed Alkhateeb",
       "org": "Arizona State University",
-      "venue": "preprint / IEEE DataPort",
+      "venue": "Preprint / IEEE DataPort",
       "site": "https://deepverse6g.net/",
       "siteAlt": "https://www.wi-lab.net/datasets-page/",
       "paper": "https://doi.org/10.21227/nk8m-6087",
       "focusZh": "数字孪生无线数据集",
       "focusEn": "Digital-twin wireless datasets",
-      "modality": { "la": 0.5, "csi": 1, "rgb": 1, "lidar": 0.5, "radar": 1, "imu": 0.5, "weather": 0.5 }
+      "modality": {
+        "la": 0.5,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 0.5,
+        "radar": 1,
+        "imu": 0.5,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "synthsom",
@@ -168,13 +304,22 @@
       "year": 2025,
       "authors": "Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, Mingran Sun, et al.",
       "org": "Peking University / Shandong University",
-      "venue": "Scientific Data 12:819, 2025",
+      "venue": "Scientific Data 12:819 (2025)",
       "site": "https://github.com/ZiweiHuang96/SynthSoM",
       "siteAlt": "https://figshare.com/s/3c0203236d3ae2eed872",
       "paper": "https://doi.org/10.1038/s41597-025-05065-x",
       "focusZh": "空地协同机器联觉(SoM)合成数据集",
       "focusEn": "Synthetic SoM dataset with air-ground scenarios",
-      "modality": { "la": 0.5, "csi": 1, "rgb": 1, "lidar": 1, "radar": 1, "imu": 0, "weather": 1 }
+      "modality": {
+        "la": 0.5,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      }
     },
     {
       "id": "multimodal-wireless",
@@ -182,12 +327,21 @@
       "year": 2025,
       "authors": "Tianhao Mao, Le Liang, Jie Yang, Hao Ye, Shi Jin, Geoffrey Ye Li",
       "org": "Southeast University / Imperial College London",
-      "venue": "arXiv:2511.03220 (ICC 2026)",
+      "venue": "arXiv:2511.03220 · ICC 2026",
       "site": "https://le-liang.github.io/mmw",
       "paper": "https://arxiv.org/abs/2511.03220",
       "focusZh": "V2X多模态通信与感知",
       "focusEn": "V2X multimodal communication and perception",
-      "modality": { "la": 0, "csi": 1, "rgb": 1, "lidar": 1, "radar": 1, "imu": 1, "weather": 1 }
+      "modality": {
+        "la": 0,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 1,
+        "weather": 1,
+        "acoustic": 0
+      }
     },
     {
       "id": "multimodal-nf",
@@ -200,7 +354,16 @@
       "paper": "https://arxiv.org/abs/2603.28280",
       "focusZh": "近场低空XL-MIMO",
       "focusEn": "Near-field low-altitude XL-MIMO",
-      "modality": { "la": 1, "csi": 1, "rgb": 1, "lidar": 1, "radar": 0, "imu": 1, "weather": 0.5 }
+      "modality": {
+        "la": 1,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 1,
+        "weather": 0.5,
+        "acoustic": 0
+      }
     },
     {
       "id": "pml-cellulareye",
@@ -208,12 +371,21 @@
       "year": 2026,
       "authors": "Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You",
       "org": "Purple Mountain Laboratories / Southeast University",
-      "venue": "Science China Information Sciences 69(6):167301, 2026",
+      "venue": "Science China Information Sciences 69(6):167301 (2026)",
       "site": "https://github.com/ffxu1024/CellularEye_web",
       "paper": "https://doi.org/10.1007/s11432-026-4923-1",
       "focusZh": "实测基站侧低空ISAC数据",
       "focusEn": "Real-world BS-side low-altitude ISAC data",
-      "modality": { "la": 1, "csi": 0.5, "rgb": 0.5, "lidar": 0, "radar": 0.5, "imu": 1, "weather": 1 }
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0.5,
+        "lidar": 0,
+        "radar": 0.5,
+        "imu": 1,
+        "weather": 1,
+        "acoustic": 0
+      }
     },
     {
       "id": "dronerfa",
@@ -221,13 +393,22 @@
       "year": 2024,
       "authors": "俞宁宁, 毛盛健, 周成伟, 孙国威, 史治国, 陈积明",
       "org": "浙江大学信息与电子工程学院",
-      "venue": "电子与信息学报 46(4): 1147-1156 (2024)",
+      "venue": "电子与信息学报 46(4): 1147–1156 (2024)",
       "site": "https://www.scidb.cn/detail?dataSetId=34f0a91e8a544904998b8fdc44477380",
       "siteAlt": "https://jeit.ac.cn/web/data/getData?dataType=Dataset3",
       "paper": "https://jeit.ac.cn/cn/article/doi/10.11999/JEIT230570",
       "focusZh": "大规模无人机射频信号低空探测（25类场景，3个ISM频段）",
       "focusEn": "Large-scale drone RF signals for low-altitude detection",
-      "modality": { "la": 1, "csi": 0.5, "rgb": 0, "lidar": 0, "radar": 0, "imu": 0, "weather": 0 }
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
     },
     {
       "id": "dronerfb-dir",
@@ -235,12 +416,21 @@
       "year": 2025,
       "authors": "任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明",
       "org": "浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室",
-      "venue": "电子与信息学报 47(3): 573-581 (2025)",
+      "venue": "电子与信息学报 47(3): 573–581 (2025)",
       "site": "https://www.scidb.cn/detail?dataSetId=84cf9101e739402784b1396783881202",
       "paper": "https://jeit.ac.cn/cn/article/doi/10.11999/JEIT240804",
       "focusZh": "非合作无人机个体识别（6类×3架，含视距/非视距标注）",
       "focusEn": "Non-cooperative drone individual identification",
-      "modality": { "la": 1, "csi": 0.5, "rgb": 0, "lidar": 0, "radar": 0, "imu": 0, "weather": 0 }
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
     },
     {
       "id": "dronerfc-mm",
@@ -253,7 +443,16 @@
       "paper": "https://jeit.ac.cn/cn/article/doi/10.11999/JEIT260889",
       "focusZh": "反无人机多模态实测数据集（六类传感器同步观测城市低空目标）",
       "focusEn": "Anti-UAV multimodal measured dataset",
-      "modality": { "la": 1, "csi": 0.5, "rgb": 1, "lidar": 1, "radar": 1, "imu": 1, "weather": 0 }
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 1,
+        "weather": 0,
+        "acoustic": 0
+      }
     },
     {
       "id": "em-134k",
@@ -266,7 +465,16 @@
       "paper": "https://arxiv.org/abs/2603.08174",
       "focusZh": "电磁信号-文本配对预训练集（13.4万对，源自3500万信号）",
       "focusEn": "EM signal-text pair corpus for MLLM pre-training",
-      "modality": { "la": 0, "csi": 0.5, "rgb": 0, "lidar": 0, "radar": 0.5, "imu": 0, "weather": 0 }
+      "modality": {
+        "la": 0,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0.5,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
     },
     {
       "id": "em-bench",
@@ -279,7 +487,568 @@
       "paper": "https://arxiv.org/abs/2603.08174",
       "focusZh": "电磁信号理解与推理评测基准（4200+问答，3级14子任务）",
       "focusEn": "EM signal perception & reasoning benchmark",
-      "modality": { "la": 0, "csi": 0.5, "rgb": 0, "lidar": 0, "radar": 0.5, "imu": 0, "weather": 0 }
+      "modality": {
+        "la": 0,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0.5,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "great-msd",
+      "name": "Great-MSD",
+      "year": 2025,
+      "authors": "Kongwu Huang, Shiyi Mu, Jun Jiang, Yuan Gao, Shugong Xu",
+      "org": "Shanghai University / Xi'an Jiaotong-Liverpool University",
+      "venue": "arXiv:2507.08716（Great-X 平台）",
+      "site": "https://github.com/hkw-xg/Great-MCD",
+      "paper": "https://arxiv.org/abs/2507.08716",
+      "focusZh": "单引擎仿真低空多模态通感一体化数据集（10万样本）",
+      "focusEn": "Single-engine multimodal ISAC simulation dataset",
+      "modality": {
+        "la": 1,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 1,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "sensiverse",
+      "name": "Sensiverse",
+      "year": 2023,
+      "authors": "Jiajin Luo, Baojian Zhou, Yang Yu, Ping Zhang, et al. (Huawei)",
+      "org": "Huawei Technologies",
+      "venue": "arXiv:2308.13789",
+      "site": "https://sensiverse.github.io/",
+      "paper": "https://arxiv.org/abs/2308.13789",
+      "focusZh": "多场景多频段ISAC感知信道数据集（3.5/10/26/100 GHz）",
+      "focusEn": "Multi-scenario multi-band ISAC sensing channel dataset",
+      "modality": {
+        "la": 0.5,
+        "csi": 1,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "crosslayer-uav6g",
+      "name": "Cross-layer UAV 6G",
+      "year": 2026,
+      "authors": "Francesco Paolucci, Emilio Paolini, Massimo Satler, et al.",
+      "org": "CNIT / Scuola Superiore Sant'Anna",
+      "venue": "Zenodo (2026)",
+      "site": "https://zenodo.org/records/21468734",
+      "paper": "https://doi.org/10.5281/zenodo.21468734",
+      "focusZh": "5G测试床无人机跨层（移动性-无线-应用）测量",
+      "focusEn": "Cross-layer UAV measurements over a 5G testbed",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 1,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "aerpaw",
+      "name": "AERPAW",
+      "year": 2024,
+      "authors": "Ismail Guvenc, Mihail L. Sichitiu, Rudra Dutta, et al.",
+      "org": "North Carolina State University",
+      "venue": "AERPAW / Dryad / IEEE DataPort (2024–2026)",
+      "site": "https://aerpaw.org/experiments/datasets/",
+      "paper": "https://arxiv.org/abs/2510.08752",
+      "focusZh": "空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集）",
+      "focusEn": "A2G/A2A channel sounding, spectrum & KPI datasets",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0.5,
+        "imu": 1,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "lipase",
+      "name": "LIPASE",
+      "year": 2025,
+      "authors": "Yifei Sun, Chao Yu, Yan Luo, Tony Xiao Han, Haisheng Tan, Rui Wang, Francis C. M. Lau",
+      "org": "The University of Hong Kong / SUSTech / Huawei 等",
+      "venue": "IEEE OJ-COMS 6: 3779–3794 (2025)",
+      "site": "https://github.com/yfsun0327/lipase-dataset",
+      "paper": "https://doi.org/10.1109/OJCOMS.2025.3558430",
+      "focusZh": "LTE下行信号+数字阵列的无人机被动雷达跟踪",
+      "focusEn": "Passive UAV tracking with LTE downlink & digital arrays",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "drone-swarm-sounding",
+      "name": "Drone Swarm Sounding",
+      "year": 2025,
+      "authors": "Julia Beuster, Carsten Andrich, Sebastian Giehl, Marc Miranda, et al.",
+      "org": "Technische Universität Ilmenau",
+      "venue": "arXiv:2507.12010",
+      "site": "https://arxiv.org/abs/2507.12010",
+      "paper": "https://arxiv.org/abs/2507.12010",
+      "focusZh": "无人机群多基地信道探测与雷达感知实测",
+      "focusEn": "Multi-static channel sounding with a drone swarm",
+      "modality": {
+        "la": 1,
+        "csi": 1,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0.5,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "rfuav",
+      "name": "RFUAV",
+      "year": 2025,
+      "authors": "Rui Shi, Xiaodong Yu, Shengming Wang, Yijia Zhang, Lu Xu, Peng Pan, Chunlai Ma",
+      "org": "Beijing University of Posts and Telecommunications 等",
+      "venue": "arXiv:2503.09033",
+      "site": "https://github.com/kitoweeknd/RFUAV",
+      "paper": "https://arxiv.org/abs/2503.09033",
+      "focusZh": "37种无人机大规模射频指纹基准（约1.3 TB原始I/Q）",
+      "focusEn": "Large-scale RF drone fingerprint benchmark",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "cagedronerf",
+      "name": "CageDroneRF",
+      "year": 2026,
+      "authors": "Mohammad Rostami, Atik Faysal, Hongtao Xia, Hadi Kasasbeh, Ziang Gao, Huaxia Wang",
+      "org": "Rowan University",
+      "venue": "arXiv:2601.03302",
+      "site": "https://arxiv.org/abs/2601.03302",
+      "paper": "https://arxiv.org/abs/2601.03302",
+      "focusZh": "射频笼采集+合成增强的无人机检测与识别基准",
+      "focusEn": "RF drone detection benchmark with synthetic augmentation",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "skyev",
+      "name": "SkyEV",
+      "year": 2026,
+      "authors": "Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno",
+      "org": "ETH Zurich",
+      "venue": "arXiv:2607.18747",
+      "site": "https://arxiv.org/abs/2607.18747",
+      "paper": "https://arxiv.org/abs/2607.18747",
+      "focusZh": "RGB-事件相机同步的无人机检测与跟踪数据集",
+      "focusEn": "Synchronized RGB-event UAV detection & tracking",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "lss-fmcwr",
+      "name": "LSS-FMCWR-1.0",
+      "year": 2024,
+      "authors": "陈小龙, 袁旺, 杜晓林, 于刚, 何肖阳, 关键, 汪兴海",
+      "org": "海军航空大学 / 烟台大学 / 济南大学",
+      "venue": "雷达学报 13(3): 539–553 (2024)",
+      "site": "https://radars.ac.cn/article/doi/10.12000/JR23142",
+      "paper": "https://radars.ac.cn/article/doi/10.12000/JR23142",
+      "focusZh": "多波段FMCW雷达低慢小目标探测（6类无人机微动特征）",
+      "focusEn": "Multiband FMCW radar low-slow-small target dataset",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "diat-msat",
+      "name": "DIAT-µSAT",
+      "year": 2022,
+      "authors": "Harish Chandra Kumawat, Mainak Chakraborty, A. Arockia Bazil Raj, Sunita Vikrant Dhavale",
+      "org": "Defence Institute of Advanced Technology (DIAT), India",
+      "venue": "IEEE GRSL 19: 6004005 (2022)",
+      "site": "https://ieee-dataport.org/documents/diat-msat-micro-doppler-signature-dataset-small-unmanned-aerial-vehicle-suav",
+      "paper": "https://doi.org/10.1109/LGRS.2021.3102039",
+      "focusZh": "X波段连续波雷达小型无人机微多普勒特征（6类4849幅）",
+      "focusEn": "Micro-Doppler signatures of small UAVs",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "mathworks-radar-drone",
+      "name": "MathWorks Radar Drone",
+      "year": 2025,
+      "authors": "Zhongliang Guo, Samiur Rahman, Duncan Robertson",
+      "org": "University of St Andrews",
+      "venue": "Zenodo (2025)",
+      "site": "https://doi.org/10.5281/zenodo.15224887",
+      "paper": "https://doi.org/10.5281/zenodo.15224887",
+      "focusZh": "大规模雷达无人机分类微多普勒训练集（约10.9 TB）",
+      "focusEn": "Large-scale radar drone classification dataset",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "itu-aris-acoustic",
+      "name": "ITU-ARIS Acoustic",
+      "year": 2026,
+      "authors": "İhsan Mert Muhacıroğlu, Tayfun Akgül",
+      "org": "Istanbul Technical University (ARIS Lab)",
+      "venue": "IEEE SIU 2026 / Zenodo",
+      "site": "https://zenodo.org/records/22682339",
+      "paper": "https://doi.org/10.1109/SIU71813.2026.11636719",
+      "focusZh": "户外无人机声学探测数据集（无人机/背景两类，5491段）",
+      "focusEn": "Outdoor acoustic drone detection dataset",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 1
+      }
+    },
+    {
+      "id": "dads",
+      "name": "DADS",
+      "year": 2024,
+      "authors": "社区整理（schiffman / geronimobasso）",
+      "org": "Community (Hugging Face)",
+      "venue": "Hugging Face Datasets",
+      "site": "https://huggingface.co/datasets/geronimobasso/drone-audio-detection-samples",
+      "siteAlt": "https://huggingface.co/datasets/schiffman/drone-audio-detection-samples",
+      "paper": "https://huggingface.co/datasets/geronimobasso/drone-audio-detection-samples",
+      "focusZh": "目前规模最大的公开无人机音频库（约18万条）",
+      "focusEn": "Largest public drone audio database",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 1
+      }
+    },
+    {
+      "id": "uavscenes",
+      "name": "UAVScenes",
+      "year": 2025,
+      "authors": "Sijie Wang, Siqi Li, Yawei Zhang, Shangshu Yu, Shenghai Yuan, et al., Lihua Xie, Wee Peng Tay",
+      "org": "Nanyang Technological University / Shanghai Jiao Tong University 等",
+      "venue": "ICCV 2025",
+      "site": "https://github.com/sijieaaa/UAVScenes",
+      "paper": "https://arxiv.org/abs/2507.22412",
+      "focusZh": "多模态无人机感知（图像+LiDAR逐帧语义标注，12万+帧）",
+      "focusEn": "Multi-modal UAV perception benchmark",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 1,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "drift",
+      "name": "DrIFT",
+      "year": 2025,
+      "authors": "Fardad Dadboud, Hamid Azad, Varun Mehta, Miodrag Bolic, Iraj Mantegh",
+      "org": "University of Ottawa / NRC Canada",
+      "venue": "WACV 2025",
+      "site": "https://github.com/CARG-uOttawa/DrIFT",
+      "paper": "https://openaccess.thecvf.com/content/WACV2025/html/Dadboud_DrIFT_Autonomous_Drone_Dataset_with_Integrated_Real_and_Synthetic_Data_WACV_2025_paper.html",
+      "focusZh": "域漂移下的视觉无人机检测（14个域，含背景分割图）",
+      "focusEn": "Visual drone detection under domain shifts",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "flyawarev2",
+      "name": "FlyAwareV2",
+      "year": 2026,
+      "authors": "Federico Barbato, Matteo Caligiuri, Pietro Zanuttigh",
+      "org": "University of Padova",
+      "venue": "Signal Processing: Image Communication (2026)",
+      "site": "https://medialab.dei.unipd.it/paper_data/FlyAwareV2",
+      "paper": "https://doi.org/10.1016/j.image.2026.117483",
+      "focusZh": "城市场景理解的多模态无人机数据（真实+合成，含天气昼夜）",
+      "focusEn": "Multimodal cross-domain UAV urban-scene dataset",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "anyvisloc",
+      "name": "AnyVisLoc",
+      "year": 2025,
+      "authors": "Yibin Ye, Xichao Teng, Shuo Chen, Zhang Li, Leqi Liu, Qifeng Yu, Tao Tan",
+      "org": "National University of Defense Technology / Macao Polytechnic University",
+      "venue": "arXiv:2503.10692",
+      "site": "https://github.com/UAV-AVL/Benchmark",
+      "paper": "https://arxiv.org/abs/2503.10692",
+      "focusZh": "低空多视角无人机绝对视觉定位基准（1.8万图像）",
+      "focusEn": "Low-altitude multi-view UAV visual localization benchmark",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "lae-uav",
+      "name": "LAE UAV",
+      "year": 2025,
+      "authors": "Zhengru Fang, Zhenghao Liu, Jingjing Wang, Senkang Hu, et al., Yuguang Fang",
+      "org": "City University of Hong Kong / Beihang University",
+      "venue": "arXiv:2504.18317",
+      "site": "https://github.com/fangzr/TOC-Edge-Aerial",
+      "paper": "https://arxiv.org/abs/2504.18317",
+      "focusZh": "GNSS拒止城市环境下的无人机视觉导航数据集（35.7万帧）",
+      "focusEn": "UAV visual navigation in GNSS-denied urban LAE",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0.5,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "neodrone",
+      "name": "NeoDrone",
+      "year": 2025,
+      "authors": "NeoDrone 团队（北京市数据知识产权登记）",
+      "org": "北京 · 低空智能系统",
+      "venue": "北京市数据知识产权登记 (2025)",
+      "site": "https://github.com/playezio/NeoDrone",
+      "paper": "https://webs.bjidex.com/sys-bsc-home/#/bscConsole/intellectualProperty/infoPublicity?action=1",
+      "focusZh": "无人机近地观测视觉感知（15万+图像，可见光-红外对齐）",
+      "focusEn": "Near-earth drone observation vision dataset",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "uav-lowalt-mot",
+      "name": "UAV-LowAlt-MOT",
+      "year": 2025,
+      "authors": "Xin Wang",
+      "org": "Xidian University",
+      "venue": "Science Data Bank / IEEE DataPort (2025)",
+      "site": "https://www.scidb.cn/en/detail?dataSetId=239a78b317464fb9943387df112a0345",
+      "paper": "https://doi.org/10.21227/2gt9-aa39",
+      "focusZh": "低空无人机对地多目标检测与跟踪（行人/车辆）",
+      "focusEn": "Low-altitude UAV multi-target detection & tracking",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "visdrone",
+      "name": "VisDrone",
+      "year": 2018,
+      "authors": "AISKYEYE team（Zhu, Wen, Bian, Ling, Liang, et al.）",
+      "org": "Tianjin University",
+      "venue": "ECCV Workshops 2018 / TPAMI 2021",
+      "site": "https://github.com/VisDrone/VisDrone-Dataset",
+      "paper": "https://arxiv.org/abs/2001.07420",
+      "focusZh": "无人机视角目标检测与跟踪基准（14城市，260万+框）",
+      "focusEn": "Drone-view object detection & tracking benchmark",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0.5,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "dota",
+      "name": "DOTA",
+      "year": 2018,
+      "authors": "Gui-Song Xia, Xiang Bai, Jian Ding, Zhen Zhu, Serge Belongie, et al.",
+      "org": "Wuhan University",
+      "venue": "CVPR 2018",
+      "site": "https://captain-whu.github.io/DOTA/dataset.html",
+      "paper": "https://arxiv.org/abs/1711.10398",
+      "focusZh": "航空影像目标检测（15/16类，18.8万实例）",
+      "focusEn": "Aerial image object detection",
+      "modality": {
+        "la": 0.5,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "uavdt",
+      "name": "UAVDT",
+      "year": 2018,
+      "authors": "Dawei Du, Yuankai Qi, Hongyang Yu, Yifan Yang, et al.",
+      "org": "Chinese Academy of Sciences 等",
+      "venue": "ECCV 2018 / IJCV 2019",
+      "site": "https://sites.google.com/site/daviddo0323/projects/uavdt",
+      "siteAlt": "https://sites.google.com/view/grli-uavdt/",
+      "paper": "https://arxiv.org/abs/1804.00518",
+      "focusZh": "无人机车辆检测与跟踪基准（8万帧，含14类属性）",
+      "focusEn": "UAV vehicle detection & tracking benchmark",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0.5,
+        "acoustic": 0
+      }
+    },
+    {
+      "id": "uav123",
+      "name": "UAV123",
+      "year": 2016,
+      "authors": "Matthias Mueller, Neil Smith, Bernard Ghanem",
+      "org": "King Abdullah University of Science and Technology (KAUST)",
+      "venue": "ECCV 2016",
+      "site": "https://cemse.kaust.edu.sa/ivul/datasets",
+      "paper": "https://doi.org/10.1007/978-3-319-46448-0_27",
+      "focusZh": "低空无人机视角单目标跟踪基准（123段，11万帧）",
+      "focusEn": "Low-altitude UAV single-object tracking benchmark",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rgb": 1,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      }
     },
     {
       "id": "lambda",
@@ -287,12 +1056,21 @@
       "year": 2026,
       "authors": "Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao",
       "org": "Shanghai Jiao Tong University",
-      "venue": "arXiv:2607.03826 (this work)",
+      "venue": "arXiv:2607.03826 · Science Data Bank",
       "site": "https://doi.org/10.57760/sciencedb.36052",
       "paper": "https://arxiv.org/abs/2607.03826",
-      "focusZh": "低空多模态ISAC基础数据集",
+      "focusZh": "低空多模态通感一体化基础数据集",
       "focusEn": "Low-altitude multimodal ISAC data",
-      "modality": { "la": 1, "csi": 1, "rgb": 1, "lidar": 1, "radar": 1, "imu": 1, "weather": 1 },
+      "modality": {
+        "la": 1,
+        "csi": 1,
+        "rgb": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 1,
+        "weather": 1,
+        "acoustic": 0
+      },
       "self": true
     }
   ]
