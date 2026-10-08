@@ -1,0 +1,13 @@
+# WorkBuddy / agent local state
+.workbuddy/
+.workbuddy/tmp/
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editors
+.vscode/
+.idea/
+*.swp

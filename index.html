@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>低空数据集 | Low-Altitude Datasets</title>
+<meta name="description" content="低空经济与UAV通感一体化(ISAC)相关的开源数据集索引：汇编名称、官网链接、年份、作者与模态覆盖对比。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- ================= header ================= -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark">&#9992;</span>
+      <span class="brand-text">
+        <b>低空数据集</b>
+        <span>Low-Altitude Datasets</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#datasets">数据集</a>
+      <a href="#matrix">对比矩阵</a>
+      <a href="#about">关于</a>
+      <a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= hero ================= -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <h1>低空经济与UAV通感一体化的<br><span class="grad">开源数据集索引</span></h1>
+    <p class="lede">
+      面向<strong>低空通感一体化(ISAC)</strong>研究，系统收集并展示已有的开源与半开源数据集，
+      统一给出<strong>名称、官方网站链接、发布年份、作者/机构</strong>以及<strong>模态覆盖对比</strong>。
+      清单以 <a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener">LAMBDA（arXiv:2607.03826）</a>
+      表1 为基准，并补充核实各数据集的官方主页与论文链接。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#datasets">浏览数据集 &#8595;</a>
+      <a class="btn" href="#matrix">查看模态对比矩阵</a>
+      <a class="btn" href="data/datasets.json" target="_blank" rel="noopener">下载数据(datasets.json)</a>
+    </div>
+
+    <div class="stats" id="stats"></div>
+  </div>
+</div>
+
+<!-- ================= datasets ================= -->
+<section id="datasets">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="idx">01</span>数据集清单</h2>
+      <p>点击卡片标题或「数据集主页」直达官方站点。搜索支持名称、机构、作者、年份与关键词。</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <label class="search-box">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <input id="search" type="search" placeholder="搜索数据集名称、机构、作者、关键词…" autocomplete="off">
+        </label>
+        <label class="field">排序
+          <select id="sort">
+            <option value="year-desc">年份（新→旧）</option>
+            <option value="year-asc">年份（旧→新）</option>
+            <option value="name">名称（A→Z）</option>
+            <option value="rich">模态丰富度</option>
+          </select>
+        </label>
+        <label class="switch">
+          <input id="la-only" type="checkbox">
+          <span class="track"></span>
+          仅看支持低空场景
+        </label>
+        <button class="btn" id="reset" type="button" style="padding:9px 14px">重置</button>
+      </div>
+      <div class="toolbar-row">
+        <span class="filter-label">模态筛选</span>
+        <div class="chips" id="chips"></div>
+      </div>
+    </div>
+
+    <div class="result-line" id="result-line"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ================= matrix ================= -->
+<section id="matrix" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="idx">02</span>模态覆盖对比矩阵</h2>
+      <p>覆盖情况对照 LAMBDA 论文表1。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用。</p>
+    </div>
+    <div class="matrix-wrap">
+      <div class="matrix-scroll">
+        <table class="matrix" id="matrix-table"></table>
+      </div>
+      <div class="legend">
+        <span><b class="mark y" style="width:20px;height:20px;font-size:11px">&#10003;</b> 包含</span>
+        <span><b class="mark p" style="width:20px;height:20px;font-size:11px">&#9651;</b> 有限 / 部分支持</span>
+        <span><b class="mark n" style="width:20px;height:20px;font-size:11px">&#215;</b> 缺失 / 不适用</span>
+        <span style="margin-left:auto;color:var(--text-3)">数据来源：LAMBDA (arXiv:2607.03826), Table 1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= about ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="idx">03</span>关于本索引</h2>
+      <p>收录范围、数据来源与使用说明。</p>
+    </div>
+    <div class="about-grid">
+      <div class="panel">
+        <h3><span class="ico">&#9679;</span>收录范围</h3>
+        <p>覆盖自动驾驶感知、无线信道建模、视觉辅助通信与通感一体化(ISAC)等方向，并特别标注支持<strong>低空/UAV场景</strong>的数据集。</p>
+        <ul>
+          <li>共 <strong>16</strong> 个数据集（含本文 LAMBDA）</li>
+          <li>时间跨度 2012–2026</li>
+          <li>标注 7 类模态：低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3><span class="ico">&#9679;</span>数据来源</h3>
+        <p>清单以 <strong>LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication</strong>（arXiv:2607.03826）表1 为基准。</p>
+        <p>各数据集的<strong>官方网站链接、作者与出处</strong>由编者逐一核实。若链接失效或有遗漏，欢迎提交 Issue 或 Pull Request。</p>
+        <p><a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener">查看 LAMBDA 论文 &#8599;</a></p>
+      </div>
+      <div class="panel">
+        <h3><span class="ico">&#9679;</span>引用本索引</h3>
+        <p>若本索引对你的研究有帮助，请引用 LAMBDA 论文：</p>
+        <code class="codeblock">@article{zhou2026lambda,
+  title  = {LAMBDA: A Low-Altitude Multimodal Base
+            Dataset for UAV Sensing and Communication},
+  author = {Zhou, Lin and Rao, Peichuan and Zhang, Chenshuo
+            and Mo, Jianhua and Sun, Shu and Chen, Zhiyong
+            and Tao, Meixia},
+  journal = {arXiv:2607.03826},
+  year   = {2026}
+}</code>
+      </div>
+      <div class="panel">
+        <h3><span class="ico">&#9679;</span>贡献与维护</h3>
+        <p>本站为静态站点，数据结构在 <code>data/datasets.json</code>，渲染逻辑在 <code>assets/app.js</code>。</p>
+        <ul>
+          <li>新增数据集：向 <code>data/datasets.json</code> 与 <code>assets/app.js</code> 加入条目</li>
+          <li>模态字段取值：<code>1</code> 包含 / <code>0.5</code> 部分 / <code>0</code> 缺失</li>
+          <li>仓库：<a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">SJTU-WirelessAI-Lab/Low-Altitude-Dataset</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= footer ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; <span id="year-now">2026</span> 低空数据集索引 · 由 SJTU-WirelessAI-Lab 维护 · 数据来源 LAMBDA (arXiv:2607.03826)</p>
+    <div class="links">
+      <a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener">论文</a>
+      <a href="data/datasets.json" target="_blank" rel="noopener">数据(JSON)</a>
+      <a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
