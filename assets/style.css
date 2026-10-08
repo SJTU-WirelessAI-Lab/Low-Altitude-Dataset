@@ -330,3 +330,73 @@ table.matrix tbody tr:last-child td { border-bottom: none; }
   .site-header, .toolbar, .hero-actions, .site-footer { display: none; }
   .card { break-inside: avoid; }
 }
+
+/* ==========================================================================
+   Matrix grouping (low-altitude vs general) + CSI colour coding
+   ========================================================================== */
+
+.mx-legend {
+  display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 13px 16px; margin-bottom: 22px; box-shadow: var(--shadow-sm);
+}
+.legend-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.legend-row + .legend-row { padding-left: 28px; border-left: 1px solid var(--border); }
+.legend-label { font-size: 12.5px; font-weight: 650; color: var(--text-3); }
+.legend-row > span { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text-2); }
+
+.mx-group + .mx-group { margin-top: 30px; }
+.mx-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-bottom: 11px; }
+.mx-head h3 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -.015em; }
+.mx-head .cnt {
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 6px;
+}
+.mx-head p { margin: 0; flex: 1 1 320px; font-size: 12.5px; color: var(--text-3); }
+.mx-note { margin: 16px 0 0; font-size: 12.5px; color: var(--text-3); text-align: right; }
+
+/* CSI legend chips */
+.csi-key {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 600; padding: 4px 10px;
+  border-radius: 7px; border: 1px solid transparent;
+}
+.csi-key::before { content: ""; width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.csi-key.csi-full { background: #e2f5f2; color: #0f6e56; border-color: #c3e9e2; }
+.csi-key.csi-full::before { background: #14b8a6; }
+.csi-key.csi-part { background: var(--warn-soft); color: var(--warn); border-color: #f3e0bd; }
+.csi-key.csi-part::before { background: #f0a02a; }
+.csi-key.csi-none { background: #f1f2f5; color: var(--text-3); border-color: #e0e3e9; }
+.csi-key.csi-none::before { background: #cbd0d9; }
+
+/* matrix cells tinted by CSI availability */
+table.matrix td.csi-cell.csi-full { background: #eef8f6; }
+table.matrix td.csi-cell.csi-part { background: #fdf6ea; }
+table.matrix td.csi-cell.csi-none { background: #f5f6f8; }
+
+table.matrix td.name.csi-bar { position: relative; padding-left: 20px; }
+table.matrix td.name.csi-bar::before {
+  content: ""; position: absolute; left: 6px; top: 7px; bottom: 7px;
+  width: 4px; border-radius: 2px; background: #cbd0d9;
+}
+table.matrix td.name.csi-bar.csi-full::before { background: #14b8a6; }
+table.matrix td.name.csi-bar.csi-part::before { background: #f0a02a; }
+table.matrix td.name.csi-bar.csi-none::before { background: #cbd0d9; }
+
+/* card CSI badge */
+.badge-csi { font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+.badge-csi.csi-full { background: #e2f5f2; color: #0f6e56; }
+.badge-csi.csi-part { background: var(--warn-soft); color: var(--warn); }
+.badge-csi.csi-none { background: #f1f2f5; color: var(--text-3); }
+
+/* card group headings */
+.grid-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 0 0 14px; }
+.grid-head + .grid { margin-bottom: 0; }
+.grid-head:not(:first-child) { margin-top: 36px; }
+.grid-head h3 {
+  margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -.015em;
+  display: flex; align-items: center; gap: 9px;
+}
+.grid-head h3::before { content: ""; width: 4px; height: 17px; border-radius: 2px; background: var(--accent); }
+.grid-head.gen h3::before { background: var(--muted-cell); }
+.grid-head span { font-size: 12.5px; color: var(--text-3); }

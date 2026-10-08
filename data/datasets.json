@@ -9,6 +9,15 @@
       "0": "absent or not applicable",
       "1": "included",
       "0.5": "limited / partial"
+    },
+    "groupLegend": {
+      "low-altitude": "涉及无人机 / 低空场景",
+      "general": "完全不含低空场景的上游基准"
+    },
+    "csiLegend": {
+      "full": "有 CSI（完整 MIMO 信道）",
+      "part": "部分 CSI（原始 I/Q 等）",
+      "none": "无 CSI"
     }
   },
   "modalities": [
@@ -74,7 +83,9 @@
         "imu": 1,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "none"
     },
     {
       "id": "deepmimo",
@@ -96,7 +107,9 @@
         "imu": 0,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "full"
     },
     {
       "id": "viwi",
@@ -118,7 +131,9 @@
         "imu": 0,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "full"
     },
     {
       "id": "opv2v",
@@ -140,7 +155,9 @@
         "imu": 0.5,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "none"
     },
     {
       "id": "dairv2x",
@@ -163,7 +180,9 @@
         "imu": 0.5,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "none"
     },
     {
       "id": "eflash",
@@ -185,7 +204,9 @@
         "imu": 1,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "part"
     },
     {
       "id": "waird",
@@ -207,7 +228,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "full"
     },
     {
       "id": "m3sc",
@@ -229,7 +252,9 @@
         "imu": 0,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "full"
     },
     {
       "id": "deepsense6g",
@@ -251,7 +276,9 @@
         "imu": 0.5,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "sdcd",
@@ -273,7 +300,9 @@
         "imu": 0,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "none"
     },
     {
       "id": "deepverse6g",
@@ -296,7 +325,9 @@
         "imu": 0.5,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "full"
     },
     {
       "id": "synthsom",
@@ -319,7 +350,9 @@
         "imu": 0,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "full"
     },
     {
       "id": "multimodal-wireless",
@@ -341,7 +374,9 @@
         "imu": 1,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "full"
     },
     {
       "id": "multimodal-nf",
@@ -363,7 +398,9 @@
         "imu": 1,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "full"
     },
     {
       "id": "pml-cellulareye",
@@ -385,7 +422,9 @@
         "imu": 1,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "dronerfa",
@@ -408,7 +447,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "dronerfb-dir",
@@ -430,7 +471,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "dronerfc-mm",
@@ -452,7 +495,9 @@
         "imu": 1,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "em-134k",
@@ -474,7 +519,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "part"
     },
     {
       "id": "em-bench",
@@ -496,7 +543,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "general",
+      "csiLevel": "part"
     },
     {
       "id": "great-msd",
@@ -518,7 +567,9 @@
         "imu": 1,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "full"
     },
     {
       "id": "sensiverse",
@@ -540,7 +591,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "full"
     },
     {
       "id": "crosslayer-uav6g",
@@ -562,7 +615,9 @@
         "imu": 1,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "aerpaw",
@@ -584,7 +639,9 @@
         "imu": 1,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "lipase",
@@ -606,7 +663,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "drone-swarm-sounding",
@@ -628,7 +687,9 @@
         "imu": 0.5,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "full"
     },
     {
       "id": "rfuav",
@@ -650,7 +711,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "cagedronerf",
@@ -672,7 +735,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "skyev",
@@ -694,7 +759,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "lss-fmcwr",
@@ -716,7 +783,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "diat-msat",
@@ -738,7 +807,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "mathworks-radar-drone",
@@ -760,7 +831,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "itu-aris-acoustic",
@@ -782,7 +855,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 1
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "dads",
@@ -805,7 +880,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 1
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "uavscenes",
@@ -827,7 +904,9 @@
         "imu": 1,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "drift",
@@ -849,7 +928,9 @@
         "imu": 0,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "flyawarev2",
@@ -871,7 +952,9 @@
         "imu": 0,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "anyvisloc",
@@ -893,7 +976,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "lae-uav",
@@ -915,7 +1000,9 @@
         "imu": 0.5,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "neodrone",
@@ -937,7 +1024,9 @@
         "imu": 0,
         "weather": 1,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "uav-lowalt-mot",
@@ -959,7 +1048,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "visdrone",
@@ -981,7 +1072,9 @@
         "imu": 0,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "dota",
@@ -1003,7 +1096,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "uavdt",
@@ -1026,7 +1121,9 @@
         "imu": 0,
         "weather": 0.5,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "uav123",
@@ -1048,7 +1145,9 @@
         "imu": 0,
         "weather": 0,
         "acoustic": 0
-      }
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
     },
     {
       "id": "lambda",
@@ -1071,6 +1170,8 @@
         "weather": 1,
         "acoustic": 0
       },
+      "group": "low-altitude",
+      "csiLevel": "full",
       "self": true
     }
   ]

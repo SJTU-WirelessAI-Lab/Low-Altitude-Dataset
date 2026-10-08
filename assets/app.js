@@ -549,6 +549,22 @@ function markOf(v) {
   return { cls: 'n', ch: '\u00D7', txt: '缺失' };
 }
 
+/* CSI availability levels — drives the colour coding in the matrix and cards */
+const CSI_LEVELS = {
+  full: { key: 'full', label: '\u6709 CSI',   note: '提供完整 MIMO 信道 CSI' },
+  part: { key: 'part', label: '\u90E8\u5206 CSI', note: '仅原始 I/Q 或非 MIMO 信道数据' },
+  none: { key: 'none', label: '\u65E0 CSI',   note: '不含信道 / 射频数据' }
+};
+function csiOf(ds) {
+  const v = ds.modality.csi;
+  if (v === 1)  return CSI_LEVELS.full;
+  if (v === .5) return CSI_LEVELS.part;
+  return CSI_LEVELS.none;
+}
+
+/* datasets that involve low-altitude / UAV scenarios */
+const isLowAlt = ds => ds.modality.la > 0;
+
 function modalityTags(ds) {
   return MODALITIES
     .filter(m => ds.modality[m.key] > 0)
@@ -603,6 +619,7 @@ function cardHtml(ds) {
       </div>
       <div class="badges">
         <span class="badge-year">${ds.year}</span>
+        <span class="badge-csi csi-${csiOf(ds).key}" title="${csiOf(ds).note}">${csiOf(ds).label}</span>
         ${ds.self ? '<span class="badge-self">This work</span>' : ''}
       </div>
     </div>
@@ -629,32 +646,51 @@ function cardHtml(ds) {
 
 function renderCards() {
   const list = filtered();
-  const box = $('#grid');
-  box.innerHTML = list.length
-    ? list.map(cardHtml).join('')
-    : '<div class="empty">没有匹配的数据集，试试调整筛选条件或清空搜索。</div>';
-  $('#result-line').innerHTML = `显示 <b>${list.length}</b> / ${DATASETS.length} 个数据集`;
+  const la  = list.filter(isLowAlt);
+  const gen = list.filter(ds => !isLowAlt(ds));
+  const block = (arr, cls, title, note) => arr.length ? `
+    <div class="grid-head ${cls}">
+      <h3>${title}</h3>
+      <span>${arr.length} \u4E2A \u00B7 ${note}</span>
+    </div>
+    <div class="grid">${arr.map(cardHtml).join('')}</div>` : '';
+  const html = block(la, 'la', '\u4F4E\u7A7A\u76F8\u5173\u6570\u636E\u96C6', '\u542B\u65E0\u4EBA\u673A/UAV \u6216\u4F4E\u7A7A\u573A\u666F')
+             + block(gen, 'gen', '\u901A\u7528 / \u4E0A\u6E38\u57FA\u51C6\u6570\u636E\u96C6', '\u5B8C\u5168\u4E0D\u542B\u4F4E\u7A7A\u573A\u666F');
+  $('#grid-host').innerHTML = list.length
+    ? html
+    : '<div class="empty">\u6CA1\u6709\u5339\u914D\u7684\u6570\u636E\u96C6\uFF0C\u8BD5\u8BD5\u8C03\u6574\u7B5B\u9009\u6761\u4EF6\u6216\u6E05\u7A7A\u641C\u7D22\u3002</div>';
+  $('#result-line').innerHTML = `\u663E\u793A <b>${list.length}</b> / ${DATASETS.length} \u4E2A\u6570\u636E\u96C6`
+    + (list.length ? `\uFF08\u4F4E\u7A7A\u76F8\u5173 <b>${la.length}</b> \u00B7 \u901A\u7528\u57FA\u51C6 <b>${gen.length}</b>\uFF09` : '');
 }
 
 /* ---------------- render: matrix ---------------- */
-function renderMatrix() {
-  const list = DATASETS.slice().sort((a, b) => (a.year - b.year) || a.name.localeCompare(b.name));
+function matrixHtml(list) {
   const head = MODALITIES.map(m => `<th>${m.zh}<span class="en">${m.en}</span></th>`).join('');
   const body = list.map(ds => {
+    const c = csiOf(ds);
     const cells = MODALITIES.map(m => {
       const k = markOf(ds.modality[m.key]);
-      return `<td><span class="mark ${k.cls}" title="${m.en}：${k.txt}">${k.ch}</span></td>`;
+      const cls = m.key === 'csi' ? ` class="csi-cell csi-${c.key}"` : '';
+      return `<td${cls}><span class="mark ${k.cls}" title="${m.en}：${k.txt}">${k.ch}</span></td>`;
     }).join('');
     return `<tr class="${ds.self ? 'hl' : ''}">
-      <td class="name"><a href="${ds.site}" target="_blank" rel="noopener">${escapeHtml(ds.name)}</a><span class="yr">${ds.year}</span></td>
+      <td class="name csi-bar csi-${c.key}" title="${c.note}"><a href="${ds.site}" target="_blank" rel="noopener">${escapeHtml(ds.name)}</a><span class="yr">${ds.year}</span></td>
       ${cells}
       <td class="name" style="font-weight:400;color:var(--text-2);white-space:normal;min-width:180px">${escapeHtml(ds.focusEn)}</td>
     </tr>`;
   }).join('');
-
-  $('#matrix-table').innerHTML = `
-    <thead><tr><th class="name" style="min-width:150px">数据集<span class="en">Dataset</span></th>${head}<th>主要关注点<span class="en">Main focus</span></th></tr></thead>
+  return `<thead><tr><th class="name" style="min-width:150px">数据集<span class="en">Dataset</span></th>${head}<th>主要关注点<span class="en">Main focus</span></th></tr></thead>
     <tbody>${body}</tbody>`;
+}
+
+function renderMatrix() {
+  const all = DATASETS.slice().sort((a, b) => (a.year - b.year) || a.name.localeCompare(b.name));
+  const la  = all.filter(isLowAlt);
+  const gen = all.filter(ds => !isLowAlt(ds));
+  $('#matrix-table').innerHTML = matrixHtml(la);
+  $('#matrix-table-other').innerHTML = matrixHtml(gen);
+  $('#mx-la-count').textContent  = la.length + ' 个';
+  $('#mx-gen-count').textContent = gen.length + ' 个';
 }
 
 /* ---------------- render: toolbar + stats ---------------- */
@@ -667,14 +703,18 @@ function renderChips() {
 
 function renderStats() {
   const total = DATASETS.length;
-  const la = DATASETS.filter(d => d.modality.la > 0).length;
+  const la = DATASETS.filter(isLowAlt).length;
+  const gen = total - la;
+  const laCsi = DATASETS.filter(ds => isLowAlt(ds) && ds.modality.csi > 0).length;
   const years = DATASETS.map(d => d.year);
   const span = `${Math.min(...years)}\u2013${Math.max(...years)}`;
   const core = MODALITIES.filter(m => m.core);
   const full = DATASETS.filter(d => core.every(m => d.modality[m.key] === 1)).length;
   const cells = [
     ['收录数据集', total],
-    ['支持低空场景', la],
+    ['低空相关', la],
+    ['通用 / 上游基准', gen],
+    ['低空且含 CSI', laCsi],
     ['时间跨度', span],
     ['全模态覆盖', full]
   ];

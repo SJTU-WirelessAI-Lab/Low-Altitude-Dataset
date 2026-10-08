@@ -84,7 +84,7 @@
     </div>
 
     <div class="result-line" id="result-line"></div>
-    <div class="grid" id="grid"></div>
+    <div id="grid-host"></div>
   </div>
 </section>
 
@@ -93,19 +93,49 @@
   <div class="wrap">
     <div class="section-head">
       <h2><span class="idx">02</span>模态覆盖对比矩阵</h2>
-      <p>模态覆盖对照 LAMBDA 论文表1，并含编者补充收录的数据集。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用。</p>
+      <p>模态覆盖对照 LAMBDA 论文表1，并含编者补充收录的数据集。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用。表格按<strong>是否涉及低空场景</strong>拆为两张；低空部分另按 <strong>CSI</strong> 是否可得以颜色区分。</p>
     </div>
-    <div class="matrix-wrap">
-      <div class="matrix-scroll">
-        <table class="matrix" id="matrix-table"></table>
-      </div>
-      <div class="legend">
+
+    <div class="mx-legend">
+      <div class="legend-row">
+        <span class="legend-label">模态标记</span>
         <span><b class="mark y" style="width:20px;height:20px;font-size:11px">&#10003;</b> 包含</span>
         <span><b class="mark p" style="width:20px;height:20px;font-size:11px">&#9651;</b> 有限 / 部分支持</span>
         <span><b class="mark n" style="width:20px;height:20px;font-size:11px">&#215;</b> 缺失 / 不适用</span>
-        <span style="margin-left:auto;color:var(--text-3)">基准来源：LAMBDA (arXiv:2607.03826), Table 1（含补充收录）</span>
+      </div>
+      <div class="legend-row">
+        <span class="legend-label">CSI 颜色</span>
+        <span class="csi-key csi-full">有 CSI（完整 MIMO 信道）</span>
+        <span class="csi-key csi-part">部分 CSI（原始 I/Q 等）</span>
+        <span class="csi-key csi-none">无 CSI</span>
       </div>
     </div>
+
+    <div class="mx-group">
+      <div class="mx-head">
+        <h3>低空相关数据集 <span class="cnt" id="mx-la-count"></span></h3>
+        <p>含无人机 / UAV 或低空场景的数据集；名称左侧色条与 CSI 列底色表示信道数据可得性。</p>
+      </div>
+      <div class="matrix-wrap">
+        <div class="matrix-scroll">
+          <table class="matrix" id="matrix-table"></table>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-group">
+      <div class="mx-head">
+        <h3>通用 / 上游基准数据集 <span class="cnt" id="mx-gen-count"></span></h3>
+        <p>完全不含低空场景，多为地面视角感知或纯信道 / 电磁数据集，作为上游经典基准一并列出。</p>
+      </div>
+      <div class="matrix-wrap">
+        <div class="matrix-scroll">
+          <table class="matrix" id="matrix-table-other"></table>
+        </div>
+      </div>
+    </div>
+
+    <p class="mx-note">基准来源：LAMBDA (arXiv:2607.03826), Table 1（含编者补充收录）</p>
   </div>
 </section>
 
@@ -121,9 +151,10 @@
         <h3><span class="ico">&#9679;</span>收录范围</h3>
         <p>覆盖通感一体化(ISAC)仿真与实测、无线信道建模、射频/雷达探测、声学感知、无人机视觉与多模态感知等方向，并特别标注支持<strong>低空/UAV场景</strong>的数据集。</p>
         <ul>
-          <li>共 <strong>46</strong> 个数据集（含本文 LAMBDA）</li>
+          <li>共 <strong>46</strong> 个数据集（含本文 LAMBDA）：<strong>低空相关 34</strong> 个、<strong>通用/上游基准 12</strong> 个</li>
           <li>时间跨度 2012–2026</li>
           <li>标注 8 类模态：低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间、声学</li>
+          <li>低空相关数据集按 <strong>CSI 可得性</strong>着色：完整 MIMO 信道 / 部分（原始 I/Q 等）/ 无 CSI</li>
           <li>以 LAMBDA 表1 为基准，另补充收录 ISAC 仿真/实测、射频与雷达探测、声学、视觉多模态等方向的公开数据集</li>
           <li>「全模态覆盖」统计针对 7 类核心模态（低空、CSI、RGB、LiDAR、雷达、IMU、天气），不含声学</li>
         </ul>
