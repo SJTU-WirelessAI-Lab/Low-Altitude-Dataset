@@ -175,6 +175,9 @@ section { padding: 52px 0; }
 .chip:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
 .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 6px rgba(29, 78, 216, .22); }
 .chip small { font-size: 11px; opacity: .72; }
+/* 补充模态（红外、声学）：虚线边框以后者区分，不参与「全模态覆盖」统计 */
+.chip.sub { border-style: dashed; background: transparent; }
+.chip.sub:hover { border-style: solid; }
 
 .switch { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; user-select: none; font-size: 13.5px; font-weight: 550; color: var(--text-2); }
 .switch input { display: none; }

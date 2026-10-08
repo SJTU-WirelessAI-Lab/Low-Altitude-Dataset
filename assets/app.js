@@ -9,6 +9,7 @@ const MODALITIES = [
   { key: 'la',       zh: '低空',     en: 'Low-altitude',  core: true },
   { key: 'csi',      zh: 'CSI信道',  en: 'CSI',           core: true },
   { key: 'rgb',      zh: 'RGB/深度', en: 'RGB/Depth',     core: true },
+  { key: 'ir',       zh: '红外',     en: 'IR' },
   { key: 'lidar',    zh: 'LiDAR',    en: 'LiDAR',         core: true },
   { key: 'radar',    zh: '雷达',     en: 'Radar',         core: true },
   { key: 'imu',      zh: 'IMU/GPS',  en: 'IMU/GPS',       core: true },
@@ -26,7 +27,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/CVPR.2012.6248074',
     focusZh: '地面自动驾驶感知基准',
     focusEn: 'Terrestrial autonomous-driving perception',
-    modality: { la: 0, csi: 0, rgb: 1, lidar: 1, radar: 0, imu: 1, weather: .5, acoustic: 0 }
+    modality: { la: 0, csi: 0, rgb: 1, ir: 0, lidar: 1, radar: 0, imu: 1, weather: .5, acoustic: 0 }
   },
   {
     id: 'deepmimo', name: 'DeepMIMO', year: 2019,
@@ -37,7 +38,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.48550/arXiv.1902.06435',
     focusZh: '可配置射线追踪信道数据集',
     focusEn: 'Configurable ray-tracing channels',
-    modality: { la: 0, csi: 1, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
+    modality: { la: 0, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
   },
   {
     id: 'viwi', name: 'ViWi', year: 2020,
@@ -48,7 +49,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/VTC2020-Spring48590.2020.9128579',
     focusZh: '视觉辅助无线通信',
     focusEn: 'Vision-aided wireless communications',
-    modality: { la: 0, csi: 1, rgb: 1, lidar: .5, radar: 0, imu: 0, weather: .5, acoustic: 0 }
+    modality: { la: 0, csi: 1, rgb: 1, ir: 0, lidar: .5, radar: 0, imu: 0, weather: .5, acoustic: 0 }
   },
   {
     id: 'opv2v', name: 'OPV2V', year: 2022,
@@ -59,7 +60,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/ICRA46639.2022.9812038',
     focusZh: '车车协同感知',
     focusEn: 'V2V cooperative perception',
-    modality: { la: 0, csi: 0, rgb: 1, lidar: 1, radar: 0, imu: .5, weather: .5, acoustic: 0 }
+    modality: { la: 0, csi: 0, rgb: 1, ir: 0, lidar: 1, radar: 0, imu: .5, weather: .5, acoustic: 0 }
   },
   {
     id: 'dairv2x', name: 'DAIR-V2X', year: 2022,
@@ -71,7 +72,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/CVPR52688.2022.02067',
     focusZh: '真实车路协同感知',
     focusEn: 'Real-world vehicle-infrastructure perception',
-    modality: { la: 0, csi: 0, rgb: 1, lidar: 1, radar: 0, imu: .5, weather: .5, acoustic: 0 }
+    modality: { la: 0, csi: 0, rgb: 1, ir: 0, lidar: 1, radar: 0, imu: .5, weather: .5, acoustic: 0 }
   },
   {
     id: 'eflash', name: 'E-FLASH', year: 2022,
@@ -82,7 +83,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/MCOM.002.2200028',
     focusZh: '实测毫米波V2X波束选择',
     focusEn: 'Real-world mmWave V2X beam selection',
-    modality: { la: 0, csi: .5, rgb: .5, lidar: 1, radar: 0, imu: 1, weather: .5, acoustic: 0 }
+    modality: { la: 0, csi: .5, rgb: .5, ir: 0, lidar: 1, radar: 0, imu: 1, weather: .5, acoustic: 0 }
   },
   {
     id: 'waird', name: 'WAIR-D', year: 2022,
@@ -93,7 +94,7 @@ const DATASETS = [
     paper: 'https://ieeexplore.ieee.org/document/9880684',
     focusZh: '真实地图上的无线AI信道',
     focusEn: 'Wireless AI channels over real-world maps',
-    modality: { la: 0, csi: 1, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 0, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'm3sc', name: 'M3SC', year: 2023,
@@ -104,7 +105,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.23919/JCC.fa.2023-0268.202311',
     focusZh: '混合多模态通感一体化数据',
     focusEn: 'Mixed multimodal ISAC data',
-    modality: { la: 0, csi: 1, rgb: 1, lidar: 1, radar: 1, imu: 0, weather: 1, acoustic: 0 }
+    modality: { la: 0, csi: 1, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 0, weather: 1, acoustic: 0 }
   },
   {
     id: 'deepsense6g', name: 'DeepSense 6G', year: 2023,
@@ -115,7 +116,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/MCOM.006.2200730',
     focusZh: '实测多模态无线测量',
     focusEn: 'Real-world multimodal wireless measurements',
-    modality: { la: .5, csi: .5, rgb: 1, lidar: 1, radar: 1, imu: .5, weather: .5, acoustic: 0 }
+    modality: { la: .5, csi: .5, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: .5, weather: .5, acoustic: 0 }
   },
   {
     id: 'sdcd', name: 'SDCD', year: 2024,
@@ -126,7 +127,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1038/s41597-024-03025-5',
     focusZh: '合成数字城市RGB-深度鲁棒性',
     focusEn: 'Synthetic digital-city RGB-depth robustness',
-    modality: { la: 0, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
+    modality: { la: 0, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
   },
   {
     id: 'deepverse6g', name: 'DeepVerse 6G', year: 2024,
@@ -138,7 +139,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.21227/nk8m-6087',
     focusZh: '数字孪生无线数据集',
     focusEn: 'Digital-twin wireless datasets',
-    modality: { la: .5, csi: 1, rgb: 1, lidar: .5, radar: 1, imu: .5, weather: .5, acoustic: 0 }
+    modality: { la: .5, csi: 1, rgb: 1, ir: 0, lidar: .5, radar: 1, imu: .5, weather: .5, acoustic: 0 }
   },
   {
     id: 'synthsom', name: 'SynthSoM', year: 2025,
@@ -150,7 +151,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1038/s41597-025-05065-x',
     focusZh: '空地协同机器联觉(SoM)合成数据集',
     focusEn: 'Synthetic SoM dataset with air-ground scenarios',
-    modality: { la: .5, csi: 1, rgb: 1, lidar: 1, radar: 1, imu: 0, weather: 1, acoustic: 0 }
+    modality: { la: .5, csi: 1, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 0, weather: 1, acoustic: 0 }
   },
   {
     id: 'multimodal-wireless', name: 'Multimodal-Wireless', year: 2025,
@@ -161,7 +162,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2511.03220',
     focusZh: 'V2X多模态通信与感知',
     focusEn: 'V2X multimodal communication and perception',
-    modality: { la: 0, csi: 1, rgb: 1, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 }
+    modality: { la: 0, csi: 1, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 }
   },
   {
     id: 'multimodal-nf', name: 'Multimodal-NF', year: 2026,
@@ -172,7 +173,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2603.28280',
     focusZh: '近场低空XL-MIMO',
     focusEn: 'Near-field low-altitude XL-MIMO',
-    modality: { la: 1, csi: 1, rgb: 1, lidar: 1, radar: 0, imu: 1, weather: .5, acoustic: 0 }
+    modality: { la: 1, csi: 1, rgb: 1, ir: 0, lidar: 1, radar: 0, imu: 1, weather: .5, acoustic: 0 }
   },
   {
     id: 'pml-cellulareye', name: 'PML-CellularEye', year: 2026,
@@ -181,9 +182,9 @@ const DATASETS = [
     venue: 'Science China Information Sciences 69(6):167301 (2026)',
     site: 'https://github.com/ffxu1024/CellularEye_web',
     paper: 'https://doi.org/10.1007/s11432-026-4923-1',
-    focusZh: '实测基站侧低空ISAC数据',
+    focusZh: '实测基站侧低空ISAC数据（含可见光/红外视频）',
     focusEn: 'Real-world BS-side low-altitude ISAC data',
-    modality: { la: 1, csi: .5, rgb: .5, lidar: 0, radar: .5, imu: 1, weather: 1, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: .5, ir: .5, lidar: 0, radar: .5, imu: 1, weather: 1, acoustic: 0 }
   },
   {
     id: 'dronerfa', name: 'DroneRFa', year: 2024,
@@ -195,7 +196,7 @@ const DATASETS = [
     paper: 'https://jeit.ac.cn/cn/article/doi/10.11999/JEIT230570',
     focusZh: '大规模无人机射频信号低空探测（25类场景，3个ISM频段）',
     focusEn: 'Large-scale drone RF signals for low-altitude detection',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'dronerfb-dir', name: 'DroneRFb-DIR', year: 2025,
@@ -206,7 +207,7 @@ const DATASETS = [
     paper: 'https://jeit.ac.cn/cn/article/doi/10.11999/JEIT240804',
     focusZh: '非合作无人机个体识别（6类×3架，含视距/非视距标注）',
     focusEn: 'Non-cooperative drone individual identification',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'dronerfc-mm', name: 'DroneRFc-MM', year: 2026,
@@ -217,7 +218,7 @@ const DATASETS = [
     paper: 'https://jeit.ac.cn/cn/article/doi/10.11999/JEIT260889',
     focusZh: '反无人机多模态实测数据集（六类传感器同步观测城市低空目标）',
     focusEn: 'Anti-UAV multimodal measured dataset',
-    modality: { la: 1, csi: .5, rgb: 1, lidar: 1, radar: 1, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 0, acoustic: 1 }
   },
   {
     id: 'em-134k', name: 'EM-134K', year: 2026,
@@ -228,7 +229,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2603.08174',
     focusZh: '电磁信号-文本配对预训练集（13.4万对，源自3500万信号）',
     focusEn: 'EM signal-text pair corpus for MLLM pre-training',
-    modality: { la: 0, csi: .5, rgb: 0, lidar: 0, radar: .5, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 0, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: .5, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'em-bench', name: 'EM-Bench', year: 2026,
@@ -239,7 +240,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2603.08174',
     focusZh: '电磁信号理解与推理评测基准（4200+问答，3级14子任务）',
     focusEn: 'EM signal perception & reasoning benchmark',
-    modality: { la: 0, csi: .5, rgb: 0, lidar: 0, radar: .5, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 0, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: .5, imu: 0, weather: 0, acoustic: 0 }
   },
 
   /* ---------- curator-verified additions ---------- */
@@ -253,7 +254,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2507.08716',
     focusZh: '单引擎仿真低空多模态通感一体化数据集（10万样本）',
     focusEn: 'Single-engine multimodal ISAC simulation dataset',
-    modality: { la: 1, csi: 1, rgb: 1, lidar: 1, radar: 1, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 1, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 0, acoustic: 0 }
   },
   {
     id: 'sensiverse', name: 'Sensiverse', year: 2023,
@@ -264,7 +265,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2308.13789',
     focusZh: '多场景多频段ISAC感知信道数据集（3.5/10/26/100 GHz）',
     focusEn: 'Multi-scenario multi-band ISAC sensing channel dataset',
-    modality: { la: .5, csi: 1, rgb: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: .5, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'crosslayer-uav6g', name: 'Cross-layer UAV 6G', year: 2026,
@@ -275,7 +276,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.5281/zenodo.21468734',
     focusZh: '5G测试床无人机跨层（移动性-无线-应用）测量',
     focusEn: 'Cross-layer UAV measurements over a 5G testbed',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
   },
   {
     id: 'aerpaw', name: 'AERPAW', year: 2024,
@@ -286,7 +287,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2510.08752',
     focusZh: '空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集）',
     focusEn: 'A2G/A2A channel sounding, spectrum & KPI datasets',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: .5, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: .5, imu: 1, weather: 0, acoustic: 0 }
   },
   {
     id: 'lipase', name: 'LIPASE', year: 2025,
@@ -297,7 +298,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/OJCOMS.2025.3558430',
     focusZh: 'LTE下行信号+数字阵列的无人机被动雷达跟踪',
     focusEn: 'Passive UAV tracking with LTE downlink & digital arrays',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'drone-swarm-sounding', name: 'Drone Swarm Sounding', year: 2025,
@@ -308,7 +309,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2507.12010',
     focusZh: '无人机群多基地信道探测与雷达感知实测',
     focusEn: 'Multi-static channel sounding with a drone swarm',
-    modality: { la: 1, csi: 1, rgb: 0, lidar: 0, radar: 1, imu: .5, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: .5, weather: 0, acoustic: 0 }
   },
   {
     id: 'rfuav', name: 'RFUAV', year: 2025,
@@ -319,7 +320,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2503.09033',
     focusZh: '37种无人机大规模射频指纹基准（约1.3 TB原始I/Q）',
     focusEn: 'Large-scale RF drone fingerprint benchmark',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'cagedronerf', name: 'CageDroneRF', year: 2026,
@@ -330,7 +331,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2601.03302',
     focusZh: '射频笼采集+合成增强的无人机检测与识别基准',
     focusEn: 'RF drone detection benchmark with synthetic augmentation',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'skyev', name: 'SkyEV', year: 2026,
@@ -341,7 +342,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2607.18747',
     focusZh: 'RGB-事件相机同步的无人机检测与跟踪数据集',
     focusEn: 'Synchronized RGB-event UAV detection & tracking',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'lss-fmcwr', name: 'LSS-FMCWR-1.0', year: 2024,
@@ -352,7 +353,7 @@ const DATASETS = [
     paper: 'https://radars.ac.cn/article/doi/10.12000/JR23142',
     focusZh: '多波段FMCW雷达低慢小目标探测（6类无人机微动特征）',
     focusEn: 'Multiband FMCW radar low-slow-small target dataset',
-    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'diat-msat', name: 'DIAT-µSAT', year: 2022,
@@ -363,7 +364,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/LGRS.2021.3102039',
     focusZh: 'X波段连续波雷达小型无人机微多普勒特征（6类4849幅）',
     focusEn: 'Micro-Doppler signatures of small UAVs',
-    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'mathworks-radar-drone', name: 'MathWorks Radar Drone', year: 2025,
@@ -374,7 +375,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.5281/zenodo.15224887',
     focusZh: '大规模雷达无人机分类微多普勒训练集（约10.9 TB）',
     focusEn: 'Large-scale radar drone classification dataset',
-    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'itu-aris-acoustic', name: 'ITU-ARIS Acoustic', year: 2026,
@@ -385,7 +386,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/SIU71813.2026.11636719',
     focusZh: '户外无人机声学探测数据集（无人机/背景两类，5491段）',
     focusEn: 'Outdoor acoustic drone detection dataset',
-    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 1 }
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 1 }
   },
   {
     id: 'dads', name: 'DADS', year: 2024,
@@ -397,7 +398,7 @@ const DATASETS = [
     paper: 'https://huggingface.co/datasets/geronimobasso/drone-audio-detection-samples',
     focusZh: '目前规模最大的公开无人机音频库（约18万条）',
     focusEn: 'Largest public drone audio database',
-    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 1 }
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 1 }
   },
   {
     id: 'uavscenes', name: 'UAVScenes', year: 2025,
@@ -408,7 +409,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2507.22412',
     focusZh: '多模态无人机感知（图像+LiDAR逐帧语义标注，12万+帧）',
     focusEn: 'Multi-modal UAV perception benchmark',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 1, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 1, radar: 0, imu: 1, weather: 0, acoustic: 0 }
   },
   {
     id: 'drift', name: 'DrIFT', year: 2025,
@@ -419,7 +420,7 @@ const DATASETS = [
     paper: 'https://openaccess.thecvf.com/content/WACV2025/html/Dadboud_DrIFT_Autonomous_Drone_Dataset_with_Integrated_Real_and_Synthetic_Data_WACV_2025_paper.html',
     focusZh: '域漂移下的视觉无人机检测（14个域，含背景分割图）',
     focusEn: 'Visual drone detection under domain shifts',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
   },
   {
     id: 'flyawarev2', name: 'FlyAwareV2', year: 2026,
@@ -430,7 +431,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1016/j.image.2026.117483',
     focusZh: '城市场景理解的多模态跨域无人机数据（真实+合成，含天气昼夜；真实样本深度为单目估计）',
     focusEn: 'Multimodal cross-domain UAV urban-scene dataset',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
   },
   {
     id: 'anyvisloc', name: 'AnyVisLoc', year: 2025,
@@ -441,7 +442,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2503.10692',
     focusZh: '低空多视角无人机绝对视觉定位基准（1.8万图像）',
     focusEn: 'Low-altitude multi-view UAV visual localization benchmark',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'lae-uav', name: 'LAE UAV', year: 2025,
@@ -452,7 +453,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2504.18317',
     focusZh: 'GNSS拒止城市环境下的无人机视觉导航数据集（35.7万帧）',
     focusEn: 'UAV visual navigation in GNSS-denied urban LAE',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: .5, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: .5, weather: 0, acoustic: 0 }
   },
   {
     id: 'neodrone', name: 'NeoDrone', year: 2025,
@@ -463,7 +464,7 @@ const DATASETS = [
     paper: 'https://webs.bjidex.com/sys-bsc-home/#/bscConsole/intellectualProperty/infoPublicity?action=1',
     focusZh: '无人机近地观测视觉感知（15万+图像，可见光-红外对齐）',
     focusEn: 'Near-earth drone observation vision dataset',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 1, lidar: 0, radar: 0, imu: 0, weather: 1, acoustic: 0 }
   },
   {
     id: 'uav-lowalt-mot', name: 'UAV-LowAlt-MOT', year: 2025,
@@ -474,7 +475,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.21227/2gt9-aa39',
     focusZh: '低空无人机对地多目标检测与跟踪（行人/车辆）',
     focusEn: 'Low-altitude UAV multi-target detection & tracking',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'visdrone', name: 'VisDrone', year: 2018,
@@ -485,7 +486,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2001.07420',
     focusZh: '无人机视角目标检测与跟踪基准（14城市，260万+框）',
     focusEn: 'Drone-view object detection & tracking benchmark',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
   },
   {
     id: 'dota', name: 'DOTA', year: 2018,
@@ -496,7 +497,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/1711.10398',
     focusZh: '航空影像目标检测（15/16类，18.8万实例）',
     focusEn: 'Aerial image object detection',
-    modality: { la: .5, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: .5, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'uavdt', name: 'UAVDT', year: 2018,
@@ -508,7 +509,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/1804.00518',
     focusZh: '无人机车辆检测与跟踪基准（8万帧，含14类属性）',
     focusEn: 'UAV vehicle detection & tracking benchmark',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
   },
   {
     id: 'uav123', name: 'UAV123', year: 2016,
@@ -519,7 +520,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1007/978-3-319-46448-0_27',
     focusZh: '低空无人机视角单目标跟踪基准（123段，11万帧）',
     focusEn: 'Low-altitude UAV single-object tracking benchmark',
-    modality: { la: 1, csi: 0, rgb: 1, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'mamimo-uav', name: 'MaMIMO-UAV 3D CSI', year: 2023,
@@ -530,7 +531,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.1109/TVT.2023.3340447',
     focusZh: '鲁汶大学：无人机与8×8 Massive MIMO基站的3D非平稳信道CSI（校园飞行轨迹）',
     focusEn: '3D non-stationary UAV–MaMIMO channel CSI',
-    modality: { la: 1, csi: 1, rgb: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
   },
   {
     id: 'mamimo-a2g-uav', name: '3D MaMIMO A2G UAV CSI', year: 2025,
@@ -541,7 +542,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.48804/MTNAEG',
     focusZh: '鲁汶大学：GPS标注的无人机–64天线Massive MIMO空对地信道CSI（校园环境，46 GB）',
     focusEn: 'GPS-labeled UAV–MaMIMO air-to-ground CSI',
-    modality: { la: 1, csi: 1, rgb: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
   },
   {
     id: 'ku-leuven-drone-rf', name: 'KU Leuven Drone RF', year: 2024,
@@ -552,7 +553,7 @@ const DATASETS = [
     paper: 'https://doi.org/10.23919/ICACT56868.2023.10079363',
     focusZh: '鲁汶大学：半电波暗室采集的无人机射频I/Q（100 MSps @2.44 GHz，43.5 GB）',
     focusEn: 'Drone RF I/Q in a semi-anechoic chamber',
-    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
     id: 'lund-drone-audio', name: 'Lund UAV Audio', year: 2025,
@@ -563,7 +564,7 @@ const DATASETS = [
     paper: 'https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Tegler_Detection_and_Localization_of_Drones_and_UAVs_Using_Sound_and_CVPRW_2025_paper.html',
     focusZh: '隆德大学：无人机自噪声的12元麦克风阵列测向定位（真实飞行+真值位置，17.7 GiB）',
     focusEn: 'Mic-array DOA drone localization from sound',
-    modality: { la: 1, csi: 0, rgb: 0, lidar: 0, radar: 0, imu: .5, weather: 0, acoustic: 1 }
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: .5, weather: 0, acoustic: 1 }
   },
   {
     id: 'luvira', name: 'LuViRA', year: 2024,
@@ -574,7 +575,45 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2302.05309',
     focusZh: '隆德大学：视觉+5G Massive MIMO射频+音频三模态同步室内定位（非低空）',
     focusEn: 'Synchronized vision/radio/audio indoor localization',
-    modality: { la: 0, csi: 1, rgb: 1, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 1 }
+    modality: { la: 0, csi: 1, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 1 }
+  },
+
+  /* ---------- 表1「彩色标签总览」补录（2026-10-08） ---------- */
+
+  {
+    id: 'drone-rf-mendeley', name: 'DroneRF (Mendeley)', year: 2019,
+    authors: "Mohammad F. Al-Sa'd, Mhd Saria Allahham, Amr Mohamed, Abdulla Al-Ali, Tamer Khattab, Aiman Erbad",
+    org: 'Qatar University',
+    venue: 'Mendeley Data v1 (2019) · Future Generation Computer Systems 98: 259–269 (2019)',
+    site: 'https://data.mendeley.com/datasets/f4c2b4n755/1',
+    siteAlt: 'https://al-sad.github.io/DroneRF/',
+    paper: 'https://doi.org/10.1016/j.future.2019.05.007',
+    focusZh: '三型无人机多飞行模式的射频原始I/Q库（227段、约40 GB，含背景射频）',
+    focusEn: 'RF raw I/Q of three drones in multiple flight modes',
+    modality: { la: 1, csi: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+  {
+    id: 'drone-detection-dregon', name: 'Drone-detection (DREGON)', year: 2021,
+    authors: 'Fredrik Svanström, Fernando Alonso-Fernandez, Cristofer Englund',
+    org: 'Halmstad University (CAISR) / Swedish Armed Forces',
+    venue: 'Data in Brief 39: 107521 (2021)',
+    site: 'https://github.com/DroneDetectionThesis/Drone-detection-dataset',
+    paper: 'https://doi.org/10.1016/j.dib.2021.107521',
+    focusZh: '红外+可见光视频与音频的多传感器无人机探测（650段视频、20.3万标注帧，按DRI距离分档）',
+    focusEn: 'Multi-sensor drone detection with IR, visible and audio',
+    modality: { la: 1, csi: 0, rgb: 1, ir: 1, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 1 }
+  },
+  {
+    id: 'anti-uav300', name: 'Anti-UAV300', year: 2021,
+    authors: 'Nan Jiang, Kuiran Wang, Xiaoke Peng, Xuehui Yu, Qiang Wang, Junliang Xing, Guorong Li, Jian Zhao, Guodong Guo, Zhenjun Han',
+    org: '中国科学院大学 / 北方电子设备研究所',
+    venue: 'arXiv:2101.08466 · CVPR 2021 Workshop',
+    site: 'https://github.com/ucas-vg/Anti-UAV',
+    siteAlt: 'https://anti-uav.github.io/',
+    paper: 'https://arxiv.org/abs/2101.08466',
+    focusZh: 'RGB-红外成对视频的反无人机跟踪基准（318对视频、58万+框，昼夜两类光照）',
+    focusEn: 'RGB-T multi-modal benchmark for UAV tracking',
+    modality: { la: 1, csi: 0, rgb: 1, ir: 1, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
   },
 
   {
@@ -586,7 +625,7 @@ const DATASETS = [
     paper: 'https://arxiv.org/abs/2607.03826',
     focusZh: '低空多模态通感一体化基础数据集',
     focusEn: 'Low-altitude multimodal ISAC data',
-    modality: { la: 1, csi: 1, rgb: 1, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 },
+    modality: { la: 1, csi: 1, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 },
     self: true
   }
 ];
@@ -750,10 +789,12 @@ function renderMatrix() {
 
 /* ---------------- render: toolbar + stats ---------------- */
 function renderChips() {
-  const core = MODALITIES.filter(m => m.core);
-  $('#chips').innerHTML = core.map(m =>
-    `<span class="chip" data-mod="${m.key}">${m.zh} <small>${m.en}</small></span>`).join('')
-    + `<span class="chip" data-mod="acoustic">声学 <small>Acoustic</small></span>`;
+  const chip = (m, cls = '') =>
+    `<span class="chip${cls}" data-mod="${m.key}">${m.zh} <small>${m.en}</small></span>`;
+  /* 7 类核心模态在前，补充模态（红外、声学）以后者样式区分 */
+  $('#chips').innerHTML =
+    MODALITIES.filter(m => m.core).map(m => chip(m)).join('')
+    + MODALITIES.filter(m => !m.core).map(m => chip(m, ' sub')).join('');
 }
 
 function renderStats() {
