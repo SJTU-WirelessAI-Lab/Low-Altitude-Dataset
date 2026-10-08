@@ -184,6 +184,62 @@ const DATASETS = [
     modality: { la: 1, csi: .5, rgb: .5, lidar: 0, radar: .5, imu: 1, weather: 1 }
   },
   {
+    id: 'dronerfa', name: 'DroneRFa', year: 2024,
+    authors: '俞宁宁, 毛盛健, 周成伟, 孙国威, 史治国, 陈积明',
+    org: '浙江大学信息与电子工程学院',
+    venue: '电子与信息学报 46(4): 1147–1156 (2024)',
+    site: 'https://www.scidb.cn/detail?dataSetId=34f0a91e8a544904998b8fdc44477380',
+    siteAlt: 'https://jeit.ac.cn/web/data/getData?dataType=Dataset3',
+    paper: 'https://jeit.ac.cn/cn/article/doi/10.11999/JEIT230570',
+    focusZh: '大规模无人机射频信号低空探测（25类场景，3个ISM频段）',
+    focusEn: 'Large-scale drone RF signals for low-altitude detection',
+    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0 }
+  },
+  {
+    id: 'dronerfb-dir', name: 'DroneRFb-DIR', year: 2025,
+    authors: '任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明',
+    org: '浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室',
+    venue: '电子与信息学报 47(3): 573–581 (2025)',
+    site: 'https://www.scidb.cn/detail?dataSetId=84cf9101e739402784b1396783881202',
+    paper: 'https://jeit.ac.cn/cn/article/doi/10.11999/JEIT240804',
+    focusZh: '非合作无人机个体识别（6类×3架，含视距/非视距标注）',
+    focusEn: 'Non-cooperative drone individual identification',
+    modality: { la: 1, csi: .5, rgb: 0, lidar: 0, radar: 0, imu: 0, weather: 0 }
+  },
+  {
+    id: 'dronerfc-mm', name: 'DroneRFc-MM', year: 2026,
+    authors: '虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明',
+    org: '浙江大学全省空域感知与自主无人系统重点实验室',
+    venue: '电子与信息学报（网络优先出版, 2026）',
+    site: 'https://www.scidb.cn/detail?dataSetId=0af05173ce5d45528ebd707d67f3d641',
+    paper: 'https://jeit.ac.cn/cn/article/doi/10.11999/JEIT260889',
+    focusZh: '反无人机多模态实测数据集（六类传感器同步观测城市低空目标）',
+    focusEn: 'Anti-UAV multimodal measured dataset',
+    modality: { la: 1, csi: .5, rgb: 1, lidar: 1, radar: 1, imu: 1, weather: 0 }
+  },
+  {
+    id: 'em-134k', name: 'EM-134K', year: 2026,
+    authors: 'Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun',
+    org: 'Tsinghua University / BUPT / Tianjin University / IMECAS 等',
+    venue: 'MERLIN, arXiv:2603.08174',
+    site: 'https://em-merlin.github.io/',
+    paper: 'https://arxiv.org/abs/2603.08174',
+    focusZh: '电磁信号-文本配对预训练集（13.4万对，源自3500万信号）',
+    focusEn: 'EM signal-text pair corpus for MLLM pre-training',
+    modality: { la: 0, csi: .5, rgb: 0, lidar: 0, radar: .5, imu: 0, weather: 0 }
+  },
+  {
+    id: 'em-bench', name: 'EM-Bench', year: 2026,
+    authors: 'Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun',
+    org: 'Tsinghua University / BUPT / Tianjin University / IMECAS 等',
+    venue: 'MERLIN, arXiv:2603.08174',
+    site: 'https://em-merlin.github.io/',
+    paper: 'https://arxiv.org/abs/2603.08174',
+    focusZh: '电磁信号理解与推理评测基准（4200+问答，3级14子任务）',
+    focusEn: 'EM signal perception & reasoning benchmark',
+    modality: { la: 0, csi: .5, rgb: 0, lidar: 0, radar: .5, imu: 0, weather: 0 }
+  },
+  {
     id: 'lambda', name: 'LAMBDA', year: 2026,
     authors: 'Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao',
     org: 'Shanghai Jiao Tong University',

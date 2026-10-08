@@ -2,7 +2,7 @@
 
 面向**低空经济**与**UAV通感一体化（ISAC）**研究的开源数据集汇编，系统收集并展示已有数据集，统一给出**名称、官方网站链接、发布年份、作者/机构**以及**模态覆盖对比**。
 
-清单以 **[LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication](https://arxiv.org/abs/2607.03826)**（arXiv:2607.03826）表1 为基准，并逐一核实各数据集的官方主页与论文链接。
+清单以 **[LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication](https://arxiv.org/abs/2607.03826)**（arXiv:2607.03826）表1 为基准，并逐一核实各数据集的官方主页与论文链接；此外补充收录了浙江大学史治国团队的 DroneRF 系列与 MERLIN 论文的电磁信号数据集。
 
 > 🌐 **在线浏览**：打开 [`index.html`](index.html)（可搜索、可筛选、含对比矩阵）。
 > 📦 **结构化数据**： [`data/datasets.json`](data/datasets.json)。
@@ -22,7 +22,7 @@
 
 ## 数据集总览
 
-共 **16** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**。
+共 **21** 个数据集（含本文 LAMBDA 及补充收录的 5 个），时间跨度 **2012–2026**。
 
 | # | 数据集 | 年份 | 作者 | 机构 | 官网 |
 |---|--------|------|------|------|------|
@@ -37,11 +37,16 @@
 | 9 | **DeepSense 6G** | 2023 | Ahmed Alkhateeb et al. | Arizona State University | [链接](https://www.deepsense6g.net/) |
 | 10 | **SDCD** | 2024 | Jihao Li, Jincheng Hu, Yanjun Huang, et al. | University of Southampton / Tongji University | [链接](https://github.com/ReparkHjc/SDCD) |
 | 11 | **DeepVerse 6G** | 2024 | Umut Demirhan, Abdelrahman Taha, Ahmed Alkhateeb | Arizona State University | [链接](https://deepverse6g.net/) |
-| 12 | **SynthSoM** | 2025 | Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, et al. | Peking University / Shandong University | [链接](https://github.com/ZiweiHuang96/SynthSoM) |
-| 13 | **Multimodal-Wireless** | 2025 | Tianhao Mao, Le Liang, Jie Yang, Hao Ye, Shi Jin, Geoffrey Ye Li | Southeast University / Imperial College London | [链接](https://le-liang.github.io/mmw) |
-| 14 | **Multimodal-NF** | 2026 | Mengyuan Li, Qianfan Lu, Jiachen Tian, et al. | Southeast University | [链接](https://lmyxxn.github.io/6GXLMIMODatasets/) |
-| 15 | **PML-CellularEye** | 2026 | Ziguo Zhong, Yongming Huang, Haizhou Hou, et al. | Purple Mountain Laboratories / Southeast University | [链接](https://github.com/ffxu1024/CellularEye_web) |
-| 16 | **LAMBDA** ⭐ | 2026 | Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.36052) |
+| 12 | **DroneRFa** | 2024 | 俞宁宁, 毛盛健, 周成伟, 孙国威, 史治国, 陈积明 | 浙江大学 | [链接](https://www.scidb.cn/detail?dataSetId=34f0a91e8a544904998b8fdc44477380) |
+| 13 | **SynthSoM** | 2025 | Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, et al. | Peking University / Shandong University | [链接](https://github.com/ZiweiHuang96/SynthSoM) |
+| 14 | **DroneRFb-DIR** | 2025 | 任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明 | 浙江大学 | [链接](https://www.scidb.cn/detail?dataSetId=84cf9101e739402784b1396783881202) |
+| 15 | **Multimodal-Wireless** | 2025 | Tianhao Mao, Le Liang, Jie Yang, Hao Ye, Shi Jin, Geoffrey Ye Li | Southeast University / Imperial College London | [链接](https://le-liang.github.io/mmw) |
+| 16 | **DroneRFc-MM** | 2026 | 虞涛菘, 杨倩倩, 胡卓, 等, 史治国, 陈积明 | 浙江大学 | [链接](https://www.scidb.cn/detail?dataSetId=0af05173ce5d45528ebd707d67f3d641) |
+| 17 | **EM-134K** | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, et al. | Tsinghua University / BUPT / Tianjin University 等 | [链接](https://em-merlin.github.io/) |
+| 18 | **EM-Bench** | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, et al. | Tsinghua University / BUPT / Tianjin University 等 | [链接](https://em-merlin.github.io/) |
+| 19 | **Multimodal-NF** | 2026 | Mengyuan Li, Qianfan Lu, Jiachen Tian, et al. | Southeast University | [链接](https://lmyxxn.github.io/6GXLMIMODatasets/) |
+| 20 | **PML-CellularEye** | 2026 | Ziguo Zhong, Yongming Huang, Haizhou Hou, et al. | Purple Mountain Laboratories / Southeast University | [链接](https://github.com/ffxu1024/CellularEye_web) |
+| 21 | **LAMBDA** ⭐ | 2026 | Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.36052) |
 
 ---
 
@@ -62,8 +67,13 @@
 | DeepSense 6G | 2023 | △ | △ | ✓ | ✓ | ✓ | △ | △ | 实测多模态无线测量 |
 | SDCD | 2024 | × | × | ✓ | × | × | × | ✓ | 合成数字城市RGB-深度鲁棒性 |
 | DeepVerse 6G | 2024 | △ | ✓ | ✓ | △ | ✓ | △ | △ | 数字孪生无线数据集 |
+| DroneRFa | 2024 | ✓ | △ | × | × | × | × | × | 大规模无人机射频信号低空探测 |
 | SynthSoM | 2025 | △ | ✓ | ✓ | ✓ | ✓ | × | ✓ | 空地协同机器联觉(SoM)合成数据集 |
+| DroneRFb-DIR | 2025 | ✓ | △ | × | × | × | × | × | 非合作无人机个体识别 |
 | Multimodal-Wireless | 2025 | × | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | V2X多模态通信与感知 |
+| DroneRFc-MM | 2026 | ✓ | △ | ✓ | ✓ | ✓ | ✓ | × | 反无人机多模态实测数据集 |
+| EM-134K | 2026 | × | △ | × | × | △ | × | × | 电磁信号-文本配对预训练集 |
+| EM-Bench | 2026 | × | △ | × | × | △ | × | × | 电磁信号理解与推理评测基准 |
 | Multimodal-NF | 2026 | ✓ | ✓ | ✓ | ✓ | × | ✓ | △ | 近场低空XL-MIMO |
 | PML-CellularEye | 2026 | ✓ | △ | △ | × | △ | ✓ | ✓ | 实测基站侧低空ISAC数据 |
 | **LAMBDA** ⭐ | 2026 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | **低空多模态通感一体化基础数据集** |
@@ -149,35 +159,70 @@
 - **官网**：https://deepverse6g.net/ ｜ [WI-Lab 数据集页](https://www.wi-lab.net/datasets-page/)
 - **说明**：数字孪生数据集生成框架，融合无线射线追踪与逼真视觉/雷达/LiDAR 仿真。
 
-### 12. SynthSoM (2025)
+### 12. DroneRFa (2024)
+- **作者**：俞宁宁, 毛盛健, 周成伟, 孙国威, 史治国, 陈积明
+- **机构**：浙江大学信息与电子工程学院
+- **出处**：电子与信息学报 46(4): 1147–1156 · [DOI](https://jeit.ac.cn/cn/article/doi/10.11999/JEIT230570)
+- **官网**：[ScienceDB](https://www.scidb.cn/detail?dataSetId=34f0a91e8a544904998b8fdc44477380) ｜ [学报数据页](https://jeit.ac.cn/web/data/getData?dataType=Dataset3)
+- **说明**：依托 USRP-2955 采集的大规模无人机射频信号数据集，覆盖城市户外 9 类、室内 15 类及背景参照 1 类，涉及 915 MHz / 2.4 GHz / 5.8 GHz 三个 ISM 频段，每类不少于 12 个片段、每片段 1 亿采样点以上，以原始 I/Q 存储并带机型、探测距离、频段标签。2026 年入选 ScienceDB「科学数据奖」十佳数据集。
+
+### 13. SynthSoM (2025)
 - **作者**：Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, Mingran Sun, et al.
 - **机构**：Peking University / Shandong University
 - **出处**：Scientific Data 12:819 · [DOI](https://doi.org/10.1038/s41597-025-05065-x)
 - **官网**：https://github.com/ZiweiHuang96/SynthSoM ｜ [figshare 数据](https://figshare.com/s/3c0203236d3ae2eed872)
 - **说明**：面向机器联觉(SoM)的空地多链路协同合成数据集，含 5 个典型场景。
 
-### 13. Multimodal-Wireless (2025)
+### 14. DroneRFb-DIR (2025)
+- **作者**：任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明
+- **机构**：浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室
+- **出处**：电子与信息学报 47(3): 573–581 · [DOI](https://jeit.ac.cn/cn/article/doi/10.11999/JEIT240804)
+- **官网**：[ScienceDB](https://www.scidb.cn/detail?dataSetId=84cf9101e739402784b1396783881202)
+- **说明**：面向非合作无人机**个体识别**的射频数据集，含 6 种机型、每型 3 架不同个体及 1 类背景信号；2.4–2.48 GHz、80 MHz 采样，原始 I/Q 存储，共 4690 个片段（每片段 4 M 以上采样点），含个体编号与视距/非视距标注，并已划分训练/测试集。
+
+### 15. Multimodal-Wireless (2025)
 - **作者**：Tianhao Mao, Le Liang, Jie Yang, Hao Ye, Shi Jin, Geoffrey Ye Li
 - **机构**：Southeast University / Imperial College London
 - **出处**：arXiv:2511.03220 · ICC 2026
 - **官网**：https://le-liang.github.io/mmw
 - **说明**：基于 CARLA + Sionna 的大规模开源数据集，约 16.1 万帧，CSI 与 5 类传感器模态 100 Hz 同步。
 
-### 14. Multimodal-NF (2026)
+### 16. DroneRFc-MM (2026)
+- **作者**：虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明
+- **机构**：浙江大学全省空域感知与自主无人系统重点实验室 / 控制学院 / 国际联合学院
+- **出处**：电子与信息学报（网络优先出版）· [DOI](https://jeit.ac.cn/cn/article/doi/10.11999/JEIT260889)
+- **官网**：[ScienceDB](https://www.scidb.cn/detail?dataSetId=0af05173ce5d45528ebd707d67f3d641)
+- **说明**：城市低空场景下**六类传感器同步采集**的反无人机多模态数据集——云台相机、广角相机、射频天线（USRP-2955 + VERT2450，2.45 GHz）、激光雷达（RoboSense EM4）、毫米波雷达（Arbe Phoenix，77–81 GHz）与传声器阵列；覆盖 6 种消费级 DJI 机型，飞行数据总时长超 30 分钟，含机型、三维位置、姿态与速度细粒度标注，并附样本处理代码。
+
+### 17. EM-134K (2026)
+- **作者**：Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, Luqing Luo, Dingwei Tan, Zonghao Guo, Bo Guo, Zehua Han, Wupeng Xie, Yaxin Mu, Peng Zhang, Peipei Li, Fengxiang Wang, Yangang Sun, Maosong Sun
+- **机构**：Tsinghua University / Beijing University of Posts and Telecommunications / Tianjin University / IMECAS / HKUST (Guangzhou) / National University of Defense Technology / Beihang University 等
+- **出处**：MERLIN, arXiv:2603.08174 · [论文](https://arxiv.org/abs/2603.08174)
+- **官网**：https://em-merlin.github.io/
+- **说明**：面向多模态大模型的**电磁信号-文本配对预训练集**，由 3500 万+ 真实与仿真信号（10 个子集：调制识别、参数估计、协议识别、雷达/通信干扰及抗干扰等）程序化生成 134,107 条指令微调样本，采用类 LLaVA 的单轮对话格式。
+
+### 18. EM-Bench (2026)
+- **作者**：同上（MERLIN 作者团队）
+- **机构**：同上
+- **出处**：MERLIN, arXiv:2603.08174 · [论文](https://arxiv.org/abs/2603.08174)
+- **官网**：https://em-merlin.github.io/
+- **说明**：电磁信号**理解与推理评测基准**，含 4200+ 条专家校验问答，按 3 个层级、14 个子任务组织：感知（信号刻画、干扰识别、片段检测）与推理（雷达/通信场景下的干扰与抗干扰策略生成）。
+
+### 19. Multimodal-NF (2026)
 - **作者**：Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin
 - **机构**：Southeast University
 - **出处**：arXiv:2603.28280 · [DOI](https://doi.org/10.48550/arXiv.2603.28280)
 - **官网**：https://lmyxxn.github.io/6GXLMIMODatasets/
 - **说明**：面向近场低空 XL-MIMO 的无线数据集，同步近场 CSI 与 RGB/LiDAR/GPS 多模态数据。
 
-### 15. PML-CellularEye (2026)
+### 20. PML-CellularEye (2026)
 - **作者**：Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You
 - **机构**：Purple Mountain Laboratories / Southeast University
 - **出处**：Sci China Inf Sci 69(6):167301 · [DOI](https://doi.org/10.1007/s11432-026-4923-1)
 - **官网**：https://github.com/ffxu1024/CellularEye_web
 - **说明**：基于商用 5G/5G-A 基站设备的实测多模态数据集，含 IQ、可见光/红外视频与气象数据。
 
-### 16. LAMBDA (2026) ⭐
+### 21. LAMBDA (2026) ⭐
 - **作者**：Lin Zhou, Peichuan Rao, Chenshuo Zhang, **Jianhua Mo**, Shu Sun, Zhiyong Chen, Meixia Tao
 - **机构**：Shanghai Jiao Tong University
 - **出处**：arXiv:2607.03826 · [DOI](https://doi.org/10.57760/sciencedb.36052)
@@ -191,7 +236,8 @@
 - **模态标注**：`1` 包含 / `0.5` 有限或部分支持 / `0` 缺失或不适用。
 - **年份**：以 LAMBDA 论文表1 为准；个别数据集论文发表年与数据集发布年不同，已在详情中注明出处。
 - **链接**：优先给出数据集官方主页；如官网不稳定，另附备用镜像或代码仓库链接。
-- **范围**：聚焦低空/UAV 通感一体化相关，同时收录必要的上游经典基准（如 KITTI、DeepMIMO 等）。
+- **范围**：聚焦低空/UAV 通感一体化相关，同时收录必要的上游经典基准（如 KITTI、DeepMIMO 等），以及低空安防常用的无人机射频探测数据集（DroneRF 系列）与电磁信号理解数据集（EM-134K / EM-Bench）。
+- **射频类数据集的模态标注**：DroneRF 系列提供原始 I/Q 射频数据而非 MIMO 信道 CSI，故 `CSI` 列标注为「有限支持」；EM-134K / EM-Bench 同时含雷达与通信域信号，`CSI` 与 `雷达` 列同样标为「有限支持」。
 
 ## 贡献方式
 
@@ -214,6 +260,8 @@
   year    = {2026}
 }
 ```
+
+使用 DroneRF 系列与 EM-134K / EM-Bench 时，请另行引用其对应数据论文（见各条目「出处」）。
 
 ## License
 
