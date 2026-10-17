@@ -617,6 +617,19 @@ const DATASETS = [
   },
 
   {
+    id: 'mmaud', name: 'MMAUD', year: 2024,
+    authors: 'Shenghai Yuan, Yizhuo Yang, Thien Hoang Nguyen, Thien-Minh Nguyen, Jianfei Yang, Fen Liu, Jianping Li, Han Wang, Lihua Xie',
+    org: 'Nanyang Technological University (NTU)',
+    venue: 'ICRA 2024',
+    site: 'https://github.com/ntu-aris/MMAUD',
+    siteAlt: 'https://ntu-aris.github.io/MMAUD/',
+    paper: 'https://doi.org/10.1109/ICRA57147.2024.10610957',
+    focusZh: '南洋理工大学：俯视视角的反无人机多模态探测/分类/跟踪与轨迹估计基准（双3D LiDAR、双鱼眼相机、毫米波雷达与四路麦克风阵列，Leica全站仪真值）',
+    focusEn: 'Multi-modal anti-UAV detection, classification and trajectory estimation',
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: .5, weather: 0, acoustic: 1 }
+  },
+
+  {
     id: 'lambda', name: 'LAMBDA', year: 2026,
     authors: 'Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao',
     org: 'Shanghai Jiao Tong University',
