@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img">
 <title>缺失或不适用</title>
 <rect x="0.5" y="0.5" width="19" height="19" rx="5" fill="#f7f8fa" stroke="#e4e7ec" stroke-width="1"/>
-<path d="M7.2 7.2 L12.8 12.8 M12.8 7.2 L7.2 12.8" stroke="#c3c9d2" stroke-width="1.7" stroke-linecap="round"/>
+<path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#bcc3cd" stroke-width="2" stroke-linecap="round"/>
 </svg>

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img">
 <title>部分支持</title>
 <rect x="0.5" y="0.5" width="19" height="19" rx="5" fill="#f2c169"/>
-<path d="M10 5.7 L14.7 14.1 L5.3 14.1 Z" fill="none" stroke="#8a5a10" stroke-width="1.7" stroke-linejoin="round"/>
+<path d="M10 6.7 L13.4 13.3 L6.6 13.3 Z" fill="none" stroke="#8a5a10" stroke-width="1.9" stroke-linejoin="round"/>
 </svg>
