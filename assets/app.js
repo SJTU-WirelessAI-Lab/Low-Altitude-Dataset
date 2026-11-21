@@ -915,8 +915,8 @@ function matrixHtml(list) {
     const c = csiOf(ds);
     const cells = MODALITIES.map(m => {
       const k = markOf(ds.modality[m.key]);
-      const cls = m.key === 'csi' ? ` class="csi-cell csi-${c.key}"` : '';
-      return `<td${cls}><span class="mark ${k.cls}" title="${m.en}：${k.txt}">${k.ch}</span></td>`;
+      const csiCls = m.key === 'csi' ? ` csi-cell csi-${c.key}` : '';
+      return `<td class="cell-${k.cls}${csiCls}"><span class="mark ${k.cls}" title="${m.en}：${k.txt}">${k.ch}</span></td>`;
     }).join('');
     return `<tr class="${ds.self ? 'hl' : ''}">
       <td class="name csi-bar csi-${c.key}" title="${c.note}"><a href="${ds.site}" target="_blank" rel="noopener">${escapeHtml(ds.name)}</a><span class="yr">${ds.year}</span></td>
