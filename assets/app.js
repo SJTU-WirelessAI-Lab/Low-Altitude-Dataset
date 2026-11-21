@@ -629,6 +629,70 @@ const DATASETS = [
     modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: .5, weather: 0, acoustic: 1 }
   },
 
+  /* ---------- 2026-11 新一轮补录（按 2026-11 检索结果核实） ---------- */
+
+  {
+    id: 'isac-uav-ilmenau', name: 'ISAC UAV (TU Ilmenau)', year: 2023,
+    authors: 'Julia Beuster, Carsten Andrich, Michael Döbereiner, Steffen Schieler, Maximilian Engelhardt, Christian Schneider, Reiner Thomä',
+    org: 'Technische Universität Ilmenau (EMS Group)',
+    venue: 'EuCAP 2023',
+    site: 'https://ems-tu-ilmenau.github.io/isac-uav-dataset-docs/',
+    siteAlt: 'https://github.com/EMS-TU-Ilmenau/isac-uav-dataset',
+    paper: 'https://doi.org/10.23919/EuCAP57121.2023.10133118',
+    focusZh: '伊尔梅瑙工业大学：3.75 GHz 三接收机 ISAC 实测库（60场景、约200 GB，含信道传递函数 H(f,t)、目标时延/多普勒估计与机载 RTK 真值，15/30 m 两档飞行高度，需邮件申请解密口令）',
+    focusEn: 'Multistatic ISAC channel measurements of UAV at 3.75 GHz',
+    modality: { la: 1, csi: 1, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 1, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'multifly', name: 'MultiFly', year: 2026,
+    authors: 'Markus Gross, Andreas Greiner, Taehyoung Kim, Sivasubiramaniam Subbiah, Tomaž Cotič, Conrad Christoph, Oussema Dhaouadi, Simon Zieher, Surya Kumar, Gordon Elger, Henri Meeß, Olaf Wysocki, Paul Spannaus, Daniel Cremers',
+    org: 'Fraunhofer IVI / TU Munich / University of Cambridge / TH Ingolstadt',
+    venue: 'arXiv:2610.10359 (2026)',
+    site: 'https://markus-42.github.io/multifly/',
+    siteAlt: 'https://github.com/Markus-42/MultiFly',
+    paper: 'https://arxiv.org/abs/2610.10359',
+    focusZh: '弗劳恩霍夫IVI：真实低空多模态语义感知基准（RGB/热成像（红外）/LiDAR/雷达四模态逐帧一致标注，4个郊区场景×2档高度×15类语义，17272同步样本，含GNSS-RTK/IMU；截至2026-11数据与代码仍标为即将发布）',
+    focusEn: 'Real-world multimodal aerial semantic perception',
+    modality: { la: 1, csi: 0, rgb: 1, ir: 1, lidar: 1, radar: 1, imu: 1, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'a2a-uav', name: 'A2A-UAV', year: 2026,
+    authors: 'Hongtao Liang, Yiyao Wan, Kezhi Zhu, Jiayi Zhang, Zequn Jiang, Ziyu Zhou, Jiahuan Ji, Fuhui Zhou, Qihui Wu',
+    org: 'Nanjing University of Aeronautics and Astronautics (NUAA) / HKUST',
+    venue: 'arXiv:2611.21311 (2026)',
+    site: 'https://github.com/lht-research/A2A-UAV',
+    paper: 'https://arxiv.org/abs/2611.21311',
+    focusZh: '南京航空航天大学：空对空反无人机多模态探测与机型识别基准（机载RGB-热成像（红外）云台+全景相机+频谱仪+毫米波雷达，13机型15类、昼夜两档、105294同步样本与209539框；200样本预览集已公开，完整集待接收）',
+    focusEn: 'Air-to-air multimodal UAV detection and identification',
+    modality: { la: 1, csi: 0, rgb: 1, ir: 1, lidar: 0, radar: 1, imu: 0, weather: .5, acoustic: 0 }
+  },
+
+  {
+    id: 'drone-acoustic-16ch', name: '16-Ch UAV Acoustic', year: 2026,
+    authors: 'Huilong Wang, Peng Chen, Zhimin Chen, Yuye Liu',
+    org: 'Southeast University / Shanghai Dianji University',
+    venue: 'Zenodo (2026)',
+    site: 'https://doi.org/10.5281/zenodo.23613504',
+    focusZh: '东南大学：16通道平面十字麦克风阵列的无人机被动声学监测数据集（DJI Flip 悬停200段、背景28段、非无人机对照45段，273条记录/4368个WAV/7.22小时，覆盖四方位、5–30 m高度与5–70 m距离）',
+    focusEn: '16-channel passive acoustic monitoring of small UAVs',
+    modality: { la: 1, csi: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 1 }
+  },
+
+  {
+    id: 'uav-flow', name: 'UAV-Flow', year: 2026,
+    authors: 'Donglin Yang, Xiangyu Wang, Yantong Zhong, Wenhao Zheng, Zihan Ding, Yue Liao, Hongsheng Li, Ke Xu, Si Liu',
+    org: 'Beihang University / National University of Singapore / CUHK MMLab',
+    venue: 'arXiv:2611.17163 (2026)',
+    site: 'https://prince687028.github.io/UAV-Flow/',
+    siteAlt: 'https://github.com/buaa-colalab/UAV-Flow',
+    paper: 'https://arxiv.org/abs/2611.17163',
+    focusZh: '北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face）',
+    focusEn: 'Language-guided UAV flight benchmark',
+    modality: { la: 1, csi: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+  },
+
   {
     id: 'lambda', name: 'LAMBDA', year: 2026,
     authors: 'Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao',
@@ -660,7 +724,7 @@ function markOf(v) {
 const CSI_LEVELS = {
   full: { key: 'full', label: '\u6709 CSI',   note: '提供完整 MIMO 信道 CSI' },
   part: { key: 'part', label: '\u90E8\u5206 CSI', note: '仅原始 I/Q 或非 MIMO 信道数据' },
-  none: { key: 'none', label: '\u65E0 CSI',   note: '不含信道 / 射频数据' }
+  none: { key: 'none', label: '\u65E0 CSI',   note: '不含 CSI / 信道数据' }
 };
 function csiOf(ds) {
   const v = ds.modality.csi;
