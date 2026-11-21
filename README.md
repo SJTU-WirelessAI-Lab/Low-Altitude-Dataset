@@ -121,87 +121,79 @@
 
 ## 模态覆盖对比矩阵
 
-模态覆盖对照 LAMBDA 论文表1（并含补充收录的数据集）：**✓** 包含；**△** 有限或部分支持；**×** 缺失或不适用。「全模态覆盖」统计针对 7 类核心模态（不含红外与声学），当前为 **1** 个。数据集名称前的圆点表示 **CSI 可得性**（🟢 完整 / 🟡 部分 / ⚪ 无）。
+模态覆盖对照 LAMBDA 论文表1（并含补充收录的数据集）：![包含](assets/icon-yes.svg) 包含；![部分支持](assets/icon-part.svg) 有限或部分支持；![缺失或不适用](assets/icon-none.svg) 缺失或不适用。「全模态覆盖」统计针对 7 类核心模态（不含红外与声学），当前为 **1** 个。数据集名称前的圆点表示 **CSI 可得性**（🟢 完整 / 🟡 部分 / ⚪ 无）。
 
-> **矩阵以图片呈现的原因**：Markdown 表格的单元格底色会被渲染器（GitHub、GitLab、VS Code）统一过滤，`style` 与 `bgcolor` 都无法保留。为让底色真正铺满单元格，下方矩阵由 [`data/datasets.json`](data/datasets.json) 渲染为 SVG：**深绿 = 包含**、**琥珀 = 部分支持**、**浅灰 = 缺失或不适用**，与网页版同一套配色。每张图下另附同一份数据的文字版表格，便于复制与检索。
+> **关于图标**：Markdown 表格无法填充单元格底色（GitHub、GitLab、VS Code 都会过滤 `style` 与 `bgcolor`），故每格用一个 20×20 的图标表示覆盖情况，配色与网页版一致：深绿 = 包含、琥珀 = 部分支持、浅灰 = 缺失或不适用。
 
 ### 低空相关数据集（47 个）
 
-![低空相关数据集模态覆盖矩阵](assets/matrix-low-altitude.svg)
-
-**文字版**（同一份数据，便于复制与检索）：
-
 | 数据集 | 年份 | 低空 | CSI信道 | RGB/深度 | 红外 | LiDAR | 雷达 | IMU/GPS | 天气/时间 | 声学 | 主要关注点 |
 |--------|------|:----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----:|------------|
-| ⚪ UAV123 | 2016 | ✓ | × | ✓ | × | × | × | × | × | × | 低空无人机视角单目标跟踪基准（123段，11万帧） |
-| ⚪ DOTA | 2018 | △ | × | ✓ | × | × | × | × | × | × | 航空影像目标检测（15/16类，18.8万实例） |
-| ⚪ UAVDT | 2018 | ✓ | × | ✓ | × | × | × | × | △ | × | 无人机车辆检测与跟踪基准（8万帧，含14类属性） |
-| ⚪ VisDrone | 2018 | ✓ | × | ✓ | × | × | × | × | △ | × | 无人机视角目标检测与跟踪基准（14城市，260万+框） |
-| 🟡 DroneRF (Mendeley) | 2019 | ✓ | △ | × | × | × | × | × | × | × | 三型无人机多飞行模式的射频原始I/Q库（227段、约40 GB，含背景射频） |
-| ⚪ Anti-UAV300 | 2021 | ✓ | × | ✓ | ✓ | × | × | × | △ | × | RGB-红外成对视频的反无人机跟踪基准（318对视频、58万+框，昼夜两类光照） |
-| ⚪ Drone-detection (DREGON) | 2021 | ✓ | × | ✓ | ✓ | × | × | × | △ | ✓ | 红外+可见光视频与音频的多传感器无人机探测（650段视频、20.3万标注帧，按DRI距离分档） |
-| ⚪ DIAT-µSAT | 2022 | ✓ | × | × | × | × | ✓ | × | × | × | X波段连续波雷达小型无人机微多普勒特征（6类4849幅） |
-| 🟡 DeepSense 6G | 2023 | △ | △ | ✓ | × | ✓ | ✓ | △ | △ | × | 实测多模态无线测量 |
-| 🟢 ISAC UAV (TU Ilmenau) | 2023 | ✓ | ✓ | × | × | × | ✓ | ✓ | × | × | 伊尔梅瑙工业大学：3.75 GHz 三接收机 ISAC 实测库（60场景、约200 GB，含信道传递函数 H(f,t)、目标时延/多普勒估计与机载 RTK 真值，15/30 m 两档飞行高度，需邮件申请解密口令） |
-| 🟢 MaMIMO-UAV 3D CSI | 2023 | ✓ | ✓ | × | × | × | × | ✓ | × | × | 鲁汶大学：无人机与8×8 Massive MIMO基站的3D非平稳信道CSI（校园飞行轨迹） |
-| 🟢 Sensiverse | 2023 | △ | ✓ | × | × | × | ✓ | × | × | × | 多场景多频段ISAC感知信道数据集（3.5/10/26/100 GHz） |
-| 🟡 AERPAW | 2024 | ✓ | △ | × | × | × | △ | ✓ | × | × | 空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集） |
-| ⚪ DADS | 2024 | ✓ | × | × | × | × | × | × | × | ✓ | 目前规模最大的公开无人机音频库（约18万条） |
-| 🟢 DeepVerse 6G | 2024 | △ | ✓ | ✓ | × | △ | ✓ | △ | △ | × | 数字孪生无线数据集 |
-| 🟡 DroneRFa | 2024 | ✓ | △ | × | × | × | × | × | × | × | 大规模无人机射频信号低空探测（25类场景，3个ISM频段） |
-| 🟡 KU Leuven Drone RF | 2024 | ✓ | △ | × | × | × | × | × | × | × | 鲁汶大学：半电波暗室采集的无人机射频I/Q（100 MSps @2.44 GHz，43.5 GB） |
-| ⚪ LSS-FMCWR-1.0 | 2024 | ✓ | × | × | × | × | ✓ | × | × | × | 多波段FMCW雷达低慢小目标探测（6类无人机微动特征） |
-| ⚪ MMAUD | 2024 | ✓ | × | ✓ | × | ✓ | ✓ | △ | × | ✓ | 南洋理工大学：俯视视角的反无人机多模态探测/分类/跟踪与轨迹估计基准（双3D LiDAR、双鱼眼相机、毫米波雷达与四路麦克风阵列，Leica全站仪真值） |
-| 🟢 3D MaMIMO A2G UAV CSI | 2025 | ✓ | ✓ | × | × | × | × | ✓ | × | × | 鲁汶大学：GPS标注的无人机–64天线Massive MIMO空对地信道CSI（校园环境，46 GB） |
-| ⚪ AnyVisLoc | 2025 | ✓ | × | ✓ | × | × | × | × | × | × | 低空多视角无人机绝对视觉定位基准（1.8万图像） |
-| ⚪ DrIFT | 2025 | ✓ | × | ✓ | × | × | × | × | ✓ | × | 域漂移下的视觉无人机检测（14个域，含背景分割图） |
-| 🟢 Drone Swarm Sounding | 2025 | ✓ | ✓ | × | × | × | ✓ | △ | × | × | 无人机群多基地信道探测与雷达感知实测 |
-| 🟡 DroneRFb-DIR | 2025 | ✓ | △ | × | × | × | × | × | × | × | 非合作无人机个体识别（6类×3架，含视距/非视距标注） |
-| 🟢 Great-MSD | 2025 | ✓ | ✓ | ✓ | × | ✓ | ✓ | ✓ | × | × | 单引擎仿真低空多模态通感一体化数据集（10万样本） |
-| ⚪ LAE UAV | 2025 | ✓ | × | ✓ | × | × | × | △ | × | × | GNSS拒止城市环境下的无人机视觉导航数据集（35.7万帧） |
-| 🟡 LIPASE | 2025 | ✓ | △ | × | × | × | ✓ | × | × | × | LTE下行信号+数字阵列的无人机被动雷达跟踪 |
-| ⚪ Lund UAV Audio | 2025 | ✓ | × | × | × | × | × | △ | × | ✓ | 隆德大学：无人机自噪声的12元麦克风阵列测向定位（真实飞行+真值位置，17.7 GiB） |
-| ⚪ MathWorks Radar Drone | 2025 | ✓ | × | × | × | × | ✓ | × | × | × | 大规模雷达无人机分类微多普勒训练集（约10.9 TB） |
-| ⚪ NeoDrone | 2025 | ✓ | × | ✓ | ✓ | × | × | × | ✓ | × | 无人机近地观测视觉感知（15万+图像，可见光-红外对齐） |
-| 🟡 RFUAV | 2025 | ✓ | △ | × | × | × | × | × | × | × | 37种无人机大规模射频指纹基准（约1.3 TB原始I/Q） |
-| 🟢 SynthSoM | 2025 | △ | ✓ | ✓ | × | ✓ | ✓ | × | ✓ | × | 空地协同机器联觉(SoM)合成数据集 |
-| ⚪ UAV-LowAlt-MOT | 2025 | ✓ | × | ✓ | × | × | × | × | × | × | 低空无人机对地多目标检测与跟踪（行人/车辆） |
-| ⚪ UAVScenes | 2025 | ✓ | × | ✓ | × | ✓ | × | ✓ | × | × | 多模态无人机感知（图像+LiDAR逐帧语义标注，12万+帧） |
-| ⚪ 16-Ch UAV Acoustic | 2026 | ✓ | × | × | × | × | × | × | × | ✓ | 东南大学：16通道平面十字麦克风阵列的无人机被动声学监测数据集（DJI Flip 悬停200段、背景28段、非无人机对照45段，273条记录/4368个WAV/7.22小时，覆盖四方位、5–30 m高度与5–70 m距离） |
-| ⚪ A2A-UAV | 2026 | ✓ | × | ✓ | ✓ | × | ✓ | × | △ | × | 南京航空航天大学：空对空反无人机多模态探测与机型识别基准（机载RGB-热成像（红外）云台+全景相机+频谱仪+毫米波雷达，13机型15类、昼夜两档、105294同步样本与209539框；200样本预览集已公开，完整集待接收） |
-| 🟡 CageDroneRF | 2026 | ✓ | △ | × | × | × | × | × | × | × | 射频笼采集+合成增强的无人机检测与识别基准 |
-| 🟡 Cross-layer UAV 6G | 2026 | ✓ | △ | × | × | × | × | ✓ | × | × | 5G测试床无人机跨层（移动性-无线-应用）测量 |
-| 🟡 DroneRFc-MM | 2026 | ✓ | △ | ✓ | × | ✓ | ✓ | ✓ | × | ✓ | 反无人机多模态实测数据集（六类传感器同步观测城市低空目标） |
-| ⚪ FlyAwareV2 | 2026 | ✓ | × | ✓ | × | × | × | × | ✓ | × | 城市场景理解的多模态跨域无人机数据（真实+合成，含天气昼夜；真实样本深度为单目估计） |
-| ⚪ ITU-ARIS Acoustic | 2026 | ✓ | × | × | × | × | × | × | × | ✓ | 户外无人机声学探测数据集（无人机/背景两类，5491段） |
-| ⚪ MultiFly | 2026 | ✓ | × | ✓ | ✓ | ✓ | ✓ | ✓ | × | × | 弗劳恩霍夫IVI：真实低空多模态语义感知基准（RGB/热成像（红外）/LiDAR/雷达四模态逐帧一致标注，4个郊区场景×2档高度×15类语义，17272同步样本，含GNSS-RTK/IMU；截至2026-11数据与代码仍标为即将发布） |
-| 🟢 Multimodal-NF | 2026 | ✓ | ✓ | ✓ | × | ✓ | × | ✓ | △ | × | 近场低空XL-MIMO |
-| 🟡 PML-CellularEye | 2026 | ✓ | △ | △ | △ | × | △ | ✓ | ✓ | × | 实测基站侧低空ISAC数据（含可见光/红外视频） |
-| ⚪ SkyEV | 2026 | ✓ | × | ✓ | × | × | × | × | × | × | RGB-事件相机同步的无人机检测与跟踪数据集 |
-| ⚪ UAV-Flow | 2026 | ✓ | × | ✓ | × | × | × | ✓ | × | × | 北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face） |
-| 🟢 **LAMBDA ⭐** | 2026 | ✓ | ✓ | ✓ | × | ✓ | ✓ | ✓ | ✓ | × | **低空多模态通感一体化基础数据集** |
+| ⚪ UAV123 | 2016 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 低空无人机视角单目标跟踪基准（123段，11万帧） |
+| ⚪ DOTA | 2018 | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 航空影像目标检测（15/16类，18.8万实例） |
+| ⚪ UAVDT | 2018 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 无人机车辆检测与跟踪基准（8万帧，含14类属性） |
+| ⚪ VisDrone | 2018 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 无人机视角目标检测与跟踪基准（14城市，260万+框） |
+| 🟡 DroneRF (Mendeley) | 2019 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 三型无人机多飞行模式的射频原始I/Q库（227段、约40 GB，含背景射频） |
+| ⚪ Anti-UAV300 | 2021 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | RGB-红外成对视频的反无人机跟踪基准（318对视频、58万+框，昼夜两类光照） |
+| ⚪ Drone-detection (DREGON) | 2021 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | 红外+可见光视频与音频的多传感器无人机探测（650段视频、20.3万标注帧，按DRI距离分档） |
+| ⚪ DIAT-µSAT | 2022 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | X波段连续波雷达小型无人机微多普勒特征（6类4849幅） |
+| 🟡 DeepSense 6G | 2023 | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 实测多模态无线测量 |
+| 🟢 ISAC UAV (TU Ilmenau) | 2023 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 伊尔梅瑙工业大学：3.75 GHz 三接收机 ISAC 实测库（60场景、约200 GB，含信道传递函数 H(f,t)、目标时延/多普勒估计与机载 RTK 真值，15/30 m 两档飞行高度，需邮件申请解密口令） |
+| 🟢 MaMIMO-UAV 3D CSI | 2023 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 鲁汶大学：无人机与8×8 Massive MIMO基站的3D非平稳信道CSI（校园飞行轨迹） |
+| 🟢 Sensiverse | 2023 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 多场景多频段ISAC感知信道数据集（3.5/10/26/100 GHz） |
+| 🟡 AERPAW | 2024 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集） |
+| ⚪ DADS | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 目前规模最大的公开无人机音频库（约18万条） |
+| 🟢 DeepVerse 6G | 2024 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 数字孪生无线数据集 |
+| 🟡 DroneRFa | 2024 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 大规模无人机射频信号低空探测（25类场景，3个ISM频段） |
+| 🟡 KU Leuven Drone RF | 2024 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 鲁汶大学：半电波暗室采集的无人机射频I/Q（100 MSps @2.44 GHz，43.5 GB） |
+| ⚪ LSS-FMCWR-1.0 | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 多波段FMCW雷达低慢小目标探测（6类无人机微动特征） |
+| ⚪ MMAUD | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 南洋理工大学：俯视视角的反无人机多模态探测/分类/跟踪与轨迹估计基准（双3D LiDAR、双鱼眼相机、毫米波雷达与四路麦克风阵列，Leica全站仪真值） |
+| 🟢 3D MaMIMO A2G UAV CSI | 2025 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 鲁汶大学：GPS标注的无人机–64天线Massive MIMO空对地信道CSI（校园环境，46 GB） |
+| ⚪ AnyVisLoc | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 低空多视角无人机绝对视觉定位基准（1.8万图像） |
+| ⚪ DrIFT | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 域漂移下的视觉无人机检测（14个域，含背景分割图） |
+| 🟢 Drone Swarm Sounding | 2025 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 无人机群多基地信道探测与雷达感知实测 |
+| 🟡 DroneRFb-DIR | 2025 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 非合作无人机个体识别（6类×3架，含视距/非视距标注） |
+| 🟢 Great-MSD | 2025 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 单引擎仿真低空多模态通感一体化数据集（10万样本） |
+| ⚪ LAE UAV | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | GNSS拒止城市环境下的无人机视觉导航数据集（35.7万帧） |
+| 🟡 LIPASE | 2025 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | LTE下行信号+数字阵列的无人机被动雷达跟踪 |
+| ⚪ Lund UAV Audio | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 隆德大学：无人机自噪声的12元麦克风阵列测向定位（真实飞行+真值位置，17.7 GiB） |
+| ⚪ MathWorks Radar Drone | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 大规模雷达无人机分类微多普勒训练集（约10.9 TB） |
+| ⚪ NeoDrone | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 无人机近地观测视觉感知（15万+图像，可见光-红外对齐） |
+| 🟡 RFUAV | 2025 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 37种无人机大规模射频指纹基准（约1.3 TB原始I/Q） |
+| 🟢 SynthSoM | 2025 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 空地协同机器联觉(SoM)合成数据集 |
+| ⚪ UAV-LowAlt-MOT | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 低空无人机对地多目标检测与跟踪（行人/车辆） |
+| ⚪ UAVScenes | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 多模态无人机感知（图像+LiDAR逐帧语义标注，12万+帧） |
+| ⚪ 16-Ch UAV Acoustic | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 东南大学：16通道平面十字麦克风阵列的无人机被动声学监测数据集（DJI Flip 悬停200段、背景28段、非无人机对照45段，273条记录/4368个WAV/7.22小时，覆盖四方位、5–30 m高度与5–70 m距离） |
+| ⚪ A2A-UAV | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 南京航空航天大学：空对空反无人机多模态探测与机型识别基准（机载RGB-热成像（红外）云台+全景相机+频谱仪+毫米波雷达，13机型15类、昼夜两档、105294同步样本与209539框；200样本预览集已公开，完整集待接收） |
+| 🟡 CageDroneRF | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 射频笼采集+合成增强的无人机检测与识别基准 |
+| 🟡 Cross-layer UAV 6G | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 5G测试床无人机跨层（移动性-无线-应用）测量 |
+| 🟡 DroneRFc-MM | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 反无人机多模态实测数据集（六类传感器同步观测城市低空目标） |
+| ⚪ FlyAwareV2 | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 城市场景理解的多模态跨域无人机数据（真实+合成，含天气昼夜；真实样本深度为单目估计） |
+| ⚪ ITU-ARIS Acoustic | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 户外无人机声学探测数据集（无人机/背景两类，5491段） |
+| ⚪ MultiFly | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 弗劳恩霍夫IVI：真实低空多模态语义感知基准（RGB/热成像（红外）/LiDAR/雷达四模态逐帧一致标注，4个郊区场景×2档高度×15类语义，17272同步样本，含GNSS-RTK/IMU；截至2026-11数据与代码仍标为即将发布） |
+| 🟢 Multimodal-NF | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 近场低空XL-MIMO |
+| 🟡 PML-CellularEye | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 实测基站侧低空ISAC数据（含可见光/红外视频） |
+| ⚪ SkyEV | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | RGB-事件相机同步的无人机检测与跟踪数据集 |
+| ⚪ UAV-Flow | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face） |
+| 🟢 **LAMBDA ⭐** | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **低空多模态通感一体化基础数据集** |
 
 ### 通用 / 上游基准数据集（13 个）
 
-![通用 / 上游基准数据集模态覆盖矩阵](assets/matrix-general.svg)
-
-**文字版**（同一份数据，便于复制与检索）：
-
 | 数据集 | 年份 | 低空 | CSI信道 | RGB/深度 | 红外 | LiDAR | 雷达 | IMU/GPS | 天气/时间 | 声学 | 主要关注点 |
 |--------|------|:----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----:|------------|
-| ⚪ KITTI | 2012 | × | × | ✓ | × | ✓ | × | ✓ | △ | × | 地面自动驾驶感知基准 |
-| 🟢 DeepMIMO | 2019 | × | ✓ | × | × | × | × | × | △ | × | 可配置射线追踪信道数据集 |
-| 🟢 ViWi | 2020 | × | ✓ | ✓ | × | △ | × | × | △ | × | 视觉辅助无线通信 |
-| ⚪ DAIR-V2X | 2022 | × | × | ✓ | × | ✓ | × | △ | △ | × | 真实车路协同感知 |
-| 🟡 E-FLASH | 2022 | × | △ | △ | × | ✓ | × | ✓ | △ | × | 实测毫米波V2X波束选择 |
-| ⚪ OPV2V | 2022 | × | × | ✓ | × | ✓ | × | △ | △ | × | 车车协同感知 |
-| 🟢 WAIR-D | 2022 | × | ✓ | × | × | × | × | × | × | × | 真实地图上的无线AI信道 |
-| 🟢 M3SC | 2023 | × | ✓ | ✓ | × | ✓ | ✓ | × | ✓ | × | 混合多模态通感一体化数据 |
-| 🟢 LuViRA | 2024 | × | ✓ | ✓ | × | × | × | ✓ | × | ✓ | 隆德大学：视觉+5G Massive MIMO射频+音频三模态同步室内定位（非低空） |
-| ⚪ SDCD | 2024 | × | × | ✓ | × | × | × | × | ✓ | × | 合成数字城市RGB-深度鲁棒性 |
-| 🟢 Multimodal-Wireless | 2025 | × | ✓ | ✓ | × | ✓ | ✓ | ✓ | ✓ | × | V2X多模态通信与感知 |
-| 🟡 EM-134K | 2026 | × | △ | × | × | × | △ | × | × | × | 电磁信号-文本配对预训练集（13.4万对，源自3500万信号） |
-| 🟡 EM-Bench | 2026 | × | △ | × | × | × | △ | × | × | × | 电磁信号理解与推理评测基准（4200+问答，3级14子任务） |
+| ⚪ KITTI | 2012 | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 地面自动驾驶感知基准 |
+| 🟢 DeepMIMO | 2019 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 可配置射线追踪信道数据集 |
+| 🟢 ViWi | 2020 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 视觉辅助无线通信 |
+| ⚪ DAIR-V2X | 2022 | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 真实车路协同感知 |
+| 🟡 E-FLASH | 2022 | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 实测毫米波V2X波束选择 |
+| ⚪ OPV2V | 2022 | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 车车协同感知 |
+| 🟢 WAIR-D | 2022 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 真实地图上的无线AI信道 |
+| 🟢 M3SC | 2023 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 混合多模态通感一体化数据 |
+| 🟢 LuViRA | 2024 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 隆德大学：视觉+5G Massive MIMO射频+音频三模态同步室内定位（非低空） |
+| ⚪ SDCD | 2024 | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 合成数字城市RGB-深度鲁棒性 |
+| 🟢 Multimodal-Wireless | 2025 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | V2X多模态通信与感知 |
+| 🟡 EM-134K | 2026 | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 电磁信号-文本配对预训练集（13.4万对，源自3500万信号） |
+| 🟡 EM-Bench | 2026 | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 电磁信号理解与推理评测基准（4200+问答，3级14子任务） |
 
 ---
 
