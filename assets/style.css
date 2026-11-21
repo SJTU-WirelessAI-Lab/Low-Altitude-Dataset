@@ -392,6 +392,13 @@ table.matrix td.name.csi-bar.csi-none::before { background: #cbd0d9; }
 .badge-csi.csi-part { background: var(--warn-soft); color: var(--warn); }
 .badge-csi.csi-none { background: #f1f2f5; color: var(--text-3); }
 
+/* access badges — 只在非「开放下载」时出现 */
+.badge-access { font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+.badge-access.acc-preview { background: #e8f1fd; color: #1d64c8; }
+.badge-access.acc-register { background: var(--warn-soft); color: var(--warn); }
+.badge-access.acc-request { background: #fdeee3; color: #b45309; }
+.badge-access.acc-pending { background: #f1f2f5; color: #6b7280; }
+
 /* card group headings */
 .grid-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 0 0 14px; }
 .grid-head + .grid { margin-bottom: 0; }
