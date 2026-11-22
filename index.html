@@ -109,6 +109,13 @@
         <span class="csi-key csi-part">部分 CSI（原始 I/Q 等）</span>
         <span class="csi-key csi-none">无 CSI</span>
       </div>
+      <div class="legend-row wide">
+        <span class="legend-label">数据来源（低空）</span>
+        <span class="src-key src-real">实测 <b id="src-la-real"></b></span>
+        <span class="src-key src-mixed">混合 <b id="src-la-mixed"></b></span>
+        <span class="src-key src-sim">仿真 <b id="src-la-sim"></b></span>
+        <span class="src-note" id="src-gen-note"></span>
+      </div>
     </div>
 
     <div class="mx-group">
@@ -156,6 +163,7 @@
           <li>标注 9 类模态：7 类核心模态（低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间）+ 2 类补充模态（红外、声学）</li>
           <li>低空相关数据集按 <strong>CSI 可得性</strong>着色：完整 MIMO 信道 / 部分（原始 I/Q 等）/ 无 CSI</li>
           <li>另标注 <strong>获取方式</strong>：默认开放下载，非开放的 6 条（仅预览 / 需注册 / 需申请 / 未发布）在卡片上以徽章单独提示</li>
+          <li>另标注 <strong>数据来源</strong>：<strong>实测</strong>（真实传感器 / 外场采集）、<strong>混合</strong>（真实与合成并用）、<strong>仿真</strong>（射线追踪 / 数字孪生 / 渲染器生成），卡片徽章与矩阵图例同步显示</li>
           <li>以 LAMBDA 表1 为基准，另补充收录 ISAC 仿真/实测、射频与雷达探测、红外/可见光探测、声学、视觉多模态等方向的公开数据集（含 KU Leuven、隆德大学等团队的低空实测数据）</li>
           <li>「全模态覆盖」统计针对 7 类核心模态（低空、CSI、RGB、LiDAR、雷达、IMU、天气），不含红外与声学</li>
         </ul>
