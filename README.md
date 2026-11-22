@@ -2,10 +2,12 @@
 
 面向**低空经济**与**UAV通感一体化（ISAC）**研究的开源数据集汇编，系统收集并展示已有数据集，统一给出**名称、官方网站链接、发布年份、作者/机构**以及**模态覆盖对比**。
 
+清单以 **[LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication](https://arxiv.org/abs/2607.03826)**（arXiv:2607.03826）表1 为基准，并逐一核实各数据集的官方主页与论文链接；此外补充收录了 ISAC 仿真与实测、射频/雷达探测、声学感知、无人机视觉与多模态感知等方向的公开数据集。
+
 > 总览、矩阵与详情均按**是否涉及低空 / UAV 场景**拆为两张表：**低空相关数据集**与**通用 / 上游基准数据集**（后者完全不含低空场景）。低空部分另按 **CSI 可得性**用颜色区分：🟢 有 CSI、🟡 部分 CSI、⚪ 无 CSI。
 
-> 🌐 **在线浏览**：打开 [`index.html`](index.html)（可搜索、可筛选、含对比矩阵）。
-> 📦 **结构化数据**：[`data/datasets.json`](data/datasets.json)。
+> 🌐 **在线浏览**：[sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset](https://sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset/)（可搜索、可筛选、含对比矩阵）。也可下载 [`index.html`](index.html) 离线打开。
+> 📦 **结构化数据**：[data/datasets.json](https://cdn.jsdelivr.net/gh/SJTU-WirelessAI-Lab/Low-Altitude-Dataset@main/data/datasets.json)（jsDelivr CDN，返回 `application/json`，可直接 fetch；仓库副本见 [`data/datasets.json`](data/datasets.json)）。
 
 **增长趋势**：截至 2026 年末，低空相关数据集累计 **47** 个，其中 **10** 个提供完整 MIMO 信道 CSI。下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。
 
