@@ -409,6 +409,31 @@ table.matrix td.name.csi-bar.csi-none::before { background: #cbd0d9; }
 .badge-access.acc-request { background: #fdeee3; color: #b45309; }
 .badge-access.acc-pending { background: #f1f2f5; color: #6b7280; }
 
+/* source badges — 每条都出现，文字已区分三档，圆点只作第二重编码（不靠颜色单独承载信息） */
+.badge-source {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10.5px; font-weight: 700; padding: 3px 8px 3px 7px; border-radius: 6px;
+  white-space: nowrap; background: #f4f5f8; color: #4b5563;
+}
+.badge-source::before { content: ""; width: 6px; height: 6px; border-radius: 50%; flex: none; background: #94a3b8; }
+.badge-source.src-real::before  { background: #14b8a6; }
+.badge-source.src-mixed::before { background: #f0a02a; }
+.badge-source.src-sim::before   { background: #94a3b8; }
+
+/* 矩阵图例里的来源键 */
+.src-key {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 7px;
+  background: #f4f5f8; color: #4b5563; border: 1px solid #e6e8ee;
+}
+.src-key::before { content: ""; width: 10px; height: 10px; border-radius: 50%; flex: none; background: #94a3b8; }
+.src-key.src-real::before  { background: #14b8a6; }
+.src-key.src-mixed::before { background: #f0a02a; }
+.src-key b { font-family: var(--mono); font-weight: 700; color: var(--text); }
+/* 来源行是图例里另起一行的一组，不该继承上一行的左分隔线与缩进 */
+.legend-row.wide { padding-left: 0; border-left: 0; }
+.legend-row > .src-note { font-size: 12px; color: var(--text-3); }
+
 /* card group headings */
 .grid-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 0 0 14px; }
 .grid-head + .grid { margin-bottom: 0; }

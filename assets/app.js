@@ -3,6 +3,7 @@
    Base list: LAMBDA (arXiv:2607.03826), Table 1.
    Extended: curator-verified additions (see README「收录说明」).
    Modality scale: 1 = included, 0.5 = limited/partial, 0 = absent.
+   Data origin (source, required): real = measured, mixed = measured + synthetic, sim = fully generated.
    ========================================================================== */
 
 const MODALITIES = [
@@ -21,6 +22,7 @@ const DATASETS = [
   {
     id: 'kitti', name: 'KITTI', year: 2012,
     access: 'open',
+    source: 'real',
     authors: 'Andreas Geiger, Philip Lenz, Raquel Urtasun',
     org: 'Karlsruhe Institute of Technology (KIT)',
     venue: 'CVPR 2012',
@@ -33,6 +35,7 @@ const DATASETS = [
   {
     id: 'deepmimo', name: 'DeepMIMO', year: 2019,
     access: 'open',
+    source: 'sim',
     authors: 'Ahmed Alkhateeb',
     org: 'Arizona State University',
     venue: 'ITA Workshop 2019',
@@ -45,6 +48,7 @@ const DATASETS = [
   {
     id: 'viwi', name: 'ViWi', year: 2020,
     access: 'open',
+    source: 'mixed',
     authors: 'Muhammad Alrabeiah, Andrew Hredzak, Zhenhao Liu, Ahmed Alkhateeb',
     org: 'Arizona State University',
     venue: 'IEEE VTC2020-Spring',
@@ -57,6 +61,7 @@ const DATASETS = [
   {
     id: 'opv2v', name: 'OPV2V', year: 2022,
     access: 'open',
+    source: 'sim',
     authors: 'Runsheng Xu, Hao Xiang, Zhengzhong Tu, Xin Xia, Ming-Hsuan Yang, Jiaqi Ma',
     org: 'University of California, Los Angeles (UCLA)',
     venue: 'ICRA 2022',
@@ -69,6 +74,7 @@ const DATASETS = [
   {
     id: 'dairv2x', name: 'DAIR-V2X', year: 2022,
     access: 'open',
+    source: 'real',
     authors: 'Haibao Yu, Yizhen Luo, Mao Shu, Yiyi Huo, et al.',
     org: 'Tsinghua University AIR / Baidu',
     venue: 'CVPR 2022',
@@ -82,6 +88,7 @@ const DATASETS = [
   {
     id: 'eflash', name: 'E-FLASH', year: 2022,
     access: 'register',
+    source: 'real',
     authors: 'Jerry Gu, Batool Salehi, Debashri Roy, Kaushik R. Chowdhury',
     org: 'Northeastern University',
     venue: 'IEEE Communications Magazine 2022',
@@ -94,6 +101,7 @@ const DATASETS = [
   {
     id: 'waird', name: 'WAIR-D', year: 2022,
     access: 'open',
+    source: 'sim',
     authors: 'Yourui Huangfu, Jian Wang, Shengchen Dai, Rong Li, et al.',
     org: 'Huawei Wireless Technology Lab / Zhejiang University',
     venue: 'IEEE/CIC ICCC 2022',
@@ -106,6 +114,7 @@ const DATASETS = [
   {
     id: 'm3sc', name: 'M3SC', year: 2023,
     access: 'open',
+    source: 'mixed',
     authors: 'Xiang Cheng, Ziwei Huang, Lu Bai, Haotian Zhang, et al.',
     org: 'Peking University (PCNI Lab)',
     venue: 'China Communications 2023',
@@ -118,6 +127,7 @@ const DATASETS = [
   {
     id: 'deepsense6g', name: 'DeepSense 6G', year: 2023,
     access: 'open',
+    source: 'real',
     authors: 'Ahmed Alkhateeb, et al.',
     org: 'Arizona State University',
     venue: 'IEEE Communications Magazine 2023',
@@ -130,6 +140,7 @@ const DATASETS = [
   {
     id: 'sdcd', name: 'SDCD', year: 2024,
     access: 'open',
+    source: 'sim',
     authors: 'Jihao Li, Jincheng Hu, Yanjun Huang, Zheng Chen, Bingzhao Gao, Jingjing Jiang, Yuanjian Zhang',
     org: 'University of Southampton / Tongji University',
     venue: 'Scientific Data 11:301 (2024)',
@@ -142,6 +153,7 @@ const DATASETS = [
   {
     id: 'deepverse6g', name: 'DeepVerse 6G', year: 2024,
     access: 'open',
+    source: 'sim',
     authors: 'Umut Demirhan, Abdelrahman Taha, Ahmed Alkhateeb',
     org: 'Arizona State University',
     venue: 'Preprint / IEEE DataPort',
@@ -155,6 +167,7 @@ const DATASETS = [
   {
     id: 'synthsom', name: 'SynthSoM', year: 2025,
     access: 'open',
+    source: 'sim',
     authors: 'Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, Mingran Sun, et al.',
     org: 'Peking University / Shandong University',
     venue: 'Scientific Data 12:819 (2025)',
@@ -168,6 +181,7 @@ const DATASETS = [
   {
     id: 'multimodal-wireless', name: 'Multimodal-Wireless', year: 2025,
     access: 'open',
+    source: 'sim',
     authors: 'Tianhao Mao, Le Liang, Jie Yang, Hao Ye, Shi Jin, Geoffrey Ye Li',
     org: 'Southeast University / Imperial College London',
     venue: 'arXiv:2511.03220 · ICC 2026',
@@ -180,6 +194,7 @@ const DATASETS = [
   {
     id: 'multimodal-nf', name: 'Multimodal-NF', year: 2026,
     access: 'open',
+    source: 'sim',
     authors: 'Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin',
     org: 'Southeast University',
     venue: 'arXiv:2603.28280',
@@ -192,6 +207,7 @@ const DATASETS = [
   {
     id: 'pml-cellulareye', name: 'PML-CellularEye', year: 2026,
     access: 'open',
+    source: 'real',
     authors: 'Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You',
     org: 'Purple Mountain Laboratories / Southeast University',
     venue: 'Science China Information Sciences 69(6):167301 (2026)',
@@ -204,6 +220,7 @@ const DATASETS = [
   {
     id: 'dronerfa', name: 'DroneRFa', year: 2024,
     access: 'open',
+    source: 'real',
     authors: '俞宁宁, 毛盛健, 周成伟, 孙国威, 史治国, 陈积明',
     org: '浙江大学信息与电子工程学院',
     venue: '电子与信息学报 46(4): 1147–1156 (2024)',
@@ -217,6 +234,7 @@ const DATASETS = [
   {
     id: 'dronerfb-dir', name: 'DroneRFb-DIR', year: 2025,
     access: 'open',
+    source: 'real',
     authors: '任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明',
     org: '浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室',
     venue: '电子与信息学报 47(3): 573–581 (2025)',
@@ -229,6 +247,7 @@ const DATASETS = [
   {
     id: 'dronerfc-mm', name: 'DroneRFc-MM', year: 2026,
     access: 'open',
+    source: 'real',
     authors: '虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明',
     org: '浙江大学全省空域感知与自主无人系统重点实验室',
     venue: '电子与信息学报（网络优先出版, 2026）',
@@ -241,6 +260,7 @@ const DATASETS = [
   {
     id: 'em-134k', name: 'EM-134K', year: 2026,
     access: 'open',
+    source: 'mixed',
     authors: 'Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun',
     org: 'Tsinghua University / BUPT / Tianjin University / IMECAS 等',
     venue: 'MERLIN, arXiv:2603.08174',
@@ -253,6 +273,7 @@ const DATASETS = [
   {
     id: 'em-bench', name: 'EM-Bench', year: 2026,
     access: 'open',
+    source: 'mixed',
     authors: 'Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun',
     org: 'Tsinghua University / BUPT / Tianjin University / IMECAS 等',
     venue: 'MERLIN, arXiv:2603.08174',
@@ -268,6 +289,7 @@ const DATASETS = [
   {
     id: 'great-msd', name: 'Great-MSD', year: 2025,
     access: 'open',
+    source: 'sim',
     authors: 'Kongwu Huang, Shiyi Mu, Jun Jiang, Yuan Gao, Shugong Xu',
     org: 'Shanghai University / Xi\'an Jiaotong-Liverpool University',
     venue: 'arXiv:2507.08716（Great-X 平台）',
@@ -280,6 +302,7 @@ const DATASETS = [
   {
     id: 'sensiverse', name: 'Sensiverse', year: 2023,
     access: 'open',
+    source: 'sim',
     authors: 'Jiajin Luo, Baojian Zhou, Yang Yu, Ping Zhang, et al. (Huawei)',
     org: 'Huawei Technologies',
     venue: 'arXiv:2308.13789',
@@ -292,6 +315,7 @@ const DATASETS = [
   {
     id: 'crosslayer-uav6g', name: 'Cross-layer UAV 6G', year: 2026,
     access: 'open',
+    source: 'real',
     authors: 'Francesco Paolucci, Emilio Paolini, Massimo Satler, et al.',
     org: 'CNIT / Scuola Superiore Sant\'Anna',
     venue: 'Zenodo (2026)',
@@ -304,6 +328,7 @@ const DATASETS = [
   {
     id: 'aerpaw', name: 'AERPAW', year: 2024,
     access: 'register',
+    source: 'real',
     authors: 'Ismail Guvenc, Mihail L. Sichitiu, Rudra Dutta, et al.',
     org: 'North Carolina State University',
     venue: 'AERPAW / Dryad / IEEE DataPort (2024–2026)',
@@ -316,6 +341,7 @@ const DATASETS = [
   {
     id: 'lipase', name: 'LIPASE', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Yifei Sun, Chao Yu, Yan Luo, Tony Xiao Han, Haisheng Tan, Rui Wang, Francis C. M. Lau',
     org: 'The University of Hong Kong / SUSTech / Huawei 等',
     venue: 'IEEE OJ-COMS 6: 3779–3794 (2025)',
@@ -328,6 +354,7 @@ const DATASETS = [
   {
     id: 'drone-swarm-sounding', name: 'Drone Swarm Sounding', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Julia Beuster, Carsten Andrich, Sebastian Giehl, Marc Miranda, et al.',
     org: 'Technische Universität Ilmenau',
     venue: 'arXiv:2507.12010',
@@ -340,6 +367,7 @@ const DATASETS = [
   {
     id: 'rfuav', name: 'RFUAV', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Rui Shi, Xiaodong Yu, Shengming Wang, Yijia Zhang, Lu Xu, Peng Pan, Chunlai Ma',
     org: 'Beijing University of Posts and Telecommunications 等',
     venue: 'arXiv:2503.09033',
@@ -352,6 +380,7 @@ const DATASETS = [
   {
     id: 'cagedronerf', name: 'CageDroneRF', year: 2026,
     access: 'open',
+    source: 'mixed',
     authors: 'Mohammad Rostami, Atik Faysal, Hongtao Xia, Hadi Kasasbeh, Ziang Gao, Huaxia Wang',
     org: 'Rowan University',
     venue: 'arXiv:2601.03302',
@@ -364,6 +393,7 @@ const DATASETS = [
   {
     id: 'skyev', name: 'SkyEV', year: 2026,
     access: 'open',
+    source: 'real',
     authors: 'Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno',
     org: 'ETH Zurich',
     venue: 'arXiv:2607.18747',
@@ -376,6 +406,7 @@ const DATASETS = [
   {
     id: 'lss-fmcwr', name: 'LSS-FMCWR-1.0', year: 2024,
     access: 'open',
+    source: 'real',
     authors: '陈小龙, 袁旺, 杜晓林, 于刚, 何肖阳, 关键, 汪兴海',
     org: '海军航空大学 / 烟台大学 / 济南大学',
     venue: '雷达学报 13(3): 539–553 (2024)',
@@ -388,6 +419,7 @@ const DATASETS = [
   {
     id: 'diat-msat', name: 'DIAT-µSAT', year: 2022,
     access: 'register',
+    source: 'real',
     authors: 'Harish Chandra Kumawat, Mainak Chakraborty, A. Arockia Bazil Raj, Sunita Vikrant Dhavale',
     org: 'Defence Institute of Advanced Technology (DIAT), India',
     venue: 'IEEE GRSL 19: 6004005 (2022)',
@@ -400,6 +432,7 @@ const DATASETS = [
   {
     id: 'mathworks-radar-drone', name: 'MathWorks Radar Drone', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Zhongliang Guo, Samiur Rahman, Duncan Robertson',
     org: 'University of St Andrews',
     venue: 'Zenodo (2025)',
@@ -412,6 +445,7 @@ const DATASETS = [
   {
     id: 'itu-aris-acoustic', name: 'ITU-ARIS Acoustic', year: 2026,
     access: 'open',
+    source: 'real',
     authors: 'İhsan Mert Muhacıroğlu, Tayfun Akgül',
     org: 'Istanbul Technical University (ARIS Lab)',
     venue: 'IEEE SIU 2026 / Zenodo',
@@ -424,6 +458,7 @@ const DATASETS = [
   {
     id: 'dads', name: 'DADS', year: 2024,
     access: 'open',
+    source: 'real',
     authors: '社区整理（schiffman / geronimobasso）',
     org: 'Community (Hugging Face)',
     venue: 'Hugging Face Datasets',
@@ -437,6 +472,7 @@ const DATASETS = [
   {
     id: 'uavscenes', name: 'UAVScenes', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Sijie Wang, Siqi Li, Yawei Zhang, Shangshu Yu, Shenghai Yuan, et al., Lihua Xie, Wee Peng Tay',
     org: 'Nanyang Technological University / Shanghai Jiao Tong University 等',
     venue: 'ICCV 2025',
@@ -449,6 +485,7 @@ const DATASETS = [
   {
     id: 'drift', name: 'DrIFT', year: 2025,
     access: 'open',
+    source: 'mixed',
     authors: 'Fardad Dadboud, Hamid Azad, Varun Mehta, Miodrag Bolic, Iraj Mantegh',
     org: 'University of Ottawa / NRC Canada',
     venue: 'WACV 2025',
@@ -461,6 +498,7 @@ const DATASETS = [
   {
     id: 'flyawarev2', name: 'FlyAwareV2', year: 2026,
     access: 'open',
+    source: 'mixed',
     authors: 'Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh',
     org: 'University of Padova',
     venue: 'Signal Processing: Image Communication (2026)',
@@ -473,6 +511,7 @@ const DATASETS = [
   {
     id: 'anyvisloc', name: 'AnyVisLoc', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Yibin Ye, Xichao Teng, Shuo Chen, Zhang Li, Leqi Liu, Qifeng Yu, Tao Tan',
     org: 'National University of Defense Technology / Macao Polytechnic University',
     venue: 'arXiv:2503.10692',
@@ -485,6 +524,7 @@ const DATASETS = [
   {
     id: 'lae-uav', name: 'LAE UAV', year: 2025,
     access: 'open',
+    source: 'sim',
     authors: 'Zhengru Fang, Zhenghao Liu, Jingjing Wang, Senkang Hu, et al., Yuguang Fang',
     org: 'City University of Hong Kong / Beihang University',
     venue: 'arXiv:2504.18317',
@@ -497,6 +537,7 @@ const DATASETS = [
   {
     id: 'neodrone', name: 'NeoDrone', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'NeoDrone 团队（北京市数据知识产权登记）',
     org: '北京 · 低空智能系统',
     venue: '北京市数据知识产权登记 (2025)',
@@ -509,6 +550,7 @@ const DATASETS = [
   {
     id: 'uav-lowalt-mot', name: 'UAV-LowAlt-MOT', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Xin Wang',
     org: 'Xidian University',
     venue: 'Science Data Bank / IEEE DataPort (2025)',
@@ -521,6 +563,7 @@ const DATASETS = [
   {
     id: 'visdrone', name: 'VisDrone', year: 2018,
     access: 'open',
+    source: 'real',
     authors: 'AISKYEYE team（Zhu, Wen, Bian, Ling, Liang, et al.）',
     org: 'Tianjin University',
     venue: 'ECCV Workshops 2018 / TPAMI 2021',
@@ -533,6 +576,7 @@ const DATASETS = [
   {
     id: 'dota', name: 'DOTA', year: 2018,
     access: 'open',
+    source: 'real',
     authors: 'Gui-Song Xia, Xiang Bai, Jian Ding, Zhen Zhu, Serge Belongie, et al.',
     org: 'Wuhan University',
     venue: 'CVPR 2018',
@@ -545,6 +589,7 @@ const DATASETS = [
   {
     id: 'uavdt', name: 'UAVDT', year: 2018,
     access: 'open',
+    source: 'real',
     authors: 'Dawei Du, Yuankai Qi, Hongyang Yu, Yifan Yang, et al.',
     org: 'Chinese Academy of Sciences 等',
     venue: 'ECCV 2018 / IJCV 2019',
@@ -558,6 +603,7 @@ const DATASETS = [
   {
     id: 'uav123', name: 'UAV123', year: 2016,
     access: 'open',
+    source: 'real',
     authors: 'Matthias Mueller, Neil Smith, Bernard Ghanem',
     org: 'King Abdullah University of Science and Technology (KAUST)',
     venue: 'ECCV 2016',
@@ -570,6 +616,7 @@ const DATASETS = [
   {
     id: 'mamimo-uav', name: 'MaMIMO-UAV 3D CSI', year: 2023,
     access: 'open',
+    source: 'real',
     authors: 'Achiel Colpaert, Cel Thys, Zhuangzhuang Cui, Sofie Pollin',
     org: 'KU Leuven (ESAT)',
     venue: 'IEEE TVT 73(5): 6061–6072 (2024) · KU Leuven RDR',
@@ -582,6 +629,7 @@ const DATASETS = [
   {
     id: 'mamimo-a2g-uav', name: '3D MaMIMO A2G UAV CSI', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Achiel Colpaert, Sofie Pollin',
     org: 'KU Leuven (ESAT)',
     venue: 'KU Leuven RDR (2025)',
@@ -594,6 +642,7 @@ const DATASETS = [
   {
     id: 'ku-leuven-drone-rf', name: 'KU Leuven Drone RF', year: 2024,
     access: 'open',
+    source: 'real',
     authors: 'Sanjoy Basak, Sofie Pollin, Bart Scheers',
     org: 'KU Leuven (ESAT) / Royal Military Academy',
     venue: 'KU Leuven RDR (2024) · ICACT 2023',
@@ -606,6 +655,7 @@ const DATASETS = [
   {
     id: 'lund-drone-audio', name: 'Lund UAV Audio', year: 2025,
     access: 'open',
+    source: 'real',
     authors: 'Erik Tegler, Max Modig, Per Skarin, Kalle Åström, Magnus Oskarsson, Gabrielle Flood',
     org: 'Lund University / SAAB',
     venue: 'CVPRW 2025 (Anti-UAV)',
@@ -618,6 +668,7 @@ const DATASETS = [
   {
     id: 'luvira', name: 'LuViRA', year: 2024,
     access: 'open',
+    source: 'real',
     authors: 'Ilayda Yaman, Guoda Tian, Martin Larsson, Patrik Persson, et al. (Lund University)',
     org: 'Lund University',
     venue: 'ICRA 2024 · arXiv:2302.05309',
@@ -633,6 +684,7 @@ const DATASETS = [
   {
     id: 'drone-rf-mendeley', name: 'DroneRF (Mendeley)', year: 2019,
     access: 'open',
+    source: 'real',
     authors: "Mohammad F. Al-Sa'd, Mhd Saria Allahham, Amr Mohamed, Abdulla Al-Ali, Tamer Khattab, Aiman Erbad",
     org: 'Qatar University',
     venue: 'Mendeley Data v1 (2019) · Future Generation Computer Systems 98: 259–269 (2019)',
@@ -646,6 +698,7 @@ const DATASETS = [
   {
     id: 'drone-detection-dregon', name: 'Drone-detection (DREGON)', year: 2021,
     access: 'open',
+    source: 'real',
     authors: 'Fredrik Svanström, Fernando Alonso-Fernandez, Cristofer Englund',
     org: 'Halmstad University (CAISR) / Swedish Armed Forces',
     venue: 'Data in Brief 39: 107521 (2021)',
@@ -658,6 +711,7 @@ const DATASETS = [
   {
     id: 'anti-uav300', name: 'Anti-UAV300', year: 2021,
     access: 'open',
+    source: 'real',
     authors: 'Nan Jiang, Kuiran Wang, Xiaoke Peng, Xuehui Yu, Qiang Wang, Junliang Xing, Guorong Li, Jian Zhao, Guodong Guo, Zhenjun Han',
     org: '中国科学院大学 / 北方电子设备研究所',
     venue: 'arXiv:2101.08466 · CVPR 2021 Workshop',
@@ -672,6 +726,7 @@ const DATASETS = [
   {
     id: 'mmaud', name: 'MMAUD', year: 2024,
     access: 'open',
+    source: 'real',
     authors: 'Shenghai Yuan, Yizhuo Yang, Thien Hoang Nguyen, Thien-Minh Nguyen, Jianfei Yang, Fen Liu, Jianping Li, Han Wang, Lihua Xie',
     org: 'Nanyang Technological University (NTU)',
     venue: 'ICRA 2024',
@@ -688,6 +743,7 @@ const DATASETS = [
   {
     id: 'isac-uav-ilmenau', name: 'ISAC UAV (TU Ilmenau)', year: 2023,
     access: 'request',
+    source: 'real',
     authors: 'Julia Beuster, Carsten Andrich, Michael Döbereiner, Steffen Schieler, Maximilian Engelhardt, Christian Schneider, Reiner Thomä',
     org: 'Technische Universität Ilmenau (EMS Group)',
     venue: 'EuCAP 2023',
@@ -702,6 +758,7 @@ const DATASETS = [
   {
     id: 'multifly', name: 'MultiFly', year: 2026,
     access: 'pending',
+    source: 'real',
     authors: 'Markus Gross, Andreas Greiner, Taehyoung Kim, Sivasubiramaniam Subbiah, Tomaž Cotič, Conrad Christoph, Oussema Dhaouadi, Simon Zieher, Surya Kumar, Gordon Elger, Henri Meeß, Olaf Wysocki, Paul Spannaus, Daniel Cremers',
     org: 'Fraunhofer IVI / TU Munich / University of Cambridge / TH Ingolstadt',
     venue: 'arXiv:2610.10359 (2026)',
@@ -716,6 +773,7 @@ const DATASETS = [
   {
     id: 'a2a-uav', name: 'A2A-UAV', year: 2026,
     access: 'preview',
+    source: 'real',
     authors: 'Hongtao Liang, Yiyao Wan, Kezhi Zhu, Jiayi Zhang, Zequn Jiang, Ziyu Zhou, Jiahuan Ji, Fuhui Zhou, Qihui Wu',
     org: 'Nanjing University of Aeronautics and Astronautics (NUAA) / HKUST',
     venue: 'arXiv:2611.21311 (2026)',
@@ -729,6 +787,7 @@ const DATASETS = [
   {
     id: 'drone-acoustic-16ch', name: '16-Ch UAV Acoustic', year: 2026,
     access: 'open',
+    source: 'real',
     authors: 'Huilong Wang, Peng Chen, Zhimin Chen, Yuye Liu',
     org: 'Southeast University / Shanghai Dianji University',
     venue: 'Zenodo (2026)',
@@ -741,6 +800,7 @@ const DATASETS = [
   {
     id: 'uav-flow', name: 'UAV-Flow', year: 2026,
     access: 'open',
+    source: 'mixed',
     authors: 'Donglin Yang, Xiangyu Wang, Yantong Zhong, Wenhao Zheng, Zihan Ding, Yue Liao, Hongsheng Li, Ke Xu, Si Liu',
     org: 'Beihang University / National University of Singapore / CUHK MMLab',
     venue: 'arXiv:2611.17163 (2026)',
@@ -755,6 +815,7 @@ const DATASETS = [
   {
     id: 'lambda', name: 'LAMBDA', year: 2026,
     access: 'open',
+    source: 'sim',
     authors: 'Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao',
     org: 'Shanghai Jiao Tong University',
     venue: 'arXiv:2607.03826 · Science Data Bank',
@@ -803,6 +864,16 @@ const ACCESS_LEVELS = {
 };
 function accessOf(ds) {
   return ACCESS_LEVELS[ds.access] || ACCESS_LEVELS.open;
+}
+
+/* Data-origin levels — 底层数据从哪来。每条都必须显式声明，不设默认值（gen.js 会校验） */
+const SOURCE_LEVELS = {
+  real:  { key: 'real',  label: '实测', note: '真实传感器 / 外场采集' },
+  mixed: { key: 'mixed', label: '混合', note: '真实采集与仿真 / 合成增强并用' },
+  sim:   { key: 'sim',   label: '仿真', note: '射线追踪、数字孪生或渲染器生成，无真实采集' }
+};
+function sourceOf(ds) {
+  return SOURCE_LEVELS[ds.source] || SOURCE_LEVELS.real;
 }
 
 /* datasets that involve low-altitude / UAV scenarios */
@@ -863,6 +934,7 @@ function cardHtml(ds) {
       <div class="badges">
         <span class="badge-year">${ds.year}</span>
         <span class="badge-csi csi-${csiOf(ds).key}" title="${csiOf(ds).note}">${csiOf(ds).label}</span>
+        <span class="badge-source src-${sourceOf(ds).key}" title="数据来源：${sourceOf(ds).note}">${sourceOf(ds).label}</span>
         ${accessOf(ds).key === 'open' ? '' :
           `<span class="badge-access acc-${accessOf(ds).key}" title="${accessOf(ds).note}">${accessOf(ds).label}</span>`}
         ${ds.self ? '<span class="badge-self">This work</span>' : ''}
@@ -936,6 +1008,15 @@ function renderMatrix() {
   $('#matrix-table-other').innerHTML = matrixHtml(gen);
   $('#mx-la-count').textContent  = la.length + ' 个';
   $('#mx-gen-count').textContent = gen.length + ' 个';
+
+  /* 数据来源统计：低空表逐档给出，通用表用一句带过 */
+  const cnt = (arr, k) => arr.filter(d => (d.source || 'real') === k).length;
+  const put = (sel, v) => { const el = $(sel); if (el) el.textContent = v; };
+  put('#src-la-real',  cnt(la, 'real'));
+  put('#src-la-mixed', cnt(la, 'mixed'));
+  put('#src-la-sim',   cnt(la, 'sim'));
+  put('#src-gen-note',
+    `通用 / 上游基准：实测 ${cnt(gen, 'real')} · 混合 ${cnt(gen, 'mixed')} · 仿真 ${cnt(gen, 'sim')}`);
 }
 
 /* ---------------- render: toolbar + stats ---------------- */
