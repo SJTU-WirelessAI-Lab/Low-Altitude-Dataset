@@ -9,7 +9,7 @@
 > 🌐 **在线浏览**：[sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset](https://sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset/)（可搜索、可筛选、含对比矩阵）。
 > 📦 **结构化数据**：[data/datasets.json](https://cdn.jsdelivr.net/gh/SJTU-WirelessAI-Lab/Low-Altitude-Dataset@main/data/datasets.json)（jsDelivr CDN，返回 `application/json`，可直接 fetch；CDN 有缓存延迟，数据更新以仓库内同路径文件为准）。
 
-**增长趋势**：截至 2026 年末，低空相关数据集累计 **47** 个，其中 **10** 个提供完整 MIMO 信道 CSI。下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。
+**增长趋势**：截至 2026 年末，低空相关数据集累计 **48** 个，其中 **11** 个提供完整 MIMO 信道 CSI。下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。
 
 ![低空数据集累计数量（2015–2026）](assets/timeline.svg)
 
@@ -28,15 +28,15 @@
 
 ## 数据集总览
 
-共 **60** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**；其中**低空相关 47 个**、**通用 / 上游基准 13 个**。
+共 **62** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**；其中**低空相关 48 个**、**通用 / 上游基准 14 个**。
 
 **信道级数据标注**：🟢 有 CSI（完整 MIMO 信道）、🟡 部分 CSI（实测信道测量，但未给完整 MIMO CSI）、🔵 仅射频信号（原始 I/Q 等射频采集，数据本身不含 CSI）、⚪ 均无。**CSI 与射频信号是两类不同模态**，不能互相替代：前者是信道估计结果，后者是接收机采到的原始波形 / 频谱。
 
-**获取方式**：默认标为 **开放下载**（官方页面公开提供，卡片上不另加徽章）；另有 4 种受限情形会单独标注——**仅预览**（只公开子集）、**需注册**（平台账号）、**需申请**（邮件 / 表单审批）、**未发布**（官方标注即将发布）。当前 60 条中：开放下载 54、仅预览 1、需注册 3、需申请 1、未发布 1。
+**获取方式**：默认标为 **开放下载**（官方页面公开提供，卡片上不另加徽章）；另有 4 种受限情形会单独标注——**仅预览**（只公开子集）、**需注册**（平台账号）、**需申请**（邮件 / 表单审批）、**未发布**（官方标注即将发布）。当前 62 条中：开放下载 56、仅预览 1、需注册 3、需申请 1、未发布 1。
 
-**数据来源**：**实测**（真实传感器 / 外场采集）、**混合**（真实与合成并用）、**仿真**（射线追踪 / 数字孪生 / 渲染器生成）。当前 60 条中实测 40、混合 8、仿真 12；其中低空相关 47 条为实测 36、混合 4、仿真 7。
+**数据来源**：**实测**（真实传感器 / 外场采集）、**混合**（真实与合成并用）、**仿真**（射线追踪 / 数字孪生 / 渲染器生成）。当前 62 条中实测 41、混合 8、仿真 13；其中低空相关 48 条为实测 36、混合 4、仿真 8。
 
-### 低空相关数据集（47 个）
+### 低空相关数据集（48 个）
 
 | # | 数据集 | 来源 | CSI | 射频 | 年份 | 作者 | 机构 | 官网 |
 |---|--------|:----:|:---:|:----:|------|------|------|------|
@@ -83,12 +83,13 @@
 | 41 | **ITU-ARIS Acoustic** | 实测 | ⚪ | · | 2026 | İhsan Mert Muhacıroğlu, Tayfun Akgül | Istanbul Technical University (ARIS Lab) | [链接](https://zenodo.org/records/22682339) |
 | 42 | **MultiFly** | 实测 | ⚪ | · | 2026 | Markus Gross, Andreas Greiner, Taehyoung Kim, Sivasubiramaniam Subbiah, Tomaž Cotič, Conrad Christoph, Oussema Dhaouadi, Simon Zieher, Surya Kumar, Gordon Elger, Henri Meeß, Olaf Wysocki, Paul Spannaus, Daniel Cremers | Fraunhofer IVI / TU Munich / University of Cambridge / TH Ingolstadt | [链接](https://markus-42.github.io/multifly/) |
 | 43 | **Multimodal-NF** | 仿真 | 🟢 | · | 2026 | Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin | Southeast University | [链接](https://lmyxxn.github.io/6GXLMIMODatasets/) |
-| 44 | **PML-CellularEye** | 实测 | 🟡 | 🔵 | 2026 | Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You | Purple Mountain Laboratories / Southeast University | [链接](https://github.com/ffxu1024/CellularEye_web) |
+| 44 | **PML-CellularEye** | 实测 | 🟡 | 🔵 | 2026 | Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You | Purple Mountain Laboratories / Southeast University | [链接](https://ffxu1024.github.io/CellularEye/) |
 | 45 | **SkyEV** | 实测 | ⚪ | · | 2026 | Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno | ETH Zurich | [链接](https://arxiv.org/abs/2607.18747) |
 | 46 | **UAV-Flow** | 混合 | ⚪ | · | 2026 | Donglin Yang, Xiangyu Wang, Yantong Zhong, Wenhao Zheng, Zihan Ding, Yue Liao, Hongsheng Li, Ke Xu, Si Liu | Beihang University / National University of Singapore / CUHK MMLab | [链接](https://prince687028.github.io/UAV-Flow/) |
-| 47 | **LAMBDA** ⭐ | 仿真 | 🟢 | · | 2026 | Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.36052) |
+| 47 | **Huangpu River Water–Air** ⭐ | 仿真 | 🟢 | · | 2026 | Haofeng Zhong, Jianhua Mo | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.0130w) |
+| 48 | **LAMBDA** ⭐ | 仿真 | 🟢 | · | 2026 | Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.36052) |
 
-### 通用 / 上游基准数据集（13 个）
+### 通用 / 上游基准数据集（14 个）
 
 以下数据集**完全不含低空 / UAV 场景**，多为地面视角感知或纯信道 / 电磁数据集，作为上游经典基准一并列出，不与低空场景条目混排。
 
@@ -107,8 +108,9 @@
 | 11 | **Multimodal-Wireless** | 仿真 | 🟢 | · | 2025 | Tianhao Mao, Le Liang, Jie Yang, Hao Ye, Shi Jin, Geoffrey Ye Li | Southeast University / Imperial College London | [链接](https://le-liang.github.io/mmw) |
 | 12 | **EM-134K** | 混合 | ⚪ | 🔵 | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun | Tsinghua University / BUPT / Tianjin University / IMECAS 等 | [链接](https://em-merlin.github.io/) |
 | 13 | **EM-Bench** | 混合 | ⚪ | 🔵 | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun | Tsinghua University / BUPT / Tianjin University / IMECAS 等 | [链接](https://em-merlin.github.io/) |
+| 14 | **U6G-WISE** | 实测 | 🟢 | · | 2026 | Yijia Feng, Hanzhong Zhang, Tao Tao, Ting Zhou, Yang Wang, Dong Li, Yunbo Hu, Zhenghang Zhu, Mingrui Zhu, Shuang Chen, Zhi Wang, Guangxing Li, Jingxin Liu, Liyu Cai | Shanghai Academy of Networked Intelligence / Shanghai University / Transcom Technologies | [链接](https://doi.org/10.57760/sciencedb.01a31) |
 
-**获取受限的 6 条**（其余 54 条可在官网直接下载）：
+**获取受限的 6 条**（其余 56 条可在官网直接下载）：
 
 | 数据集 | 年份 | 获取方式 | 说明 |
 |---|---|---|---|
@@ -129,7 +131,7 @@
 
 > **关于图标**：Markdown 表格无法填充单元格底色（GitHub、GitLab、VS Code 都会过滤 `style` 与 `bgcolor`），故每格用一个 20×20 的图标表示覆盖情况，配色与网页版一致：深绿 = 包含、琥珀 = 部分支持、浅灰 = 缺失或不适用。
 
-### 低空相关数据集（47 个）
+### 低空相关数据集（48 个）
 
 | 数据集 | 年份 | 低空 | CSI信道 | 射频信号 | RGB/深度 | 红外 | LiDAR | 雷达 | IMU/GPS | 天气/时间 | 声学 | 主要关注点 |
 |--------|------|:----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----:|------------|
@@ -179,9 +181,10 @@
 | 🟡 PML-CellularEye | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 实测基站侧低空ISAC数据（含可见光/红外视频） |
 | ⚪ SkyEV | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | RGB-事件相机同步的无人机检测与跟踪数据集 |
 | ⚪ UAV-Flow | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face） |
+| 🟢 **Huangpu River Water–Air ⭐** | 2026 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台）** |
 | 🟢 **LAMBDA ⭐** | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **低空多模态通感一体化基础数据集** |
 
-### 通用 / 上游基准数据集（13 个）
+### 通用 / 上游基准数据集（14 个）
 
 | 数据集 | 年份 | 低空 | CSI信道 | 射频信号 | RGB/深度 | 红外 | LiDAR | 雷达 | IMU/GPS | 天气/时间 | 声学 | 主要关注点 |
 |--------|------|:----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----:|------------|
@@ -198,12 +201,13 @@
 | 🟢 Multimodal-Wireless | 2025 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | V2X多模态通信与感知 |
 | 🔵 EM-134K | 2026 | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 电磁信号-文本配对预训练集（13.4万对，源自3500万信号） |
 | 🔵 EM-Bench | 2026 | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 电磁信号理解与推理评测基准（4200+问答，3级14子任务） |
+| 🟢 U6G-WISE | 2026 | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 上海智联信息技术研究院与上海大学：上6GHz（6425–7125 MHz）实测多模态信道测量数据集（44000+样本、室内20余类场景，同步无线信道测量、图像与LiDAR点云） |
 
 ---
 
 ## 数据集详情
 
-### 低空相关数据集（47 个）
+### 低空相关数据集（48 个）
 
 #### 1. UAV123 (2016)  ⚪
 - **作者**：Matthias Mueller, Neil Smith, Bernard Ghanem
@@ -682,12 +686,12 @@
 - **作者**：Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You
 - **机构**：Purple Mountain Laboratories / Southeast University
 - **出处**：Science China Information Sciences 69(6):167301 (2026) · [论文](https://doi.org/10.1007/s11432-026-4923-1)
-- **官网**：[主链接](https://github.com/ffxu1024/CellularEye_web)
+- **官网**：[主链接](https://ffxu1024.github.io/CellularEye/) ｜ [备用](https://github.com/ffxu1024/CellularEye)
 - **CSI**：部分 CSI（实测信道测量，但未给完整 MIMO CSI）
 - **射频信号**：有 —— 提供原始射频采集（原始 I/Q、频谱、信号片段等）
 - **数据来源**：实测 —— 真实传感器 / 外场采集
 - **获取方式**：开放下载 —— 官方页面公开提供下载
-- **说明**：基于商用 5G/5G-A 基站设备的实测多模态数据集，含 IQ、可见光/红外视频与气象数据。
+- **说明**：基于商用 5G/5G-A 基站设备的实测多模态数据集，含 IQ、可见光/红外视频与气象数据。CSI 以距离域形式随 I/Q 归档，用官方工具包做一次 FFT 即还原为子载波×慢时间的复数 CSI；但采集按 30 波束分时扫描、每波束单 OFDM 符号单接收通道，不含 MIMO 天线对维度，故记为部分 CSI。数据托管于 ScienceDB（DOI: 10.57760/sciencedb.018bv，约 2.7 TB，CC BY-NC 4.0），工具包与格式说明见官网与备用链接。
 
 #### 45. SkyEV (2026)  ⚪
 - **作者**：Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno
@@ -711,7 +715,18 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：北京航空航天大学联合新加坡国立大学与香港中文大学 MMLab 发布的语言引导无人机飞行基准（Flow / Flying-on-a-Word 任务）：含 30,692 条由持证飞行员在 3 座校园（约 5.02 km²）遥控采集的真实轨迹与 10,109 条 UAV-Flow-Sim 仿真轨迹，覆盖平移、旋转、悬停、后退、环绕、靠近、穿过、降落 8 类动作、100 余小时第一视角视频；每条样本对齐自然语言指令、机载 FPV 图像、6-DoF 位姿与 RTK 定位及连续动作，并提供闭环仿真评测协议。真值采集平台为 DJI Mavic 3T RTK。
 
-#### 47. LAMBDA (2026) ⭐  🟢
+#### 47. Huangpu River Water–Air (2026) ⭐  🟢
+- **作者**：Haofeng Zhong, Jianhua Mo
+- **机构**：Shanghai Jiao Tong University
+- **出处**：Science Data Bank V3 (2026)
+- **官网**：[主链接](https://doi.org/10.57760/sciencedb.0130w) ｜ [备用](https://www.scidb.cn/en/detail?dataSetId=b84d794e94634d3e80e63422df4fb07b&version=V3)
+- **CSI**：有 CSI（完整 MIMO 信道）
+- **射频信号**：无
+- **数据来源**：仿真 —— 射线追踪、数字孪生或渲染器生成，无真实采集
+- **获取方式**：开放下载 —— 官方页面公开提供下载
+- **说明**：上海交通大学 Wireless AI 团队构建的黄浦江水域-低空一体化多模态感知仿真数据集：以 Unreal Engine 5 还原黄浦江三维场景，配合 ASVSim 模拟岸基基站与船舶的运动、水动力与多传感器输出，再由 Sionna RT 依据同帧位姿做电磁射线追踪，生成**多频段复数 CSI 及其传播路径参数**（保留未归一化的原始复信道系数，便于跨频段信道建模与对比）。模态含 RGB、深度、GPS/位姿、LiDAR 点云、雷达点云，以及晴/雨/云/雾/雪与不同时段等天气条件；提供相遇与追踪两类运动场景，并要求按船号 + 同一帧号跨模态读取。约 375 GB，V1 于 2026-09-20 发布、V3 于 2026-10-30 更新（CC BY 4.0）。**当前版本场景为岸基基站与船舶，水空协同框架已支持接入无人机平台但尚未纳入飞行数据**，故低空模态记为有限支持。
+
+#### 48. LAMBDA (2026) ⭐  🟢
 - **作者**：Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao
 - **机构**：Shanghai Jiao Tong University
 - **出处**：arXiv:2607.03826 · Science Data Bank · [论文](https://arxiv.org/abs/2607.03826)
@@ -722,7 +737,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：低空多模态基础数据集，通过高保真数字孪生流水线生成，同步 RGB、深度、LiDAR、IMU、UAV 位姿、CSI 与雷达资源，覆盖城市/郊区/园区场景与晴雨雪雾天气。
 
-### 通用 / 上游基准数据集（13 个）
+### 通用 / 上游基准数据集（14 个）
 
 #### 1. KITTI (2012)  ⚪
 - **作者**：Andreas Geiger, Philip Lenz, Raquel Urtasun
@@ -866,6 +881,17 @@
 - **数据来源**：混合 —— 真实采集与仿真 / 合成增强并用
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：电磁信号**理解与推理评测基准**，含 4200+ 条专家校验问答，按 3 个层级、14 个子任务组织：感知（信号刻画、干扰识别、片段检测）与推理（雷达/通信场景下的干扰与抗干扰策略生成）。
+
+#### 14. U6G-WISE (2026)  🟢
+- **作者**：Yijia Feng, Hanzhong Zhang, Tao Tao, Ting Zhou, Yang Wang, Dong Li, Yunbo Hu, Zhenghang Zhu, Mingrui Zhu, Shuang Chen, Zhi Wang, Guangxing Li, Jingxin Liu, Liyu Cai
+- **机构**：Shanghai Academy of Networked Intelligence / Shanghai University / Transcom Technologies
+- **出处**：Science Data Bank V1 (2026)
+- **官网**：[主链接](https://doi.org/10.57760/sciencedb.01a31) ｜ [备用](https://www.scidb.cn/en/detail?dataSetId=b234b4646bf34e95bf401365bd2b1bf0)
+- **CSI**：有 CSI（完整 MIMO 信道）
+- **射频信号**：无
+- **数据来源**：实测 —— 真实传感器 / 外场采集
+- **获取方式**：开放下载 —— 官方页面公开提供下载
+- **说明**：上海智联信息技术研究院与上海大学联合发布的上6GHz频段实测多模态数据集（U6G-WISE：Wireless, Imaging, and Spatial Sensing of Environments）：44000+ 样本、20 余类室内场景与无线配置，同步无线信道测量、场景图像与 LiDAR 点云，面向 6G 无线 AI 从仿真走向实测、从单模态走向多模态的环境-信道联合建模。V1 于 2026-11-23 上线（CC BY 4.0），官方表示将持续扩充。**场景为室内，不含低空/UAV**，故归入通用/上游基准。
 
 ---
 

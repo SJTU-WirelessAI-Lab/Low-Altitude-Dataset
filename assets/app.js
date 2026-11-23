@@ -214,7 +214,8 @@ const DATASETS = [
     authors: 'Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You',
     org: 'Purple Mountain Laboratories / Southeast University',
     venue: 'Science China Information Sciences 69(6):167301 (2026)',
-    site: 'https://github.com/ffxu1024/CellularEye_web',
+    site: 'https://ffxu1024.github.io/CellularEye/',
+    siteAlt: 'https://github.com/ffxu1024/CellularEye',
     paper: 'https://doi.org/10.1007/s11432-026-4923-1',
     focusZh: '实测基站侧低空ISAC数据（含可见光/红外视频）',
     focusEn: 'Real-world BS-side low-altitude ISAC data',
@@ -813,6 +814,35 @@ const DATASETS = [
     focusZh: '北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face）',
     focusEn: 'Language-guided UAV flight benchmark',
     modality: { la: 1, csi: 0, rf: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'u6g-wise', name: 'U6G-WISE', year: 2026,
+    access: 'open',
+    source: 'real',
+    authors: 'Yijia Feng, Hanzhong Zhang, Tao Tao, Ting Zhou, Yang Wang, Dong Li, Yunbo Hu, Zhenghang Zhu, Mingrui Zhu, Shuang Chen, Zhi Wang, Guangxing Li, Jingxin Liu, Liyu Cai',
+    org: 'Shanghai Academy of Networked Intelligence / Shanghai University / Transcom Technologies',
+    venue: 'Science Data Bank V1 (2026)',
+    site: 'https://doi.org/10.57760/sciencedb.01a31',
+    siteAlt: 'https://www.scidb.cn/en/detail?dataSetId=b234b4646bf34e95bf401365bd2b1bf0',
+    focusZh: '上海智联信息技术研究院与上海大学：上6GHz（6425–7125 MHz）实测多模态信道测量数据集（44000+样本、室内20余类场景，同步无线信道测量、图像与LiDAR点云）',
+    focusEn: 'Measured U6G multimodal channel dataset (44k+ samples, 20+ indoor scenes)',
+    modality: { la: 0, csi: 1, rf: 0, rgb: 1, ir: 0, lidar: 1, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'huangpu-river', name: 'Huangpu River Water–Air', year: 2026,
+    access: 'open',
+    source: 'sim',
+    authors: 'Haofeng Zhong, Jianhua Mo',
+    org: 'Shanghai Jiao Tong University',
+    venue: 'Science Data Bank V3 (2026)',
+    site: 'https://doi.org/10.57760/sciencedb.0130w',
+    siteAlt: 'https://www.scidb.cn/en/detail?dataSetId=b84d794e94634d3e80e63422df4fb07b&version=V3',
+    focusZh: '上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台）',
+    focusEn: 'Huangpu River water–air multimodal perception simulation dataset',
+    modality: { la: .5, csi: 1, rf: 0, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 },
+    self: true
   },
 
   {
