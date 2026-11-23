@@ -1081,16 +1081,13 @@ function renderStats() {
   const laRf  = DATASETS.filter(ds => isLowAlt(ds) && ds.modality.rf > 0).length;
   const years = DATASETS.map(d => d.year);
   const span = `${Math.min(...years)}\u2013${Math.max(...years)}`;
-  const core = MODALITIES.filter(m => m.core);
-  const full = DATASETS.filter(d => core.every(m => d.modality[m.key] === 1)).length;
   const cells = [
     ['收录数据集', total],
     ['低空相关', la],
     ['通用 / 上游基准', gen],
     ['低空且含 CSI', laCsi],
     ['低空且含射频信号', laRf],
-    ['时间跨度', span],
-    ['全模态覆盖', full]
+    ['时间跨度', span]
   ];
   $('#stats').innerHTML = cells.map(([l, v]) =>
     `<div class="stat"><div class="num${String(v).length > 6 ? ' long' : ''}">${v}</div><div class="lbl">${l}</div></div>`).join('');

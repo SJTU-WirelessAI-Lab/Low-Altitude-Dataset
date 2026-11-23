@@ -176,7 +176,7 @@ section { padding: 52px 0; }
 .chip:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
 .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 6px rgba(29, 78, 216, .22); }
 .chip small { font-size: 11px; opacity: .72; }
-/* 补充模态（射频、红外、声学）：虚线边框以后者区分，不参与「全模态覆盖」统计 */
+/* 补充模态（射频、红外、声学）：虚线边框以后者区分 */
 .chip.sub { border-style: dashed; background: transparent; }
 .chip.sub:hover { border-style: solid; background: #fff; }
 /* 选中态必须压过 .chip.sub 的 transparent，否则 accent 底被盖掉、白字看不见 */

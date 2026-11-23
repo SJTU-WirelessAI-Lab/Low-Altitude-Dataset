@@ -125,7 +125,7 @@
 
 ## 模态覆盖对比矩阵
 
-模态覆盖对照 LAMBDA 论文表1（并含补充收录的数据集）：![包含](assets/icon-yes.svg) 包含；![部分支持](assets/icon-part.svg) 有限或部分支持；![缺失或不适用](assets/icon-none.svg) 缺失或不适用。「全模态覆盖」统计针对 7 类核心模态（不含射频信号、红外与声学），当前为 **1** 个——均为**仿真生成**。数据集名称前的圆点表示**信道级数据**（🟢 完整 CSI / 🟡 部分 CSI / 🔵 仅射频信号 / ⚪ 均无）。
+模态覆盖对照 LAMBDA 论文表1（并含补充收录的数据集）：![包含](assets/icon-yes.svg) 包含；![部分支持](assets/icon-part.svg) 有限或部分支持；![缺失或不适用](assets/icon-none.svg) 缺失或不适用。数据集名称前的圆点表示**信道级数据**（🟢 完整 CSI / 🟡 部分 CSI / 🔵 仅射频信号 / ⚪ 均无）。
 
 > **阅读提示**：仿真集的模态覆盖系统性高于实测集——仿真器可任意开模态，实测受设备配置与多传感器硬同步限制。若关注可直接复现的实测数据，建议同时看「来源」列与「CSI」列，两者叠加后的可选面比总表窄得多。
 
@@ -902,7 +902,7 @@
 - **获取方式（`access` 字段）**：`open` 为默认档——官方页面公开提供下载，页面卡片不另加徽章；`preview`（仅预览子集）、`register`（需平台账号）、`request`（需申请审批）、`pending`（尚未发布）四档会在卡片上标出，并集中列于「获取受限」表。该字段只记录**获取门槛**，不等同于许可条款——各数据集的许可证（CC BY、CC BY-NC、自定义学术用途等）请以官网为准。
 - **数据来源（`source` 字段）**：`real` 实测——真实传感器 / 外场采集；`mixed` 混合——真实采集与合成增强并用；`sim` 仿真——射线追踪、数字孪生或渲染器生成，无真实采集。判定口径看**底层数据是否来自真实传感器采集**：由实测 I/Q 处理出的微多普勒谱图仍算实测（如 MathWorks Radar Drone），纯渲染 / 射线追踪生成的一律算仿真（LAMBDA、Sensiverse、DeepVerse 6G、SynthSoM、Great-MSD、Multimodal-NF、LAE UAV），真实与合成拼接的算混合（DrIFT、FlyAwareV2、UAV-Flow、CageDroneRF）。每条都必须显式声明，`gen.js` 生成时会校验缺失或非法取值。
 - **信道级数据颜色标注**：🟢 有 CSI —— 提供完整 MIMO 信道 CSI（含仿真射线追踪与实测信道）；🟡 部分 CSI —— 有实测信道测量（波束 SNR、功率时延谱、下行信道传递函数等），但未给完整 MIMO CSI；🔵 仅射频信号 —— 数据是接收机采到的射频波形 / 频谱（原始 I/Q、距离-多普勒图等），**本身不含 CSI**，矩阵中 `CSI` 列为 `×`、`射频信号` 列为 `✓`；⚪ 均无 —— 既无 CSI 也无射频采集数据。同一颜色同时体现在总览表、矩阵表名称前的圆点与详情条目。
-- **核心模态与补充模态**：核心模态为低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间 7 类；**射频信号**、**红外**与**声学**为补充模态（页面筛选条中以虚线边框区分），不计入「全模态覆盖」统计。射频信号见于 DroneRF 系列、RFUAV、CageDroneRF、KU Leuven Drone RF、EM-134K / EM-Bench、LIPASE、AERPAW、PML-CellularEye（后两条同时含 CSI）与 Cross-layer UAV 6G（仅 KPI）；红外见于 Anti-UAV300、Drone-detection、NeoDrone 与 PML-CellularEye（部分）；声学见于 DroneRFc-MM、Drone-detection、LuViRA、ITU-ARIS Acoustic、DADS 与 Lund UAV Audio。
+- **核心模态与补充模态**：核心模态为低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间 7 类；**射频信号**、**红外**与**声学**为补充模态（页面筛选条中以虚线边框区分）。射频信号见于 DroneRF 系列、RFUAV、CageDroneRF、KU Leuven Drone RF、EM-134K / EM-Bench、LIPASE、AERPAW、PML-CellularEye（后两条同时含 CSI）与 Cross-layer UAV 6G（仅 KPI）；红外见于 Anti-UAV300、Drone-detection、NeoDrone 与 PML-CellularEye（部分）；声学见于 DroneRFc-MM、Drone-detection、LuViRA、ITU-ARIS Acoustic、DADS 与 Lund UAV Audio。
 - **年份**：以 LAMBDA 论文表1 为准；个别数据集论文发表年与数据集发布年不同，已在详情中注明出处。
 - **链接**：优先给出数据集官方主页；如官网不稳定，另附备用镜像或代码仓库链接。
 - **范围**：聚焦低空/UAV 通感一体化相关，同时收录必要的上游经典基准（如 KITTI、DeepMIMO 等）、低空安防常用的射频/雷达探测数据集（DroneRF 系列、RFUAV、LSS-FMCWR 等）与电磁信号理解数据集（EM-134K / EM-Bench）。
