@@ -4,7 +4,7 @@
     "titleZh": "低空数据集",
     "source": "LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication (arXiv:2607.03826), Table 1 + curator-verified additions",
     "sourceUrl": "https://arxiv.org/abs/2607.03826",
-    "generated": "2026-11-22",
+    "generated": "2026-11-23",
     "legend": {
       "0": "absent or not applicable",
       "1": "included",
@@ -16,7 +16,8 @@
     },
     "csiLegend": {
       "full": "有 CSI（完整 MIMO 信道）",
-      "part": "部分 CSI（原始 I/Q 等）",
+      "part": "部分 CSI（实测信道测量，未给完整 MIMO CSI）",
+      "rf": "仅射频信号（原始 I/Q 等，无 CSI）",
       "none": "无 CSI"
     },
     "accessLegend": {
@@ -44,6 +45,12 @@
       "zh": "CSI信道",
       "en": "CSI",
       "core": true
+    },
+    {
+      "key": "rf",
+      "zh": "射频信号",
+      "en": "RF",
+      "core": false
     },
     {
       "key": "rgb",
@@ -105,6 +112,7 @@
       "modality": {
         "la": 0,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -132,6 +140,7 @@
       "modality": {
         "la": 0,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -159,6 +168,7 @@
       "modality": {
         "la": 0,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0.5,
@@ -186,6 +196,7 @@
       "modality": {
         "la": 0,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -214,6 +225,7 @@
       "modality": {
         "la": 0,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -241,6 +253,7 @@
       "modality": {
         "la": 0,
         "csi": 0.5,
+        "rf": 0,
         "rgb": 0.5,
         "ir": 0,
         "lidar": 1,
@@ -268,6 +281,7 @@
       "modality": {
         "la": 0,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -295,6 +309,7 @@
       "modality": {
         "la": 0,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -322,6 +337,7 @@
       "modality": {
         "la": 0.5,
         "csi": 0.5,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -349,6 +365,7 @@
       "modality": {
         "la": 0,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -377,6 +394,7 @@
       "modality": {
         "la": 0.5,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0.5,
@@ -405,6 +423,7 @@
       "modality": {
         "la": 0.5,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -432,6 +451,7 @@
       "modality": {
         "la": 0,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -459,6 +479,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -486,6 +507,7 @@
       "modality": {
         "la": 1,
         "csi": 0.5,
+        "rf": 1,
         "rgb": 0.5,
         "ir": 0.5,
         "lidar": 0,
@@ -513,7 +535,8 @@
       "focusEn": "Large-scale drone RF signals for low-altitude detection",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -523,7 +546,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "dronerfb-dir",
@@ -540,7 +563,8 @@
       "focusEn": "Non-cooperative drone individual identification",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -550,7 +574,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "dronerfc-mm",
@@ -567,7 +591,8 @@
       "focusEn": "Anti-UAV multimodal measured dataset",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -577,7 +602,7 @@
         "acoustic": 1
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "em-134k",
@@ -594,7 +619,8 @@
       "focusEn": "EM signal-text pair corpus for MLLM pre-training",
       "modality": {
         "la": 0,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -604,7 +630,7 @@
         "acoustic": 0
       },
       "group": "general",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "em-bench",
@@ -621,7 +647,8 @@
       "focusEn": "EM signal perception & reasoning benchmark",
       "modality": {
         "la": 0,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -631,7 +658,7 @@
         "acoustic": 0
       },
       "group": "general",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "great-msd",
@@ -649,6 +676,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -676,6 +704,7 @@
       "modality": {
         "la": 0.5,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -702,7 +731,8 @@
       "focusEn": "Cross-layer UAV measurements over a 5G testbed",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 0.5,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -712,7 +742,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "aerpaw",
@@ -730,6 +760,7 @@
       "modality": {
         "la": 1,
         "csi": 0.5,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -756,7 +787,8 @@
       "focusEn": "Passive UAV tracking with LTE downlink & digital arrays",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -766,7 +798,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "drone-swarm-sounding",
@@ -784,6 +816,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -810,7 +843,8 @@
       "focusEn": "Large-scale RF drone fingerprint benchmark",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -820,7 +854,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "cagedronerf",
@@ -837,7 +871,8 @@
       "focusEn": "RF drone detection benchmark with synthetic augmentation",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -847,7 +882,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "skyev",
@@ -865,6 +900,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -892,6 +928,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -919,6 +956,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -946,6 +984,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -973,6 +1012,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1001,6 +1041,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1028,6 +1069,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -1055,6 +1097,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1082,6 +1125,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1109,6 +1153,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1136,6 +1181,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1163,6 +1209,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 1,
         "lidar": 0,
@@ -1190,6 +1237,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1217,6 +1265,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1244,6 +1293,7 @@
       "modality": {
         "la": 0.5,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1272,6 +1322,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1299,6 +1350,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1326,6 +1378,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1353,6 +1406,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1379,7 +1433,8 @@
       "focusEn": "Drone RF I/Q in a semi-anechoic chamber",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1389,7 +1444,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "lund-drone-audio",
@@ -1407,6 +1462,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1434,6 +1490,7 @@
       "modality": {
         "la": 0,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1461,7 +1518,8 @@
       "focusEn": "RF raw I/Q of three drones in multiple flight modes",
       "modality": {
         "la": 1,
-        "csi": 0.5,
+        "csi": 0,
+        "rf": 1,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1471,7 +1529,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "part"
+      "csiLevel": "rf"
     },
     {
       "id": "drone-detection-dregon",
@@ -1489,6 +1547,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 1,
         "lidar": 0,
@@ -1517,6 +1576,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 1,
         "lidar": 0,
@@ -1545,6 +1605,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,
@@ -1573,6 +1634,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1601,6 +1663,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 1,
         "lidar": 1,
@@ -1628,6 +1691,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 1,
         "lidar": 0,
@@ -1654,6 +1718,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 0,
         "ir": 0,
         "lidar": 0,
@@ -1682,6 +1747,7 @@
       "modality": {
         "la": 1,
         "csi": 0,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 0,
@@ -1709,6 +1775,7 @@
       "modality": {
         "la": 1,
         "csi": 1,
+        "rf": 0,
         "rgb": 1,
         "ir": 0,
         "lidar": 1,

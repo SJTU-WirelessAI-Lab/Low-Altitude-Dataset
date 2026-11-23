@@ -93,7 +93,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2><span class="idx">02</span>模态覆盖对比矩阵</h2>
-      <p>模态覆盖对照 LAMBDA 论文表1，并含编者补充收录的数据集。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用；单元格底色同步区分：<strong>浅青绿</strong>为包含、<strong>浅琥珀</strong>为部分支持、<strong>留白</strong>为缺失或不适用。表格按<strong>是否涉及低空场景</strong>拆为两张。</p>
+      <p>模态覆盖对照 LAMBDA 论文表1，并含编者补充收录的数据集。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用；单元格底色同步区分：<strong>浅青绿</strong>为包含、<strong>浅琥珀</strong>为部分支持、<strong>留白</strong>为缺失或不适用。表格按<strong>是否涉及低空场景</strong>拆为两张。「CSI 信道」与「射频信号」是两类不同模态——前者为信道估计结果，后者为原始 I/Q、频谱等射频采集，二者互不替代。</p>
     </div>
 
     <div class="mx-legend">
@@ -104,10 +104,11 @@
         <span><b class="mark n" style="width:20px;height:20px;font-size:11px">&#215;</b> 缺失 / 不适用</span>
       </div>
       <div class="legend-row">
-        <span class="legend-label">CSI 颜色</span>
+        <span class="legend-label">信道级数据</span>
         <span class="csi-key csi-full">有 CSI（完整 MIMO 信道）</span>
-        <span class="csi-key csi-part">部分 CSI（原始 I/Q 等）</span>
-        <span class="csi-key csi-none">无 CSI</span>
+        <span class="csi-key csi-part">部分 CSI（实测信道测量）</span>
+        <span class="csi-key csi-rf">射频信号（原始 I/Q，无 CSI）</span>
+        <span class="csi-key csi-none">均无</span>
       </div>
       <div class="legend-row wide">
         <span class="legend-label">数据来源（低空）</span>
@@ -121,7 +122,7 @@
     <div class="mx-group">
       <div class="mx-head">
         <h3>低空相关数据集 <span class="cnt" id="mx-la-count"></span></h3>
-        <p>含无人机 / UAV 或低空场景的数据集；名称左侧色条与 CSI 列底色表示信道数据可得性。</p>
+        <p>含无人机 / UAV 或低空场景的数据集；名称左侧色条表示信道级数据：<strong>完整 CSI</strong> / <strong>部分 CSI</strong> / <strong>仅射频信号</strong>（无 CSI）/ 均无。</p>
       </div>
       <div class="matrix-wrap">
         <div class="matrix-scroll">
@@ -160,12 +161,12 @@
         <ul>
           <li>共 <strong>60</strong> 个数据集（含本文 LAMBDA）：<strong>低空相关 47</strong> 个、<strong>通用/上游基准 13</strong> 个</li>
           <li>时间跨度 2012–2026</li>
-          <li>标注 9 类模态：7 类核心模态（低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间）+ 2 类补充模态（红外、声学）</li>
-          <li>低空相关数据集按 <strong>CSI 可得性</strong>着色：完整 MIMO 信道 / 部分（原始 I/Q 等）/ 无 CSI</li>
+          <li>标注 10 类模态：7 类核心模态（低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间）+ 3 类补充模态（射频信号、红外、声学）</li>
+          <li>低空相关数据集按<strong>信道级数据</strong>着色：完整 MIMO 信道 / 部分信道测量 / <strong>仅射频信号</strong>（原始 I/Q 等，无 CSI）/ 均无</li>
           <li>另标注 <strong>获取方式</strong>：默认开放下载，非开放的 6 条（仅预览 / 需注册 / 需申请 / 未发布）在卡片上以徽章单独提示</li>
           <li>另标注 <strong>数据来源</strong>：<strong>实测</strong>（真实传感器 / 外场采集）、<strong>混合</strong>（真实与合成并用）、<strong>仿真</strong>（射线追踪 / 数字孪生 / 渲染器生成），卡片徽章与矩阵图例同步显示</li>
           <li>以 LAMBDA 表1 为基准，另补充收录 ISAC 仿真/实测、射频与雷达探测、红外/可见光探测、声学、视觉多模态等方向的公开数据集（含 KU Leuven、隆德大学等团队的低空实测数据）</li>
-          <li>「全模态覆盖」统计针对 7 类核心模态（低空、CSI、RGB、LiDAR、雷达、IMU、天气），不含红外与声学</li>
+          <li>「全模态覆盖」统计针对 7 类核心模态（低空、CSI、RGB、LiDAR、雷达、IMU、天气），不含射频信号、红外与声学</li>
         </ul>
       </div>
       <div class="panel">

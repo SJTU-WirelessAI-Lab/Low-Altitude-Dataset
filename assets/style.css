@@ -120,6 +120,7 @@ a:hover { text-decoration: underline; }
   border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow-sm);
 }
 .stat .num { font-size: 26px; font-weight: 750; letter-spacing: -.02em; color: var(--text); line-height: 1.1; }
+.stat .num.long { font-size: 19px; letter-spacing: -.01em; }
 .stat .lbl { font-size: 12.5px; color: var(--text-3); margin-top: 3px; font-weight: 500; }
 
 /* ---------- sections ---------- */
@@ -164,11 +165,11 @@ section { padding: 52px 0; }
 .field select:focus { outline: none; border-color: var(--accent); }
 
 .filter-label { font-size: 12.5px; color: var(--text-3); font-weight: 600; min-width: 62px; }
-.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
 
 .chip {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 550;
+  padding: 6px 10px; border-radius: 999px; font-size: 13px; font-weight: 550;
   border: 1px solid var(--border-strong); background: var(--surface-2); color: var(--text-2);
   cursor: pointer; user-select: none; transition: all .14s;
 }
@@ -381,6 +382,8 @@ table.matrix td.cell-n { background: transparent; }
 .csi-key.csi-part::before { background: #f0a02a; }
 .csi-key.csi-none { background: #f1f2f5; color: var(--text-3); border-color: #e0e3e9; }
 .csi-key.csi-none::before { background: #cbd0d9; }
+.csi-key.csi-rf { background: #e9edfd; color: #3b53b8; border-color: #d3dbfa; }
+.csi-key.csi-rf::before { background: #5b7cf0; }
 
 /* matrix cells tinted by CSI availability */
 table.matrix td.csi-cell.csi-full { background: rgba(20, 184, 166, .12); }
@@ -395,12 +398,14 @@ table.matrix td.name.csi-bar::before {
 table.matrix td.name.csi-bar.csi-full::before { background: #14b8a6; }
 table.matrix td.name.csi-bar.csi-part::before { background: #f0a02a; }
 table.matrix td.name.csi-bar.csi-none::before { background: #cbd0d9; }
+table.matrix td.name.csi-bar.csi-rf::before { background: #5b7cf0; }
 
 /* card CSI badge */
 .badge-csi { font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
 .badge-csi.csi-full { background: #e2f5f2; color: #0f6e56; }
 .badge-csi.csi-part { background: var(--warn-soft); color: var(--warn); }
 .badge-csi.csi-none { background: #f1f2f5; color: var(--text-3); }
+.badge-csi.csi-rf { background: #e9edfd; color: #3b53b8; }
 
 /* access badges — 只在非「开放下载」时出现 */
 .badge-access { font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
