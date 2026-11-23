@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" role="img" aria-label="2015 至 2026 年低空数据集累计数量：全部由 0 增至 47 个，其中含完整 CSI 的为 10 个">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" role="img" aria-label="2015 至 2026 年低空数据集累计数量：全部由 0 增至 48 个，其中含完整 CSI 的为 11 个">
 <title>低空数据集累计数量（2015–2026）</title>
-<desc>蓝色实线为全部低空相关数据集的累计数量，2026 年末为 47 个；青色虚线为其中提供完整 MIMO 信道 CSI 的条目，为 10 个。源数据仅有出版年，累计点落在各年末。</desc>
+<desc>蓝色实线为全部低空相关数据集的累计数量，2026 年末为 48 个；青色虚线为其中提供完整 MIMO 信道 CSI 的条目，为 11 个。源数据仅有出版年，累计点落在各年末。</desc>
 <style>
   text { font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; }
   .bg { fill: #ffffff; }
@@ -22,9 +22,9 @@
 <rect class="bg" x="0" y="0" width="860" height="440" rx="10"/>
 <text class="ttl" x="58" y="30">低空数据集累计数量（2015–2026）</text>
 <line x1="58" y1="54" x2="82" y2="54" stroke="#3F8ADB" stroke-width="2.5" stroke-linecap="round"/>
-<text class="sub" x="90" y="58">全部低空数据集（47）</text>
+<text class="sub" x="90" y="58">全部低空数据集（48）</text>
 <line x1="241" y1="54" x2="265" y2="54" stroke="#17A07F" stroke-width="2.5" stroke-dasharray="5 3" stroke-linecap="round"/>
-<text class="sub" x="273" y="58">含完整 CSI（csi = 1，10）</text>
+<text class="sub" x="273" y="58">含完整 CSI（csi = 1，11）</text>
 <line class="grid" x1="58" y1="384.0" x2="768" y2="384.0"/>
 <text class="tick" x="48" y="388.0" text-anchor="end">0</text>
 <line class="grid" x1="58" y1="322.8" x2="768" y2="322.8"/>
@@ -50,9 +50,9 @@
 <text class="tick" x="638.9" y="404" text-anchor="middle">2024</text>
 <text class="tick" x="703.5" y="404" text-anchor="middle">2025</text>
 <text class="tick" x="768.0" y="404" text-anchor="middle">2026</text>
-<path class="area" d="M 58.0 384.0 L 58.0 384.0 L 122.5 377.9 L 187.1 377.9 L 251.6 359.5 L 316.2 353.4 L 380.7 353.4 L 445.3 341.2 L 509.8 335.0 L 574.4 310.6 L 638.9 267.7 L 703.5 175.9 L 768.0 96.4 L 768.0 384.0 Z"/>
-<path d="M 58.0 384.0 L 122.5 377.9 L 187.1 377.9 L 251.6 359.5 L 316.2 353.4 L 380.7 353.4 L 445.3 341.2 L 509.8 335.0 L 574.4 310.6 L 638.9 267.7 L 703.5 175.9 L 768.0 96.4" fill="none" stroke="#3F8ADB" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M 58.0 384.0 L 122.5 384.0 L 187.1 384.0 L 251.6 384.0 L 316.2 384.0 L 380.7 384.0 L 445.3 384.0 L 509.8 384.0 L 574.4 365.6 L 638.9 359.5 L 703.5 335.0 L 768.0 322.8" fill="none" stroke="#17A07F" stroke-width="2.4" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="area" d="M 58.0 384.0 L 58.0 384.0 L 122.5 377.9 L 187.1 377.9 L 251.6 359.5 L 316.2 353.4 L 380.7 353.4 L 445.3 341.2 L 509.8 335.0 L 574.4 310.6 L 638.9 267.7 L 703.5 175.9 L 768.0 90.2 L 768.0 384.0 Z"/>
+<path d="M 58.0 384.0 L 122.5 377.9 L 187.1 377.9 L 251.6 359.5 L 316.2 353.4 L 380.7 353.4 L 445.3 341.2 L 509.8 335.0 L 574.4 310.6 L 638.9 267.7 L 703.5 175.9 L 768.0 90.2" fill="none" stroke="#3F8ADB" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 58.0 384.0 L 122.5 384.0 L 187.1 384.0 L 251.6 384.0 L 316.2 384.0 L 380.7 384.0 L 445.3 384.0 L 509.8 384.0 L 574.4 365.6 L 638.9 359.5 L 703.5 335.0 L 768.0 316.7" fill="none" stroke="#17A07F" stroke-width="2.4" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="58.0" cy="384.0" r="3" fill="#3F8ADB"/>
 <circle cx="122.5" cy="377.9" r="3" fill="#3F8ADB"/>
 <circle cx="187.1" cy="377.9" r="3" fill="#3F8ADB"/>
@@ -64,7 +64,7 @@
 <circle cx="574.4" cy="310.6" r="3" fill="#3F8ADB"/>
 <circle cx="638.9" cy="267.7" r="3" fill="#3F8ADB"/>
 <circle cx="703.5" cy="175.9" r="3" fill="#3F8ADB"/>
-<circle cx="768.0" cy="96.4" r="3" fill="#3F8ADB"/>
+<circle cx="768.0" cy="90.2" r="3" fill="#3F8ADB"/>
 <circle cx="58.0" cy="384.0" r="3" fill="#17A07F"/>
 <circle cx="122.5" cy="384.0" r="3" fill="#17A07F"/>
 <circle cx="187.1" cy="384.0" r="3" fill="#17A07F"/>
@@ -76,8 +76,8 @@
 <circle cx="574.4" cy="365.6" r="3" fill="#17A07F"/>
 <circle cx="638.9" cy="359.5" r="3" fill="#17A07F"/>
 <circle cx="703.5" cy="335.0" r="3" fill="#17A07F"/>
-<circle cx="768.0" cy="322.8" r="3" fill="#17A07F"/>
-<text class="tick" x="778.0" y="100.4" fill="#3F8ADB" font-weight="500" font-size="12">47</text>
-<text class="tick" x="778.0" y="326.8" fill="#17A07F" font-weight="500" font-size="12">10</text>
+<circle cx="768.0" cy="316.7" r="3" fill="#17A07F"/>
+<text class="tick" x="778.0" y="94.2" fill="#3F8ADB" font-weight="500" font-size="12">48</text>
+<text class="tick" x="778.0" y="320.7" fill="#17A07F" font-weight="500" font-size="12">11</text>
 <text class="tick" x="58" y="424">按出版年结算，累计点落在各年末；数据仅到年粒度</text>
 </svg>
