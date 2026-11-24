@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" role="img" aria-label="2015 至 2026 年低空索引条目累计数量：全部由 0 增至 57 个，其中含完整 CSI 的为 11 个">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" role="img" aria-label="2015 至 2026 年低空索引条目累计数量：全部由 0 增至 64 个，其中含完整 CSI 的为 10 个">
 <title>低空索引条目累计数量（2015–2026）</title>
-<desc>蓝色实线为全部低空相关索引条目的累计数量，至 2026 年累计 57 个；青色虚线为其中提供完整 MIMO 信道 CSI 的条目，为 11 个。源数据仅有出版年，按出版年分组累计。</desc>
+<desc>蓝色实线为全部低空相关索引条目的累计数量，至 2026 年累计 64 个；青色虚线为其中提供完整 MIMO 信道 CSI 的条目，为 10 个。源数据仅有出版年，按出版年分组累计。</desc>
 <style>
   text { font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; }
   .bg { fill: #ffffff; }
@@ -22,23 +22,25 @@
 <rect class="bg" x="0" y="0" width="860" height="440" rx="10"/>
 <text class="ttl" x="58" y="30">低空索引条目累计数量（2015–2026）</text>
 <line x1="58" y1="54" x2="82" y2="54" stroke="#3F8ADB" stroke-width="2.5" stroke-linecap="round"/>
-<text class="sub" x="90" y="58">全部低空索引条目（57）</text>
+<text class="sub" x="90" y="58">全部低空索引条目（64）</text>
 <line x1="253" y1="54" x2="277" y2="54" stroke="#17A07F" stroke-width="2.5" stroke-dasharray="5 3" stroke-linecap="round"/>
-<text class="sub" x="285" y="58">含完整 CSI（csi = 1，11）</text>
+<text class="sub" x="285" y="58">含完整 CSI（csi = 1，10）</text>
 <line class="grid" x1="58" y1="384.0" x2="768" y2="384.0"/>
 <text class="tick" x="48" y="388.0" text-anchor="end">0</text>
-<line class="grid" x1="58" y1="333.0" x2="768" y2="333.0"/>
-<text class="tick" x="48" y="337.0" text-anchor="end">10</text>
-<line class="grid" x1="58" y1="282.0" x2="768" y2="282.0"/>
-<text class="tick" x="48" y="286.0" text-anchor="end">20</text>
-<line class="grid" x1="58" y1="231.0" x2="768" y2="231.0"/>
-<text class="tick" x="48" y="235.0" text-anchor="end">30</text>
-<line class="grid" x1="58" y1="180.0" x2="768" y2="180.0"/>
-<text class="tick" x="48" y="184.0" text-anchor="end">40</text>
-<line class="grid" x1="58" y1="129.0" x2="768" y2="129.0"/>
-<text class="tick" x="48" y="133.0" text-anchor="end">50</text>
+<line class="grid" x1="58" y1="340.3" x2="768" y2="340.3"/>
+<text class="tick" x="48" y="344.3" text-anchor="end">10</text>
+<line class="grid" x1="58" y1="296.6" x2="768" y2="296.6"/>
+<text class="tick" x="48" y="300.6" text-anchor="end">20</text>
+<line class="grid" x1="58" y1="252.9" x2="768" y2="252.9"/>
+<text class="tick" x="48" y="256.9" text-anchor="end">30</text>
+<line class="grid" x1="58" y1="209.1" x2="768" y2="209.1"/>
+<text class="tick" x="48" y="213.1" text-anchor="end">40</text>
+<line class="grid" x1="58" y1="165.4" x2="768" y2="165.4"/>
+<text class="tick" x="48" y="169.4" text-anchor="end">50</text>
+<line class="grid" x1="58" y1="121.7" x2="768" y2="121.7"/>
+<text class="tick" x="48" y="125.7" text-anchor="end">60</text>
 <line class="grid" x1="58" y1="78.0" x2="768" y2="78.0"/>
-<text class="tick" x="48" y="82.0" text-anchor="end">60</text>
+<text class="tick" x="48" y="82.0" text-anchor="end">70</text>
 <line class="axis" x1="58" y1="384" x2="768" y2="384"/>
 <text class="tick" x="58.0" y="404" text-anchor="middle">2015</text>
 <text class="tick" x="122.5" y="404" text-anchor="middle">2016</text>
@@ -52,21 +54,21 @@
 <text class="tick" x="638.9" y="404" text-anchor="middle">2024</text>
 <text class="tick" x="703.5" y="404" text-anchor="middle">2025</text>
 <text class="tick" x="768.0" y="404" text-anchor="middle">2026</text>
-<path class="area" d="M 58.0 384.0 L 58.0 384.0 L 122.5 378.9 L 187.1 378.9 L 251.6 363.6 L 316.2 358.5 L 380.7 358.5 L 445.3 348.3 L 509.8 343.2 L 574.4 322.8 L 638.9 287.1 L 703.5 200.4 L 768.0 93.3 L 768.0 384.0 Z"/>
-<path d="M 58.0 384.0 L 122.5 378.9 L 187.1 378.9 L 251.6 363.6 L 316.2 358.5 L 380.7 358.5 L 445.3 348.3 L 509.8 343.2 L 574.4 322.8 L 638.9 287.1 L 703.5 200.4 L 768.0 93.3" fill="none" stroke="#3F8ADB" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M 58.0 384.0 L 122.5 384.0 L 187.1 384.0 L 251.6 384.0 L 316.2 384.0 L 380.7 384.0 L 445.3 384.0 L 509.8 384.0 L 574.4 368.7 L 638.9 363.6 L 703.5 343.2 L 768.0 327.9" fill="none" stroke="#17A07F" stroke-width="2.4" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="area" d="M 58.0 384.0 L 58.0 384.0 L 122.5 379.6 L 187.1 379.6 L 251.6 366.5 L 316.2 362.1 L 380.7 362.1 L 445.3 353.4 L 509.8 349.0 L 574.4 327.2 L 638.9 292.2 L 703.5 213.5 L 768.0 104.2 L 768.0 384.0 Z"/>
+<path d="M 58.0 384.0 L 122.5 379.6 L 187.1 379.6 L 251.6 366.5 L 316.2 362.1 L 380.7 362.1 L 445.3 353.4 L 509.8 349.0 L 574.4 327.2 L 638.9 292.2 L 703.5 213.5 L 768.0 104.2" fill="none" stroke="#3F8ADB" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 58.0 384.0 L 122.5 384.0 L 187.1 384.0 L 251.6 384.0 L 316.2 384.0 L 380.7 384.0 L 445.3 384.0 L 509.8 384.0 L 574.4 370.9 L 638.9 366.5 L 703.5 353.4 L 768.0 340.3" fill="none" stroke="#17A07F" stroke-width="2.4" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="58.0" cy="384.0" r="3" fill="#3F8ADB"/>
-<circle cx="122.5" cy="378.9" r="3" fill="#3F8ADB"/>
-<circle cx="187.1" cy="378.9" r="3" fill="#3F8ADB"/>
-<circle cx="251.6" cy="363.6" r="3" fill="#3F8ADB"/>
-<circle cx="316.2" cy="358.5" r="3" fill="#3F8ADB"/>
-<circle cx="380.7" cy="358.5" r="3" fill="#3F8ADB"/>
-<circle cx="445.3" cy="348.3" r="3" fill="#3F8ADB"/>
-<circle cx="509.8" cy="343.2" r="3" fill="#3F8ADB"/>
-<circle cx="574.4" cy="322.8" r="3" fill="#3F8ADB"/>
-<circle cx="638.9" cy="287.1" r="3" fill="#3F8ADB"/>
-<circle cx="703.5" cy="200.4" r="3" fill="#3F8ADB"/>
-<circle cx="768.0" cy="93.3" r="3" fill="#3F8ADB"/>
+<circle cx="122.5" cy="379.6" r="3" fill="#3F8ADB"/>
+<circle cx="187.1" cy="379.6" r="3" fill="#3F8ADB"/>
+<circle cx="251.6" cy="366.5" r="3" fill="#3F8ADB"/>
+<circle cx="316.2" cy="362.1" r="3" fill="#3F8ADB"/>
+<circle cx="380.7" cy="362.1" r="3" fill="#3F8ADB"/>
+<circle cx="445.3" cy="353.4" r="3" fill="#3F8ADB"/>
+<circle cx="509.8" cy="349.0" r="3" fill="#3F8ADB"/>
+<circle cx="574.4" cy="327.2" r="3" fill="#3F8ADB"/>
+<circle cx="638.9" cy="292.2" r="3" fill="#3F8ADB"/>
+<circle cx="703.5" cy="213.5" r="3" fill="#3F8ADB"/>
+<circle cx="768.0" cy="104.2" r="3" fill="#3F8ADB"/>
 <circle cx="58.0" cy="384.0" r="3" fill="#17A07F"/>
 <circle cx="122.5" cy="384.0" r="3" fill="#17A07F"/>
 <circle cx="187.1" cy="384.0" r="3" fill="#17A07F"/>
@@ -75,11 +77,11 @@
 <circle cx="380.7" cy="384.0" r="3" fill="#17A07F"/>
 <circle cx="445.3" cy="384.0" r="3" fill="#17A07F"/>
 <circle cx="509.8" cy="384.0" r="3" fill="#17A07F"/>
-<circle cx="574.4" cy="368.7" r="3" fill="#17A07F"/>
-<circle cx="638.9" cy="363.6" r="3" fill="#17A07F"/>
-<circle cx="703.5" cy="343.2" r="3" fill="#17A07F"/>
-<circle cx="768.0" cy="327.9" r="3" fill="#17A07F"/>
-<text class="tick" x="778.0" y="97.3" fill="#3F8ADB" font-weight="500" font-size="12">57</text>
-<text class="tick" x="778.0" y="331.9" fill="#17A07F" font-weight="500" font-size="12">11</text>
+<circle cx="574.4" cy="370.9" r="3" fill="#17A07F"/>
+<circle cx="638.9" cy="366.5" r="3" fill="#17A07F"/>
+<circle cx="703.5" cy="353.4" r="3" fill="#17A07F"/>
+<circle cx="768.0" cy="340.3" r="3" fill="#17A07F"/>
+<text class="tick" x="778.0" y="108.2" fill="#3F8ADB" font-weight="500" font-size="12">64</text>
+<text class="tick" x="778.0" y="344.3" fill="#17A07F" font-weight="500" font-size="12">10</text>
 <text class="tick" x="58" y="424">按出版年分组累计；数据仅到年粒度</text>
 </svg>

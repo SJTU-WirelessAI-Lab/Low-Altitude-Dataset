@@ -98,7 +98,7 @@ DESC = {
  'crosslayer-uav6g': '5G 测试床中以无人机为移动终端采集的跨层数据集，同步 UAV 移动性测量、O-RAN 分离式 DU/CU/UE 无线指标与应用层（合成流量、视频流）性能指标。',
  'aerpaw': '北卡州立大学 AERPAW 平台的公开数据集族（30+ 个），涵盖空地/空空信道探测与路损、宽频段频谱监测、5G-NSA KPI、LoRaWAN 传播与 TDOA 定位等，多数托管于 Dryad / IEEE DataPort。',
  'lipase': '基于 LTE 下行信号与数字阵列的无人机被动雷达跟踪实测数据集，提供距离-多普勒图与 GPS 轨迹，面向被动雷达与 ISAC 研究。',
- 'drone-swarm-sounding': '基于地面与机载同步节点的真实信道探测数据集，最多 4 架无人机编队，面向 ISAC 网络中的多基地雷达跟踪与空地/空空定位。',
+ 'drone-swarm-sounding': '伊尔梅瑙工业大学 Oryx 数据，配套 Drone Swarm Sounding 论文。公开多静态节点间的 SISO 复信道频响和位置记录，支持空空与空地链路分析。按公开数据格式计为部分 CSI。',
  'rfuav': '大规模射频无人机检测识别基准，约 1.3 TB 原始 I/Q，覆盖 37 种机型与多档 SNR，并附预处理与评测工具。',
  'cagedronerf': '由真实采集与系统化合成增强（SNR 控制、干扰注入、频移）构成的射频无人机检测识别基准，覆盖大量当代机型，支持分类、开集识别与检测。',
  'skyev': '面向反无人机检测与跟踪的 RGB-事件相机同步数据集，采集未压缩、高同步的双模态数据，覆盖相机自运动、小目标尺度等真实挑战。',
@@ -167,7 +167,7 @@ w('清单以 **[LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing a
 w('> 总览、矩阵与详情均按**是否涉及低空 / UAV 场景**拆为两张表：'
   '**低空相关数据集**与**通用 / 上游基准数据集**（后者完全不含低空场景）。'
   f'低空部分另按**信道级数据**用颜色区分：{csi(1)} 有 CSI、{csi(.5)} 部分 CSI、'
-  f'{RF_DOT} 仅射频信号（原始 I/Q，无 CSI）、{csi(0)} 均无。\n\n')
+  f'{RF_DOT} 仅射频信号（波形、频谱或射频指标，无 CSI）、{csi(0)} 均无。\n\n')
 w('> 🌐 **在线浏览**：[sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset]'
   '(https://sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset/)'
   '（可搜索、可筛选、含对比矩阵）。\n')
@@ -198,7 +198,7 @@ w(f'共 **{total}** 条索引记录（含本文 LAMBDA），时间跨度 **2012�
   f'其中**低空相关 {la} 个**、**通用 / 上游基准 {gen} 个**。\n\n')
 w('**信道级数据标注**：'
   f'{csi(1)} 有 CSI（完整 MIMO 信道）、{csi(.5)} 部分 CSI（实测信道测量，但未给完整 MIMO CSI）、'
-  f'{RF_DOT} 仅射频信号（原始 I/Q 等射频采集，数据本身不含 CSI）、{csi(0)} 均无。'
+  f'{RF_DOT} 仅射频信号（波形、频谱或射频指标，数据本身不含 CSI）、{csi(0)} 均无。'
   '**CSI 与射频信号是两类不同模态**，不能互相替代：前者是信道估计结果，后者是接收机采到的原始波形 / 频谱。\n\n')
 
 _acc_n = {k: sum(1 for x in ds_all if acc(x) == k) for k in ACCESS_LABEL}
@@ -311,15 +311,15 @@ w('- **数据来源（`source` 字段）**：`real` 实测——真实传感器 
 w('- **信道级数据颜色标注**：'
   f'{csi(1)} 有 CSI —— 提供完整 MIMO 信道 CSI（含仿真射线追踪与实测信道）；'
   f'{csi(.5)} 部分 CSI —— 有实测信道测量（波束 SNR、功率时延谱、下行信道传递函数等），但未给完整 MIMO CSI；'
-  f'{RF_DOT} 仅射频信号 —— 数据是接收机采到的射频波形 / 频谱（原始 I/Q、距离-多普勒图等），**本身不含 CSI**，'
-  '矩阵中 `CSI` 列为 `×`、`射频信号` 列为 `✓`；'
+  f'{RF_DOT} 仅射频信号 —— 数据是接收机采到的射频波形 / 频谱（原始 I/Q、距离-多普勒图等）或射频侧指标，**本身不含 CSI**，'
+  '矩阵中 `CSI` 列为 `×`、`射频信号` 列为 `✓` 或有限支持；'
   f'{csi(0)} 均无 —— 既无 CSI 也无射频采集数据。'
   '同一颜色同时体现在总览表、矩阵表名称前的圆点与详情条目。\n')
 w('- **核心模态与补充模态**：核心模态为低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间 7 类；'
   '**射频信号**、**红外**与**声学**为补充模态（页面筛选条中以虚线边框区分）。'
   '射频信号见于 DroneRF 系列、RFUAV、CageDroneRF、KU Leuven Drone RF、EM-134K / EM-Bench、LIPASE、'
   'TSMS-Drone（雷达与射频同步采集）、AERPAW AADM、AERPAW、PML-CellularEye（后两条同时含 CSI）'
-  '与 Cross-layer UAV 6G（仅 KPI）；'
+  '与 Cross-layer UAV 6G、LACN、TalTech UAV 5G mmWave（仅射频侧指标）；'
   '红外见于 Anti-UAV300、Drone-detection、NeoDrone 与 PML-CellularEye（部分）；'
   '声学见于 DroneRFc-MM、Drone-detection、LuViRA、ITU-ARIS Acoustic、DADS 与 Lund UAV Audio。\n')
 w('- **年份**：以 LAMBDA 论文表1 为准；个别数据集论文发表年与数据集发布年不同，已在详情中注明出处。\n')

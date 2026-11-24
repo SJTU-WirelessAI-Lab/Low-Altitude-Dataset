@@ -843,11 +843,20 @@
       "wirelessTypes": [
         "Raw I/Q",
         "Path Loss/RSSI",
+        "Beam/RSRP",
         "RF KPI"
       ],
       "wirelessStatus": "tagged",
       "kind": "collection",
       "subsets": [
+        {
+          "name": "Dataset-12: A2G I/Q / RSS",
+          "url": "https://aerpaw.org/dataset/uav-based-signal-data-collected-at-varying-altitudes-and-sampling-rates-for-wireless-communication-studies/"
+        },
+        {
+          "name": "Dataset-18: 5G NSA RF / throughput",
+          "url": "https://doi.org/10.5061/dryad.wh70rxx06"
+        },
         {
           "name": "Dataset-31: A2A channel sounding",
           "url": "https://aerpaw.org/dataset/dataset-31-aerpaw-air-to-air-channel-sounding-measurement-with-uavs/"
@@ -906,24 +915,25 @@
     },
     {
       "id": "drone-swarm-sounding",
-      "name": "Drone Swarm Sounding",
+      "name": "Oryx (Drone Swarm Sounding)",
       "year": 2025,
       "authors": "Julia Beuster, Carsten Andrich, Sebastian Giehl, Marc Miranda, et al.",
       "org": "Technische Universität Ilmenau",
       "venue": "arXiv:2507.12010",
-      "site": "https://arxiv.org/abs/2507.12010",
+      "site": "https://doi.org/10.71758/refodat.60",
+      "siteAlt": "https://ems-tu-ilmenau.github.io/dataset/multi-node-uav-sensing/",
       "paper": "https://arxiv.org/abs/2507.12010",
       "access": "open",
       "source": "real",
-      "focusZh": "无人机群多基地信道探测与雷达感知实测",
+      "focusZh": "无人机群多基地信道探测实测，公开多节点 SISO 链路的复信道频响与位置数据",
       "focusEn": "Multi-static channel sounding with a drone swarm",
       "wirelessTypes": [
-        "MIMO CSI"
+        "信道传递函数"
       ],
       "wirelessStatus": "tagged",
       "modality": {
         "la": 1,
-        "csi": 1,
+        "csi": 0.5,
         "rf": 0,
         "rgb": 0,
         "ir": 0,
@@ -934,7 +944,7 @@
         "acoustic": 0
       },
       "group": "low-altitude",
-      "csiLevel": "full"
+      "csiLevel": "part"
     },
     {
       "id": "rfuav",
@@ -2269,6 +2279,228 @@
       },
       "group": "low-altitude",
       "csiLevel": "none"
+    },
+    {
+      "id": "lacn",
+      "name": "LACN-Dataset",
+      "year": 2026,
+      "authors": "Boqun Huang, Yancheng Wang, Wei Guo, Zhaojie Guo, Di Wu, Ran Li, Dayang Liu, Wanshun Lan, Chuan Huang, Shuguang Cui",
+      "org": "UESTC / CUHK-Shenzhen / HKUST / China Mobile",
+      "venue": "arXiv:2604.17781",
+      "site": "https://github.com/ycw671/LACN-Dataset/tree/main/dataset",
+      "paper": "https://arxiv.org/abs/2604.17781",
+      "access": "open",
+      "source": "real",
+      "focusZh": "5G NR 低空覆盖实测：约 75、230、400、500 m 四档飞行高度，提供基站配置优化前后的配对 RSRP、SINR 与位置记录。",
+      "focusEn": "Before/after 5G NR coverage measurements over four UAV altitudes",
+      "wirelessTypes": [
+        "Beam/RSRP",
+        "RF KPI"
+      ],
+      "wirelessStatus": "tagged",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rf": 0.5,
+        "rgb": 0,
+        "ir": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0.5,
+        "weather": 0,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "rf"
+    },
+    {
+      "id": "live-ris",
+      "name": "LIVE-RIS",
+      "year": 2026,
+      "authors": "David Müller, Kevin Weinberger, Aydin Sezgin, Martin Mönnigmann",
+      "org": "Ruhr University Bochum",
+      "venue": "Zenodo / arXiv:2609.34993",
+      "site": "https://zenodo.org/records/23011126",
+      "paper": "https://arxiv.org/abs/2609.34993",
+      "access": "open",
+      "source": "real",
+      "focusZh": "室内无人机挂载 RIS 飞行实测，提供 VNA 测得的 S21、RIS 配置、状态估计与位置真值。Zenodo 提供 19.7 MB 下载包。",
+      "focusEn": "In-flight UAV-mounted RIS S21 channel measurements",
+      "wirelessTypes": [
+        "信道传递函数"
+      ],
+      "wirelessStatus": "tagged",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rf": 0,
+        "rgb": 0,
+        "ir": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0.5,
+        "weather": 0,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
+    },
+    {
+      "id": "uavsig",
+      "name": "UAVSig",
+      "year": 2024,
+      "authors": "T. Zhao, B. W. Domae, C. Steigerwald, L. B. Paradis, T. Chabuk, D. Cabric",
+      "org": "University of California, Los Angeles (UCLA)",
+      "venue": "MILCOM 2024 / UCLA Dataverse",
+      "site": "https://cores.ee.ucla.edu/downloads/datasets/uavsig/",
+      "paper": "https://ieeexplore.ieee.org/document/10773837",
+      "access": "open",
+      "source": "real",
+      "focusZh": "无人机及遥控器射频指纹数据，含带标注的原始 I/Q。官方说明部分采样段丢失，原始序列存在随机缺口。",
+      "focusEn": "Labeled raw I/Q for drone and controller RF fingerprinting",
+      "wirelessTypes": [
+        "Raw I/Q"
+      ],
+      "wirelessStatus": "tagged",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rf": 1,
+        "rgb": 0,
+        "ir": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0,
+        "weather": 0,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "rf"
+    },
+    {
+      "id": "m3ed",
+      "name": "M3ED",
+      "year": 2023,
+      "authors": "Kenneth Chaney, Fernando Cladera, Ziyun Wang, Anthony Bisulco, M. Ani Hsieh, Christopher Korpela, Vijay Kumar, Camillo J. Taylor, Kostas Daniilidis",
+      "org": "University of Pennsylvania et al.",
+      "venue": "CVPR Workshops 2023",
+      "site": "https://m3ed.io/",
+      "paper": "https://openaccess.thecvf.com/content/CVPR2023W/EventVision/papers/Chaney_M3ED_Multi-Robot_Multi-Sensor_Multi-Environment_Event_Dataset_CVPRW_2023_paper.pdf",
+      "access": "open",
+      "source": "real",
+      "focusZh": "无人机、地面车辆与四足机器人实测集合。包含无人机飞行序列，传感器涵盖同步事件相机、RGB／灰度图像、LiDAR、IMU 与 RTK。",
+      "focusEn": "Multi-robot event-camera benchmark with aerial sequences",
+      "wirelessTypes": [],
+      "wirelessStatus": "none",
+      "modality": {
+        "la": 0.5,
+        "csi": 0,
+        "rf": 0,
+        "rgb": 1,
+        "ir": 0,
+        "lidar": 1,
+        "radar": 0,
+        "imu": 1,
+        "weather": 0,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
+    },
+    {
+      "id": "uav-mm3d",
+      "name": "UAV-MM3D",
+      "year": 2025,
+      "authors": "Longkun Zou, Jiale Wang, Rongqin Liang, Hai Wu, Ke Chen, Yaowei Wang",
+      "org": "Pengcheng Laboratory / University of Southern California",
+      "venue": "arXiv:2511.22404",
+      "site": "https://github.com/zou-longkun/UAVMM3D",
+      "paper": "https://arxiv.org/abs/2511.22404",
+      "access": "register",
+      "source": "sim",
+      "focusZh": "CARLA 合成低空 3D 感知基准，约 40 万同步帧，提供 RGB、红外、LiDAR、雷达及事件相机数据，覆盖晴、阴、雨、雾。作者提供百度网盘入口，完整包未实测。",
+      "focusEn": "Synthetic multimodal low-altitude UAV perception and tracking",
+      "wirelessTypes": [],
+      "wirelessStatus": "unverified",
+      "modality": {
+        "la": 1,
+        "csi": 0,
+        "rf": 0,
+        "rgb": 1,
+        "ir": 1,
+        "lidar": 1,
+        "radar": 1,
+        "imu": 0,
+        "weather": 1,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "none"
+    },
+    {
+      "id": "taltech-5g-mmwave",
+      "name": "TalTech UAV 5G mmWave",
+      "year": 2026,
+      "authors": "Junaid Sajid, Marika Kulmar, Lauri Anton, Margus Rohtla, Priit Roosipuu, Ivo Müürsepp, Muhammad Mahtab Alam",
+      "org": "Tallinn University of Technology / University of Essex",
+      "venue": "TalTech Data Repository V1",
+      "site": "https://data.taltech.ee/records/p1hk3-ve652",
+      "access": "request",
+      "source": "real",
+      "focusZh": "5G NR n258 波束实测，包含无人机、地面和屋顶记录，提供坐标、SSB 索引、RSSI、RSRP、SINR 和 RSRQ。记录公开，文件受限，需登录查看权限。",
+      "focusEn": "Restricted 5G NR beam and coverage measurements from UAV and ground scans",
+      "wirelessTypes": [
+        "Beam/RSRP",
+        "Path Loss/RSSI",
+        "RF KPI"
+      ],
+      "wirelessStatus": "tagged",
+      "modality": {
+        "la": 0.5,
+        "csi": 0,
+        "rf": 0.5,
+        "rgb": 0,
+        "ir": 0,
+        "lidar": 0,
+        "radar": 0,
+        "imu": 0.5,
+        "weather": 0,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "rf"
+    },
+    {
+      "id": "cooperative-uav-isac",
+      "name": "Cooperative Monostatic/Bistatic UAV ISAC",
+      "year": 2026,
+      "authors": "Nan Ming, Hanwen Xu, Kai Mao, Hanpeng Li, Mingqi Guo, Xiaomin Chen, Qiuming Zhu",
+      "org": "NUAA / Queen’s University Belfast",
+      "venue": "Sensors 26(16):5015",
+      "site": "https://www.mdpi.com/1424-8220/26/16/5015#data-availability",
+      "paper": "https://doi.org/10.3390/s26165015",
+      "access": "request",
+      "source": "real",
+      "focusZh": "同一低空城市场景的机载单站与空地双站 ISAC 实测，主要测量结果为 CIR 和 PDP。数据须向通讯作者申请，原始 IQ 的交付范围未公开。",
+      "focusEn": "Cooperative monostatic and bistatic low-altitude UAV ISAC sounding",
+      "wirelessTypes": [
+        "CIR/PDP"
+      ],
+      "wirelessStatus": "tagged",
+      "modality": {
+        "la": 1,
+        "csi": 0.5,
+        "rf": 0,
+        "rgb": 0,
+        "ir": 0,
+        "lidar": 0,
+        "radar": 1,
+        "imu": 0.5,
+        "weather": 0,
+        "acoustic": 0
+      },
+      "group": "low-altitude",
+      "csiLevel": "part"
     },
     {
       "id": "huangpu-river",

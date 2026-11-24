@@ -28,7 +28,7 @@ const byId = Object.fromEntries(D.map(d => [d.id, d]));
 ck('模态数与顺序', M.map(m => m.key), ['la','csi','rf','rgb','ir','lidar','radar','imu','weather','acoustic']);
 ck('核心模态数', M.filter(m => m.core).length, 7);
 ck('补充模态', M.filter(m => !m.core).map(m => m.key), ['rf','ir','acoustic']);
-ck('数据集总数', D.length, 71);
+ck('数据集总数', D.length, 78);
 
 /* 每条都必须有 10 个模态字段且取值合法 */
 const missing = D.filter(d => M.some(m => !(d.modality[m.key] === 1 || d.modality[m.key] === .5 || d.modality[m.key] === 0)));
@@ -36,29 +36,29 @@ ck('模态字段缺失/非法', missing.map(d => d.id), []);
 
 /* 分组 */
 const la = D.filter(d => d.modality.la > 0), gen = D.filter(d => d.modality.la === 0);
-ck('低空 / 通用', [la.length, gen.length], [57, 14]);
+ck('低空 / 通用', [la.length, gen.length], [64, 14]);
 
 /* 获取方式 */
 const LEGAL_ACCESS = ['open','preview','register','request','pending'];
 ck('access 字段非法或缺失', D.filter(d => !LEGAL_ACCESS.includes(d.access)).map(d => d.id), []);
-ck('access 分布', ['open','preview','register','request','pending'].map(k => D.filter(d => (d.access||'open') === k).length), [60,4,3,2,2]);
+ck('access 分布', ['open','preview','register','request','pending'].map(k => D.filter(d => (d.access||'open') === k).length), [64,4,4,4,2]);
 ck('非开放条目', D.filter(d => d.access !== 'open').map(d => d.id).sort(),
-   ['a2a-uav','a2g-cir-rt','aerpaw','ata','cpd-uav','diat-msat','eflash','isac-uav-ilmenau','multifly','tmrgbt-d2d','tricross-d2d']);
+   ['a2a-uav','a2g-cir-rt','aerpaw','ata','cooperative-uav-isac','cpd-uav','diat-msat','eflash','isac-uav-ilmenau','multifly','taltech-5g-mmwave','tmrgbt-d2d','tricross-d2d','uav-mm3d']);
 
 /* CSI / 射频：两类模态不得混用 */
-ck('CSI 分布 (1/.5/0)', [1,.5,0].map(v => D.filter(d => d.modality.csi === v).length), [18, 6, 47]);
-ck('射频分布 (1/.5/0)', [1,.5,0].map(v => D.filter(d => d.modality.rf === v).length), [14, 1, 56]);
+ck('CSI 分布 (1/.5/0)', [1,.5,0].map(v => D.filter(d => d.modality.csi === v).length), [17, 9, 52]);
+ck('射频分布 (1/.5/0)', [1,.5,0].map(v => D.filter(d => d.modality.rf === v).length), [15, 3, 60]);
 const RF_ONLY = ['dronerfa','dronerfb-dir','dronerfc-mm','rfuav','cagedronerf',
-                 'ku-leuven-drone-rf','drone-rf-mendeley','em-134k','em-bench','lipase'];
+                 'ku-leuven-drone-rf','drone-rf-mendeley','em-134k','em-bench','lipase','uavsig'];
 ck('纯射频条目：CSI 必须为 0', RF_ONLY.filter(i => byId[i].modality.csi !== 0), []);
 ck('纯射频条目：射频必须为 1', RF_ONLY.filter(i => byId[i].modality.rf !== 1), []);
-ck('纯射频条目不再是 .5 CSI', D.filter(d => d.modality.csi === .5).map(d => d.id).sort(),
-   ['a2g-cir','a2g-cir-rt','aerpaw','deepsense6g','eflash','pml-cellulareye']);
+ck('部分 CSI 条目', D.filter(d => d.modality.csi === .5).map(d => d.id).sort(),
+   ['a2g-cir','a2g-cir-rt','aerpaw','cooperative-uav-isac','deepsense6g','drone-swarm-sounding','eflash','live-ris','pml-cellulareye']);
 ck('Cross-layer UAV 6G 只有 KPI', [byId['crosslayer-uav6g'].modality.csi, byId['crosslayer-uav6g'].modality.rf], [0, .5]);
 ck('AERPAW 两者兼有', [byId['aerpaw'].modality.csi, byId['aerpaw'].modality.rf], [.5, 1]);
 ck('PML-CellularEye 两者兼有', [byId['pml-cellulareye'].modality.csi, byId['pml-cellulareye'].modality.rf], [.5, 1]);
-ck('低空且含 CSI 计数', D.filter(d => d.modality.la > 0 && d.modality.csi > 0).length, 16);
-ck('低空且含射频计数', D.filter(d => d.modality.la > 0 && d.modality.rf > 0).length, 13);
+ck('低空且含 CSI 计数', D.filter(d => d.modality.la > 0 && d.modality.csi > 0).length, 18);
+ck('低空且含射频计数', D.filter(d => d.modality.la > 0 && d.modality.rf > 0).length, 16);
 
 /* 新增条目 */
 ck('DroneRF(Mendeley) 模态', byId['drone-rf-mendeley'].modality, { la:1, csi:0, rf:1, rgb:0, ir:0, lidar:0, radar:0, imu:0, weather:0, acoustic:0 });
@@ -94,11 +94,11 @@ ck('CPD-UAV 掩码数据需申请', [byId['cpd-uav'].access, byId['cpd-uav'].mod
 
 /* 筛选：射频 / 红外 / 声学 */
 const hit = (k) => { st.mods = new Set([k]); const n = ctx.__f().length; st.mods = new Set(); return n; };
-ck('射频筛选命中数', hit('rf'), 15);
-ck('红外筛选命中数', hit('ir'), 7);
+ck('射频筛选命中数', hit('rf'), 18);
+ck('红外筛选命中数', hit('ir'), 8);
 ck('声学筛选命中数', hit('acoustic'), 8);
 ck('红外命中条目', (() => { st.mods = new Set(['ir']); const ids = ctx.__f().map(d => d.id).sort(); st.mods = new Set(); return ids; })(),
-   ['a2a-uav','anti-uav300','drone-detection-dregon','multifly','neodrone','pml-cellulareye','tmrgbt-d2d']);
+   ['a2a-uav','anti-uav300','drone-detection-dregon','multifly','neodrone','pml-cellulareye','tmrgbt-d2d','uav-mm3d']);
 
 /* 搜索 */
 const q = (s) => { st.q = s; const n = ctx.__f().length; st.q = ''; return n; };
@@ -108,36 +108,36 @@ ck('搜 中国科学院大学', q('中国科学院大学'), 1);
 ck('搜 Svanström', q('svanström'), 1);
 ck('搜 南洋理工大学', q('南洋理工大学'), 1);
 ck('搜 MMAUD', q('mmaud'), 1);
-ck('搜 红外', q('红外'), 7);
+ck('搜 红外', q('红外'), 8);
 
 /* 渲染 */
 ctx.__mx();
 const cnt = (html) => (html.match(/<tr /g) || []).length;
-ck('低空矩阵行数', cnt(els['#matrix-table'].innerHTML), 57);
+ck('低空矩阵行数', cnt(els['#matrix-table'].innerHTML), 64);
 ck('通用矩阵行数', cnt(els['#matrix-table-other'].innerHTML), 14);
 ck('矩阵表头列数', (els['#matrix-table'].innerHTML.match(/<th[ >]/g) || []).length, 12);
 ck('矩阵含射频列', els['#matrix-table'].innerHTML.includes('射频信号'), true);
-ck('矩阵射频色条数', (els['#matrix-table'].innerHTML.match(/csi-bar csi-rf/g) || []).length, 11);
-ck('矩阵计数标签', [els['#mx-la-count'].textContent, els['#mx-gen-count'].textContent], ['57 个','14 个']);
+ck('矩阵射频色条数', (els['#matrix-table'].innerHTML.match(/csi-bar csi-rf/g) || []).length, 14);
+ck('矩阵计数标签', [els['#mx-la-count'].textContent, els['#mx-gen-count'].textContent], ['64 个','14 个']);
 ctx.__chips();
 ck('筛选 chip 数', (els['#chips'].innerHTML.match(/class="chip/g) || []).length, 10);
 ck('chip 中补充模态数', (els['#chips'].innerHTML.match(/class="chip sub"/g) || []).length, 3);
 ck('chip 含射频', els['#chips'].innerHTML.includes('data-mod="rf"'), true);
 ctx.__stats();
 ck('hero 统计', (els['#stats'].innerHTML.match(/<div class="num[^"]*">([^<]*)<\/div>/g) || []).map(x => x.replace(/<[^>]+>/g, '')),
-   ['71','57','14','16','13','2012\u20132026']);
+   ['78','64','14','18','16','2012\u20132026']);
 ctx.__cards();
-ck('卡片总数', (els['#grid-host'].innerHTML.match(/<article class="/g) || []).length, 71);
-ck('access 徽章只标非开放', (els['#grid-host'].innerHTML.match(/badge-access/g) || []).length, 11);
+ck('卡片总数', (els['#grid-host'].innerHTML.match(/<article class="/g) || []).length, 78);
+ck('access 徽章只标非开放', (els['#grid-host'].innerHTML.match(/badge-access/g) || []).length, 14);
 /* 关键：射频类卡片不得再出现「部分 CSI」，且要有「射频信号」徽章 */
-ck('「部分 CSI」徽章数 = 真·部分 CSI 条目数', (els['#grid-host'].innerHTML.match(/部分 CSI/g) || []).length, 6);
-ck('「射频信号」徽章数', (els['#grid-host'].innerHTML.match(/badge-csi csi-rf/g) || []).length, 13);
-ck('「部分射频」只给 KPI 类一条', (els['#grid-host'].innerHTML.match(/部分射频/g) || []).length, 1);
-ck('结果行', els['#result-line'].innerHTML.replace(/<[^>]+>/g, ''), '显示 71 / 71 条索引记录（低空相关 57 · 通用基准 14）');
+ck('「部分 CSI」徽章数 = 真·部分 CSI 条目数', (els['#grid-host'].innerHTML.match(/部分 CSI/g) || []).length, 9);
+ck('「射频信号」徽章数', (els['#grid-host'].innerHTML.match(/badge-csi csi-rf/g) || []).length, 16);
+ck('「部分射频」标记 KPI 条目', (els['#grid-host'].innerHTML.match(/部分射频/g) || []).length, 3);
+ck('结果行', els['#result-line'].innerHTML.replace(/<[^>]+>/g, ''), '显示 78 / 78 条索引记录（低空相关 64 · 通用基准 14）');
 
 /* 无 paper 的条目：卡片不得输出 href="undefined" */
 ck('卡片无 undefined 链接', /href="undefined"/.test(els['#grid-host'].innerHTML), false);
-ck('无正式论文标签数', (els['#grid-host'].innerHTML.match(/无正式论文/g) || []).length, 6);
+ck('无正式论文标签数', (els['#grid-host'].innerHTML.match(/无正式论文/g) || []).length, 7);
 
 const exportData = JSON.parse(fs.readFileSync('data/datasets.json', 'utf8')).datasets;
 const normalize = data => JSON.parse(JSON.stringify(data));
