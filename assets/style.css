@@ -261,6 +261,12 @@ section { padding: 52px 0; }
 .link-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .link-btn.primary:hover { background: #1a45c0; color: #fff; }
 .link-btn svg { opacity: .75; }
+/* 无正式论文的条目：给一个不可点的灰标签，避免 href="undefined" 死链 */
+.link-btn.is-muted {
+  border-style: dashed; border-color: var(--border-strong); background: transparent;
+  color: var(--text-3); font-weight: 500; cursor: default;
+}
+.link-btn.is-muted:hover { border-color: var(--border-strong); color: var(--text-3); background: transparent; }
 
 .empty {
   grid-column: 1 / -1; text-align: center; padding: 56px 20px;

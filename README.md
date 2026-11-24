@@ -9,7 +9,7 @@
 > 🌐 **在线浏览**：[sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset](https://sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset/)（可搜索、可筛选、含对比矩阵）。
 > 📦 **结构化数据**：[data/datasets.json](https://cdn.jsdelivr.net/gh/SJTU-WirelessAI-Lab/Low-Altitude-Dataset@main/data/datasets.json)（jsDelivr CDN，返回 `application/json`，可直接 fetch；CDN 有缓存延迟，数据更新以仓库内同路径文件为准）。
 
-**增长趋势**：截至 2026 年末，低空相关数据集累计 **48** 个，其中 **11** 个提供完整 MIMO 信道 CSI。下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。
+**增长趋势**：截至 2026 年末，低空相关数据集累计 **54** 个，其中 **11** 个提供完整 MIMO 信道 CSI。下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。
 
 ![低空数据集累计数量（2015–2026）](assets/timeline.svg)
 
@@ -28,15 +28,15 @@
 
 ## 数据集总览
 
-共 **62** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**；其中**低空相关 48 个**、**通用 / 上游基准 14 个**。
+共 **68** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**；其中**低空相关 54 个**、**通用 / 上游基准 14 个**。
 
 **信道级数据标注**：🟢 有 CSI（完整 MIMO 信道）、🟡 部分 CSI（实测信道测量，但未给完整 MIMO CSI）、🔵 仅射频信号（原始 I/Q 等射频采集，数据本身不含 CSI）、⚪ 均无。**CSI 与射频信号是两类不同模态**，不能互相替代：前者是信道估计结果，后者是接收机采到的原始波形 / 频谱。
 
-**获取方式**：默认标为 **开放下载**（官方页面公开提供，卡片上不另加徽章）；另有 4 种受限情形会单独标注——**仅预览**（只公开子集）、**需注册**（平台账号）、**需申请**（邮件 / 表单审批）、**未发布**（官方标注即将发布）。当前 62 条中：开放下载 56、仅预览 1、需注册 3、需申请 1、未发布 1。
+**获取方式**：默认标为 **开放下载**（官方页面公开提供，卡片上不另加徽章）；另有 4 种受限情形会单独标注——**仅预览**（只公开子集）、**需注册**（平台账号）、**需申请**（邮件 / 表单审批）、**未发布**（官方标注即将发布）。当前 68 条中：开放下载 60、仅预览 2、需注册 3、需申请 1、未发布 2。
 
-**数据来源**：**实测**（真实传感器 / 外场采集）、**混合**（真实与合成并用）、**仿真**（射线追踪 / 数字孪生 / 渲染器生成）。当前 62 条中实测 41、混合 8、仿真 13；其中低空相关 48 条为实测 36、混合 4、仿真 8。
+**数据来源**：**实测**（真实传感器 / 外场采集）、**混合**（真实与合成并用）、**仿真**（射线追踪 / 数字孪生 / 渲染器生成）。当前 68 条中实测 44、混合 10、仿真 14；其中低空相关 54 条为实测 39、混合 6、仿真 9。
 
-### 低空相关数据集（48 个）
+### 低空相关数据集（54 个）
 
 | # | 数据集 | 来源 | CSI | 射频 | 年份 | 作者 | 机构 | 官网 |
 |---|--------|:----:|:---:|:----:|------|------|------|------|
@@ -60,34 +60,40 @@
 | 18 | **LSS-FMCWR-1.0** | 实测 | ⚪ | · | 2024 | 陈小龙, 袁旺, 杜晓林, 于刚, 何肖阳, 关键, 汪兴海 | 海军航空大学 / 烟台大学 / 济南大学 | [链接](https://radars.ac.cn/article/doi/10.12000/JR23142) |
 | 19 | **MMAUD** | 实测 | ⚪ | · | 2024 | Shenghai Yuan, Yizhuo Yang, Thien Hoang Nguyen, Thien-Minh Nguyen, Jianfei Yang, Fen Liu, Jianping Li, Han Wang, Lihua Xie | Nanyang Technological University (NTU) | [链接](https://github.com/ntu-aris/MMAUD) |
 | 20 | **3D MaMIMO A2G UAV CSI** | 实测 | 🟢 | · | 2025 | Achiel Colpaert, Sofie Pollin | KU Leuven (ESAT) | [链接](https://doi.org/10.48804/MTNAEG) |
-| 21 | **AnyVisLoc** | 实测 | ⚪ | · | 2025 | Yibin Ye, Xichao Teng, Shuo Chen, Zhang Li, Leqi Liu, Qifeng Yu, Tao Tan | National University of Defense Technology / Macao Polytechnic University | [链接](https://github.com/UAV-AVL/Benchmark) |
-| 22 | **DrIFT** | 混合 | ⚪ | · | 2025 | Fardad Dadboud, Hamid Azad, Varun Mehta, Miodrag Bolic, Iraj Mantegh | University of Ottawa / NRC Canada | [链接](https://github.com/CARG-uOttawa/DrIFT) |
-| 23 | **Drone Swarm Sounding** | 实测 | 🟢 | · | 2025 | Julia Beuster, Carsten Andrich, Sebastian Giehl, Marc Miranda, et al. | Technische Universität Ilmenau | [链接](https://arxiv.org/abs/2507.12010) |
-| 24 | **DroneRFb-DIR** | 实测 | ⚪ | 🔵 | 2025 | 任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明 | 浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室 | [链接](https://www.scidb.cn/detail?dataSetId=84cf9101e739402784b1396783881202) |
-| 25 | **Great-MSD** | 仿真 | 🟢 | · | 2025 | Kongwu Huang, Shiyi Mu, Jun Jiang, Yuan Gao, Shugong Xu | Shanghai University / Xi'an Jiaotong-Liverpool University | [链接](https://github.com/hkw-xg/Great-MCD) |
-| 26 | **LAE UAV** | 仿真 | ⚪ | · | 2025 | Zhengru Fang, Zhenghao Liu, Jingjing Wang, Senkang Hu, et al., Yuguang Fang | City University of Hong Kong / Beihang University | [链接](https://github.com/fangzr/TOC-Edge-Aerial) |
-| 27 | **LIPASE** | 实测 | ⚪ | 🔵 | 2025 | Yifei Sun, Chao Yu, Yan Luo, Tony Xiao Han, Haisheng Tan, Rui Wang, Francis C. M. Lau | The University of Hong Kong / SUSTech / Huawei 等 | [链接](https://github.com/yfsun0327/lipase-dataset) |
-| 28 | **Lund UAV Audio** | 实测 | ⚪ | · | 2025 | Erik Tegler, Max Modig, Per Skarin, Kalle Åström, Magnus Oskarsson, Gabrielle Flood | Lund University / SAAB | [链接](https://vision.maths.lth.se/drone_sound/) |
-| 29 | **MathWorks Radar Drone** | 实测 | ⚪ | · | 2025 | Zhongliang Guo, Samiur Rahman, Duncan Robertson | University of St Andrews | [链接](https://doi.org/10.5281/zenodo.15224887) |
-| 30 | **NeoDrone** | 实测 | ⚪ | · | 2025 | NeoDrone 团队（北京市数据知识产权登记） | 北京 · 低空智能系统 | [链接](https://github.com/playezio/NeoDrone) |
-| 31 | **RFUAV** | 实测 | ⚪ | 🔵 | 2025 | Rui Shi, Xiaodong Yu, Shengming Wang, Yijia Zhang, Lu Xu, Peng Pan, Chunlai Ma | Beijing University of Posts and Telecommunications 等 | [链接](https://github.com/kitoweeknd/RFUAV) |
-| 32 | **SynthSoM** | 仿真 | 🟢 | · | 2025 | Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, Mingran Sun, et al. | Peking University / Shandong University | [链接](https://github.com/ZiweiHuang96/SynthSoM) |
-| 33 | **UAV-LowAlt-MOT** | 实测 | ⚪ | · | 2025 | Xin Wang | Xidian University | [链接](https://www.scidb.cn/en/detail?dataSetId=239a78b317464fb9943387df112a0345) |
-| 34 | **UAVScenes** | 实测 | ⚪ | · | 2025 | Sijie Wang, Siqi Li, Yawei Zhang, Shangshu Yu, Shenghai Yuan, et al., Lihua Xie, Wee Peng Tay | Nanyang Technological University / Shanghai Jiao Tong University 等 | [链接](https://github.com/sijieaaa/UAVScenes) |
-| 35 | **16-Ch UAV Acoustic** | 实测 | ⚪ | · | 2026 | Huilong Wang, Peng Chen, Zhimin Chen, Yuye Liu | Southeast University / Shanghai Dianji University | [链接](https://doi.org/10.5281/zenodo.23613504) |
-| 36 | **A2A-UAV** | 实测 | ⚪ | · | 2026 | Hongtao Liang, Yiyao Wan, Kezhi Zhu, Jiayi Zhang, Zequn Jiang, Ziyu Zhou, Jiahuan Ji, Fuhui Zhou, Qihui Wu | Nanjing University of Aeronautics and Astronautics (NUAA) / HKUST | [链接](https://github.com/lht-research/A2A-UAV) |
-| 37 | **CageDroneRF** | 混合 | ⚪ | 🔵 | 2026 | Mohammad Rostami, Atik Faysal, Hongtao Xia, Hadi Kasasbeh, Ziang Gao, Huaxia Wang | Rowan University | [链接](https://arxiv.org/abs/2601.03302) |
-| 38 | **Cross-layer UAV 6G** | 实测 | ⚪ | 🔹 | 2026 | Francesco Paolucci, Emilio Paolini, Massimo Satler, et al. | CNIT / Scuola Superiore Sant'Anna | [链接](https://zenodo.org/records/21468734) |
-| 39 | **DroneRFc-MM** | 实测 | ⚪ | 🔵 | 2026 | 虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明 | 浙江大学全省空域感知与自主无人系统重点实验室 | [链接](https://www.scidb.cn/detail?dataSetId=0af05173ce5d45528ebd707d67f3d641) |
-| 40 | **FlyAwareV2** | 混合 | ⚪ | · | 2026 | Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh | University of Padova | [链接](https://medialab.dei.unipd.it/paper_data/FlyAwareV2) |
-| 41 | **ITU-ARIS Acoustic** | 实测 | ⚪ | · | 2026 | İhsan Mert Muhacıroğlu, Tayfun Akgül | Istanbul Technical University (ARIS Lab) | [链接](https://zenodo.org/records/22682339) |
-| 42 | **MultiFly** | 实测 | ⚪ | · | 2026 | Markus Gross, Andreas Greiner, Taehyoung Kim, Sivasubiramaniam Subbiah, Tomaž Cotič, Conrad Christoph, Oussema Dhaouadi, Simon Zieher, Surya Kumar, Gordon Elger, Henri Meeß, Olaf Wysocki, Paul Spannaus, Daniel Cremers | Fraunhofer IVI / TU Munich / University of Cambridge / TH Ingolstadt | [链接](https://markus-42.github.io/multifly/) |
-| 43 | **Multimodal-NF** | 仿真 | 🟢 | · | 2026 | Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin | Southeast University | [链接](https://lmyxxn.github.io/6GXLMIMODatasets/) |
-| 44 | **PML-CellularEye** | 实测 | 🟡 | 🔵 | 2026 | Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You | Purple Mountain Laboratories / Southeast University | [链接](https://ffxu1024.github.io/CellularEye/) |
-| 45 | **SkyEV** | 实测 | ⚪ | · | 2026 | Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno | ETH Zurich | [链接](https://arxiv.org/abs/2607.18747) |
-| 46 | **UAV-Flow** | 混合 | ⚪ | · | 2026 | Donglin Yang, Xiangyu Wang, Yantong Zhong, Wenhao Zheng, Zihan Ding, Yue Liao, Hongsheng Li, Ke Xu, Si Liu | Beihang University / National University of Singapore / CUHK MMLab | [链接](https://prince687028.github.io/UAV-Flow/) |
-| 47 | **Huangpu River Water–Air** ⭐ | 仿真 | 🟢 | · | 2026 | Haofeng Zhong, Jianhua Mo | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.0130w) |
-| 48 | **LAMBDA** ⭐ | 仿真 | 🟢 | · | 2026 | Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.36052) |
+| 21 | **A2G CIR (3.6 GHz)** | 实测 | 🟡 | · | 2025 | Qiuming Zhu, Hangang Li, Kai Mao, Hanpeng Li, Xuhan Wen, Shaolong Zhang, Jie Wang | Nanjing University of Aeronautics and Astronautics (NUAA) | [链接](https://doi.org/10.17632/8p6r8ft4fz.2) |
+| 22 | **AnyVisLoc** | 实测 | ⚪ | · | 2025 | Yibin Ye, Xichao Teng, Shuo Chen, Zhang Li, Leqi Liu, Qifeng Yu, Tao Tan | National University of Defense Technology / Macao Polytechnic University | [链接](https://github.com/UAV-AVL/Benchmark) |
+| 23 | **DrIFT** | 混合 | ⚪ | · | 2025 | Fardad Dadboud, Hamid Azad, Varun Mehta, Miodrag Bolic, Iraj Mantegh | University of Ottawa / NRC Canada | [链接](https://github.com/CARG-uOttawa/DrIFT) |
+| 24 | **Drone Swarm Sounding** | 实测 | 🟢 | · | 2025 | Julia Beuster, Carsten Andrich, Sebastian Giehl, Marc Miranda, et al. | Technische Universität Ilmenau | [链接](https://arxiv.org/abs/2507.12010) |
+| 25 | **DroneRFb-DIR** | 实测 | ⚪ | 🔵 | 2025 | 任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明 | 浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室 | [链接](https://www.scidb.cn/detail?dataSetId=84cf9101e739402784b1396783881202) |
+| 26 | **Great-MSD** | 仿真 | 🟢 | · | 2025 | Kongwu Huang, Shiyi Mu, Jun Jiang, Yuan Gao, Shugong Xu | Shanghai University / Xi'an Jiaotong-Liverpool University | [链接](https://github.com/hkw-xg/Great-MCD) |
+| 27 | **LAE UAV** | 仿真 | ⚪ | · | 2025 | Zhengru Fang, Zhenghao Liu, Jingjing Wang, Senkang Hu, et al., Yuguang Fang | City University of Hong Kong / Beihang University | [链接](https://github.com/fangzr/TOC-Edge-Aerial) |
+| 28 | **LIPASE** | 实测 | ⚪ | 🔵 | 2025 | Yifei Sun, Chao Yu, Yan Luo, Tony Xiao Han, Haisheng Tan, Rui Wang, Francis C. M. Lau | The University of Hong Kong / SUSTech / Huawei 等 | [链接](https://github.com/yfsun0327/lipase-dataset) |
+| 29 | **Lund UAV Audio** | 实测 | ⚪ | · | 2025 | Erik Tegler, Max Modig, Per Skarin, Kalle Åström, Magnus Oskarsson, Gabrielle Flood | Lund University / SAAB | [链接](https://vision.maths.lth.se/drone_sound/) |
+| 30 | **MathWorks Radar Drone** | 实测 | ⚪ | · | 2025 | Zhongliang Guo, Samiur Rahman, Duncan Robertson | University of St Andrews | [链接](https://doi.org/10.5281/zenodo.15224887) |
+| 31 | **NeoDrone** | 实测 | ⚪ | · | 2025 | NeoDrone 团队（北京市数据知识产权登记） | 北京 · 低空智能系统 | [链接](https://github.com/playezio/NeoDrone) |
+| 32 | **RFUAV** | 实测 | ⚪ | 🔵 | 2025 | Rui Shi, Xiaodong Yu, Shengming Wang, Yijia Zhang, Lu Xu, Peng Pan, Chunlai Ma | Beijing University of Posts and Telecommunications 等 | [链接](https://github.com/kitoweeknd/RFUAV) |
+| 33 | **SynthSoM** | 仿真 | 🟢 | · | 2025 | Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, Mingran Sun, et al. | Peking University / Shandong University | [链接](https://github.com/ZiweiHuang96/SynthSoM) |
+| 34 | **UAV-LowAlt-MOT** | 实测 | ⚪ | · | 2025 | Xin Wang | Xidian University | [链接](https://www.scidb.cn/en/detail?dataSetId=239a78b317464fb9943387df112a0345) |
+| 35 | **UAVScenes** | 实测 | ⚪ | · | 2025 | Sijie Wang, Siqi Li, Yawei Zhang, Shangshu Yu, Shenghai Yuan, et al., Lihua Xie, Wee Peng Tay | Nanyang Technological University / Shanghai Jiao Tong University 等 | [链接](https://github.com/sijieaaa/UAVScenes) |
+| 36 | **16-Ch UAV Acoustic** | 实测 | ⚪ | · | 2026 | Huilong Wang, Peng Chen, Zhimin Chen, Yuye Liu | Southeast University / Shanghai Dianji University | [链接](https://doi.org/10.5281/zenodo.23613504) |
+| 37 | **A2A-UAV** | 实测 | ⚪ | · | 2026 | Hongtao Liang, Yiyao Wan, Kezhi Zhu, Jiayi Zhang, Zequn Jiang, Ziyu Zhou, Jiahuan Ji, Fuhui Zhou, Qihui Wu | Nanjing University of Aeronautics and Astronautics (NUAA) / HKUST | [链接](https://github.com/lht-research/A2A-UAV) |
+| 38 | **A2G CIR + RT (Multi-band)** | 混合 | 🟡 | · | 2026 | Qiuming Zhu, Nan Ming, Jianan Xie, Weidong Li, Junwei Bao, Kai Mao, et al. | Nanjing University of Aeronautics and Astronautics (NUAA) | [链接](https://doi.org/10.17632/pztzfz4vy4.1) |
+| 39 | **AERPAW AADM** | 混合 | ⚪ | 🔵 | 2026 | Md Sharif Hossen, Cole Dickerson, Ozgur Ozdemir, Mihail Sichitiu, Ismail Guvenc | North Carolina State University | [链接](https://doi.org/10.5061/dryad.7d7wm3898) |
+| 40 | **ATA** | 实测 | ⚪ | · | 2026 | Wenchao Kang, Xuekai Zhang, Yueping Peng, Wei Tang, Qilong Li, Hexiang Hao, Kang Liu, Qinghe Chen | Engineering University of the Chinese People's Armed Police Force | [链接](https://github.com/kkbushi/ATA) |
+| 41 | **CageDroneRF** | 混合 | ⚪ | 🔵 | 2026 | Mohammad Rostami, Atik Faysal, Hongtao Xia, Hadi Kasasbeh, Ziang Gao, Huaxia Wang | Rowan University | [链接](https://arxiv.org/abs/2601.03302) |
+| 42 | **Cross-layer UAV 6G** | 实测 | ⚪ | 🔹 | 2026 | Francesco Paolucci, Emilio Paolini, Massimo Satler, et al. | CNIT / Scuola Superiore Sant'Anna | [链接](https://zenodo.org/records/21468734) |
+| 43 | **DroneRFc-MM** | 实测 | ⚪ | 🔵 | 2026 | 虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明 | 浙江大学全省空域感知与自主无人系统重点实验室 | [链接](https://www.scidb.cn/detail?dataSetId=0af05173ce5d45528ebd707d67f3d641) |
+| 44 | **FlyAwareV2** | 混合 | ⚪ | · | 2026 | Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh | University of Padova | [链接](https://medialab.dei.unipd.it/paper_data/FlyAwareV2) |
+| 45 | **ITU-ARIS Acoustic** | 实测 | ⚪ | · | 2026 | İhsan Mert Muhacıroğlu, Tayfun Akgül | Istanbul Technical University (ARIS Lab) | [链接](https://zenodo.org/records/22682339) |
+| 46 | **MultiFly** | 实测 | ⚪ | · | 2026 | Markus Gross, Andreas Greiner, Taehyoung Kim, Sivasubiramaniam Subbiah, Tomaž Cotič, Conrad Christoph, Oussema Dhaouadi, Simon Zieher, Surya Kumar, Gordon Elger, Henri Meeß, Olaf Wysocki, Paul Spannaus, Daniel Cremers | Fraunhofer IVI / TU Munich / University of Cambridge / TH Ingolstadt | [链接](https://markus-42.github.io/multifly/) |
+| 47 | **Multimodal-NF** | 仿真 | 🟢 | · | 2026 | Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin | Southeast University | [链接](https://lmyxxn.github.io/6GXLMIMODatasets/) |
+| 48 | **PML-CellularEye** | 实测 | 🟡 | 🔵 | 2026 | Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You | Purple Mountain Laboratories / Southeast University | [链接](https://ffxu1024.github.io/CellularEye/) |
+| 49 | **SkyEV** | 实测 | ⚪ | · | 2026 | Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno | ETH Zurich | [链接](https://arxiv.org/abs/2607.18747) |
+| 50 | **TSMS-Drone** | 实测 | ⚪ | 🔵 | 2026 | Seung-Kyu Han, Young-Ho Jung | Korea Aerospace University | [链接](https://doi.org/10.25452/figshare.plus.30027313) |
+| 51 | **UAV Wireless MM-Bench** | 仿真 | ⚪ | · | 2026 | Najmeh Alibabaie, Antonello Calabrò, Eda Marchetti | CNR-ISTI (Italy) | [链接](https://doi.org/10.5281/zenodo.17486134) |
+| 52 | **UAV-Flow** | 混合 | ⚪ | · | 2026 | Donglin Yang, Xiangyu Wang, Yantong Zhong, Wenhao Zheng, Zihan Ding, Yue Liao, Hongsheng Li, Ke Xu, Si Liu | Beihang University / National University of Singapore / CUHK MMLab | [链接](https://prince687028.github.io/UAV-Flow/) |
+| 53 | **Huangpu River Water–Air** ⭐ | 仿真 | 🟢 | · | 2026 | Haofeng Zhong, Jianhua Mo | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.0130w) |
+| 54 | **LAMBDA** ⭐ | 仿真 | 🟢 | · | 2026 | Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao | Shanghai Jiao Tong University | [链接](https://doi.org/10.57760/sciencedb.36052) |
 
 ### 通用 / 上游基准数据集（14 个）
 
@@ -110,7 +116,7 @@
 | 13 | **EM-Bench** | 混合 | ⚪ | 🔵 | 2026 | Junyu Shen, Zhendong She, Chenghanyu Zhang, Yuchuang Sun, et al., Maosong Sun | Tsinghua University / BUPT / Tianjin University / IMECAS 等 | [链接](https://em-merlin.github.io/) |
 | 14 | **U6G-WISE** | 实测 | 🟢 | · | 2026 | Yijia Feng, Hanzhong Zhang, Tao Tao, Ting Zhou, Yang Wang, Dong Li, Yunbo Hu, Zhenghang Zhu, Mingrui Zhu, Shuang Chen, Zhi Wang, Guangxing Li, Jingxin Liu, Liyu Cai | Shanghai Academy of Networked Intelligence / Shanghai University / Transcom Technologies | [链接](https://doi.org/10.57760/sciencedb.01a31) |
 
-**获取受限的 6 条**（其余 56 条可在官网直接下载）：
+**获取受限的 8 条**（其余 60 条可在官网直接下载）：
 
 | 数据集 | 年份 | 获取方式 | 说明 |
 |---|---|---|---|
@@ -119,6 +125,8 @@
 | **ISAC UAV (TU Ilmenau)** | 2023 | 需申请 | 需邮件 / 表单申请，授权后获取 |
 | **AERPAW** | 2024 | 需注册 | 需在托管平台注册（免费）账号后下载 |
 | **A2A-UAV** | 2026 | 仅预览 | 只公开部分 / 预览子集，完整数据待发布 |
+| **A2G CIR + RT (Multi-band)** | 2026 | 仅预览 | 只公开部分 / 预览子集，完整数据待发布 |
+| **ATA** | 2026 | 未发布 | 官方标注即将发布，当前无法获取 |
 | **MultiFly** | 2026 | 未发布 | 官方标注即将发布，当前无法获取 |
 
 ---
@@ -131,7 +139,7 @@
 
 > **关于图标**：Markdown 表格无法填充单元格底色（GitHub、GitLab、VS Code 都会过滤 `style` 与 `bgcolor`），故每格用一个 20×20 的图标表示覆盖情况，配色与网页版一致：深绿 = 包含、琥珀 = 部分支持、浅灰 = 缺失或不适用。
 
-### 低空相关数据集（48 个）
+### 低空相关数据集（54 个）
 
 | 数据集 | 年份 | 低空 | CSI信道 | 射频信号 | RGB/深度 | 红外 | LiDAR | 雷达 | IMU/GPS | 天气/时间 | 声学 | 主要关注点 |
 |--------|------|:----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----:|------------|
@@ -147,7 +155,7 @@
 | 🟢 ISAC UAV (TU Ilmenau) | 2023 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 伊尔梅瑙工业大学：3.75 GHz 三接收机 ISAC 实测库（60场景、约200 GB，含信道传递函数 H(f,t)、目标时延/多普勒估计与机载 RTK 真值，15/30 m 两档飞行高度，需邮件申请解密口令） |
 | 🟢 MaMIMO-UAV 3D CSI | 2023 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 鲁汶大学：无人机与8×8 Massive MIMO基站的3D非平稳信道CSI（校园飞行轨迹） |
 | 🟢 Sensiverse | 2023 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 多场景多频段ISAC感知信道数据集（3.5/10/26/100 GHz） |
-| 🟡 AERPAW | 2024 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集） |
+| 🟡 AERPAW | 2024 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集；其中 Dataset-31 空空信道探测、Dataset-32 3.4 GHz 空地信道探测可单独引用，AADM 多模态测量集已另立条目） |
 | ⚪ DADS | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 目前规模最大的公开无人机音频库（约18万条） |
 | 🟢 DeepVerse 6G | 2024 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 数字孪生无线数据集 |
 | 🔵 DroneRFa | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 大规模无人机射频信号低空探测（25类场景，3个ISM频段） |
@@ -155,6 +163,7 @@
 | ⚪ LSS-FMCWR-1.0 | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 多波段FMCW雷达低慢小目标探测（6类无人机微动特征） |
 | ⚪ MMAUD | 2024 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 南洋理工大学：俯视视角的反无人机多模态探测/分类/跟踪与轨迹估计基准（双3D LiDAR、双鱼眼相机、毫米波雷达与四路麦克风阵列，Leica全站仪真值） |
 | 🟢 3D MaMIMO A2G UAV CSI | 2025 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 鲁汶大学：GPS标注的无人机–64天线Massive MIMO空对地信道CSI（校园环境，46 GB） |
+| 🟡 A2G CIR (3.6 GHz) | 2025 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 南京航空航天大学：3.6 GHz（带宽61.44 MHz）空地信道实测CIR数据集（运动场、农田、水域三类场景×10 m与15 m飞行高度，提供功率时延谱、路径损耗与RMS时延扩展） |
 | ⚪ AnyVisLoc | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 低空多视角无人机绝对视觉定位基准（1.8万图像） |
 | ⚪ DrIFT | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 域漂移下的视觉无人机检测（14个域，含背景分割图） |
 | 🟢 Drone Swarm Sounding | 2025 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 无人机群多基地信道探测与雷达感知实测 |
@@ -171,6 +180,9 @@
 | ⚪ UAVScenes | 2025 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 多模态无人机感知（图像+LiDAR逐帧语义标注，12万+帧） |
 | ⚪ 16-Ch UAV Acoustic | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 东南大学：16通道平面十字麦克风阵列的无人机被动声学监测数据集（DJI Flip 悬停200段、背景28段、非无人机对照45段，273条记录/4368个WAV/7.22小时，覆盖四方位、5–30 m高度与5–70 m距离） |
 | ⚪ A2A-UAV | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 南京航空航天大学：空对空反无人机多模态探测与机型识别基准（机载RGB-热成像（红外）云台+全景相机+频谱仪+毫米波雷达，13机型15类、昼夜两档、105294同步样本与209539框；200样本预览集已公开，完整集待接收） |
+| 🟡 A2G CIR + RT (Multi-band) | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 南京航空航天大学：城市、郊区、农田、水域四类场景的空地CIR实测与射线追踪对照数据集（标称1.4/3.2/4.9 GHz三频段与25/50/100 m三档高度，带宽50 MHz；当前公开文件仅含100 m高度的1.4 GHz与3.2 GHz两档，其余档位待发布） |
+| 🔵 AERPAW AADM | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 北卡州立大学AERPAW：自主空中数据中继（AADM）竞赛多模态无线测量集（7.7 GB，含USRP链路质量与数据下载测量、无人机遥测、Keysight射频传感器定位、LoRa接收机链路质量与Fortem雷达测量，覆盖数字孪生与真实外场两阶段；可作为AERPAW体系的独立子集引用） |
+| ⚪ ATA | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 武警工程大学：空空反无人机微小目标视觉-语言跟踪基准（50段真实飞行序列、38094帧，逐帧框标注+视频级英文描述，目标平均仅占画面0.03%，支持纯框与语言辅助两种设定；GitHub仓库当前仅放说明页，标注待数据整理后发布） |
 | 🔵 CageDroneRF | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 射频笼采集+合成增强的无人机检测与识别基准 |
 | 🔵 Cross-layer UAV 6G | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 5G测试床无人机跨层（移动性-无线-应用）测量 |
 | 🔵 DroneRFc-MM | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | 反无人机多模态实测数据集（六类传感器同步观测城市低空目标） |
@@ -180,8 +192,10 @@
 | 🟢 Multimodal-NF | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 近场低空XL-MIMO |
 | 🟡 PML-CellularEye | 2026 | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![△](assets/icon-part.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | 实测基站侧低空ISAC数据（含可见光/红外视频） |
 | ⚪ SkyEV | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | RGB-事件相机同步的无人机检测与跟踪数据集 |
+| 🔵 TSMS-Drone | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 韩国航空大学：时间同步多传感器无人机数据集（24 GHz FMCW雷达、2.495 GHz CW雷达与2.4 GHz射频接收机三者同步采集，DJI Inspire 2 / Mavic 2 Pro / Phantom 4 Pro / Matrice 30 及角反射器参照，2–30 m共15个距离点、每条件500次重复；输出原始I/Q、距离-多普勒图与PSD） |
+| ⚪ UAV Wireless MM-Bench | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 意大利国家研究委员会ISTI：无人机无线通信多模态仿真基准（Wireless InSite射线追踪生成11个乡村/郊区/城市区域、2/3.5/28 GHz、静动态场景的链路级与路径级参数——接收功率、ToA、时延扩展、AoA/AoD与多径交互序列，另附GeoJSON/STL/OBJ/DXF环境几何；纯仿真，不含CSI与原始波形） |
 | ⚪ UAV-Flow | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face） |
-| 🟢 **Huangpu River Water–Air ⭐** | 2026 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台）** |
+| 🟢 **Huangpu River Water–Air ⭐** | 2026 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台，但当前发布版本尚无无人机飞行轨迹数据，故低空模态记 0.5）** |
 | 🟢 **LAMBDA ⭐** | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **低空多模态通感一体化基础数据集** |
 
 ### 通用 / 上游基准数据集（14 个）
@@ -207,7 +221,7 @@
 
 ## 数据集详情
 
-### 低空相关数据集（48 个）
+### 低空相关数据集（54 个）
 
 #### 1. UAV123 (2016)  ⚪
 - **作者**：Matthias Mueller, Neil Smith, Bernard Ghanem
@@ -429,7 +443,18 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：KU Leuven 校园环境下的无人机–64 天线 Massive MIMO 基站空对地 CSI 数据集：基站位于距 25 m 高楼 17 m、距 25 m 树线 12 m 的停车场，无人机按预设航迹机控飞行，提供**带 GPS 位置标注的信道状态信息**；约 46.3 GB，CC-BY-NC-4.0。
 
-#### 21. AnyVisLoc (2025)  ⚪
+#### 21. A2G CIR (3.6 GHz) (2025)  🟡
+- **作者**：Qiuming Zhu, Hangang Li, Kai Mao, Hanpeng Li, Xuhan Wen, Shaolong Zhang, Jie Wang
+- **机构**：Nanjing University of Aeronautics and Astronautics (NUAA)
+- **出处**：Mendeley Data V2 (2025)
+- **官网**：[主链接](https://doi.org/10.17632/8p6r8ft4fz.2)
+- **CSI**：部分 CSI（实测信道测量，但未给完整 MIMO CSI）
+- **射频信号**：无
+- **数据来源**：实测 —— 真实传感器 / 外场采集
+- **获取方式**：开放下载 —— 官方页面公开提供下载
+- **说明**：南京航空航天大学朱秋明团队发布的 3.6 GHz 空地信道实测 CIR 数据集：中心频率 3.6 GHz、带宽 61.44 MHz，覆盖运动场（SportsField）、农田（Farmland）与水域（OverWater）三类场景，各含 10 m 与 15 m 两档飞行高度。每个场景-高度组合提供功率时延谱（PDP，含时延轴与时间轴两个维度）、路径损耗与 RMS 时延扩展的 `.mat` 文件，另附 `.xlsx` 汇总表与 `guidemanual.pdf` 说明。**测量为实测信道探测而非射线追踪仿真，是本索引中最接近真实低空传播环境的一类数据**；但只给 CIR/PDP 级结果、未提供完整 MIMO 天线对维度的 CSI，故信道级数据记为「部分 CSI」。数据于 2025-08-26 发布（V2），CC BY 4.0。
+
+#### 22. AnyVisLoc (2025)  ⚪
 - **作者**：Yibin Ye, Xichao Teng, Shuo Chen, Zhang Li, Leqi Liu, Qifeng Yu, Tao Tan
 - **机构**：National University of Defense Technology / Macao Polytechnic University
 - **出处**：arXiv:2503.10692 · [论文](https://arxiv.org/abs/2503.10692)
@@ -440,7 +465,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：低空多视角条件下的无人机绝对视觉定位基准，含 1.8 万幅多场景多高度图像与 2.5D 参考图，并统一评测主流 AVL 方法。
 
-#### 22. DrIFT (2025)  ⚪
+#### 23. DrIFT (2025)  ⚪
 - **作者**：Fardad Dadboud, Hamid Azad, Varun Mehta, Miodrag Bolic, Iraj Mantegh
 - **机构**：University of Ottawa / NRC Canada
 - **出处**：WACV 2025 · [论文](https://openaccess.thecvf.com/content/WACV2025/html/Dadboud_DrIFT_Autonomous_Drone_Dataset_with_Integrated_Real_and_Synthetic_Data_WACV_2025_paper.html)
@@ -451,7 +476,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向域漂移下视觉无人机检测的数据集，含 14 个域（视角/真实-合成/季节/恶劣天气），并提供背景分割图以支持按背景评估。
 
-#### 23. Drone Swarm Sounding (2025)  🟢
+#### 24. Drone Swarm Sounding (2025)  🟢
 - **作者**：Julia Beuster, Carsten Andrich, Sebastian Giehl, Marc Miranda, et al.
 - **机构**：Technische Universität Ilmenau
 - **出处**：arXiv:2507.12010 · [论文](https://arxiv.org/abs/2507.12010)
@@ -462,7 +487,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：基于地面与机载同步节点的真实信道探测数据集，最多 4 架无人机编队，面向 ISAC 网络中的多基地雷达跟踪与空地/空空定位。
 
-#### 24. DroneRFb-DIR (2025)  🔵
+#### 25. DroneRFb-DIR (2025)  🔵
 - **作者**：任俊宇, 俞宁宁, 周成伟, 史治国, 陈积明
 - **机构**：浙江大学信息与电子工程学院 / 工业控制技术全国重点实验室
 - **出处**：电子与信息学报 47(3): 573–581 (2025) · [论文](https://jeit.ac.cn/cn/article/doi/10.11999/JEIT240804)
@@ -473,7 +498,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向非合作无人机**个体识别**的射频数据集，含 6 种机型、每型 3 架不同个体及 1 类背景信号；2.4–2.48 GHz、80 MHz 采样，原始 I/Q 存储，共 4690 个片段（每片段 4 M 以上采样点），含个体编号与视距/非视距标注，并已划分训练/测试集。
 
-#### 25. Great-MSD (2025)  🟢
+#### 26. Great-MSD (2025)  🟢
 - **作者**：Kongwu Huang, Shiyi Mu, Jun Jiang, Yuan Gao, Shugong Xu
 - **机构**：Shanghai University / Xi'an Jiaotong-Liverpool University
 - **出处**：arXiv:2507.08716（Great-X 平台） · [论文](https://arxiv.org/abs/2507.08716)
@@ -484,7 +509,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：基于 Great-X 平台（在 Unreal Engine 内重构 Sionna 射线追踪）生成的低空多模态通感一体化数据集，10 万样本同步 CSI、RGB、深度、雷达、LiDAR 与三维坐标/轨迹，并附基于 CSI 的无人机三维定位基线。
 
-#### 26. LAE UAV (2025)  ⚪
+#### 27. LAE UAV (2025)  ⚪
 - **作者**：Zhengru Fang, Zhenghao Liu, Jingjing Wang, Senkang Hu, et al., Yuguang Fang
 - **机构**：City University of Hong Kong / Beihang University
 - **出处**：arXiv:2504.18317 · [论文](https://arxiv.org/abs/2504.18317)
@@ -495,7 +520,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向低空经济中 GNSS 拒止城市环境的无人机视觉导航数据集，基于 CARLA 仿真，含 35.7 万帧对齐的 RGB/深度/语义多视角图像与精确位姿。
 
-#### 27. LIPASE (2025)  🔵
+#### 28. LIPASE (2025)  🔵
 - **作者**：Yifei Sun, Chao Yu, Yan Luo, Tony Xiao Han, Haisheng Tan, Rui Wang, Francis C. M. Lau
 - **机构**：The University of Hong Kong / SUSTech / Huawei 等
 - **出处**：IEEE OJ-COMS 6: 3779–3794 (2025) · [论文](https://doi.org/10.1109/OJCOMS.2025.3558430)
@@ -506,7 +531,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：基于 LTE 下行信号与数字阵列的无人机被动雷达跟踪实测数据集，提供距离-多普勒图与 GPS 轨迹，面向被动雷达与 ISAC 研究。
 
-#### 28. Lund UAV Audio (2025)  ⚪
+#### 29. Lund UAV Audio (2025)  ⚪
 - **作者**：Erik Tegler, Max Modig, Per Skarin, Kalle Åström, Magnus Oskarsson, Gabrielle Flood
 - **机构**：Lund University / SAAB
 - **出处**：CVPRW 2025 (Anti-UAV) · [论文](https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Tegler_Detection_and_Localization_of_Drones_and_UAVs_Using_Sound_and_CVPRW_2025_paper.html)
@@ -517,7 +542,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：隆德大学（数学科学中心）与 SAAB 联合发布的无人机声学探测数据集：12 元麦克风阵列配合 9 台固定相机（合计 280° 视场）与 PTZ 云台，在 Ljungbyhed 试验场用多种旋翼与固定翼无人机开展真实飞行实验，用到达方向（DOA）方法仅凭无人机自噪声即可定位至数百米，数据集含真实录音与无人机**真值位置**；约 17.7 GiB。
 
-#### 29. MathWorks Radar Drone (2025)  ⚪
+#### 30. MathWorks Radar Drone (2025)  ⚪
 - **作者**：Zhongliang Guo, Samiur Rahman, Duncan Robertson
 - **机构**：University of St Andrews
 - **出处**：Zenodo (2025) · [论文](https://doi.org/10.5281/zenodo.15224887)
@@ -528,7 +553,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：圣安德鲁斯大学与 MathWorks 发布的雷达无人机分类微多普勒训练集，约 10.9 TB，面向雷达无人机分类。
 
-#### 30. NeoDrone (2025)  ⚪
+#### 31. NeoDrone (2025)  ⚪
 - **作者**：NeoDrone 团队（北京市数据知识产权登记）
 - **机构**：北京 · 低空智能系统
 - **出处**：北京市数据知识产权登记 (2025) · [论文](https://webs.bjidex.com/sys-bsc-home/#/bscConsole/intellectualProperty/infoPublicity?action=1)
@@ -539,7 +564,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向低空无人机视觉感知的近地观测数据集，含 15 万+ 图像、150 万+ 标注实例与 7176 对时空对齐的可见光-红外图像，附 15 项结构化元数据。
 
-#### 31. RFUAV (2025)  🔵
+#### 32. RFUAV (2025)  🔵
 - **作者**：Rui Shi, Xiaodong Yu, Shengming Wang, Yijia Zhang, Lu Xu, Peng Pan, Chunlai Ma
 - **机构**：Beijing University of Posts and Telecommunications 等
 - **出处**：arXiv:2503.09033 · [论文](https://arxiv.org/abs/2503.09033)
@@ -550,7 +575,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：大规模射频无人机检测识别基准，约 1.3 TB 原始 I/Q，覆盖 37 种机型与多档 SNR，并附预处理与评测工具。
 
-#### 32. SynthSoM (2025)  🟢
+#### 33. SynthSoM (2025)  🟢
 - **作者**：Xiang Cheng, Ziwei Huang, Yong Yu, Lu Bai, Mingran Sun, et al.
 - **机构**：Peking University / Shandong University
 - **出处**：Scientific Data 12:819 (2025) · [论文](https://doi.org/10.1038/s41597-025-05065-x)
@@ -561,7 +586,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向机器联觉(SoM)的空地多链路协同合成数据集，含 5 个典型场景。
 
-#### 33. UAV-LowAlt-MOT (2025)  ⚪
+#### 34. UAV-LowAlt-MOT (2025)  ⚪
 - **作者**：Xin Wang
 - **机构**：Xidian University
 - **出处**：Science Data Bank / IEEE DataPort (2025) · [论文](https://doi.org/10.21227/2gt9-aa39)
@@ -572,7 +597,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：低空无人机对地多目标检测与跟踪基准，含行人、车辆等地物目标的带框与身份标注图像与视频序列，突出小目标、遮挡与尺度变化等挑战。
 
-#### 34. UAVScenes (2025)  ⚪
+#### 35. UAVScenes (2025)  ⚪
 - **作者**：Sijie Wang, Siqi Li, Yawei Zhang, Shangshu Yu, Shenghai Yuan, et al., Lihua Xie, Wee Peng Tay
 - **机构**：Nanyang Technological University / Shanghai Jiao Tong University 等
 - **出处**：ICCV 2025 · [论文](https://arxiv.org/abs/2507.22412)
@@ -583,7 +608,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：基于 MARS-LVIG 扩展的大规模多模态无人机数据集，提供逐帧图像与 LiDAR 语义标注及精确 6-DoF 位姿，支持分割、深度估计、定位、场景识别与新视角合成等任务。
 
-#### 35. 16-Ch UAV Acoustic (2026)  ⚪
+#### 36. 16-Ch UAV Acoustic (2026)  ⚪
 - **作者**：Huilong Wang, Peng Chen, Zhimin Chen, Yuye Liu
 - **机构**：Southeast University / Shanghai Dianji University
 - **出处**：Zenodo (2026)
@@ -594,7 +619,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：东南大学发布的 16 通道平面十字麦克风阵列无人机被动声学监测数据集：以 SMD-CR16 阵列采集 200 段 DJI Flip 悬停、28 段现场背景与 45 段非无人机声音对照，合计 273 条记录、4,368 个 48 kHz/16 bit WAV 文件、7.221 小时；无人机子集覆盖 4 个方位、5–30 m 的 4 档高度与 5–70 m 的 6 档水平距离，含安静的户外与临路城市两类环境，并附麦克风坐标、记录级 JSON 元数据、数据划分与可复现的检测/方位分类基线（检测平衡准确率 0.917、四类方位分类 macro-F1 0.910）。
 
-#### 36. A2A-UAV (2026)  ⚪
+#### 37. A2A-UAV (2026)  ⚪
 - **作者**：Hongtao Liang, Yiyao Wan, Kezhi Zhu, Jiayi Zhang, Zequn Jiang, Ziyu Zhou, Jiahuan Ji, Fuhui Zhou, Qihui Wu
 - **机构**：Nanjing University of Aeronautics and Astronautics (NUAA) / HKUST
 - **出处**：arXiv:2611.21311 (2026) · [论文](https://arxiv.org/abs/2611.21311)
@@ -605,7 +630,40 @@
 - **获取方式**：仅预览 —— 只公开部分 / 预览子集，完整数据待发布
 - **说明**：南京航空航天大学联合香港科技大学发布的**空对空**反无人机多模态数据集：以无人机挂载 RGB-热成像云台、全景相机、频谱仪与毫米波雷达，在 3 个室外场地对 13 款商用机型的 15 架目标无人机昼夜采集，共 105,294 个时间对齐样本（210,588 幅 RGB/全景图像、209,539 个人工校核框），并给出按采集组分隔的训练/验证/测试划分。热成像与频谱图均为处理后显示产品，不含标定温度/功率；雷达点云无逐点目标身份。200 样本预览子集已公开，完整数据待论文接收后发布。
 
-#### 37. CageDroneRF (2026)  🔵
+#### 38. A2G CIR + RT (Multi-band) (2026)  🟡
+- **作者**：Qiuming Zhu, Nan Ming, Jianan Xie, Weidong Li, Junwei Bao, Kai Mao, et al.
+- **机构**：Nanjing University of Aeronautics and Astronautics (NUAA)
+- **出处**：Mendeley Data V1 (2026)
+- **官网**：[主链接](https://doi.org/10.17632/pztzfz4vy4.1)
+- **CSI**：部分 CSI（实测信道测量，但未给完整 MIMO CSI）
+- **射频信号**：无
+- **数据来源**：混合 —— 真实采集与仿真 / 合成增强并用
+- **获取方式**：仅预览 —— 只公开部分 / 预览子集，完整数据待发布
+- **说明**：南京航空航天大学朱秋明团队发布的空地 CIR 实测与射线追踪对照数据集：标称覆盖城市（Urban）、郊区（Suburban）、农田（Farmland）与水域（Over-water）四类场景，频段 1.4/3.2/4.9 GHz，飞行高度 25/50/100 m，带宽 50 MHz，同时给出实测 CIR 与射线追踪结果，便于比较数字孪生与真实传播的偏差。**需注意当前公开文件只含 100 m 高度下 1.4 GHz 与 3.2 GHz 两档**（每个 `.xlsx` 按场景分文件，单文件 33–269 MB），4.9 GHz 与 25/50 m 两档尚未随数据发布，故获取方式记为「仅预览」。V1 于 2026-11-16 发布，CC BY 4.0。
+
+#### 39. AERPAW AADM (2026)  🔵
+- **作者**：Md Sharif Hossen, Cole Dickerson, Ozgur Ozdemir, Mihail Sichitiu, Ismail Guvenc
+- **机构**：North Carolina State University
+- **出处**：Dryad V4 (2026)
+- **官网**：[主链接](https://doi.org/10.5061/dryad.7d7wm3898)
+- **CSI**：无 CSI
+- **射频信号**：有 —— 提供原始射频采集（原始 I/Q、频谱、信号片段等）
+- **数据来源**：混合 —— 真实采集与仿真 / 合成增强并用
+- **获取方式**：开放下载 —— 官方页面公开提供下载
+- **说明**：北卡州立大学 AERPAW 团队发布的自主空中数据中继（AADM，Autonomous Aerial Data Mule）竞赛多模态无线测量集：单包 7.7 GB，含比赛所用的 USRP 测量、无人机遥测、Keysight 射频传感器的位置估计、LoRa 接收机链路质量与 Fortem 雷达测量，同时覆盖第一阶段数字孪生环境与第二阶段室外试验场的最终试飞。任务设定为一架自主无人机充当数据中继，在多基站之间规划航迹与接入决策以在限定时间内最大化下载量，故数据天然带有**多小区关联、调度与空地传播**的标注价值，也可用于数字孪生到真实世界的迁移研究。该集有独立 Dryad DOI（2026-03-12 发布，V4），可视作 AERPAW 体系下的独立子集引用。
+
+#### 40. ATA (2026)  ⚪
+- **作者**：Wenchao Kang, Xuekai Zhang, Yueping Peng, Wei Tang, Qilong Li, Hexiang Hao, Kang Liu, Qinghe Chen
+- **机构**：Engineering University of the Chinese People's Armed Police Force
+- **出处**：Drones 10(6):429 (2026) · [论文](https://doi.org/10.3390/drones10060429)
+- **官网**：[主链接](https://github.com/kkbushi/ATA)
+- **CSI**：无 CSI
+- **射频信号**：无
+- **数据来源**：实测 —— 真实传感器 / 外场采集
+- **获取方式**：未发布 —— 官方标注即将发布，当前无法获取
+- **说明**：武警工程大学信息工程学院发布的空空反无人机微小目标视觉-语言跟踪基准（ATA：Air-to-Air）：50 段真实飞行视频序列合计 38,094 帧，统一 1920×1080、30 fps、总时长约 21 分钟，训练集 40 段（uav-m1~m22、uav-s1~s18）、测试集 10 段；每序列提供逐帧边界框（`groundtruth.txt`）与视频级英文描述（`language.txt`），支持纯框（BBox-only）与语言辅助两种任务设定。目标平均仅占画面 0.03%，呈现显著的微小目标特性，并覆盖双动态扰动（跟踪平台与目标同时运动）、复杂背景切换与同类无人机干扰三类难点；论文另评测 8 个代表性跟踪器并验证相邻帧时序增强模块 AFTE。**截至 2026-11 其 GitHub 仓库仅有说明页，明确标注待数据整理完成后发布，故获取方式记为「未发布」**，引用前需先核仓库状态。
+
+#### 41. CageDroneRF (2026)  🔵
 - **作者**：Mohammad Rostami, Atik Faysal, Hongtao Xia, Hadi Kasasbeh, Ziang Gao, Huaxia Wang
 - **机构**：Rowan University
 - **出处**：arXiv:2601.03302 · [论文](https://arxiv.org/abs/2601.03302)
@@ -616,7 +674,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：由真实采集与系统化合成增强（SNR 控制、干扰注入、频移）构成的射频无人机检测识别基准，覆盖大量当代机型，支持分类、开集识别与检测。
 
-#### 38. Cross-layer UAV 6G (2026)  🔵
+#### 42. Cross-layer UAV 6G (2026)  🔵
 - **作者**：Francesco Paolucci, Emilio Paolini, Massimo Satler, et al.
 - **机构**：CNIT / Scuola Superiore Sant'Anna
 - **出处**：Zenodo (2026) · [论文](https://doi.org/10.5281/zenodo.21468734)
@@ -627,7 +685,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：5G 测试床中以无人机为移动终端采集的跨层数据集，同步 UAV 移动性测量、O-RAN 分离式 DU/CU/UE 无线指标与应用层（合成流量、视频流）性能指标。
 
-#### 39. DroneRFc-MM (2026)  🔵
+#### 43. DroneRFc-MM (2026)  🔵
 - **作者**：虞涛菘, 杨倩倩, 胡卓, 李明锴, 吴嘉俊, 苏煜繁, 潘俊宇, 史治国, 陈积明
 - **机构**：浙江大学全省空域感知与自主无人系统重点实验室
 - **出处**：电子与信息学报（网络优先出版, 2026） · [论文](https://jeit.ac.cn/cn/article/doi/10.11999/JEIT260889)
@@ -638,7 +696,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：城市低空场景下**六类传感器同步采集**的反无人机多模态数据集——云台相机、广角相机、射频天线（USRP-2955 + VERT2450，2.45 GHz）、激光雷达（RoboSense EM4）、毫米波雷达（Arbe Phoenix，77–81 GHz）与传声器阵列；覆盖 6 种消费级 DJI 机型，飞行数据总时长超 30 分钟，含机型、三维位置、姿态与速度细粒度标注，并附样本处理代码。
 
-#### 40. FlyAwareV2 (2026)  ⚪
+#### 44. FlyAwareV2 (2026)  ⚪
 - **作者**：Francesco Barbato, Matteo Caligiuri, Pietro Zanuttigh
 - **机构**：University of Padova
 - **出处**：Signal Processing: Image Communication (2026) · [论文](https://doi.org/10.1016/j.image.2026.117483)
@@ -649,7 +707,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向城市场景理解的多模态跨域无人机数据集，融合真实与合成影像，提供 RGB/深度/语义标注与天气、昼夜变化。合成样本的深度由 CARLA/UE 渲染引擎的 3D 几何直接导出；真实样本（训练集取自 VisDrone、测试集取自 UAVid）原本无深度标注，改用 **Marigold 单目深度估计**生成，因此真实部分深度为**估计值而非传感器实测**，且统一逐样本归一化到 [0,1] 后绝对尺度已被去除。
 
-#### 41. ITU-ARIS Acoustic (2026)  ⚪
+#### 45. ITU-ARIS Acoustic (2026)  ⚪
 - **作者**：İhsan Mert Muhacıroğlu, Tayfun Akgül
 - **机构**：Istanbul Technical University (ARIS Lab)
 - **出处**：IEEE SIU 2026 / Zenodo · [论文](https://doi.org/10.1109/SIU71813.2026.11636719)
@@ -660,7 +718,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：户外无人机声学探测数据集，单次连续采集约 3.12 小时，切分为 5491 段 1 秒音频（无人机 4491 / 背景 1000），并附防泄漏的分组与划分协议。
 
-#### 42. MultiFly (2026)  ⚪
+#### 46. MultiFly (2026)  ⚪
 - **作者**：Markus Gross, Andreas Greiner, Taehyoung Kim, Sivasubiramaniam Subbiah, Tomaž Cotič, Conrad Christoph, Oussema Dhaouadi, Simon Zieher, Surya Kumar, Gordon Elger, Henri Meeß, Olaf Wysocki, Paul Spannaus, Daniel Cremers
 - **机构**：Fraunhofer IVI / TU Munich / University of Cambridge / TH Ingolstadt
 - **出处**：arXiv:2610.10359 (2026) · [论文](https://arxiv.org/abs/2610.10359)
@@ -671,7 +729,7 @@
 - **获取方式**：未发布 —— 官方标注即将发布，当前无法获取
 - **说明**：弗劳恩霍夫 IVI 联合慕尼黑工业大学、剑桥大学与因戈尔施塔特应用技术大学发布的真实低空多模态感知数据集：仅人工标注 115 帧 RGB，即借助共享三维几何把标签迁移到其余 RGB、热成像图像以及 8.4 亿个 LiDAR 点与 340 万个雷达点，得到 4 个郊区场景、2 档飞行高度、15 类语义的 17,272 个同步样本，跨模态标注与留出人工标注平均一致率 89.93%；另附标定与 GNSS-RTK/IMU 数据。**截至 2026-11 数据与代码仍标注为即将发布**，仓库目前仅有项目页与示意图。
 
-#### 43. Multimodal-NF (2026)  🟢
+#### 47. Multimodal-NF (2026)  🟢
 - **作者**：Mengyuan Li, Qianfan Lu, Jiachen Tian, Hongjun Hu, Yu Han, Xiao Li, Chao-Kai Wen, Shi Jin
 - **机构**：Southeast University
 - **出处**：arXiv:2603.28280 · [论文](https://arxiv.org/abs/2603.28280)
@@ -682,7 +740,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向近场低空 XL-MIMO 的无线数据集，同步近场 CSI 与 RGB/LiDAR/GPS 多模态数据。
 
-#### 44. PML-CellularEye (2026)  🟡
+#### 48. PML-CellularEye (2026)  🟡
 - **作者**：Ziguo Zhong, Yongming Huang, Huazhou Hou, Fanfei Xu, Haisheng Feng, Shengheng Liu, Xiaohu You
 - **机构**：Purple Mountain Laboratories / Southeast University
 - **出处**：Science China Information Sciences 69(6):167301 (2026) · [论文](https://doi.org/10.1007/s11432-026-4923-1)
@@ -693,7 +751,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：基于商用 5G/5G-A 基站设备的实测多模态数据集，含 IQ、可见光/红外视频与气象数据。CSI 以距离域形式随 I/Q 归档，用官方工具包做一次 FFT 即还原为子载波×慢时间的复数 CSI；但采集按 30 波束分时扫描、每波束单 OFDM 符号单接收通道，不含 MIMO 天线对维度，故记为部分 CSI。数据托管于 ScienceDB（DOI: 10.57760/sciencedb.018bv，约 2.7 TB，CC BY-NC 4.0），工具包与格式说明见官网与备用链接。
 
-#### 45. SkyEV (2026)  ⚪
+#### 49. SkyEV (2026)  ⚪
 - **作者**：Jakub Mandula, Sebastian Heusinger, Julian Moosmann, Christian Vogt, Michele Magno
 - **机构**：ETH Zurich
 - **出处**：arXiv:2607.18747 · [论文](https://arxiv.org/abs/2607.18747)
@@ -704,7 +762,29 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：面向反无人机检测与跟踪的 RGB-事件相机同步数据集，采集未压缩、高同步的双模态数据，覆盖相机自运动、小目标尺度等真实挑战。
 
-#### 46. UAV-Flow (2026)  ⚪
+#### 50. TSMS-Drone (2026)  🔵
+- **作者**：Seung-Kyu Han, Young-Ho Jung
+- **机构**：Korea Aerospace University
+- **出处**：Scientific Data 13:407 (2026) · [论文](https://doi.org/10.1038/s41597-026-06802-6)
+- **官网**：[主链接](https://doi.org/10.25452/figshare.plus.30027313)
+- **CSI**：无 CSI
+- **射频信号**：有 —— 提供原始射频采集（原始 I/Q、频谱、信号片段等）
+- **数据来源**：实测 —— 真实传感器 / 外场采集
+- **获取方式**：开放下载 —— 官方页面公开提供下载
+- **说明**：韩国航空大学（Korea Aerospace University）发布的时间同步多传感器无人机数据集：将 24 GHz FMCW 雷达（Analog Devices Eval-TinyRad）、2.495 GHz CW 雷达与 2.4 GHz 射频接收机（均为 ADALM-Pluto SDR 平台）物理共址安装，由单一 MATLAB 主循环控制三路并行采集，靠结构化文件名 `Model_Distance_Index.mat` 保证跨传感器对齐，未使用 GPS/PPS 硬件触发。目标含 DJI Inspire 2、Mavic 2 Pro、Phantom 4 Pro、Matrice 30 四款机型与一个四面角反射器参照物，悬停高度 1.5 m，距离 2–30 m 每 2 m 一档共 15 个距离点，每个条件重复 500 次（分 5 个 100 次子集交替采集机型以防过拟合）。FMCW 侧输出预处理后的距离-多普勒图（161×4096）并附少量原始 ADC 样本与重建代码，CW 与 RF 侧保留原始复 I/Q（分别为 16,384 与 262,144 样本）。数据约 2026-03 发布于 Figshare（CC BY 4.0），附 MATLAB 加载/预处理/融合与 GoogLeNet 分类基线代码。**与 DroneRF 系列、LSS-FMCWR 的关键区别在于跨传感器的时间同步采集**，可直接用于雷达-射频融合检测。
+
+#### 51. UAV Wireless MM-Bench (2026)  ⚪
+- **作者**：Najmeh Alibabaie, Antonello Calabrò, Eda Marchetti
+- **机构**：CNR-ISTI (Italy)
+- **出处**：Drones 10(4):244 (2026) · [论文](https://doi.org/10.3390/drones10040244)
+- **官网**：[主链接](https://doi.org/10.5281/zenodo.17486134)
+- **CSI**：无 CSI
+- **射频信号**：无
+- **数据来源**：仿真 —— 射线追踪、数字孪生或渲染器生成，无真实采集
+- **获取方式**：开放下载 —— 官方页面公开提供下载
+- **说明**：意大利国家研究委员会 ISTI 发布的无人机无线通信多模态仿真基准：用 Wireless InSite X3D 射线追踪在 11 个乡村/郊区/城市区域（美国田纳西、加州 Palo Alto、意大利比萨西区、韩国首尔、曼哈顿等）生成 2/3.5/28 GHz 三个频段的信道数据，覆盖静态与移动场景及 G2A/A2G/A2A 三类链路。每个场景输出五类 CSV——空中节点与地面节点空间元数据、链路级统计（多径数、接收功率、平均 ToA、时延扩展、LOS/NLOS/Blocked 状态）、路径级参数（各多径功率、相位、精确 ToA、到达/离开方位角与俯仰角、交互编码）与射线交互序列，另附 GeoJSON/STL/OBJ/DXF 多格式三维环境几何。**该数据集完全基于仿真（作者自述 "entirely simulation-based"），不含原始 CSI、CIR 或任何实测波形**，提供的是几何感知的传播描述符；天线为 0 dBi 全向基线，无波束赋形与极化维度。数据托管于 Zenodo（CC BY 4.0），无需商业仿真软件即可读取。
+
+#### 52. UAV-Flow (2026)  ⚪
 - **作者**：Donglin Yang, Xiangyu Wang, Yantong Zhong, Wenhao Zheng, Zihan Ding, Yue Liao, Hongsheng Li, Ke Xu, Si Liu
 - **机构**：Beihang University / National University of Singapore / CUHK MMLab
 - **出处**：arXiv:2611.17163 (2026) · [论文](https://arxiv.org/abs/2611.17163)
@@ -715,7 +795,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：北京航空航天大学联合新加坡国立大学与香港中文大学 MMLab 发布的语言引导无人机飞行基准（Flow / Flying-on-a-Word 任务）：含 30,692 条由持证飞行员在 3 座校园（约 5.02 km²）遥控采集的真实轨迹与 10,109 条 UAV-Flow-Sim 仿真轨迹，覆盖平移、旋转、悬停、后退、环绕、靠近、穿过、降落 8 类动作、100 余小时第一视角视频；每条样本对齐自然语言指令、机载 FPV 图像、6-DoF 位姿与 RTK 定位及连续动作，并提供闭环仿真评测协议。真值采集平台为 DJI Mavic 3T RTK。
 
-#### 47. Huangpu River Water–Air (2026) ⭐  🟢
+#### 53. Huangpu River Water–Air (2026) ⭐  🟢
 - **作者**：Haofeng Zhong, Jianhua Mo
 - **机构**：Shanghai Jiao Tong University
 - **出处**：Science Data Bank V3 (2026)
@@ -726,7 +806,7 @@
 - **获取方式**：开放下载 —— 官方页面公开提供下载
 - **说明**：上海交通大学 Wireless AI 团队构建的黄浦江水域-低空一体化多模态感知仿真数据集：以 Unreal Engine 5 还原黄浦江三维场景，配合 ASVSim 模拟岸基基站与船舶的运动、水动力与多传感器输出，再由 Sionna RT 依据同帧位姿做电磁射线追踪，生成**多频段复数 CSI 及其传播路径参数**（保留未归一化的原始复信道系数，便于跨频段信道建模与对比）。模态含 RGB、深度、GPS/位姿、LiDAR 点云、雷达点云，以及晴/雨/云/雾/雪与不同时段等天气条件；提供相遇与追踪两类运动场景，并要求按船号 + 同一帧号跨模态读取。约 375 GB，V1 于 2026-09-20 发布、V3 于 2026-10-30 更新（CC BY 4.0）。**当前版本场景为岸基基站与船舶，水空协同框架已支持接入无人机平台但尚未纳入飞行数据**，故低空模态记为有限支持。
 
-#### 48. LAMBDA (2026) ⭐  🟢
+#### 54. LAMBDA (2026) ⭐  🟢
 - **作者**：Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao
 - **机构**：Shanghai Jiao Tong University
 - **出处**：arXiv:2607.03826 · Science Data Bank · [论文](https://arxiv.org/abs/2607.03826)
@@ -898,11 +978,11 @@
 ## 收录说明
 
 - **模态标注**：`1` 包含 / `0.5` 有限或部分支持 / `0` 缺失或不适用。
-- **低空 / 通用分区**：`la = 0` 即完全不含低空 / UAV 场景的数据集，统一归入「通用 / 上游基准数据集」表，不与低空相关条目混排。
+- **低空 / 通用分区**：`la = 0` 即完全不含低空 / UAV 场景的数据集，统一归入「通用 / 上游基准数据集」表，不与低空相关条目混排。`la = 0.5` 表示数据或构建平台**部分支持**低空场景——例如仅有平台级扩展能力、当前发布版本尚无飞行轨迹（Huangpu River Water–Air），或低空仅为若干场景之一；这类条目按 `la > 0` 一并归入低空组。
 - **获取方式（`access` 字段）**：`open` 为默认档——官方页面公开提供下载，页面卡片不另加徽章；`preview`（仅预览子集）、`register`（需平台账号）、`request`（需申请审批）、`pending`（尚未发布）四档会在卡片上标出，并集中列于「获取受限」表。该字段只记录**获取门槛**，不等同于许可条款——各数据集的许可证（CC BY、CC BY-NC、自定义学术用途等）请以官网为准。
-- **数据来源（`source` 字段）**：`real` 实测——真实传感器 / 外场采集；`mixed` 混合——真实采集与合成增强并用；`sim` 仿真——射线追踪、数字孪生或渲染器生成，无真实采集。判定口径看**底层数据是否来自真实传感器采集**：由实测 I/Q 处理出的微多普勒谱图仍算实测（如 MathWorks Radar Drone），纯渲染 / 射线追踪生成的一律算仿真（LAMBDA、Sensiverse、DeepVerse 6G、SynthSoM、Great-MSD、Multimodal-NF、LAE UAV），真实与合成拼接的算混合（DrIFT、FlyAwareV2、UAV-Flow、CageDroneRF）。每条都必须显式声明，`gen.js` 生成时会校验缺失或非法取值。
+- **数据来源（`source` 字段）**：`real` 实测——真实传感器 / 外场采集；`mixed` 混合——真实采集与合成增强并用；`sim` 仿真——射线追踪、数字孪生或渲染器生成，无真实采集。判定口径看**底层数据是否来自真实传感器采集**：由实测 I/Q 处理出的微多普勒谱图仍算实测（如 MathWorks Radar Drone），纯渲染 / 射线追踪生成的一律算仿真（LAMBDA、Sensiverse、DeepVerse 6G、SynthSoM、Great-MSD、Multimodal-NF、LAE UAV、UAV Wireless MM-Bench），真实与合成拼接的算混合（DrIFT、FlyAwareV2、UAV-Flow、CageDroneRF、A2G CIR + RT、AERPAW AADM）。每条都必须显式声明，`gen.js` 生成时会校验缺失或非法取值。
 - **信道级数据颜色标注**：🟢 有 CSI —— 提供完整 MIMO 信道 CSI（含仿真射线追踪与实测信道）；🟡 部分 CSI —— 有实测信道测量（波束 SNR、功率时延谱、下行信道传递函数等），但未给完整 MIMO CSI；🔵 仅射频信号 —— 数据是接收机采到的射频波形 / 频谱（原始 I/Q、距离-多普勒图等），**本身不含 CSI**，矩阵中 `CSI` 列为 `×`、`射频信号` 列为 `✓`；⚪ 均无 —— 既无 CSI 也无射频采集数据。同一颜色同时体现在总览表、矩阵表名称前的圆点与详情条目。
-- **核心模态与补充模态**：核心模态为低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间 7 类；**射频信号**、**红外**与**声学**为补充模态（页面筛选条中以虚线边框区分）。射频信号见于 DroneRF 系列、RFUAV、CageDroneRF、KU Leuven Drone RF、EM-134K / EM-Bench、LIPASE、AERPAW、PML-CellularEye（后两条同时含 CSI）与 Cross-layer UAV 6G（仅 KPI）；红外见于 Anti-UAV300、Drone-detection、NeoDrone 与 PML-CellularEye（部分）；声学见于 DroneRFc-MM、Drone-detection、LuViRA、ITU-ARIS Acoustic、DADS 与 Lund UAV Audio。
+- **核心模态与补充模态**：核心模态为低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间 7 类；**射频信号**、**红外**与**声学**为补充模态（页面筛选条中以虚线边框区分）。射频信号见于 DroneRF 系列、RFUAV、CageDroneRF、KU Leuven Drone RF、EM-134K / EM-Bench、LIPASE、TSMS-Drone（雷达与射频同步采集）、AERPAW AADM、AERPAW、PML-CellularEye（后两条同时含 CSI）与 Cross-layer UAV 6G（仅 KPI）；红外见于 Anti-UAV300、Drone-detection、NeoDrone 与 PML-CellularEye（部分）；声学见于 DroneRFc-MM、Drone-detection、LuViRA、ITU-ARIS Acoustic、DADS 与 Lund UAV Audio。
 - **年份**：以 LAMBDA 论文表1 为准；个别数据集论文发表年与数据集发布年不同，已在详情中注明出处。
 - **链接**：优先给出数据集官方主页；如官网不稳定，另附备用镜像或代码仓库链接。
 - **范围**：聚焦低空/UAV 通感一体化相关，同时收录必要的上游经典基准（如 KITTI、DeepMIMO 等）、低空安防常用的射频/雷达探测数据集（DroneRF 系列、RFUAV、LSS-FMCWR 等）与电磁信号理解数据集（EM-134K / EM-Bench）。

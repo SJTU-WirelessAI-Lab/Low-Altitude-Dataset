@@ -338,7 +338,7 @@ const DATASETS = [
     venue: 'AERPAW / Dryad / IEEE DataPort (2024–2026)',
     site: 'https://aerpaw.org/experiments/datasets/',
     paper: 'https://arxiv.org/abs/2510.08752',
-    focusZh: '空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集）',
+    focusZh: '空地/空空信道探测、频谱监测与5G KPI实测合集（30+数据集；其中 Dataset-31 空空信道探测、Dataset-32 3.4 GHz 空地信道探测可单独引用，AADM 多模态测量集已另立条目）',
     focusEn: 'A2G/A2A channel sounding, spectrum & KPI datasets',
     modality: { la: 1, csi: .5, rf: 1, rgb: 0, ir: 0, lidar: 0, radar: .5, imu: 1, weather: 0, acoustic: 0 }
   },
@@ -831,6 +831,87 @@ const DATASETS = [
   },
 
   {
+    id: 'tsms-drone', name: 'TSMS-Drone', year: 2026,
+    access: 'open',
+    source: 'real',
+    authors: 'Seung-Kyu Han, Young-Ho Jung',
+    org: 'Korea Aerospace University',
+    venue: 'Scientific Data 13:407 (2026)',
+    site: 'https://doi.org/10.25452/figshare.plus.30027313',
+    paper: 'https://doi.org/10.1038/s41597-026-06802-6',
+    focusZh: '韩国航空大学：时间同步多传感器无人机数据集（24 GHz FMCW雷达、2.495 GHz CW雷达与2.4 GHz射频接收机三者同步采集，DJI Inspire 2 / Mavic 2 Pro / Phantom 4 Pro / Matrice 30 及角反射器参照，2–30 m共15个距离点、每条件500次重复；输出原始I/Q、距离-多普勒图与PSD）',
+    focusEn: 'Time-synchronized FMCW radar / CW radar / RF receiver drone dataset',
+    modality: { la: 1, csi: 0, rf: 1, rgb: 0, ir: 0, lidar: 0, radar: 1, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'a2g-cir', name: 'A2G CIR (3.6 GHz)', year: 2025,
+    access: 'open',
+    source: 'real',
+    authors: 'Qiuming Zhu, Hangang Li, Kai Mao, Hanpeng Li, Xuhan Wen, Shaolong Zhang, Jie Wang',
+    org: 'Nanjing University of Aeronautics and Astronautics (NUAA)',
+    venue: 'Mendeley Data V2 (2025)',
+    site: 'https://doi.org/10.17632/8p6r8ft4fz.2',
+    focusZh: '南京航空航天大学：3.6 GHz（带宽61.44 MHz）空地信道实测CIR数据集（运动场、农田、水域三类场景×10 m与15 m飞行高度，提供功率时延谱、路径损耗与RMS时延扩展）',
+    focusEn: 'Measured 3.6 GHz A2G channel CIR over sports field, farmland and over-water',
+    modality: { la: 1, csi: .5, rf: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'a2g-cir-rt', name: 'A2G CIR + RT (Multi-band)', year: 2026,
+    access: 'preview',
+    source: 'mixed',
+    authors: 'Qiuming Zhu, Nan Ming, Jianan Xie, Weidong Li, Junwei Bao, Kai Mao, et al.',
+    org: 'Nanjing University of Aeronautics and Astronautics (NUAA)',
+    venue: 'Mendeley Data V1 (2026)',
+    site: 'https://doi.org/10.17632/pztzfz4vy4.1',
+    focusZh: '南京航空航天大学：城市、郊区、农田、水域四类场景的空地CIR实测与射线追踪对照数据集（标称1.4/3.2/4.9 GHz三频段与25/50/100 m三档高度，带宽50 MHz；当前公开文件仅含100 m高度的1.4 GHz与3.2 GHz两档，其余档位待发布）',
+    focusEn: 'Measured and ray-tracing A2G CIR across urban / suburban / farmland / over-water',
+    modality: { la: 1, csi: .5, rf: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'uav-mm-bench', name: 'UAV Wireless MM-Bench', year: 2026,
+    access: 'open',
+    source: 'sim',
+    authors: 'Najmeh Alibabaie, Antonello Calabrò, Eda Marchetti',
+    org: 'CNR-ISTI (Italy)',
+    venue: 'Drones 10(4):244 (2026)',
+    site: 'https://doi.org/10.5281/zenodo.17486134',
+    paper: 'https://doi.org/10.3390/drones10040244',
+    focusZh: '意大利国家研究委员会ISTI：无人机无线通信多模态仿真基准（Wireless InSite射线追踪生成11个乡村/郊区/城市区域、2/3.5/28 GHz、静动态场景的链路级与路径级参数——接收功率、ToA、时延扩展、AoA/AoD与多径交互序列，另附GeoJSON/STL/OBJ/DXF环境几何；纯仿真，不含CSI与原始波形）',
+    focusEn: 'Ray-tracing UAV wireless benchmark: link/path-level parameters and 3D geometry',
+    modality: { la: 1, csi: 0, rf: 0, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'ata', name: 'ATA', year: 2026,
+    access: 'pending',
+    source: 'real',
+    authors: 'Wenchao Kang, Xuekai Zhang, Yueping Peng, Wei Tang, Qilong Li, Hexiang Hao, Kang Liu, Qinghe Chen',
+    org: 'Engineering University of the Chinese People\'s Armed Police Force',
+    venue: 'Drones 10(6):429 (2026)',
+    site: 'https://github.com/kkbushi/ATA',
+    paper: 'https://doi.org/10.3390/drones10060429',
+    focusZh: '武警工程大学：空空反无人机微小目标视觉-语言跟踪基准（50段真实飞行序列、38094帧，逐帧框标注+视频级英文描述，目标平均仅占画面0.03%，支持纯框与语言辅助两种设定；GitHub仓库当前仅放说明页，标注待数据整理后发布）',
+    focusEn: 'Vision-language tracking benchmark for air-to-air counter-UAV of tiny drones',
+    modality: { la: 1, csi: 0, rf: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
+    id: 'aerpaw-aadm', name: 'AERPAW AADM', year: 2026,
+    access: 'open',
+    source: 'mixed',
+    authors: 'Md Sharif Hossen, Cole Dickerson, Ozgur Ozdemir, Mihail Sichitiu, Ismail Guvenc',
+    org: 'North Carolina State University',
+    venue: 'Dryad V4 (2026)',
+    site: 'https://doi.org/10.5061/dryad.7d7wm3898',
+    focusZh: '北卡州立大学AERPAW：自主空中数据中继（AADM）竞赛多模态无线测量集（7.7 GB，含USRP链路质量与数据下载测量、无人机遥测、Keysight射频传感器定位、LoRa接收机链路质量与Fortem雷达测量，覆盖数字孪生与真实外场两阶段；可作为AERPAW体系的独立子集引用）',
+    focusEn: 'AERPAW autonomous aerial data mule multi-modal wireless measurements',
+    modality: { la: 1, csi: 0, rf: 1, rgb: 0, ir: 0, lidar: 0, radar: .5, imu: 1, weather: 0, acoustic: 0 }
+  },
+
+  {
     id: 'huangpu-river', name: 'Huangpu River Water–Air', year: 2026,
     access: 'open',
     source: 'sim',
@@ -839,7 +920,7 @@ const DATASETS = [
     venue: 'Science Data Bank V3 (2026)',
     site: 'https://doi.org/10.57760/sciencedb.0130w',
     siteAlt: 'https://www.scidb.cn/en/detail?dataSetId=b84d794e94634d3e80e63422df4fb07b&version=V3',
-    focusZh: '上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台）',
+    focusZh: '上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台，但当前发布版本尚无无人机飞行轨迹数据，故低空模态记 0.5）',
     focusEn: 'Huangpu River water–air multimodal perception simulation dataset',
     modality: { la: .5, csi: 1, rf: 0, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 },
     self: true
@@ -996,10 +1077,12 @@ function cardHtml(ds) {
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
         数据集主页
       </a>
-      <a class="link-btn" href="${ds.paper}" target="_blank" rel="noopener">
+      ${ds.paper
+        ? `<a class="link-btn" href="${ds.paper}" target="_blank" rel="noopener">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
         论文
-      </a>
+      </a>`
+        : `<span class="link-btn is-muted" title="该数据集由数据仓库直接发布，暂无配套正式论文">无正式论文</span>`}
       ${alt}
     </div>
   </article>`;
