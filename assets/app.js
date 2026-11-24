@@ -912,6 +912,48 @@ const DATASETS = [
   },
 
   {
+    id: 'tricross-d2d', name: 'TriCross-D2D', year: 2026,
+    access: 'preview',
+    source: 'real',
+    authors: 'Wei Tang, Qilong Li, Yueping Peng, Hexiang Hao, Wenchao Kang, Xuekai Zhang, Liming Hou, Hongyan Lu',
+    org: 'Engineering University of the Chinese People\'s Armed Police Force',
+    venue: 'Drones 10(6):459 (2026)',
+    site: 'https://github.com/vv0930/TriCross-D2D',
+    paper: 'https://doi.org/10.3390/drones10060459',
+    focusZh: '武警工程大学：空对空无人机检测的跨场景-跨视角-跨天气域适应基准（13段RGB视频/23403帧抽取7045张图，源域4045+目标域训练2000/验证1000，9771个目标框；操场/树林/建筑/工地四类场景×低角度/平视/鸟瞰三视角×晴天与合成雾两档天气，支持UDA与SSDA两种协议，单类UAV且微小目标占73.8%；GitHub当前仅公开32对样例，完整集待发布）',
+    focusEn: 'Cross-scene / cross-view / cross-weather drone-to-drone detection benchmark',
+    modality: { la: 1, csi: 0, rf: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
+  },
+
+  {
+    id: 'tmrgbt-d2d', name: 'TMRGBT-D2D', year: 2025,
+    access: 'preview',
+    source: 'real',
+    authors: 'Hexiang Hao, Yueping Peng, Zecong Ye, Baixuan Han, Wei Tang, Wenchao Kang, Xuekai Zhang, Qilong Li, Wenchao Liu',
+    org: 'Engineering University of the Chinese People\'s Armed Police Force',
+    venue: 'Drones 9(10):694 (2025)',
+    site: 'https://github.com/HexiangH/TMRGBT-D2D',
+    paper: 'https://doi.org/10.3390/drones9100694',
+    focusZh: '武警工程大学：时间同步但空间错位的空对空RGB-热成像（红外）检测数据集（DJI Mavic 3T双相机并行采集19对视频、各21312帧，夜间占38.8%；两模态分别独立标注共94323框，快速运动帧1830个；因视差与视场差异无法全局配准，平均目标仅占画面0.02%；GitHub当前仅公开1段样例序列，完整集待发布）',
+    focusEn: 'Temporally aligned but spatially misaligned RGB-thermal drone-to-drone detection',
+    modality: { la: 1, csi: 0, rf: 0, rgb: 1, ir: 1, lidar: 0, radar: 0, imu: 0, weather: .5, acoustic: 0 }
+  },
+
+  {
+    id: 'cpd-uav', name: 'CPD-UAV', year: 2026,
+    access: 'request',
+    source: 'real',
+    authors: 'Xuekai Zhang, Wenchao Kang, Yueping Peng, Wei Tang, Qilong Li, Hexiang Hao, Liming Hou, Xin Ying',
+    org: 'Engineering University of the Chinese People\'s Armed Police Force',
+    venue: 'Drones 10(6):447 (2026)',
+    site: 'https://github.com/18510004596/CPD-UAV',
+    paper: 'https://doi.org/10.3390/drones10060447',
+    focusZh: '武警工程大学：无人机视角下与环境视觉融合人员的搜救检测基准（DJI Mavic 3T在20–80 m高度采集15段视频抽帧1061张1920×1080图像，丛林46%/草地42%/雪地6.5%/沙漠5.5%，目标多为面积<2.5%的长尾小目标；提供像素级二值掩码而不用框标注。GitHub仅公开31对样例，完整集需向通讯作者申请且限定人道主义非商业用途）',
+    focusEn: 'UAV-view detection of personnel visually blended with the environment',
+    modality: { la: 1, csi: 0, rf: 0, rgb: 1, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
+  },
+
+  {
     id: 'huangpu-river', name: 'Huangpu River Water–Air', year: 2026,
     access: 'open',
     source: 'sim',
