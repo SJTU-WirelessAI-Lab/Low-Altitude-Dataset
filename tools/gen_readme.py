@@ -316,7 +316,7 @@ w('- **信道级数据颜色标注**：'
   f'{csi(0)} 均无 —— 既无 CSI 也无射频采集数据。'
   '同一颜色同时体现在总览表、矩阵表名称前的圆点与详情条目。\n')
 w('- **核心模态与补充模态**：核心模态为低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间 7 类；'
-  '**射频信号**、**红外**与**声学**为补充模态（页面筛选条中以虚线边框区分）。'
+  '**射频信号**、**红外**与**声学**为补充模态。'
   '射频信号见于 DroneRF 系列、RFUAV、CageDroneRF、KU Leuven Drone RF、EM-134K / EM-Bench、LIPASE、'
   'TSMS-Drone（雷达与射频同步采集）、AERPAW AADM、AERPAW、PML-CellularEye（后两条同时含 CSI）'
   '与 Cross-layer UAV 6G、LACN、TalTech UAV 5G mmWave（仅射频侧指标）；'
