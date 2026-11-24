@@ -1,0 +1,49 @@
+const fs=require('fs'), vm=require('vm');
+const src=fs.readFileSync('assets/app.js','utf8');
+const ctx={console, Date, document:{addEventListener:()=>{},querySelector:()=>null,querySelectorAll:()=>[]}};
+vm.createContext(ctx);
+vm.runInContext(src+'\n;globalThis.__M=MODALITIES;globalThis.__D=DATASETS;', ctx);
+const M=ctx.__M, D=ctx.__D;
+
+/* source 是必填字段：漏写会在生成阶段就报错，避免 datasets.json 静默丢字段 */
+const missing = D.filter(d => !['real','mixed','sim'].includes(d.source)).map(d => d.id);
+if (missing.length) throw new Error('source 字段缺失或取值非法（应为 real / mixed / sim）: ' + missing.join(', '));
+const out={
+  meta:{
+    title:"Low-Altitude Datasets",
+    titleZh:"低空数据集",
+    source:"LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication (arXiv:2607.03826), Table 1 + curator-verified additions",
+    sourceUrl:"https://arxiv.org/abs/2607.03826",
+    generated: new Date().toISOString().slice(0,10),
+    legend:{ "1":"included", "0.5":"limited / partial", "0":"absent or not applicable" },
+    groupLegend:{ "low-altitude":"涉及无人机 / 低空场景", "general":"完全不含低空场景的上游基准" },
+    csiLegend:{ "full":"有 CSI（完整 MIMO 信道）", "part":"部分 CSI（实测信道测量，未给完整 MIMO CSI）", "rf":"仅射频信号（原始 I/Q 等，无 CSI）", "none":"无 CSI" },
+    accessLegend:{
+      "open":"官方页面公开提供下载",
+      "preview":"只公开部分 / 预览子集，完整数据待发布",
+      "register":"需在托管平台注册（免费）账号后下载",
+      "request":"需邮件 / 表单申请，授权后获取",
+      "pending":"官方标注即将发布，当前无法获取"
+    },
+    sourceLegend:{
+      "real":"真实传感器 / 外场采集",
+      "mixed":"真实采集与仿真 / 合成增强并用",
+      "sim":"射线追踪、数字孪生或渲染器生成，无真实采集"
+    }
+  },
+  modalities: M.map(m=>({key:m.key,zh:m.zh,en:m.en,core:!!m.core})),
+  datasets: D.map(d=>({
+    id:d.id,name:d.name,year:d.year,authors:d.authors,org:d.org,venue:d.venue,
+    site:d.site, ...(d.siteAlt?{siteAlt:d.siteAlt}:{}), paper:d.paper,
+    access: d.access || 'open',
+    source: d.source,
+    focusZh:d.focusZh,focusEn:d.focusEn,
+    wirelessTypes:d.wirelessTypes, ...(d.subsets ? {subsets:d.subsets} : {}),
+    modality: Object.fromEntries(M.map(m=>[m.key, d.modality[m.key]===undefined?0:d.modality[m.key]])),
+    group: (d.modality.la > 0 ? 'low-altitude' : 'general'),
+    csiLevel: (d.modality.csi === 1 ? 'full' : (d.modality.csi === .5 ? 'part' : (d.modality.rf > 0 ? 'rf' : 'none'))),
+    ...(d.self?{self:true}:{})
+  }))
+};
+fs.writeFileSync('data/datasets.json', JSON.stringify(out,null,2)+'\n','utf8');
+console.log('datasets =', out.datasets.length, '| modalities =', out.modalities.length);

@@ -204,7 +204,7 @@
 | ⚪ TriCross-D2D | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 武警工程大学：空对空无人机检测的跨场景-跨视角-跨天气域适应基准（13段RGB视频/23403帧抽取7045张图，源域4045+目标域训练2000/验证1000，9771个目标框；操场/树林/建筑/工地四类场景×低角度/平视/鸟瞰三视角×晴天与合成雾两档天气，支持UDA与SSDA两种协议，单类UAV且微小目标占73.8%；GitHub当前仅公开32对样例，完整集待发布） |
 | ⚪ UAV Wireless MM-Bench | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 意大利国家研究委员会ISTI：无人机无线通信多模态仿真基准（Wireless InSite射线追踪生成11个乡村/郊区/城市区域、2/3.5/28 GHz、静动态场景的链路级与路径级参数——接收功率、ToA、时延扩展、AoA/AoD与多径交互序列，另附GeoJSON/STL/OBJ/DXF环境几何；纯仿真，不含CSI与原始波形） |
 | ⚪ UAV-Flow | 2026 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 北京航空航天大学：语言引导短程无人机机动的视觉-语言-动作基准（30692条真实专家轨迹+10109条仿真轨迹，覆盖8类动作与100余小时第一视角视频，同步自然语言指令、6-DoF状态与RTK定位；数据托管于 Hugging Face） |
-| 🟢 **Huangpu River Water–Air ⭐** | 2026 | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台，但当前发布版本尚无无人机飞行轨迹数据，故低空模态记 0.5）** |
+| 🟢 **Huangpu River Water–Air ⭐** | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；当前支持水面船舶与低空无人机场景（UAV 支持状态依据维护者于 2026-11-24 的确认更新））** |
 | 🟢 **LAMBDA ⭐** | 2026 | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | **低空多模态通感一体化基础数据集** |
 
 ### 通用 / 上游基准数据集（14 个）
@@ -846,7 +846,7 @@
 - **射频信号**：无
 - **数据来源**：仿真 —— 射线追踪、数字孪生或渲染器生成，无真实采集
 - **获取方式**：开放下载 —— 官方页面公开提供下载
-- **说明**：上海交通大学 Wireless AI 团队构建的黄浦江水域-低空一体化多模态感知仿真数据集：以 Unreal Engine 5 还原黄浦江三维场景，配合 ASVSim 模拟岸基基站与船舶的运动、水动力与多传感器输出，再由 Sionna RT 依据同帧位姿做电磁射线追踪，生成**多频段复数 CSI 及其传播路径参数**（保留未归一化的原始复信道系数，便于跨频段信道建模与对比）。模态含 RGB、深度、GPS/位姿、LiDAR 点云、雷达点云，以及晴/雨/云/雾/雪与不同时段等天气条件；提供相遇与追踪两类运动场景，并要求按船号 + 同一帧号跨模态读取。约 375 GB，V1 于 2026-09-20 发布、V3 于 2026-10-30 更新（CC BY 4.0）。**当前版本场景为岸基基站与船舶，水空协同框架已支持接入无人机平台但尚未纳入飞行数据**，故低空模态记为有限支持。
+- **说明**：上海交通大学 Wireless AI 团队构建的黄浦江水域-低空一体化多模态感知仿真数据集：以 Unreal Engine 5 还原黄浦江三维场景，配合 ASVSim 模拟岸基基站与船舶的运动、水动力与多传感器输出，再由 Sionna RT 依据同帧位姿做电磁射线追踪，生成**多频段复数 CSI 及其传播路径参数**（保留未归一化的原始复信道系数，便于跨频段信道建模与对比）。模态含 RGB、深度、GPS/位姿、LiDAR 点云、雷达点云，以及晴/雨/云/雾/雪与不同时段等天气条件；提供相遇与追踪两类运动场景，并要求按船号 + 同一帧号跨模态读取。约 375 GB，V1 于 2026-09-20 发布、V3 于 2026-10-30 更新（CC BY 4.0）。**当前支持水面船舶与低空无人机场景**；UAV 支持状态依据维护者于 2026-11-24 的确认更新。
 
 #### 57. LAMBDA (2026) ⭐  🟢
 - **作者**：Lin Zhou, Peichuan Rao, Chenshuo Zhang, Jianhua Mo, Shu Sun, Zhiyong Chen, Meixia Tao
@@ -1020,7 +1020,7 @@
 ## 收录说明
 
 - **模态标注**：`1` 包含 / `0.5` 有限或部分支持 / `0` 缺失或不适用。
-- **低空 / 通用分区**：`la = 0` 即完全不含低空 / UAV 场景的数据集，统一归入「通用 / 上游基准数据集」表，不与低空相关条目混排。`la = 0.5` 表示数据或构建平台**部分支持**低空场景——例如仅有平台级扩展能力、当前发布版本尚无飞行轨迹（Huangpu River Water–Air），或低空仅为若干场景之一；这类条目按 `la > 0` 一并归入低空组。
+- **低空 / 通用分区**：`la = 0` 即完全不含低空 / UAV 场景的数据集，统一归入「通用 / 上游基准数据集」表，不与低空相关条目混排。`la = 0.5` 表示数据或构建平台**部分支持**低空场景——例如仅有平台级扩展能力、当前发布版本仅部分覆盖飞行场景，或低空仅为若干场景之一；这类条目按 `la > 0` 一并归入低空组。
 - **获取方式（`access` 字段）**：`open` 为默认档——官方页面公开提供下载，页面卡片不另加徽章；`preview`（仅预览子集）、`register`（需平台账号）、`request`（需申请审批）、`pending`（尚未发布）四档会在卡片上标出，并集中列于「获取受限」表。该字段只记录**获取门槛**，不等同于许可条款——各数据集的许可证（CC BY、CC BY-NC、自定义学术用途等）请以官网为准。
 - **数据来源（`source` 字段）**：`real` 实测——真实传感器 / 外场采集；`mixed` 混合——真实采集与合成增强并用；`sim` 仿真——射线追踪、数字孪生或渲染器生成，无真实采集。判定口径看**底层数据是否来自真实传感器采集**：由实测 I/Q 处理出的微多普勒谱图仍算实测（如 MathWorks Radar Drone），纯渲染 / 射线追踪生成的一律算仿真（LAMBDA、Sensiverse、DeepVerse 6G、SynthSoM、Great-MSD、Multimodal-NF、LAE UAV、UAV Wireless MM-Bench），真实与合成拼接的算混合（DrIFT、FlyAwareV2、UAV-Flow、CageDroneRF、A2G CIR + RT、AERPAW AADM）。每条都必须显式声明，`gen.js` 生成时会校验缺失或非法取值。
 - **信道级数据颜色标注**：🟢 有 CSI —— 提供完整 MIMO 信道 CSI（含仿真射线追踪与实测信道）；🟡 部分 CSI —— 有实测信道测量（波束 SNR、功率时延谱、下行信道传递函数等），但未给完整 MIMO CSI；🔵 仅射频信号 —— 数据是接收机采到的射频波形 / 频谱（原始 I/Q、距离-多普勒图等），**本身不含 CSI**，矩阵中 `CSI` 列为 `×`、`射频信号` 列为 `✓`；⚪ 均无 —— 既无 CSI 也无射频采集数据。同一颜色同时体现在总览表、矩阵表名称前的圆点与详情条目。
@@ -1036,7 +1036,7 @@
 欢迎补充遗漏的数据集或修正失效链接：
 
 1. Fork 本仓库；
-2. 在 `data/datasets.json` 与 `assets/app.js` 的 `DATASETS` 数组中同步新增/修改条目；
+2. 在 `assets/app.js` 的 `DATASETS` 数组中新增/修改条目，并运行 `node tools/gen.js` 与 `python tools/gen_readme.py` 同步 JSON 与 README；
 3. 提交 Pull Request，或直接开 Issue 说明（数据集名称、官网、年份、作者、模态覆盖）。
 
 ## 引用
@@ -1058,3 +1058,23 @@
 ## License
 
 本索引的整理内容以 CC BY 4.0 发布；各数据集本身的使用请遵循其各自许可协议。
+
+## 无线数据类型索引
+
+字段 `wirelessTypes` 独立于模态矩阵；标签仅表示已确认的数据类型，空数组表示尚无细分标注或不适用，不表示数据不存在。网页支持按类型筛选。RF KPI 不代表原始 I/Q；CIR/PDP 不自动等同于完整 MIMO CSI。
+
+| 类型 | 数据集 |
+|---|---|
+| Beam/RSRP | DeepSense 6G |
+| CIR/PDP | A2G CIR (3.6 GHz), A2G CIR + RT (Multi-band) |
+| MIMO CSI | DeepMIMO, ViWi, WAIR-D, M3SC, DeepVerse 6G, SynthSoM, Multimodal-Wireless, Multimodal-NF, Great-MSD, Sensiverse, Drone Swarm Sounding, MaMIMO-UAV 3D CSI, 3D MaMIMO A2G UAV CSI, LuViRA, ISAC UAV (TU Ilmenau), U6G-WISE, Huangpu River Water–Air, LAMBDA |
+| Path Loss/RSSI | AERPAW |
+| RF KPI | Cross-layer UAV 6G, AERPAW |
+| Raw I/Q | AERPAW, KU Leuven Drone RF, DroneRF (Mendeley) |
+
+AERPAW 子集保留在父条目下，不增加总数：
+
+- [Dataset-31: A2A channel sounding](https://aerpaw.org/dataset/dataset-31-aerpaw-air-to-air-channel-sounding-measurement-with-uavs/)
+- [Dataset-32: A2G sounding / path loss](https://aerpaw.org/dataset/dataset-32-aerpaw-air-to-ground-channel-sounding-and-path-loss-measurements-at-3-4-ghz-with-linear-and-zigzag-uav-trajectories/)
+
+本地更新流程：修改 `assets/app.js` 后运行 `node tools/gen.js`、`python tools/gen_readme.py`。生成器同步结构化 JSON 与 README。

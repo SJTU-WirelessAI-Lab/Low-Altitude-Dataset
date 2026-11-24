@@ -962,9 +962,9 @@ const DATASETS = [
     venue: 'Science Data Bank V3 (2026)',
     site: 'https://doi.org/10.57760/sciencedb.0130w',
     siteAlt: 'https://www.scidb.cn/en/detail?dataSetId=b84d794e94634d3e80e63422df4fb07b&version=V3',
-    focusZh: '上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；水空协同框架支持接入无人机平台，但当前发布版本尚无无人机飞行轨迹数据，故低空模态记 0.5）',
-    focusEn: 'Huangpu River water–air multimodal perception simulation dataset',
-    modality: { la: .5, csi: 1, rf: 0, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 },
+    focusZh: '上海交通大学：黄浦江水域-低空一体化多模态感知仿真数据集（UE5+ASVSim 构建岸基基站与船舶场景，同步RGB/深度/LiDAR/雷达点云与多模态天气，Sionna RT 生成多频段复数CSI；当前支持水面船舶与低空无人机场景（UAV 支持状态依据维护者于 2026-11-24 的确认更新））',
+    focusEn: 'Huangpu River multimodal simulation dataset supporting surface vessels and low-altitude UAVs',
+    modality: { la: 1, csi: 1, rf: 0, rgb: 1, ir: 0, lidar: 1, radar: 1, imu: 1, weather: 1, acoustic: 0 },
     self: true
   },
 
@@ -985,6 +985,23 @@ const DATASETS = [
 ];
 
 /* ---------------- state ---------------- */
+
+const WIRELESS_TYPES = ['MIMO CSI', 'CIR/PDP', 'Path Loss/RSSI', 'Beam/RSRP', 'Raw I/Q', 'Radar I/Q', 'RF KPI'];
+const WIRELESS_BY_ID = {
+  'a2g-cir': ['CIR/PDP'], 'a2g-cir-rt': ['CIR/PDP'],
+  'deepsense6g': ['Beam/RSRP'], 'crosslayer-uav6g': ['RF KPI'],
+  'aerpaw': ['Raw I/Q', 'Path Loss/RSSI', 'RF KPI'],
+  'drone-rf-mendeley': ['Raw I/Q'], 'ku-leuven-drone-rf': ['Raw I/Q']
+};
+for (const ds of DATASETS) {
+  ds.wirelessTypes = [...(ds.modality.csi === 1 ? ['MIMO CSI'] : []), ...(WIRELESS_BY_ID[ds.id] || [])];
+}
+const aerpawEntry = DATASETS.find(ds => ds.id === 'aerpaw');
+aerpawEntry.subsets = [
+  { name: 'Dataset-31: A2A channel sounding', url: 'https://aerpaw.org/dataset/dataset-31-aerpaw-air-to-air-channel-sounding-measurement-with-uavs/' },
+  { name: 'Dataset-32: A2G sounding / path loss', url: 'https://aerpaw.org/dataset/dataset-32-aerpaw-air-to-ground-channel-sounding-and-path-loss-measurements-at-3-4-ghz-with-linear-and-zigzag-uav-trajectories/' }
+];
+
 const state = { q: '', mods: new Set(), laOnly: false, sort: 'year-desc', view: 'grid' };
 
 /* ---------------- helpers ---------------- */
@@ -1065,12 +1082,13 @@ function escapeHtml(s) {
 function filtered() {
   const q = state.q.trim().toLowerCase();
   let list = DATASETS.filter(ds => {
+    if ($('#wireless-type')?.value && !ds.wirelessTypes.includes($('#wireless-type').value)) return false;
     if (state.laOnly && ds.modality.la === 0) return false;
     if (state.mods.size) {
       for (const k of state.mods) if (ds.modality[k] === 0) return false;
     }
     if (q) {
-      const hay = [ds.name, ds.org, ds.venue, ds.authors, ds.focusZh, ds.focusEn, String(ds.year)]
+      const hay = [ds.name, ds.org, ds.venue, ds.authors, ds.focusZh, ds.focusEn, ...ds.wirelessTypes, String(ds.year)]
         .join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
     }
@@ -1113,6 +1131,7 @@ function cardHtml(ds) {
     </div>
     <div class="card-authors"><strong>作者</strong> ${escapeHtml(ds.authors)}</div>
     <div class="mods">${modalityTags(ds)}</div>
+    ${ds.wirelessTypes.length ? `<div class="venue-row">无线数据：${ds.wirelessTypes.map(escapeHtml).join(" · ")}</div>` : ""}
     <div class="venue-row">${escapeHtml(ds.venue)}</div>
     <div class="card-links">
       <a class="link-btn primary" href="${ds.site}" target="_blank" rel="noopener">
@@ -1126,6 +1145,7 @@ function cardHtml(ds) {
       </a>`
         : `<span class="link-btn is-muted" title="该数据集由数据仓库直接发布，暂无配套正式论文">无正式论文</span>`}
       ${alt}
+      ${(ds.subsets || []).map(x => `<a class="link-btn" href="${x.url}" target="_blank" rel="noopener">${escapeHtml(x.name)}</a>`).join('')}
     </div>
   </article>`;
 }
@@ -1234,6 +1254,7 @@ function bind() {
   });
 
   $('#reset').addEventListener('click', () => {
+    $('#wireless-type').value = '';
     state.q = ''; state.mods.clear(); state.laOnly = false; state.sort = 'year-desc';
     $('#search').value = ''; $('#sort').value = 'year-desc'; $('#la-only').checked = false;
     $$('.chip').forEach(c => c.classList.remove('on'));
@@ -1244,6 +1265,8 @@ function bind() {
 /* ---------------- boot ---------------- */
 document.addEventListener('DOMContentLoaded', () => {
   $('#year-now').textContent = new Date().getFullYear();
+  $('#wireless-type').innerHTML += WIRELESS_TYPES.map(t => `<option>${escapeHtml(t)}</option>`).join('');
+  $('#wireless-type').addEventListener('change', renderCards);
   renderStats();
   renderChips();
   renderMatrix();
