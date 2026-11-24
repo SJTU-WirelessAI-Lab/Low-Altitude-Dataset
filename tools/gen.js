@@ -1,6 +1,6 @@
 const fs=require('fs'), vm=require('vm');
 const src=fs.readFileSync('assets/app.js','utf8');
-const ctx={console, Date, document:{addEventListener:()=>{},querySelector:()=>null,querySelectorAll:()=>[]}};
+const ctx={console, document:{addEventListener:()=>{},querySelector:()=>null,querySelectorAll:()=>[]}};
 vm.createContext(ctx);
 vm.runInContext(src+'\n;globalThis.__M=MODALITIES;globalThis.__D=DATASETS;', ctx);
 const M=ctx.__M, D=ctx.__D;
@@ -14,7 +14,7 @@ const out={
     titleZh:"低空数据集",
     source:"LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication (arXiv:2607.03826), Table 1 + curator-verified additions",
     sourceUrl:"https://arxiv.org/abs/2607.03826",
-    generated: new Date().toISOString().slice(0,10),
+    catalogUpdated: '2026-11-24',
     legend:{ "1":"included", "0.5":"limited / partial", "0":"absent or not applicable" },
     groupLegend:{ "low-altitude":"涉及无人机 / 低空场景", "general":"完全不含低空场景的上游基准" },
     csiLegend:{ "full":"有 CSI（完整 MIMO 信道）", "part":"部分 CSI（实测信道测量，未给完整 MIMO CSI）", "rf":"仅射频信号（原始 I/Q 等，无 CSI）", "none":"无 CSI" },
@@ -38,7 +38,8 @@ const out={
     access: d.access || 'open',
     source: d.source,
     focusZh:d.focusZh,focusEn:d.focusEn,
-    wirelessTypes:d.wirelessTypes, ...(d.subsets ? {subsets:d.subsets} : {}),
+    wirelessTypes:d.wirelessTypes, wirelessStatus:d.wirelessStatus,
+    ...(d.kind ? {kind:d.kind} : {}), ...(d.parentId ? {parentId:d.parentId} : {}), ...(d.subsets ? {subsets:d.subsets} : {}),
     modality: Object.fromEntries(M.map(m=>[m.key, d.modality[m.key]===undefined?0:d.modality[m.key]])),
     group: (d.modality.la > 0 ? 'low-altitude' : 'general'),
     csiLevel: (d.modality.csi === 1 ? 'full' : (d.modality.csi === .5 ? 'part' : (d.modality.rf > 0 ? 'rf' : 'none'))),

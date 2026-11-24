@@ -1,0 +1,21 @@
+name: Catalog checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node --check assets/app.js
+      - run: node tools/test_data.js
+      - run: node tools/gen.js
+      - run: python tools/gen_readme.py
+      - run: python tools/gen_chart.py
+      - run: git diff --exit-code -- data/datasets.json README.md assets/timeline.svg

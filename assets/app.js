@@ -330,6 +330,7 @@ const DATASETS = [
     modality: { la: 1, csi: 0, rf: .5, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 1, weather: 0, acoustic: 0 }
   },
   {
+    kind: 'collection',
     id: 'aerpaw', name: 'AERPAW', year: 2024,
     access: 'register',
     source: 'real',
@@ -695,8 +696,8 @@ const DATASETS = [
     site: 'https://data.mendeley.com/datasets/f4c2b4n755/1',
     siteAlt: 'https://al-sad.github.io/DroneRF/',
     paper: 'https://doi.org/10.1016/j.future.2019.05.007',
-    focusZh: '三型无人机多飞行模式的射频原始I/Q库（227段、约40 GB，含背景射频）',
-    focusEn: 'RF raw I/Q of three drones in multiple flight modes',
+    focusZh: '三型无人机多飞行模式的射频采样库（CSV）（227段、约40 GB，含背景射频）',
+    focusEn: 'RF samples (CSV) of three drones in multiple flight modes',
     modality: { la: 1, csi: 0, rf: 1, rgb: 0, ir: 0, lidar: 0, radar: 0, imu: 0, weather: 0, acoustic: 0 }
   },
   {
@@ -899,6 +900,7 @@ const DATASETS = [
   },
 
   {
+    parentId: 'aerpaw',
     id: 'aerpaw-aadm', name: 'AERPAW AADM', year: 2026,
     access: 'open',
     source: 'mixed',
@@ -986,16 +988,39 @@ const DATASETS = [
 
 /* ---------------- state ---------------- */
 
-const WIRELESS_TYPES = ['MIMO CSI', 'CIR/PDP', 'Path Loss/RSSI', 'Beam/RSRP', 'Raw I/Q', 'Radar I/Q', 'RF KPI'];
 const WIRELESS_BY_ID = {
-  'a2g-cir': ['CIR/PDP'], 'a2g-cir-rt': ['CIR/PDP'],
-  'deepsense6g': ['Beam/RSRP'], 'crosslayer-uav6g': ['RF KPI'],
+  'a2g-cir': ['CIR/PDP', 'Path Loss/RSSI'],
+  'a2g-cir-rt': ['CIR/PDP'],
+  'deepsense6g': ['Beam/RSRP'],
+  'eflash': ['Beam/RSRP'],
+  'crosslayer-uav6g': ['RF KPI'],
   'aerpaw': ['Raw I/Q', 'Path Loss/RSSI', 'RF KPI'],
-  'drone-rf-mendeley': ['Raw I/Q'], 'ku-leuven-drone-rf': ['Raw I/Q']
+  'aerpaw-aadm': ['RF KPI'],
+  'ku-leuven-drone-rf': ['Raw I/Q'],
+  'rfuav': ['Raw I/Q'],
+  'dronerfa': ['Raw I/Q'],
+  'dronerfb-dir': ['Raw I/Q'],
+  'pml-cellulareye': ['Raw I/Q'],
+  'em-134k': ['I/Q 波形'],
+  'em-bench': ['I/Q 波形'],
+  'lipase': ['距离-多普勒图'],
+  'tsms-drone': ['Raw I/Q', 'Radar I/Q', '距离-多普勒图', '频谱/PSD'],
+  'isac-uav-ilmenau': ['信道传递函数'],
+  'diat-msat': ['微多普勒谱'],
+  'mathworks-radar-drone': ['微多普勒谱'],
+  'multifly': ['雷达点云'],
+  'mmaud': ['雷达点云'],
+  'drone-rf-mendeley': ['RF 采样（CSV）'],
+  'huangpu-river': ['传播路径参数', '雷达点云'],
+  'uav-mm-bench': ['传播路径参数']
 };
 for (const ds of DATASETS) {
   ds.wirelessTypes = [...(ds.modality.csi === 1 ? ['MIMO CSI'] : []), ...(WIRELESS_BY_ID[ds.id] || [])];
+  const hasWirelessScope = ds.modality.csi || ds.modality.rf || ds.modality.radar || ds.id === 'a2a-uav';
+  ds.wirelessStatus = ds.wirelessTypes.length ? 'tagged' : hasWirelessScope ? 'unverified' : 'none';
 }
+const WIRELESS_TYPES = [...new Set(DATASETS.flatMap(ds => ds.wirelessTypes))].sort();
+const DATASET_BY_ID = new Map(DATASETS.map(ds => [ds.id, ds]));
 const aerpawEntry = DATASETS.find(ds => ds.id === 'aerpaw');
 aerpawEntry.subsets = [
   { name: 'Dataset-31: A2A channel sounding', url: 'https://aerpaw.org/dataset/dataset-31-aerpaw-air-to-air-channel-sounding-measurement-with-uavs/' },
@@ -1080,9 +1105,12 @@ function escapeHtml(s) {
 
 /* ---------------- filtering ---------------- */
 function filtered() {
+  const wirelessType = $('#wireless-type')?.value;
   const q = state.q.trim().toLowerCase();
   let list = DATASETS.filter(ds => {
-    if ($('#wireless-type')?.value && !ds.wirelessTypes.includes($('#wireless-type').value)) return false;
+    if (wirelessType === 'unverified' || wirelessType === 'none') {
+      if (ds.wirelessStatus !== wirelessType) return false;
+    } else if (wirelessType && !ds.wirelessTypes.includes(wirelessType)) return false;
     if (state.laOnly && ds.modality.la === 0) return false;
     if (state.mods.size) {
       for (const k of state.mods) if (ds.modality[k] === 0) return false;
@@ -1129,6 +1157,9 @@ function cardHtml(ds) {
       ${escapeHtml(ds.focusZh)}
       <span class="en">${escapeHtml(ds.focusEn)}</span>
     </div>
+    ${ds.parentId ? `<div class="venue-row">所属合集：${escapeHtml(DATASET_BY_ID.get(ds.parentId).name)}</div>` : ''}
+    ${ds.kind === 'collection' ? '<div class="venue-row">合集</div>' : ''}
+    ${ds.wirelessStatus === 'unverified' ? '<div class="venue-row">无线数据类型待核实</div>' : ''}
     <div class="card-authors"><strong>作者</strong> ${escapeHtml(ds.authors)}</div>
     <div class="mods">${modalityTags(ds)}</div>
     ${ds.wirelessTypes.length ? `<div class="venue-row">无线数据：${ds.wirelessTypes.map(escapeHtml).join(" · ")}</div>` : ""}
@@ -1165,7 +1196,7 @@ function renderCards() {
   $('#grid-host').innerHTML = list.length
     ? html
     : '<div class="empty">\u6CA1\u6709\u5339\u914D\u7684\u6570\u636E\u96C6\uFF0C\u8BD5\u8BD5\u8C03\u6574\u7B5B\u9009\u6761\u4EF6\u6216\u6E05\u7A7A\u641C\u7D22\u3002</div>';
-  $('#result-line').innerHTML = `\u663E\u793A <b>${list.length}</b> / ${DATASETS.length} \u4E2A\u6570\u636E\u96C6`
+  $('#result-line').innerHTML = `\u663E\u793A <b>${list.length}</b> / ${DATASETS.length} 条索引记录`
     + (list.length ? `\uFF08\u4F4E\u7A7A\u76F8\u5173 <b>${la.length}</b> \u00B7 \u901A\u7528\u57FA\u51C6 <b>${gen.length}</b>\uFF09` : '');
 }
 
@@ -1227,7 +1258,7 @@ function renderStats() {
   const years = DATASETS.map(d => d.year);
   const span = `${Math.min(...years)}\u2013${Math.max(...years)}`;
   const cells = [
-    ['收录数据集', total],
+    ['收录条目', total],
     ['低空相关', la],
     ['通用 / 上游基准', gen],
     ['低空且含 CSI', laCsi],
@@ -1265,7 +1296,7 @@ function bind() {
 /* ---------------- boot ---------------- */
 document.addEventListener('DOMContentLoaded', () => {
   $('#year-now').textContent = new Date().getFullYear();
-  $('#wireless-type').innerHTML += WIRELESS_TYPES.map(t => `<option>${escapeHtml(t)}</option>`).join('');
+  $('#wireless-type').insertAdjacentHTML('beforeend', WIRELESS_TYPES.map(t => `<option>${escapeHtml(t)}</option>`).join(''));
   $('#wireless-type').addEventListener('change', renderCards);
   renderStats();
   renderChips();

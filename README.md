@@ -9,9 +9,9 @@
 > 🌐 **在线浏览**：[sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset](https://sjtu-wirelessai-lab.github.io/Low-Altitude-Dataset/)（可搜索、可筛选、含对比矩阵）。
 > 📦 **结构化数据**：[data/datasets.json](https://cdn.jsdelivr.net/gh/SJTU-WirelessAI-Lab/Low-Altitude-Dataset@main/data/datasets.json)（jsDelivr CDN，返回 `application/json`，可直接 fetch；CDN 有缓存延迟，数据更新以仓库内同路径文件为准）。
 
-**增长趋势**：截至 2026 年末，低空相关数据集累计 **57** 个，其中 **11** 个提供完整 MIMO 信道 CSI。下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。
+**增长趋势**：当前索引覆盖至 2026 出版年，低空相关索引条目累计 **57** 个，其中 **11** 个提供完整 MIMO 信道 CSI。下图按出版年分组累计：实线为全部低空相关索引条目，虚线为含完整 CSI 者。
 
-![低空数据集累计数量（2015–2026）](assets/timeline.svg)
+![低空索引条目累计数量（2015–2026）](assets/timeline.svg)
 
 ---
 
@@ -28,7 +28,7 @@
 
 ## 数据集总览
 
-共 **71** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**；其中**低空相关 57 个**、**通用 / 上游基准 14 个**。
+共 **71** 条索引记录（含本文 LAMBDA），时间跨度 **2012–2026**；其中**低空相关 57 个**、**通用 / 上游基准 14 个**。
 
 **信道级数据标注**：🟢 有 CSI（完整 MIMO 信道）、🟡 部分 CSI（实测信道测量，但未给完整 MIMO CSI）、🔵 仅射频信号（原始 I/Q 等射频采集，数据本身不含 CSI）、⚪ 均无。**CSI 与射频信号是两类不同模态**，不能互相替代：前者是信道估计结果，后者是接收机采到的原始波形 / 频谱。
 
@@ -153,7 +153,7 @@
 | ⚪ DOTA | 2018 | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 航空影像目标检测（15/16类，18.8万实例） |
 | ⚪ UAVDT | 2018 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 无人机车辆检测与跟踪基准（8万帧，含14类属性） |
 | ⚪ VisDrone | 2018 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | 无人机视角目标检测与跟踪基准（14城市，260万+框） |
-| 🔵 DroneRF (Mendeley) | 2019 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 三型无人机多飞行模式的射频原始I/Q库（227段、约40 GB，含背景射频） |
+| 🔵 DroneRF (Mendeley) | 2019 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | 三型无人机多飞行模式的射频采样库（CSV）（227段、约40 GB，含背景射频） |
 | ⚪ Anti-UAV300 | 2021 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![×](assets/icon-none.svg) | RGB-红外成对视频的反无人机跟踪基准（318对视频、58万+框，昼夜两类光照） |
 | ⚪ Drone-detection (DREGON) | 2021 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![△](assets/icon-part.svg) | ![✓](assets/icon-yes.svg) | 红外+可见光视频与音频的多传感器无人机探测（650段视频、20.3万标注帧，按DRI距离分档） |
 | ⚪ DIAT-µSAT | 2022 | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![✓](assets/icon-yes.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | ![×](assets/icon-none.svg) | X波段连续波雷达小型无人机微多普勒特征（6类4849幅） |
@@ -285,7 +285,7 @@
 - **射频信号**：有 —— 提供原始射频采集（原始 I/Q、频谱、信号片段等）
 - **数据来源**：实测 —— 真实传感器 / 外场采集
 - **获取方式**：开放下载 —— 官方页面公开提供下载
-- **说明**：卡塔尔大学发布的射频无人机数据库：用两台 NI-USRP2943R 接收机（2.4 GHz 频段，各 40 MHz 瞬时带宽）拦截无人机与遥控器之间的通信链路，覆盖 3 型无人机在关机/开机连接/悬停/飞行/录像等飞行模式下的原始 I/Q，共 227 个片段（454 个 csv 文件，约 40 GB），并含无无人机的背景射频记录。
+- **说明**：卡塔尔大学发布的射频无人机数据库：用两台 NI-USRP2943R 接收机（2.4 GHz 频段，各 40 MHz 瞬时带宽）拦截无人机与遥控器之间的通信链路，覆盖 3 型无人机在关机/开机连接/悬停/飞行/录像等飞行模式下的射频采样，共 227 个片段（454 个 csv 文件，约 40 GB），并含无无人机的背景射频记录。
 
 #### 6. Anti-UAV300 (2021)  ⚪
 - **作者**：Nan Jiang, Kuiran Wang, Xiaoke Peng, Xuehui Yu, Qiang Wang, Junliang Xing, Guorong Li, Jian Zhao, Guodong Guo, Zhenjun Han
@@ -1019,6 +1019,7 @@
 
 ## 收录说明
 
+- **统计单位**：总览、网页与趋势图均按索引条目计数。合集及另有独立引用的子集可各占一条（如 AERPAW 和 AERPAW AADM），因此条目可能覆盖同一批数据。仅列在合集下的子集链接不计数，同一索引条目的版本更新不另计。
 - **模态标注**：`1` 包含 / `0.5` 有限或部分支持 / `0` 缺失或不适用。
 - **低空 / 通用分区**：`la = 0` 即完全不含低空 / UAV 场景的数据集，统一归入「通用 / 上游基准数据集」表，不与低空相关条目混排。`la = 0.5` 表示数据或构建平台**部分支持**低空场景——例如仅有平台级扩展能力、当前发布版本仅部分覆盖飞行场景，或低空仅为若干场景之一；这类条目按 `la > 0` 一并归入低空组。
 - **获取方式（`access` 字段）**：`open` 为默认档——官方页面公开提供下载，页面卡片不另加徽章；`preview`（仅预览子集）、`register`（需平台账号）、`request`（需申请审批）、`pending`（尚未发布）四档会在卡片上标出，并集中列于「获取受限」表。该字段只记录**获取门槛**，不等同于许可条款——各数据集的许可证（CC BY、CC BY-NC、自定义学术用途等）请以官网为准。
@@ -1036,7 +1037,7 @@
 欢迎补充遗漏的数据集或修正失效链接：
 
 1. Fork 本仓库；
-2. 在 `assets/app.js` 的 `DATASETS` 数组中新增/修改条目，并运行 `node tools/gen.js` 与 `python tools/gen_readme.py` 同步 JSON 与 README；
+2. 在 `assets/app.js` 的 `DATASETS` 数组中新增/修改条目，并运行 `node tools/gen.js` 、`python tools/gen_readme.py` 和 `python tools/gen_chart.py` 同步 JSON、README 与趋势图；
 3. 提交 Pull Request，或直接开 Issue 说明（数据集名称、官网、年份、作者、模态覆盖）。
 
 ## 引用
@@ -1061,20 +1062,29 @@
 
 ## 无线数据类型索引
 
-字段 `wirelessTypes` 独立于模态矩阵；标签仅表示已确认的数据类型，空数组表示尚无细分标注或不适用，不表示数据不存在。网页支持按类型筛选。RF KPI 不代表原始 I/Q；CIR/PDP 不自动等同于完整 MIMO CSI。
+字段 `wirelessTypes` 独立于模态矩阵；标签只列已确认的格式，可能还有待核实的格式。字段 `wirelessStatus` 区分 `tagged`（已有标签）、`unverified`（涉及无线或雷达，类型待核实）、`none`（按索引的模态和记录范围无适用无线类型）。网页可筛选这两类空标签条目。RF KPI 不代表原始 I/Q；CIR/PDP 不自动等同于完整 MIMO CSI。
 
 | 类型 | 数据集 |
 |---|---|
-| Beam/RSRP | DeepSense 6G |
+| Beam/RSRP | E-FLASH, DeepSense 6G |
 | CIR/PDP | A2G CIR (3.6 GHz), A2G CIR + RT (Multi-band) |
+| I/Q 波形 | EM-134K, EM-Bench |
 | MIMO CSI | DeepMIMO, ViWi, WAIR-D, M3SC, DeepVerse 6G, SynthSoM, Multimodal-Wireless, Multimodal-NF, Great-MSD, Sensiverse, Drone Swarm Sounding, MaMIMO-UAV 3D CSI, 3D MaMIMO A2G UAV CSI, LuViRA, ISAC UAV (TU Ilmenau), U6G-WISE, Huangpu River Water–Air, LAMBDA |
-| Path Loss/RSSI | AERPAW |
-| RF KPI | Cross-layer UAV 6G, AERPAW |
-| Raw I/Q | AERPAW, KU Leuven Drone RF, DroneRF (Mendeley) |
+| Path Loss/RSSI | AERPAW, A2G CIR (3.6 GHz) |
+| RF KPI | Cross-layer UAV 6G, AERPAW, AERPAW AADM |
+| RF 采样（CSV） | DroneRF (Mendeley) |
+| Radar I/Q | TSMS-Drone |
+| Raw I/Q | PML-CellularEye, DroneRFa, DroneRFb-DIR, AERPAW, RFUAV, KU Leuven Drone RF, TSMS-Drone |
+| 传播路径参数 | UAV Wireless MM-Bench, Huangpu River Water–Air |
+| 信道传递函数 | ISAC UAV (TU Ilmenau) |
+| 微多普勒谱 | DIAT-µSAT, MathWorks Radar Drone |
+| 距离-多普勒图 | LIPASE, TSMS-Drone |
+| 雷达点云 | MMAUD, MultiFly, Huangpu River Water–Air |
+| 频谱/PSD | TSMS-Drone |
 
 AERPAW 子集保留在父条目下，不增加总数：
 
 - [Dataset-31: A2A channel sounding](https://aerpaw.org/dataset/dataset-31-aerpaw-air-to-air-channel-sounding-measurement-with-uavs/)
 - [Dataset-32: A2G sounding / path loss](https://aerpaw.org/dataset/dataset-32-aerpaw-air-to-ground-channel-sounding-and-path-loss-measurements-at-3-4-ghz-with-linear-and-zigzag-uav-trajectories/)
 
-本地更新流程：修改 `assets/app.js` 后运行 `node tools/gen.js`、`python tools/gen_readme.py`。生成器同步结构化 JSON 与 README。
+本地检查：运行 `node tools/test_data.js`。CI 会检查重新生成的 JSON、README 与趋势图是否和仓库版本一致。

@@ -83,7 +83,7 @@
       </div>
       <div class="toolbar-row">
         <label for="wireless-type" class="filter-label">无线数据类型</label>
-        <select id="wireless-type"><option value="">全部类型</option></select>
+        <select id="wireless-type"><option value="">全部类型</option><option value="unverified">类型待核实</option><option value="none">无适用无线类型</option></select>
       </div>
     </div>
 
@@ -163,7 +163,7 @@
         <h3><span class="ico">&#9679;</span>收录范围</h3>
         <p>覆盖通感一体化(ISAC)仿真与实测、无线信道建模、射频/雷达探测、声学感知、无人机视觉与多模态感知等方向，并特别标注支持<strong>低空/UAV场景</strong>的数据集。</p>
         <ul>
-          <li>共 <strong>71</strong> 个数据集（含本文 LAMBDA）：<strong>低空相关 57</strong> 个、<strong>通用/上游基准 14</strong> 个</li>
+          <li>统计按索引条目计。AERPAW 合集及有独立引用的 AADM 各计一条，合集内仅链接的子集单列链接。</li>
           <li>时间跨度 2012–2026</li>
           <li>标注 10 类模态：7 类核心模态（低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间）+ 3 类补充模态（射频信号、红外、声学）</li>
           <li>低空相关数据集按<strong>信道级数据</strong>着色：完整 MIMO 信道 / 部分信道测量 / <strong>仅射频信号</strong>（原始 I/Q 等，无 CSI）/ 均无</li>
@@ -196,7 +196,7 @@
         <h3><span class="ico">&#9679;</span>贡献与维护</h3>
         <p>本站为静态站点，数据结构在 <code>data/datasets.json</code>，渲染逻辑在 <code>assets/app.js</code>。</p>
         <ul>
-          <li>新增数据集：向 <code>data/datasets.json</code> 与 <code>assets/app.js</code> 加入条目</li>
+          <li>新增数据集：修改 <code>assets/app.js</code>，再用 <code>tools/</code> 中的脚本生成 JSON 与 README</li>
           <li>模态字段取值：<code>1</code> 包含 / <code>0.5</code> 部分 / <code>0</code> 缺失</li>
           <li>仓库：<a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">SJTU-WirelessAI-Lab/Low-Altitude-Dataset</a></li>
         </ul>

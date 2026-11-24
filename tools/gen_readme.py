@@ -122,7 +122,7 @@ DESC = {
  'mamimo-a2g-uav': 'KU Leuven 校园环境下的无人机–64 天线 Massive MIMO 基站空对地 CSI 数据集：基站位于距 25 m 高楼 17 m、距 25 m 树线 12 m 的停车场，无人机按预设航迹机控飞行，提供**带 GPS 位置标注的信道状态信息**；约 46.3 GB，CC-BY-NC-4.0。',
  'ku-leuven-drone-rf': 'KU Leuven 与比利时皇家军事学院（RMA）联合发布的无人机射频数据集：在 RMA 半电波暗室内用 USRP X310 采集，100 MSps 采样、中心频率 2.44 GHz、全向天线，无人机与遥控器距接收天线 7 m，以 .mat 存储原始 I/Q；约 43.5 GB，CC-BY-NC-4.0。',
  'lund-drone-audio': '隆德大学（数学科学中心）与 SAAB 联合发布的无人机声学探测数据集：12 元麦克风阵列配合 9 台固定相机（合计 280° 视场）与 PTZ 云台，在 Ljungbyhed 试验场用多种旋翼与固定翼无人机开展真实飞行实验，用到达方向（DOA）方法仅凭无人机自噪声即可定位至数百米，数据集含真实录音与无人机**真值位置**；约 17.7 GiB。',
- 'drone-rf-mendeley': '卡塔尔大学发布的射频无人机数据库：用两台 NI-USRP2943R 接收机（2.4 GHz 频段，各 40 MHz 瞬时带宽）拦截无人机与遥控器之间的通信链路，覆盖 3 型无人机在关机/开机连接/悬停/飞行/录像等飞行模式下的原始 I/Q，共 227 个片段（454 个 csv 文件，约 40 GB），并含无无人机的背景射频记录。',
+ 'drone-rf-mendeley': '卡塔尔大学发布的射频无人机数据库：用两台 NI-USRP2943R 接收机（2.4 GHz 频段，各 40 MHz 瞬时带宽）拦截无人机与遥控器之间的通信链路，覆盖 3 型无人机在关机/开机连接/悬停/飞行/录像等飞行模式下的射频采样，共 227 个片段（454 个 csv 文件，约 40 GB），并含无无人机的背景射频记录。',
  'drone-detection-dregon': '瑞典哈尔姆斯塔德大学与瑞典国防军联合构建的多传感器无人机探测数据集（DREGON）：在 3 座瑞典机场以云台自动跟踪采集，含 365 段红外视频、285 段可见光视频（合计 203328 个标注帧）与 90 段音频（无人机/直升机/背景），目标类别含 3 型无人机及鸟类、飞机、直升机等易混目标，并按行业 DRI（检测-识别-辨认）准则随传感器-目标距离分档（近/中/远，最大 200 m）。',
  'anti-uav300': '中国科学院大学与北方电子设备研究所发布的反无人机多模态跟踪基准：318 对高清 RGB 与热红外视频（合计 58 万余个人工标注包围框），6 种消费级机型、昼夜两种光照与建筑/云/树木等多样背景，两模态为非对齐采集；文中给出 DFSC 训练策略与 40 余种跟踪器的基准评测，并附可见性、遮挡、快速运动、尺度变化等属性标签。',
  'mmaud': '南洋理工大学 ARIS 实验室发布的反无人机多模态基准：在屋顶与停车场上以**俯视视角**采集 DJI Mavic2/3、Phantom4、Avata、M300 等 5 型消费级无人机的双 3D LiDAR（Conic + Peripheral）、双时间同步鱼眼相机、毫米波雷达与四路麦克风阵列数据，并以 **Leica 全站仪**生成高精度三维真值；面向无人机检测、机型分类、跟踪与轨迹估计，刻意保留重型机械等强背景噪声，V1 飞行高度约 30 m 以内，V2/V3（停车场场景）最高达 100 m。',
@@ -180,10 +180,10 @@ _chart_la = len(LA)
 _chart_csi = sum(1 for x in LA if x['modality'].get('csi') == 1)
 _chart_y0 = min(x['year'] for x in LA) - 1
 _chart_y1 = max(x['year'] for x in ds_all)
-w(f'**增长趋势**：截至 {_chart_y1} 年末，低空相关数据集累计 **{_chart_la}** 个，'
+w(f'**增长趋势**：当前索引覆盖至 {_chart_y1} 出版年，低空相关索引条目累计 **{_chart_la}** 个，'
   f'其中 **{_chart_csi}** 个提供完整 MIMO 信道 CSI。'
-  f'下图按出版年结算、累计点落在各年末：实线为全部低空数据集，虚线为含完整 CSI 者。\n\n')
-w(f'![低空数据集累计数量（{_chart_y0}–{_chart_y1}）](assets/timeline.svg)\n\n')
+  f'下图按出版年分组累计：实线为全部低空相关索引条目，虚线为含完整 CSI 者。\n\n')
+w(f'![低空索引条目累计数量（{_chart_y0}–{_chart_y1}）](assets/timeline.svg)\n\n')
 w('---\n\n')
 w('## 目录\n\n')
 w('- [数据集总览](#数据集总览)\n- [模态覆盖对比矩阵](#模态覆盖对比矩阵)\n- [数据集详情](#数据集详情)\n'
@@ -194,7 +194,7 @@ la = len(LA)
 gen = len(GEN)
 
 w('## 数据集总览\n\n')
-w(f'共 **{total}** 个数据集（含本文 LAMBDA），时间跨度 **2012–2026**；'
+w(f'共 **{total}** 条索引记录（含本文 LAMBDA），时间跨度 **2012–2026**；'
   f'其中**低空相关 {la} 个**、**通用 / 上游基准 {gen} 个**。\n\n')
 w('**信道级数据标注**：'
   f'{csi(1)} 有 CSI（完整 MIMO 信道）、{csi(.5)} 部分 CSI（实测信道测量，但未给完整 MIMO CSI）、'
@@ -293,6 +293,7 @@ for label, group in GROUPS:
 w('---\n\n')
 
 w('## 收录说明\n\n')
+w('- **统计单位**：总览、网页与趋势图均按索引条目计数。合集及另有独立引用的子集可各占一条（如 AERPAW 和 AERPAW AADM），因此条目可能覆盖同一批数据。仅列在合集下的子集链接不计数，同一索引条目的版本更新不另计。\n')
 w('- **模态标注**：`1` 包含 / `0.5` 有限或部分支持 / `0` 缺失或不适用。\n')
 w('- **低空 / 通用分区**：`la = 0` 即完全不含低空 / UAV 场景的数据集，统一归入「通用 / 上游基准数据集」表，'
   '不与低空相关条目混排。`la = 0.5` 表示数据或构建平台**部分支持**低空场景——例如仅有平台级扩展能力、'
@@ -337,7 +338,7 @@ w('- **已知访问限制**：UAVDT 官网（Google Sites）与 DADS 托管页�
 w('## 贡献方式\n\n')
 w('欢迎补充遗漏的数据集或修正失效链接：\n\n')
 w('1. Fork 本仓库；\n')
-w('2. 在 `assets/app.js` 的 `DATASETS` 数组中新增/修改条目，并运行 `node tools/gen.js` 与 `python tools/gen_readme.py` 同步 JSON 与 README；\n')
+w('2. 在 `assets/app.js` 的 `DATASETS` 数组中新增/修改条目，并运行 `node tools/gen.js` 、`python tools/gen_readme.py` 和 `python tools/gen_chart.py` 同步 JSON、README 与趋势图；\n')
 w('3. 提交 Pull Request，或直接开 Issue 说明（数据集名称、官网、年份、作者、模态覆盖）。\n\n')
 
 w('## 引用\n\n')
@@ -361,7 +362,7 @@ print('README.md written. datasets =', total, '| low-altitude =', la)
 
 # Wireless types are a separate index, not additional modalities.
 with open('README.md', 'a', encoding='utf-8') as f:
-    f.write('\n## 无线数据类型索引\n\n字段 `wirelessTypes` 独立于模态矩阵；标签仅表示已确认的数据类型，空数组表示尚无细分标注或不适用，不表示数据不存在。网页支持按类型筛选。RF KPI 不代表原始 I/Q；CIR/PDP 不自动等同于完整 MIMO CSI。\n\n| 类型 | 数据集 |\n|---|---|\n')
+    f.write('\n## 无线数据类型索引\n\n字段 `wirelessTypes` 独立于模态矩阵；标签只列已确认的格式，可能还有待核实的格式。字段 `wirelessStatus` 区分 `tagged`（已有标签）、`unverified`（涉及无线或雷达，类型待核实）、`none`（按索引的模态和记录范围无适用无线类型）。网页可筛选这两类空标签条目。RF KPI 不代表原始 I/Q；CIR/PDP 不自动等同于完整 MIMO CSI。\n\n| 类型 | 数据集 |\n|---|---|\n')
     kinds = sorted({k for d in ds_all for k in d.get('wirelessTypes', [])})
     for k in kinds:
         names = ', '.join(d['name'] for d in ds_all if k in d.get('wirelessTypes', []))
@@ -370,4 +371,4 @@ with open('README.md', 'a', encoding='utf-8') as f:
     for d in ds_all:
         for subset in d.get('subsets', []):
             f.write(f"- [{subset['name']}]({subset['url']})\n")
-    f.write('\n本地更新流程：修改 `assets/app.js` 后运行 `node tools/gen.js`、`python tools/gen_readme.py`。生成器同步结构化 JSON 与 README。\n')
+    f.write('\n本地检查：运行 `node tools/test_data.js`。CI 会检查重新生成的 JSON、README 与趋势图是否和仓库版本一致。\n')
