@@ -1,20 +1,28 @@
-/* 单测：CSI 与射频信号分离（rf 模态）+ 数据与渲染自检 */
+/* 单测：CSI 与射频信号分离（rf 模态）+ 数据与渲染自检 + 中英双语渲染 */
 const fs = require('fs'), vm = require('vm');
-const src = fs.readFileSync('assets/app.js', 'utf8');
+const src = fs.readFileSync('assets/i18n.js', 'utf8') + '\n' + fs.readFileSync('assets/app.js', 'utf8');
 
 const els = {};
 function el(sel) {
   if (!els[sel]) els[sel] = { innerHTML: '', textContent: '', value: '', checked: false,
-    addEventListener() {}, classList: { add() {}, remove() {} }, dataset: {} };
+    addEventListener() {}, classList: { add() {}, remove() {}, toggle() {} }, dataset: {},
+    setAttribute() {}, getAttribute() { return null; } };
   return els[sel];
 }
+const store = {};
 const ctx = { console, Date,
-  document: { addEventListener: (t, f) => { if (t === 'DOMContentLoaded') ctx.__boot = f; }, querySelector: el, querySelectorAll: () => [] } };
+  localStorage: { getItem: k => (k in store ? store[k] : null), setItem: (k, v) => { store[k] = v; } },
+  navigator: { language: 'zh-CN' },
+  document: { addEventListener: (t, f) => { if (t === 'DOMContentLoaded') ctx.__boot = f; },
+    querySelector: el, querySelectorAll: () => [],
+    documentElement: { setAttribute() {} }, title: '' } };
 vm.createContext(ctx);
 vm.runInContext(src + `
 ;globalThis.__M = MODALITIES; globalThis.__D = DATASETS; globalThis.__st = state;
 globalThis.__f = filtered; globalThis.__cards = renderCards; globalThis.__mx = renderMatrix;
-globalThis.__wireless = WIRELESS_BY_ID; globalThis.__chips = renderChips; globalThis.__stats = renderStats;`, ctx);
+globalThis.__wireless = WIRELESS_BY_ID; globalThis.__chips = renderChips; globalThis.__stats = renderStats;
+globalThis.__setLang = setLang; globalThis.__t = t; globalThis.__I18N = I18N;
+globalThis.__lang = () => LANG; globalThis.__wl = wlLabel; globalThis.__fo = fieldOf;`, ctx);
 
 const M = ctx.__M, D = ctx.__D, st = ctx.__st;
 let bad = 0;
@@ -24,6 +32,7 @@ const ck = (name, got, want) => {
   console.log((ok ? 'PASS ' : 'FAIL ') + name, '=>', JSON.stringify(got), ok ? '' : '期待 ' + JSON.stringify(want));
 };
 const byId = Object.fromEntries(D.map(d => [d.id, d]));
+const CJK = /[\u4e00-\u9fa5]/;
 
 ck('模态数与顺序', M.map(m => m.key), ['la','csi','rf','rgb','ir','lidar','radar','imu','weather','acoustic']);
 ck('核心模态数', M.filter(m => m.core).length, 7);
@@ -33,6 +42,12 @@ ck('数据集总数', D.length, 78);
 /* 每条都必须有 10 个模态字段且取值合法 */
 const missing = D.filter(d => M.some(m => !(d.modality[m.key] === 1 || d.modality[m.key] === .5 || d.modality[m.key] === 0)));
 ck('模态字段缺失/非法', missing.map(d => d.id), []);
+
+/* 双语字段：中英各一条说明，英文不得残留中文 */
+ck('缺 focusZh / focusEn', D.filter(d => !d.focusZh || !d.focusEn).map(d => d.id), []);
+ck('缺 descZh / descEn', D.filter(d => !d.descZh || !d.descEn).map(d => d.id), []);
+ck('descEn 含中日韩字符', D.filter(d => CJK.test(d.descEn)).map(d => d.id), []);
+ck('descZh 过短（<10 字）', D.filter(d => d.descZh.length < 10).map(d => d.id), []);
 
 /* 分组 */
 const la = D.filter(d => d.modality.la > 0), gen = D.filter(d => d.modality.la === 0);
@@ -74,6 +89,8 @@ ck('Anti-UAV300 模态', byId['anti-uav300'].modality, { la:1, csi:0, rf:0, rgb:
 ck('DroneRFc-MM acoustic 已修正', byId['dronerfc-mm'].modality.acoustic, 1);
 ck('NeoDrone ir', byId['neodrone'].modality.ir, 1);
 ck('PML-CellularEye ir', byId['pml-cellulareye'].modality.ir, .5);
+ck('M3ED 低空记为部分支持', byId['m3ed'].modality.la, .5);
+ck('UAV-MM3D 需注册', byId['uav-mm3d'].access, 'register');
 
 /* 2026-11 补录：空地信道实测 / 雷达-射频同步 / 视觉跟踪 / AERPAW 子集 */
 ck('TSMS-Drone 模态（雷达+射频，无 CSI）', byId['tsms-drone'].modality, { la:1, csi:0, rf:1, rgb:0, ir:0, lidar:0, radar:1, imu:0, weather:0, acoustic:0 });
@@ -100,7 +117,7 @@ ck('声学筛选命中数', hit('acoustic'), 8);
 ck('红外命中条目', (() => { st.mods = new Set(['ir']); const ids = ctx.__f().map(d => d.id).sort(); st.mods = new Set(); return ids; })(),
    ['a2a-uav','anti-uav300','drone-detection-dregon','multifly','neodrone','pml-cellulareye','tmrgbt-d2d','uav-mm3d']);
 
-/* 搜索 */
+/* 搜索：中文界面下英文关键词同样可命中（descEn / 英文模态名参与索引） */
 const q = (s) => { st.q = s; const n = ctx.__f().length; st.q = ''; return n; };
 ck('搜 DREGON', q('dregon'), 1);
 ck('搜 Mendeley', q('mendeley'), 3);
@@ -109,8 +126,10 @@ ck('搜 Svanström', q('svanström'), 1);
 ck('搜 南洋理工大学', q('南洋理工大学'), 1);
 ck('搜 MMAUD', q('mmaud'), 1);
 ck('搜 红外', q('红外'), 8);
+ck('搜 range-doppler（英文）', q('range-doppler'), 2);
+ck('搜 digital-twin（英文）', q('digital-twin') > 0, true);
 
-/* 渲染 */
+/* 渲染：中文（默认语言） */
 ctx.__mx();
 const cnt = (html) => (html.match(/<tr /g) || []).length;
 ck('低空矩阵行数', cnt(els['#matrix-table'].innerHTML), 64);
@@ -159,12 +178,70 @@ ck('网页与 JSON 无线标签及合集关系', D.filter(d => {
   return !exported || JSON.stringify(normalize(wirelessMetadata(d))) !==
     JSON.stringify(normalize(wirelessMetadata(exported)));
 }).map(d => d.id), []);
+/* 双语说明也必须落到 datasets.json（gen.js 逐字段映射，漏透传会静默丢字段） */
+ck('网页与 JSON 双语说明', D.filter(d => {
+  const x = exportedById.get(d.id);
+  return !x || x.descZh !== d.descZh || x.descEn !== d.descEn;
+}).map(d => d.id), []);
 el('#wireless-type').value = 'Radar I/Q';
 ck('雷达 I/Q 使用细分类型筛选', ctx.__f().some(d => d.id === 'tsms-drone'), true);
 ck('雷达 I/Q 筛选排除纯射频条目', ctx.__f().some(d => d.id === 'rfuav'), false);
 el('#wireless-type').value = 'unverified';
 ck('待核实筛选排除无适用类型', ctx.__f().some(d => d.id === 'kitti'), false);
 ck('待核实筛选保留待核实条目', ctx.__f().length > 0, true);
+el('#wireless-type').value = '';
+
+/* ---------------- i18n 基础设施 ---------------- */
+const ZK = Object.keys(ctx.__I18N.zh).sort(), EK = Object.keys(ctx.__I18N.en).sort();
+ck('中英字典键集合一致', ZK.filter(k => !EK.includes(k)).concat(EK.filter(k => !ZK.includes(k))), []);
+ck('字典键数（>80）', ZK.length > 80, true);
+ck('英文文案残留中文', EK.filter(k => CJK.test(ctx.__I18N.en[k])).map(k => [k]), []);
+ck('默认语言', ctx.__lang(), 'zh');
+ck('t() 变量替换', ctx.__t('grid.count', { n: 5 }), '5 个');
+ck('t() 未知键回退', ctx.__t('no.such.key'), 'no.such.key');
+
+/* ---------------- 渲染：英文 ---------------- */
+ctx.__setLang('en');
+ck('切换后语言', ctx.__lang(), 'en');
+ck('语言写入 localStorage', store['lad-lang'], 'en');
+ck('英文 t(nav.datasets)', ctx.__t('nav.datasets'), 'Datasets');
+ck('无线类型英文映射', ctx.__wl('距离-多普勒图'), 'Range-Doppler map');
+ck('英文机构覆盖', ctx.__fo(byId['anti-uav300'], 'org'), 'University of Chinese Academy of Sciences / North Institute of Electronic Equipment');
+ck('英文出处覆盖', ctx.__fo(byId['dronerfa'], 'venue'), 'Journal of Electronics & Information Technology 46(4): 1147–1156 (2024)');
+ck('英文全角括号转半角', ctx.__fo(byId['dads'], 'authors'), 'Community (schiffman / geronimobasso)');
+
+ctx.__mx();
+ck('英文矩阵行数', [cnt(els['#matrix-table'].innerHTML), cnt(els['#matrix-table-other'].innerHTML)], [64, 14]);
+ck('英文矩阵表头', els['#matrix-table'].innerHTML.includes('Main focus'), true);
+ck('英文矩阵含模态名', els['#matrix-table'].innerHTML.includes('Weather/Time'), true);
+ck('英文矩阵表头无中文', els['#matrix-table'].innerHTML.split('</thead>')[0].includes('数据集'), false);
+ck('英文矩阵计数', [els['#mx-la-count'].textContent, els['#mx-gen-count'].textContent], ['64 datasets','14 datasets']);
+ck('英文矩阵射频色条数', (els['#matrix-table'].innerHTML.match(/csi-bar csi-rf/g) || []).length, 14);
+
+ctx.__chips();
+ck('英文 chip 无中文', CJK.test(els['#chips'].innerHTML.replace(/data-mod="[^"]*"/g, '')), false);
+ctx.__stats();
+ck('英文 hero 统计标签', els['#stats'].innerHTML.includes('Datasets'), true);
+ck('英文 hero 统计值不变', (els['#stats'].innerHTML.match(/<div class="num[^"]*">([^<]*)<\/div>/g) || []).map(x => x.replace(/<[^>]+>/g, '')),
+   ['78','64','14','18','16','2012\u20132026']);
+
+ctx.__cards();
+const HE = els['#grid-host'].innerHTML;
+ck('英文卡片总数', (HE.match(/<article class="/g) || []).length, 78);
+ck('英文结果行', els['#result-line'].innerHTML.replace(/<[^>]+>/g, ''), 'Showing 78 of 78 entries (low-altitude 64 · general 14)');
+ck('英文卡片无 undefined 链接', /href="undefined"/.test(HE), false);
+ck('英文卡片机构已英文化', HE.includes('浙江大学') || HE.includes('中国科学院大学'), false);
+ck('英文卡片按钮文案', HE.includes('Dataset site') && HE.includes('>Authors<'), true);
+ck('英文卡片无正式论文标签', (HE.match(/No paper</g) || []).length, 7);
+/* 作者中文人名保留原文，不应因英文化而丢失 */
+ck('英文卡片保留中文作者名', HE.includes('史治国'), true);
+
+/* 切回中文应完全恢复 */
+ctx.__setLang('zh');
+ck('切回中文', ctx.__lang(), 'zh');
+ctx.__cards();
+ck('切回后结果行', els['#result-line'].innerHTML.replace(/<[^>]+>/g, ''), '显示 78 / 78 条索引记录（低空相关 64 · 通用基准 14）');
+ck('切回后机构中文', els['#grid-host'].innerHTML.includes('浙江大学信息与电子工程学院'), true);
 
 console.log(bad === 0 ? '\nALL PASS' : '\n' + bad + ' FAILED');
 process.exit(bad ? 1 : 0);

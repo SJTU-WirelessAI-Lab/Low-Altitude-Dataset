@@ -80,6 +80,27 @@ a:hover { text-decoration: underline; }
 }
 .nav a:hover { background: var(--bg-alt); color: var(--text); text-decoration: none; }
 
+/* ---------- language switch ---------- */
+.lang-switch {
+  display: flex; align-items: center; gap: 2px; padding: 3px;
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 999px;
+}
+.lang-switch button {
+  appearance: none; -webkit-appearance: none; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 12px; font-weight: 600; color: var(--text-3);
+  padding: 4px 10px; border-radius: 999px; line-height: 1; letter-spacing: .01em;
+  transition: background .15s, color .15s;
+}
+.lang-switch button:hover { color: var(--text); }
+.lang-switch button.on {
+  background: var(--surface); color: var(--text);
+  box-shadow: 0 1px 3px rgba(16, 24, 40, .12);
+}
+/* 小屏时导航整体隐藏，语言按钮需自己靠右 */
+@media (max-width: 720px) {
+  .lang-switch { margin-left: auto; }
+}
+
 /* ---------- hero ---------- */
 .hero {
   padding: 68px 0 44px;

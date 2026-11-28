@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>低空数据集 | Low-Altitude Datasets</title>
 <meta name="description" content="低空经济与UAV通感一体化(ISAC)相关的开源数据集索引：汇编名称、官网链接、年份、作者与模态覆盖对比。">
-<link rel="stylesheet" href="assets/style.css?v=20261124">
+<link rel="stylesheet" href="assets/style.css?v=20261128">
 </head>
 <body>
 
@@ -15,33 +15,37 @@
     <a class="brand" href="#top">
       <span class="brand-mark">&#9992;</span>
       <span class="brand-text">
-        <b>低空数据集</b>
-        <span>Low-Altitude Datasets</span>
+        <b data-i18n="brand.title">低空数据集</b>
+        <span data-i18n-html="brand.sub">Low-Altitude Datasets</span>
       </span>
     </a>
     <nav class="nav">
-      <a href="#datasets">数据集</a>
-      <a href="#matrix">对比矩阵</a>
-      <a href="#about">关于</a>
+      <a href="#datasets" data-i18n="nav.datasets">数据集</a>
+      <a href="#matrix" data-i18n="nav.matrix">对比矩阵</a>
+      <a href="#about" data-i18n="nav.about">关于</a>
       <a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">GitHub</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="zh">中文</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
   </div>
 </header>
 
 <!-- ================= hero ================= -->
 <div class="hero" id="top">
   <div class="wrap">
-    <h1>低空经济与UAV通感一体化的<br><span class="grad">开源数据集索引</span></h1>
-    <p class="lede">
+    <h1 data-i18n-html="hero.h1">低空经济与UAV通感一体化的<br><span class="grad">开源数据集索引</span></h1>
+    <p class="lede" data-i18n-html="hero.lede">
       面向<strong>低空通感一体化(ISAC)</strong>研究，系统收集并展示已有的开源与半开源数据集，
       统一给出<strong>名称、官方网站链接、发布年份、作者/机构</strong>以及<strong>模态覆盖对比</strong>。
       清单以 <a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener">LAMBDA（arXiv:2607.03826）</a>
       表1 为基准，并补充核实各数据集的官方主页与论文链接。
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#datasets">浏览数据集 &#8595;</a>
-      <a class="btn" href="#matrix">查看模态对比矩阵</a>
-      <a class="btn" href="data/datasets.json" target="_blank" rel="noopener">下载数据(datasets.json)</a>
+      <a class="btn btn-primary" href="#datasets" data-i18n-html="hero.btnBrowse">浏览数据集 &#8595;</a>
+      <a class="btn" href="#matrix" data-i18n="hero.btnMatrix">查看模态对比矩阵</a>
+      <a class="btn" href="data/datasets.json" target="_blank" rel="noopener" data-i18n="hero.btnJson">下载数据(datasets.json)</a>
     </div>
 
     <div class="stats" id="stats"></div>
@@ -52,38 +56,38 @@
 <section id="datasets">
   <div class="wrap">
     <div class="section-head">
-      <h2><span class="idx">01</span>数据集清单</h2>
-      <p>点击卡片标题或「数据集主页」直达官方站点。搜索支持名称、机构、作者、年份与关键词。</p>
+      <h2 data-i18n-html="sec1.h2"><span class="idx">01</span>数据集清单</h2>
+      <p data-i18n="sec1.p">点击卡片标题或「数据集主页」直达官方站点。搜索支持名称、机构、作者、年份与关键词。</p>
     </div>
 
     <div class="toolbar">
       <div class="toolbar-row">
         <label class="search-box">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
-          <input id="search" type="search" placeholder="搜索数据集名称、机构、作者、关键词…" autocomplete="off">
+          <input id="search" type="search" placeholder="搜索数据集名称、机构、作者、关键词…" data-i18n-ph="search.ph" autocomplete="off">
         </label>
-        <label class="field">排序
+        <label class="field"><span data-i18n="sort.label">排序</span>
           <select id="sort">
-            <option value="year-desc">年份（新→旧）</option>
-            <option value="year-asc">年份（旧→新）</option>
-            <option value="name">名称（A→Z）</option>
-            <option value="rich">模态丰富度</option>
+            <option value="year-desc" data-i18n="sort.yearDesc">年份（新→旧）</option>
+            <option value="year-asc" data-i18n="sort.yearAsc">年份（旧→新）</option>
+            <option value="name" data-i18n="sort.name">名称（A→Z）</option>
+            <option value="rich" data-i18n="sort.rich">模态丰富度</option>
           </select>
         </label>
         <label class="switch">
           <input id="la-only" type="checkbox">
           <span class="track"></span>
-          仅看支持低空场景
+          <span data-i18n="laOnly">仅看支持低空场景</span>
         </label>
-        <button class="btn" id="reset" type="button" style="padding:9px 14px">重置</button>
+        <button class="btn" id="reset" type="button" style="padding:9px 14px" data-i18n="btn.reset">重置</button>
       </div>
       <div class="toolbar-row">
-        <span class="filter-label">模态筛选</span>
+        <span class="filter-label" data-i18n="filter.mods">模态筛选</span>
         <div class="chips" id="chips"></div>
       </div>
       <div class="toolbar-row">
-        <label for="wireless-type" class="filter-label">无线数据类型</label>
-        <select id="wireless-type"><option value="">全部类型</option><option value="unverified">类型待核实</option><option value="none">无适用无线类型</option></select>
+        <label for="wireless-type" class="filter-label" data-i18n="filter.wtype">无线数据类型</label>
+        <select id="wireless-type"><option value="" data-i18n="wtype.all">全部类型</option><option value="unverified" data-i18n="wtype.unverified">类型待核实</option><option value="none" data-i18n="wtype.none">无适用无线类型</option></select>
       </div>
     </div>
 
@@ -96,37 +100,37 @@
 <section id="matrix" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="wrap">
     <div class="section-head">
-      <h2><span class="idx">02</span>模态覆盖对比矩阵</h2>
-      <p>模态覆盖对照 LAMBDA 论文表1，并含编者补充收录的数据集。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用；单元格底色同步区分：<strong>浅青绿</strong>为包含、<strong>浅琥珀</strong>为部分支持、<strong>留白</strong>为缺失或不适用。表格按<strong>是否涉及低空场景</strong>拆为两张。「CSI 信道」与「射频信号」是两类不同模态——前者为信道估计结果，后者为原始 I/Q、频谱等射频采集，二者互不替代。</p>
+      <h2 data-i18n-html="sec2.h2"><span class="idx">02</span>模态覆盖对比矩阵</h2>
+      <p data-i18n-html="sec2.p">模态覆盖对照 LAMBDA 论文表1，并含编者补充收录的数据集。<strong>&#10003;</strong> 包含、<strong>&#9651;</strong> 有限或部分支持、<strong>&#215;</strong> 缺失或不适用；单元格底色同步区分：<strong>浅青绿</strong>为包含、<strong>浅琥珀</strong>为部分支持、<strong>留白</strong>为缺失或不适用。表格按<strong>是否涉及低空场景</strong>拆为两张。「CSI 信道」与「射频信号」是两类不同模态——前者为信道估计结果，后者为原始 I/Q、频谱等射频采集，二者互不替代。</p>
     </div>
 
     <div class="mx-legend">
       <div class="legend-row">
-        <span class="legend-label">模态标记</span>
-        <span><b class="mark y" style="width:20px;height:20px;font-size:11px">&#10003;</b> 包含</span>
-        <span><b class="mark p" style="width:20px;height:20px;font-size:11px">&#9651;</b> 有限 / 部分支持</span>
-        <span><b class="mark n" style="width:20px;height:20px;font-size:11px">&#215;</b> 缺失 / 不适用</span>
+        <span class="legend-label" data-i18n="legend.mark">模态标记</span>
+        <span><b class="mark y" style="width:20px;height:20px;font-size:11px">&#10003;</b> <span data-i18n="legend.y">包含</span></span>
+        <span><b class="mark p" style="width:20px;height:20px;font-size:11px">&#9651;</b> <span data-i18n="legend.p">有限 / 部分支持</span></span>
+        <span><b class="mark n" style="width:20px;height:20px;font-size:11px">&#215;</b> <span data-i18n="legend.n">缺失 / 不适用</span></span>
       </div>
       <div class="legend-row">
-        <span class="legend-label">信道级数据</span>
-        <span class="csi-key csi-full">有 CSI（完整 MIMO 信道）</span>
-        <span class="csi-key csi-part">部分 CSI（实测信道测量）</span>
-        <span class="csi-key csi-rf">射频信号（原始 I/Q，无 CSI）</span>
-        <span class="csi-key csi-none">均无</span>
+        <span class="legend-label" data-i18n="legend.channel">信道级数据</span>
+        <span class="csi-key csi-full" data-i18n="legend.csiFull">有 CSI（完整 MIMO 信道）</span>
+        <span class="csi-key csi-part" data-i18n="legend.csiPart">部分 CSI（实测信道测量）</span>
+        <span class="csi-key csi-rf" data-i18n="legend.csiRf">射频信号（原始 I/Q，无 CSI）</span>
+        <span class="csi-key csi-none" data-i18n="legend.csiNone">均无</span>
       </div>
       <div class="legend-row wide">
-        <span class="legend-label">数据来源（低空）</span>
-        <span class="src-key src-real">实测 <b id="src-la-real"></b></span>
-        <span class="src-key src-mixed">混合 <b id="src-la-mixed"></b></span>
-        <span class="src-key src-sim">仿真 <b id="src-la-sim"></b></span>
+        <span class="legend-label" data-i18n="legend.origin">数据来源（低空）</span>
+        <span class="src-key src-real"><span data-i18n="legend.real">实测</span> <b id="src-la-real"></b></span>
+        <span class="src-key src-mixed"><span data-i18n="legend.mixed">混合</span> <b id="src-la-mixed"></b></span>
+        <span class="src-key src-sim"><span data-i18n="legend.sim">仿真</span> <b id="src-la-sim"></b></span>
         <span class="src-note" id="src-gen-note"></span>
       </div>
     </div>
 
     <div class="mx-group">
       <div class="mx-head">
-        <h3>低空相关数据集 <span class="cnt" id="mx-la-count"></span></h3>
-        <p>含无人机 / UAV 或低空场景的数据集；名称左侧色条表示信道级数据：<strong>完整 CSI</strong> / <strong>部分 CSI</strong> / <strong>仅射频信号</strong>（无 CSI）/ 均无。</p>
+        <h3><span data-i18n="mx.laTitle">低空相关数据集</span> <span class="cnt" id="mx-la-count"></span></h3>
+        <p data-i18n-html="mx.laNote">含无人机 / UAV 或低空场景的数据集；名称左侧色条表示信道级数据：<strong>完整 CSI</strong> / <strong>部分 CSI</strong> / <strong>仅射频信号</strong>（无 CSI）/ 均无。</p>
       </div>
       <div class="matrix-wrap">
         <div class="matrix-scroll">
@@ -137,8 +141,8 @@
 
     <div class="mx-group">
       <div class="mx-head">
-        <h3>通用 / 上游基准数据集 <span class="cnt" id="mx-gen-count"></span></h3>
-        <p>完全不含低空场景，多为地面视角感知或纯信道 / 电磁数据集，作为上游经典基准一并列出。</p>
+        <h3><span data-i18n="mx.genTitle">通用 / 上游基准数据集</span> <span class="cnt" id="mx-gen-count"></span></h3>
+        <p data-i18n-html="mx.genNote">完全不含低空场景，多为地面视角感知或纯信道 / 电磁数据集，作为上游经典基准一并列出。</p>
       </div>
       <div class="matrix-wrap">
         <div class="matrix-scroll">
@@ -147,7 +151,7 @@
       </div>
     </div>
 
-    <p class="mx-note">基准来源：LAMBDA (arXiv:2607.03826), Table 1（含编者补充收录）</p>
+    <p class="mx-note" data-i18n="mx.note">基准来源：LAMBDA (arXiv:2607.03826), Table 1（含编者补充收录）</p>
   </div>
 </section>
 
@@ -155,33 +159,33 @@
 <section id="about">
   <div class="wrap">
     <div class="section-head">
-      <h2><span class="idx">03</span>关于本索引</h2>
-      <p>收录范围、数据来源与使用说明。</p>
+      <h2 data-i18n-html="sec3.h2"><span class="idx">03</span>关于本索引</h2>
+      <p data-i18n="sec3.p">收录范围、数据来源与使用说明。</p>
     </div>
     <div class="about-grid">
       <div class="panel">
-        <h3><span class="ico">&#9679;</span>收录范围</h3>
-        <p>覆盖通感一体化(ISAC)仿真与实测、无线信道建模、射频/雷达探测、声学感知、无人机视觉与多模态感知等方向，并特别标注支持<strong>低空/UAV场景</strong>的数据集。</p>
+        <h3><span class="ico">&#9679;</span><span data-i18n="about.scopeTitle">收录范围</span></h3>
+        <p data-i18n-html="about.scopeP">覆盖通感一体化(ISAC)仿真与实测、无线信道建模、射频/雷达探测、声学感知、无人机视觉与多模态感知等方向，并特别标注支持<strong>低空/UAV场景</strong>的数据集。</p>
         <ul>
-          <li>统计按索引条目计。AERPAW 合集及有独立引用的 AADM 各计一条，合集内仅链接的子集单列链接。</li>
-          <li>时间跨度 2012–2026</li>
-          <li>标注 10 类模态：7 类核心模态（低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间）+ 3 类补充模态（射频信号、红外、声学）</li>
-          <li>低空相关数据集按<strong>信道级数据</strong>着色：完整 MIMO 信道 / 部分信道测量 / <strong>仅射频信号</strong>（原始 I/Q 等，无 CSI）/ 均无</li>
-          <li>另标注 <strong>获取方式</strong>：默认开放下载，获取受限的条目（仅预览 / 需注册 / 需申请 / 未发布）在卡片上以徽章单独提示</li>
-          <li>另标注 <strong>数据来源</strong>：<strong>实测</strong>（真实传感器 / 外场采集）、<strong>混合</strong>（真实与合成并用）、<strong>仿真</strong>（射线追踪 / 数字孪生 / 渲染器生成），卡片徽章与矩阵图例同步显示</li>
-          <li>以 LAMBDA 表1 为基准，另补充收录 ISAC 仿真/实测、空地信道实测（南京航空航天大学两组 CIR、韩国航空大学 TSMS-Drone）、射频与雷达探测、红外/可见光探测、声学、视觉多模态等方向的公开数据集（含 KU Leuven、隆德大学等团队的低空实测数据）</li>
-          <li>「低空」模态记 <strong>0.5</strong> 表示数据或平台<strong>部分支持</strong>低空场景（如仅有平台扩展能力、当前发布版本尚无飞行轨迹），这类条目仍按 <code>la &gt; 0</code> 归入低空相关组</li>
+          <li data-i18n="about.scope1">统计按索引条目计。AERPAW 合集及有独立引用的 AADM 各计一条，合集内仅链接的子集单列链接。</li>
+          <li data-i18n="about.scope2">时间跨度 2012–2026</li>
+          <li data-i18n="about.scope3">标注 10 类模态：7 类核心模态（低空、CSI、RGB/深度、LiDAR、雷达、IMU/GPS、天气/时间）+ 3 类补充模态（射频信号、红外、声学）</li>
+          <li data-i18n-html="about.scope4">低空相关数据集按<strong>信道级数据</strong>着色：完整 MIMO 信道 / 部分信道测量 / <strong>仅射频信号</strong>（原始 I/Q 等，无 CSI）/ 均无</li>
+          <li data-i18n-html="about.scope5">另标注 <strong>获取方式</strong>：默认开放下载，获取受限的条目（仅预览 / 需注册 / 需申请 / 未发布）在卡片上以徽章单独提示</li>
+          <li data-i18n-html="about.scope6">另标注 <strong>数据来源</strong>：<strong>实测</strong>（真实传感器 / 外场采集）、<strong>混合</strong>（真实与合成并用）、<strong>仿真</strong>（射线追踪 / 数字孪生 / 渲染器生成），卡片徽章与矩阵图例同步显示</li>
+          <li data-i18n="about.scope7">以 LAMBDA 表1 为基准，另补充收录 ISAC 仿真/实测、空地信道实测（南京航空航天大学两组 CIR、韩国航空大学 TSMS-Drone）、射频与雷达探测、红外/可见光探测、声学、视觉多模态等方向的公开数据集（含 KU Leuven、隆德大学等团队的低空实测数据）</li>
+          <li data-i18n-html="about.scope8">「低空」模态记 <strong>0.5</strong> 表示数据或平台<strong>部分支持</strong>低空场景（如仅有平台扩展能力、当前发布版本尚无飞行轨迹），这类条目仍按 <code>la &gt; 0</code> 归入低空相关组</li>
         </ul>
       </div>
       <div class="panel">
-        <h3><span class="ico">&#9679;</span>数据来源</h3>
-        <p>清单以 <strong>LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication</strong>（arXiv:2607.03826）表1 为基准。</p>
-        <p>各数据集的<strong>官方网站链接、作者与出处</strong>由编者逐一核实。若链接失效或有遗漏，欢迎提交 Issue 或 Pull Request。</p>
-        <p><a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener">查看 LAMBDA 论文 &#8599;</a></p>
+        <h3><span class="ico">&#9679;</span><span data-i18n="about.srcTitle">数据来源</span></h3>
+        <p data-i18n-html="about.src1">清单以 <strong>LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication</strong>（arXiv:2607.03826）表1 为基准。</p>
+        <p data-i18n-html="about.src2">各数据集的<strong>官方网站链接、作者与出处</strong>由编者逐一核实。若链接失效或有遗漏，欢迎提交 Issue 或 Pull Request。</p>
+        <p><a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener" data-i18n-html="about.src3">查看 LAMBDA 论文 &#8599;</a></p>
       </div>
       <div class="panel">
-        <h3><span class="ico">&#9679;</span>引用本索引</h3>
-        <p>若本索引对你的研究有帮助，请引用 LAMBDA 论文：</p>
+        <h3><span class="ico">&#9679;</span><span data-i18n="about.citeTitle">引用本索引</span></h3>
+        <p data-i18n="about.citeP">若本索引对你的研究有帮助，请引用 LAMBDA 论文：</p>
         <code class="codeblock">@article{zhou2026lambda,
   title  = {LAMBDA: A Low-Altitude Multimodal Base
             Dataset for UAV Sensing and Communication},
@@ -193,12 +197,12 @@
 }</code>
       </div>
       <div class="panel">
-        <h3><span class="ico">&#9679;</span>贡献与维护</h3>
-        <p>本站为静态站点，数据结构在 <code>data/datasets.json</code>，渲染逻辑在 <code>assets/app.js</code>。</p>
+        <h3><span class="ico">&#9679;</span><span data-i18n="about.contribTitle">贡献与维护</span></h3>
+        <p data-i18n-html="about.contribP">本站为静态站点，数据结构在 <code>data/datasets.json</code>，渲染逻辑在 <code>assets/app.js</code>。</p>
         <ul>
-          <li>新增数据集：修改 <code>assets/app.js</code>，再用 <code>tools/</code> 中的脚本生成 JSON 与 README</li>
-          <li>模态字段取值：<code>1</code> 包含 / <code>0.5</code> 部分 / <code>0</code> 缺失</li>
-          <li>仓库：<a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">SJTU-WirelessAI-Lab/Low-Altitude-Dataset</a></li>
+          <li data-i18n-html="about.contrib1">新增数据集：修改 <code>assets/app.js</code>，再用 <code>tools/</code> 中的脚本生成 JSON 与 README</li>
+          <li data-i18n-html="about.contrib2">模态字段取值：<code>1</code> 包含 / <code>0.5</code> 部分 / <code>0</code> 缺失</li>
+          <li><span data-i18n="about.contrib3">仓库：</span><a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">SJTU-WirelessAI-Lab/Low-Altitude-Dataset</a></li>
         </ul>
       </div>
     </div>
@@ -208,15 +212,16 @@
 <!-- ================= footer ================= -->
 <footer class="site-footer">
   <div class="wrap">
-    <p>&copy; <span id="year-now">2026</span> 低空数据集索引 · 由 SJTU-WirelessAI-Lab 维护 · 数据来源 LAMBDA (arXiv:2607.03826)</p>
+    <p>&copy; <span id="year-now">2026</span> <span data-i18n-html="footer.copy">低空数据集索引 · 由 SJTU-WirelessAI-Lab 维护 · 数据来源 LAMBDA (arXiv:2607.03826)</span></p>
     <div class="links">
-      <a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener">论文</a>
-      <a href="data/datasets.json" target="_blank" rel="noopener">数据(JSON)</a>
+      <a href="https://arxiv.org/abs/2607.03826" target="_blank" rel="noopener" data-i18n="footer.paper">论文</a>
+      <a href="data/datasets.json" target="_blank" rel="noopener" data-i18n="footer.json">数据(JSON)</a>
       <a href="https://github.com/SJTU-WirelessAI-Lab/Low-Altitude-Dataset" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </footer>
 
-<script src="assets/app.js?v=20261124"></script>
+<script src="assets/i18n.js?v=20261128"></script>
+<script src="assets/app.js?v=20261128"></script>
 </body>
 </html>

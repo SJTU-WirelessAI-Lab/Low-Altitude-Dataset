@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" role="img" aria-label="Cumulative low-altitude datasets, 2015 to 2026: the total grows from 0 to 64, of which 10 provide full CSI">
+<title>Cumulative low-altitude datasets (2015–2026)</title>
+<desc>Solid blue line: cumulative count of all low-altitude datasets, reaching 64 by the end of 2026. Dashed teal line: the subset providing full MIMO channel CSI, 10. Source data carries publication year only, so points fall at year ends.</desc>
+<style>
+  text { font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; }
+  .bg { fill: #ffffff; }
+  .ttl { fill: #1f2328; font-size: 15px; font-weight: 500; }
+  .sub { fill: #57606a; font-size: 12px; }
+  .tick { fill: #57606a; font-size: 11px; }
+  .grid { stroke: rgba(31,35,40,0.09); stroke-width: 1; }
+  .axis { stroke: rgba(31,35,40,0.25); stroke-width: 1; }
+  .area { fill: rgba(63,138,219,0.11); }
+  @media (prefers-color-scheme: dark) {
+    .bg { fill: #0d1117; }
+    .ttl { fill: #e6edf3; }
+    .sub, .tick { fill: #8b949e; }
+    .grid { stroke: rgba(230,237,243,0.13); }
+    .axis { stroke: rgba(230,237,243,0.30); }
+    .area { fill: rgba(88,166,255,0.15); }
+  }
+</style>
+<rect class="bg" x="0" y="0" width="860" height="440" rx="10"/>
+<text class="ttl" x="58" y="30">Cumulative low-altitude datasets (2015–2026)</text>
+<line x1="58" y1="54" x2="82" y2="54" stroke="#3F8ADB" stroke-width="2.5" stroke-linecap="round"/>
+<text class="sub" x="90" y="58">All low-altitude datasets (64)</text>
+<line x1="318" y1="54" x2="342" y2="54" stroke="#17A07F" stroke-width="2.5" stroke-dasharray="5 3" stroke-linecap="round"/>
+<text class="sub" x="350" y="58">With full CSI (csi = 1, 10)</text>
+<line class="grid" x1="58" y1="384.0" x2="768" y2="384.0"/>
+<text class="tick" x="48" y="388.0" text-anchor="end">0</text>
+<line class="grid" x1="58" y1="340.3" x2="768" y2="340.3"/>
+<text class="tick" x="48" y="344.3" text-anchor="end">10</text>
+<line class="grid" x1="58" y1="296.6" x2="768" y2="296.6"/>
+<text class="tick" x="48" y="300.6" text-anchor="end">20</text>
+<line class="grid" x1="58" y1="252.9" x2="768" y2="252.9"/>
+<text class="tick" x="48" y="256.9" text-anchor="end">30</text>
+<line class="grid" x1="58" y1="209.1" x2="768" y2="209.1"/>
+<text class="tick" x="48" y="213.1" text-anchor="end">40</text>
+<line class="grid" x1="58" y1="165.4" x2="768" y2="165.4"/>
+<text class="tick" x="48" y="169.4" text-anchor="end">50</text>
+<line class="grid" x1="58" y1="121.7" x2="768" y2="121.7"/>
+<text class="tick" x="48" y="125.7" text-anchor="end">60</text>
+<line class="grid" x1="58" y1="78.0" x2="768" y2="78.0"/>
+<text class="tick" x="48" y="82.0" text-anchor="end">70</text>
+<line class="axis" x1="58" y1="384" x2="768" y2="384"/>
+<text class="tick" x="58.0" y="404" text-anchor="middle">2015</text>
+<text class="tick" x="122.5" y="404" text-anchor="middle">2016</text>
+<text class="tick" x="187.1" y="404" text-anchor="middle">2017</text>
+<text class="tick" x="251.6" y="404" text-anchor="middle">2018</text>
+<text class="tick" x="316.2" y="404" text-anchor="middle">2019</text>
+<text class="tick" x="380.7" y="404" text-anchor="middle">2020</text>
+<text class="tick" x="445.3" y="404" text-anchor="middle">2021</text>
+<text class="tick" x="509.8" y="404" text-anchor="middle">2022</text>
+<text class="tick" x="574.4" y="404" text-anchor="middle">2023</text>
+<text class="tick" x="638.9" y="404" text-anchor="middle">2024</text>
+<text class="tick" x="703.5" y="404" text-anchor="middle">2025</text>
+<text class="tick" x="768.0" y="404" text-anchor="middle">2026</text>
+<path class="area" d="M 58.0 384.0 L 58.0 384.0 L 122.5 379.6 L 187.1 379.6 L 251.6 366.5 L 316.2 362.1 L 380.7 362.1 L 445.3 353.4 L 509.8 349.0 L 574.4 327.2 L 638.9 292.2 L 703.5 213.5 L 768.0 104.2 L 768.0 384.0 Z"/>
+<path d="M 58.0 384.0 L 122.5 379.6 L 187.1 379.6 L 251.6 366.5 L 316.2 362.1 L 380.7 362.1 L 445.3 353.4 L 509.8 349.0 L 574.4 327.2 L 638.9 292.2 L 703.5 213.5 L 768.0 104.2" fill="none" stroke="#3F8ADB" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 58.0 384.0 L 122.5 384.0 L 187.1 384.0 L 251.6 384.0 L 316.2 384.0 L 380.7 384.0 L 445.3 384.0 L 509.8 384.0 L 574.4 370.9 L 638.9 366.5 L 703.5 353.4 L 768.0 340.3" fill="none" stroke="#17A07F" stroke-width="2.4" stroke-dasharray="5 3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="58.0" cy="384.0" r="3" fill="#3F8ADB"/>
+<circle cx="122.5" cy="379.6" r="3" fill="#3F8ADB"/>
+<circle cx="187.1" cy="379.6" r="3" fill="#3F8ADB"/>
+<circle cx="251.6" cy="366.5" r="3" fill="#3F8ADB"/>
+<circle cx="316.2" cy="362.1" r="3" fill="#3F8ADB"/>
+<circle cx="380.7" cy="362.1" r="3" fill="#3F8ADB"/>
+<circle cx="445.3" cy="353.4" r="3" fill="#3F8ADB"/>
+<circle cx="509.8" cy="349.0" r="3" fill="#3F8ADB"/>
+<circle cx="574.4" cy="327.2" r="3" fill="#3F8ADB"/>
+<circle cx="638.9" cy="292.2" r="3" fill="#3F8ADB"/>
+<circle cx="703.5" cy="213.5" r="3" fill="#3F8ADB"/>
+<circle cx="768.0" cy="104.2" r="3" fill="#3F8ADB"/>
+<circle cx="58.0" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="122.5" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="187.1" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="251.6" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="316.2" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="380.7" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="445.3" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="509.8" cy="384.0" r="3" fill="#17A07F"/>
+<circle cx="574.4" cy="370.9" r="3" fill="#17A07F"/>
+<circle cx="638.9" cy="366.5" r="3" fill="#17A07F"/>
+<circle cx="703.5" cy="353.4" r="3" fill="#17A07F"/>
+<circle cx="768.0" cy="340.3" r="3" fill="#17A07F"/>
+<text class="tick" x="778.0" y="108.2" fill="#3F8ADB" font-weight="500" font-size="12">64</text>
+<text class="tick" x="778.0" y="344.3" fill="#17A07F" font-weight="500" font-size="12">10</text>
+<text class="tick" x="58" y="424">Cumulative counts settle at each year end; source data is year-granular only</text>
+</svg>

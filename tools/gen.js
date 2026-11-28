@@ -14,7 +14,7 @@ const out={
     titleZh:"低空数据集",
     source:"LAMBDA: A Low-Altitude Multimodal Base Dataset for UAV Sensing and Communication (arXiv:2607.03826), Table 1 + curator-verified additions",
     sourceUrl:"https://arxiv.org/abs/2607.03826",
-    catalogUpdated: '2026-11-24',
+    catalogUpdated: '2026-11-28',
     legend:{ "1":"included", "0.5":"limited / partial", "0":"absent or not applicable" },
     groupLegend:{ "low-altitude":"涉及无人机 / 低空场景", "general":"完全不含低空场景的上游基准" },
     csiLegend:{ "full":"有 CSI（完整 MIMO 信道）", "part":"部分 CSI（实测信道测量，未给完整 MIMO CSI）", "rf":"仅射频信号（原始 I/Q 等，无 CSI）", "none":"无 CSI" },
@@ -25,10 +25,24 @@ const out={
       "request":"需邮件 / 表单申请，授权后获取",
       "pending":"官方标注即将发布，当前无法获取"
     },
+    groupLegendEn:{ "low-altitude":"Involves UAV / low-altitude scenarios", "general":"Upstream benchmarks with no low-altitude scenarios" },
+    csiLegendEn:{ "full":"Full CSI (complete MIMO channel)", "part":"Partial CSI (measured channel, no complete MIMO CSI)", "rf":"RF signal only (raw I/Q etc., no CSI)", "none":"No CSI" },
+    accessLegendEn:{
+      "open":"Publicly downloadable from the official page",
+      "preview":"Only part / a preview subset released; full data pending",
+      "register":"Download after registering a (free) account on the hosting platform",
+      "request":"Available after an email / form request is approved",
+      "pending":"Announced as upcoming; not available yet"
+    },
     sourceLegend:{
       "real":"真实传感器 / 外场采集",
       "mixed":"真实采集与仿真 / 合成增强并用",
       "sim":"射线追踪、数字孪生或渲染器生成，无真实采集"
+    },
+    sourceLegendEn:{
+      "real":"Real sensors / field measurement",
+      "mixed":"Real measurement combined with simulation / synthetic augmentation",
+      "sim":"Ray tracing, digital twin or renderer output; no real measurement"
     }
   },
   modalities: M.map(m=>({key:m.key,zh:m.zh,en:m.en,core:!!m.core})),
@@ -38,6 +52,7 @@ const out={
     access: d.access || 'open',
     source: d.source,
     focusZh:d.focusZh,focusEn:d.focusEn,
+    descZh:d.descZh,descEn:d.descEn,
     wirelessTypes:d.wirelessTypes, wirelessStatus:d.wirelessStatus,
     ...(d.kind ? {kind:d.kind} : {}), ...(d.parentId ? {parentId:d.parentId} : {}), ...(d.subsets ? {subsets:d.subsets} : {}),
     modality: Object.fromEntries(M.map(m=>[m.key, d.modality[m.key]===undefined?0:d.modality[m.key]])),
