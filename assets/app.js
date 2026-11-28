@@ -1274,6 +1274,12 @@ for (const ds of DATASETS) {
   ds.wirelessStatus = ds.wirelessTypes.length ? 'tagged' : hasWirelessScope ? 'unverified' : 'none';
 }
 const WIRELESS_TYPES = [...new Set(DATASETS.flatMap(ds => ds.wirelessTypes))].sort();
+/* 分面里按出现次数降序展示，比字母序更贴合实际检索；顺序在初始化时固定，
+   不随当前筛选结果重排，否则胶囊会在每次点击后跳位。 */
+const WIRELESS_TYPES_BY_COUNT = WIRELESS_TYPES.slice().sort((a, b) => {
+  const n = x => DATASETS.filter(d => d.wirelessTypes.includes(x)).length;
+  return (n(b) - n(a)) || a.localeCompare(b);
+});
 const DATASET_BY_ID = new Map(DATASETS.map(ds => [ds.id, ds]));
 const aerpawEntry = DATASETS.find(ds => ds.id === 'aerpaw');
 aerpawEntry.subsets = [
@@ -1283,7 +1289,13 @@ aerpawEntry.subsets = [
   { name: 'Dataset-32: A2G sounding / path loss', url: 'https://aerpaw.org/dataset/dataset-32-aerpaw-air-to-ground-channel-sounding-and-path-loss-measurements-at-3-4-ghz-with-linear-and-zigzag-uav-trajectories/' }
 ];
 
-const state = { q: '', mods: new Set(), laOnly: false, sort: 'year-desc', view: 'grid' };
+/* 筛选状态：q 为关键字，facets 每个维度一个 Set（空集 = 该维度不设限）。
+   行内多选取「或」，跨行取「且」；模态行是唯一的例外，多选取「同时具备」。 */
+const EMPTY_FACETS = () => ({
+  scope: new Set(), year: new Set(), mod: new Set(), chan: new Set(),
+  wtype: new Set(), access: new Set(), source: new Set()
+});
+const state = { q: '', sort: 'year-desc', view: 'grid', facets: EMPTY_FACETS() };
 
 /* ---------------- helpers ---------------- */
 const $  = (s, r = document) => r.querySelector(s);
@@ -1365,28 +1377,104 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+/* ---------------- facets（分面定义） ---------------- */
+
+/* 每一行是一个维度。values 可以是数组，也可以是函数（年份、无线类型要按数据算）。
+   hit(ds, v) 判断条目是否落在该取值上；mode === 'all' 表示行内多选取「且」，
+   默认取「或」。 */
+const FACET_DEFS = [
+  {
+    key: 'scope', labelKey: 'facet.scope',
+    values: ['la', 'gen'],
+    label: v => t('scope.' + v),
+    hit: (ds, v) => (v === 'la' ? isLowAlt(ds) : !isLowAlt(ds))
+  },
+  {
+    key: 'year', labelKey: 'facet.year',
+    values: () => [...new Set(DATASETS.map(d => d.year))].sort((a, b) => b - a),
+    label: v => String(v),
+    hit: (ds, v) => ds.year === Number(v)
+  },
+  {
+    key: 'mod', labelKey: 'facet.mod', hintKey: 'facet.mod.hint', mode: 'all',
+    values: () => MODALITIES.map(m => m.key),
+    label: k => { const m = MODALITIES.find(x => x.key === k); return m ? (isZh() ? m.zh : m.en) : k; },
+    sub: k => { const m = MODALITIES.find(x => x.key === k); return m ? !m.core : false; },
+    hit: (ds, v) => ds.modality[v] > 0
+  },
+  {
+    key: 'chan', labelKey: 'facet.chan',
+    values: ['full', 'part', 'rf', 'none'],
+    label: v => t('csi.' + v + '.label'),
+    hit: (ds, v) => csiOf(ds).key === v
+  },
+  {
+    key: 'wtype', labelKey: 'facet.wtype', hintKey: 'facet.wtype.hint',
+    values: () => [...WIRELESS_TYPES_BY_COUNT, 'unverified', 'none'],
+    label: v => v === 'unverified' ? t('wtype.unverified')
+             : v === 'none' ? t('wtype.none') : wlLabel(v),
+    hit: (ds, v) => (v === 'unverified' || v === 'none')
+      ? ds.wirelessStatus === v
+      : ds.wirelessTypes.includes(v)
+  },
+  {
+    key: 'access', labelKey: 'facet.access',
+    values: ['open', 'preview', 'register', 'request', 'pending'],
+    label: v => t('access.' + v + '.label'),
+    hit: (ds, v) => (ds.access || 'open') === v
+  },
+  {
+    key: 'source', labelKey: 'facet.source',
+    values: ['real', 'mixed', 'sim'],
+    label: v => t('source.' + v + '.label'),
+    hit: (ds, v) => (ds.source || 'real') === v
+  }
+];
+
+/* 关键字索引按语言缓存：切换语言后 wlLabel() 的结果会变，必须重建。
+   英文机构/出处也进索引，这样中文界面搜 "Zhejiang" 同样命中。 */
+let hayCache = null;
+function hayOf(ds) {
+  if (!hayCache) hayCache = new Map();
+  let h = hayCache.get(ds.id);
+  if (h == null) {
+    h = [ds.name, ds.org, ds.venue, ds.authors, ds.focusZh, ds.focusEn,
+         ds.descZh, ds.descEn, ds.id,
+         fieldOf(ds, 'org'), fieldOf(ds, 'venue'), fieldOf(ds, 'authors'),
+         ...ds.wirelessTypes, ...ds.wirelessTypes.map(wlLabel), String(ds.year)]
+      .join(' ').toLowerCase();
+    hayCache.set(ds.id, h);
+  }
+  return h;
+}
+
+/* skipKey 用于分面计数：算某一行的数量时忽略该行自身的选择，否则选中后同排会全变 0 */
+function facetMatch(ds, skipKey) {
+  for (const def of FACET_DEFS) {
+    if (def.key === skipKey) continue;
+    const sel = state.facets[def.key];
+    if (!sel || sel.size === 0) continue;
+    if (def.mode === 'all') {
+      for (const v of sel) if (!def.hit(ds, v)) return false;
+    } else {
+      let any = false;
+      for (const v of sel) { if (def.hit(ds, v)) { any = true; break; } }
+      if (!any) return false;
+    }
+  }
+  return true;
+}
+
+function countOf(def, val) {
+  const q = state.q.trim().toLowerCase();
+  return DATASETS.filter(ds =>
+    (!q || hayOf(ds).includes(q)) && facetMatch(ds, def.key) && def.hit(ds, val)).length;
+}
+
 /* ---------------- filtering ---------------- */
 function filtered() {
-  const wirelessType = $('#wireless-type')?.value;
   const q = state.q.trim().toLowerCase();
-  let list = DATASETS.filter(ds => {
-    if (wirelessType === 'unverified' || wirelessType === 'none') {
-      if (ds.wirelessStatus !== wirelessType) return false;
-    } else if (wirelessType && !ds.wirelessTypes.includes(wirelessType)) return false;
-    if (state.laOnly && ds.modality.la === 0) return false;
-    if (state.mods.size) {
-      for (const k of state.mods) if (ds.modality[k] === 0) return false;
-    }
-    if (q) {
-      /* 中英双语的描述与无线类型都进索引，确保英文界面下也能用英文关键词命中 */
-      const hay = [ds.name, ds.org, ds.venue, ds.authors, ds.focusZh, ds.focusEn,
-                   ds.descZh, ds.descEn,
-                   ...ds.wirelessTypes, ...ds.wirelessTypes.map(wlLabel), String(ds.year)]
-        .join(' ').toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
+  let list = DATASETS.filter(ds => (!q || hayOf(ds).includes(q)) && facetMatch(ds, null));
 
   const byYear = (a, b) => (a.year - b.year) || a.name.localeCompare(b.name);
   if (state.sort === 'year-desc') list.sort((a, b) => (b.year - a.year) || a.name.localeCompare(b.name));
@@ -1516,15 +1604,47 @@ function renderMatrix() {
   }
 }
 
-/* ---------------- render: toolbar + stats ---------------- */
-function renderChips() {
-  const chip = (m, cls = '') => isZh()
-    ? `<span class="chip${cls}${state.mods.has(m.key) ? ' on' : ''}" data-mod="${m.key}">${m.zh} <small>${m.en}</small></span>`
-    : `<span class="chip${cls}${state.mods.has(m.key) ? ' on' : ''}" data-mod="${m.key}">${m.en}</span>`;
-  /* 7 类核心模态在前，补充模态（红外、声学）以后者样式区分 */
-  $('#chips').innerHTML =
-    MODALITIES.filter(m => m.core).map(m => chip(m)).join('')
-    + MODALITIES.filter(m => !m.core).map(m => chip(m, ' sub')).join('');
+/* ---------------- render: facets + stats ---------------- */
+function activeFilterCount() {
+  return Object.keys(state.facets).reduce((n, k) => n + state.facets[k].size, 0);
+}
+
+/* 分面整体由 JS 渲染：数量要随其他筛选条件实时变化，静态 HTML 做不到。
+   某取值数量为 0 时置灰但保留可点，方便用户看清「再选就没有结果了」。 */
+function renderFacets() {
+  const host = $('#facets');
+  if (!host) return;
+  host.innerHTML = FACET_DEFS.map(def => {
+    const vals = typeof def.values === 'function' ? def.values() : def.values;
+    const sel = state.facets[def.key];
+    const chips = vals.map(v => {
+      /* 年份取值是数字，而选中集合存的是 data-value 里的字符串，统一转成字符串再比较，
+         否则年份胶囊永远不会高亮（筛选生效但看起来没选中） */
+      const key = String(v);
+      const on = sel.has(key);
+      const n = countOf(def, v);
+      const cls = ['f-chip'];
+      if (def.sub && def.sub(v)) cls.push('sub');
+      if (on) cls.push('on');
+      if (!n && !on) cls.push('is-empty');
+      return `<button type="button" class="${cls.join(' ')}" data-facet="${def.key}"`
+        + ` data-value="${escapeHtml(key)}" aria-pressed="${on}">`
+        + `${escapeHtml(def.label(v))}<span class="n">${n}</span></button>`;
+    }).join('');
+    const hint = def.hintKey ? ` title="${escapeHtml(t(def.hintKey))}"` : '';
+    return `<div class="facet-row"><span class="facet-name"${hint}>${t(def.labelKey)}</span>`
+      + `<div class="facet-values">${chips}</div></div>`;
+  }).join('');
+
+  const n = activeFilterCount();
+  const btn = $('#reset');
+  if (btn) btn.textContent = n ? t('btn.resetN', { n }) : t('btn.reset');
+}
+
+/* 一次刷新 = 分面（数量随条件变化）+ 卡片列表 */
+function refresh() {
+  renderFacets();
+  renderCards();
 }
 
 function renderStats() {
@@ -1547,26 +1667,12 @@ function renderStats() {
     `<div class="stat"><div class="num${String(v).length > 6 ? ' long' : ''}">${v}</div><div class="lbl">${l}</div></div>`).join('');
 }
 
-/* 无线数据类型下拉：选项值保持数据里的原始（中文）取值，只翻译显示文本，
-   这样切换语言时 value 不变、选中项也不会丢。 */
-function renderWirelessSelect() {
-  const sel = $('#wireless-type');
-  if (!sel) return;
-  const cur = sel.value;
-  sel.innerHTML =
-    `<option value="">${t('wtype.all')}</option>`
-    + `<option value="unverified">${t('wtype.unverified')}</option>`
-    + `<option value="none">${t('wtype.none')}</option>`
-    + WIRELESS_TYPES.map(x => `<option value="${escapeHtml(x)}">${escapeHtml(wlLabel(x))}</option>`).join('');
-  sel.value = cur;
-}
-
 /* ---------------- language ---------------- */
 function renderAll() {
+  hayCache = null;          /* 语言变了，关键字索引（含 wlLabel 结果）要重建 */
   applyStaticI18n();
-  renderWirelessSelect();
   renderStats();
-  renderChips();
+  renderFacets();
   renderMatrix();
   renderCards();
 }
@@ -1579,25 +1685,26 @@ function setLang(lang) {
 
 /* ---------------- events ---------------- */
 function bind() {
-  $('#search').addEventListener('input', e => { state.q = e.target.value; renderCards(); });
+  $('#search').addEventListener('input', e => { state.q = e.target.value; refresh(); });
   $('#sort').addEventListener('change', e => { state.sort = e.target.value; renderCards(); });
-  $('#la-only').addEventListener('change', e => { state.laOnly = e.target.checked; renderCards(); });
 
-  $('#chips').addEventListener('click', e => {
-    const chip = e.target.closest('.chip');
+  $('#facets').addEventListener('click', e => {
+    const chip = e.target.closest('.f-chip');
     if (!chip) return;
-    const k = chip.dataset.mod;
-    if (state.mods.has(k)) { state.mods.delete(k); chip.classList.remove('on'); }
-    else { state.mods.add(k); chip.classList.add('on'); }
-    renderCards();
+    const sel = state.facets[chip.dataset.facet];
+    if (!sel) return;
+    const v = chip.dataset.value;
+    if (sel.has(v)) sel.delete(v); else sel.add(v);
+    refresh();
   });
 
   $('#reset').addEventListener('click', () => {
-    $('#wireless-type').value = '';
-    state.q = ''; state.mods.clear(); state.laOnly = false; state.sort = 'year-desc';
-    $('#search').value = ''; $('#sort').value = 'year-desc'; $('#la-only').checked = false;
-    $$('.chip').forEach(c => c.classList.remove('on'));
-    renderCards();
+    state.q = '';
+    state.facets = EMPTY_FACETS();
+    state.sort = 'year-desc';
+    $('#search').value = '';
+    $('#sort').value = 'year-desc';
+    refresh();
   });
 
   $$('.lang-switch button').forEach(btn => {
@@ -1609,7 +1716,6 @@ function bind() {
 document.addEventListener('DOMContentLoaded', () => {
   LANG = detectLang();
   $('#year-now').textContent = new Date().getFullYear();
-  $('#wireless-type').addEventListener('change', renderCards);
   renderAll();
   bind();
 });

@@ -20,7 +20,7 @@ vm.createContext(ctx);
 vm.runInContext(src + `
 ;globalThis.__M = MODALITIES; globalThis.__D = DATASETS; globalThis.__st = state;
 globalThis.__f = filtered; globalThis.__cards = renderCards; globalThis.__mx = renderMatrix;
-globalThis.__wireless = WIRELESS_BY_ID; globalThis.__chips = renderChips; globalThis.__stats = renderStats;
+globalThis.__wireless = WIRELESS_BY_ID; globalThis.__facets = renderFacets; globalThis.__stats = renderStats;
 globalThis.__setLang = setLang; globalThis.__t = t; globalThis.__I18N = I18N;
 globalThis.__lang = () => LANG; globalThis.__wl = wlLabel; globalThis.__fo = fieldOf;`, ctx);
 
@@ -109,13 +109,36 @@ ck('TriCross-D2D 仅样例', byId['tricross-d2d'].access, 'preview');
 ck('TMRGBT-D2D 双模态且年份为 2025', [byId['tmrgbt-d2d'].year, byId['tmrgbt-d2d'].modality.rgb, byId['tmrgbt-d2d'].modality.ir], [2025, 1, 1]);
 ck('CPD-UAV 掩码数据需申请', [byId['cpd-uav'].access, byId['cpd-uav'].modality.ir], ['request', 0]);
 
-/* 筛选：射频 / 红外 / 声学 */
-const hit = (k) => { st.mods = new Set([k]); const n = ctx.__f().length; st.mods = new Set(); return n; };
+/* 筛选：分面语义（行内「或」、模态行「且」、跨行「且」） */
+const clearFacets = () => { st.facets = { scope: new Set(), year: new Set(), mod: new Set(),
+  chan: new Set(), wtype: new Set(), access: new Set(), source: new Set() }; };
+const pick = (k, ...vs) => { st.facets[k] = new Set(vs); };
+const hit = (k) => { pick('mod', k); const n = ctx.__f().length; clearFacets(); return n; };
 ck('射频筛选命中数', hit('rf'), 18);
 ck('红外筛选命中数', hit('ir'), 8);
 ck('声学筛选命中数', hit('acoustic'), 8);
-ck('红外命中条目', (() => { st.mods = new Set(['ir']); const ids = ctx.__f().map(d => d.id).sort(); st.mods = new Set(); return ids; })(),
+ck('红外命中条目', (() => { pick('mod', 'ir'); const ids = ctx.__f().map(d => d.id).sort(); clearFacets(); return ids; })(),
    ['a2a-uav','anti-uav300','drone-detection-dregon','multifly','neodrone','pml-cellulareye','tmrgbt-d2d','uav-mm3d']);
+
+/* 模态行多选取「且」：结果必须同时具备所选的每一类模态 */
+pick('mod', 'radar', 'ir');
+ck('模态多选为「同时具备」', ctx.__f().every(d => d.modality.radar > 0 && d.modality.ir > 0), true);
+ck('模态多选结果非空且少于单选', ctx.__f().length > 0 && ctx.__f().length < 8, true);
+clearFacets();
+
+/* 其他行多选取「或」 */
+pick('year', '2026', '2025');
+ck('年份多选取「或」', ctx.__f().length, 47);
+ck('年份或结果的年份集合', [...new Set(ctx.__f().map(d => d.year))].sort(), [2025, 2026]);
+clearFacets();
+
+/* 跨行取「且」（csiLevel 是 gen.js 生成物，网页侧等价判据是 modality.csi === 1） */
+pick('scope', 'la'); pick('chan', 'full');
+ck('跨行取「且」（低空 ∩ 完整 CSI）',
+   ctx.__f().every(d => d.modality.la > 0 && d.modality.csi === 1), true);
+ck('跨行结果等于交集体量', ctx.__f().length,
+   D.filter(d => d.modality.la > 0 && d.modality.csi === 1).length);
+clearFacets();
 
 /* 搜索：中文界面下英文关键词同样可命中（descEn / 英文模态名参与索引） */
 const q = (s) => { st.q = s; const n = ctx.__f().length; st.q = ''; return n; };
@@ -138,10 +161,48 @@ ck('矩阵表头列数', (els['#matrix-table'].innerHTML.match(/<th[ >]/g) || []
 ck('矩阵含射频列', els['#matrix-table'].innerHTML.includes('射频信号'), true);
 ck('矩阵射频色条数', (els['#matrix-table'].innerHTML.match(/csi-bar csi-rf/g) || []).length, 14);
 ck('矩阵计数标签', [els['#mx-la-count'].textContent, els['#mx-gen-count'].textContent], ['64 个','14 个']);
-ctx.__chips();
-ck('筛选 chip 数', (els['#chips'].innerHTML.match(/class="chip/g) || []).length, 10);
-ck('chip 中补充模态数', (els['#chips'].innerHTML.match(/class="chip sub"/g) || []).length, 3);
-ck('chip 含射频', els['#chips'].innerHTML.includes('data-mod="rf"'), true);
+/* ---------------- 分面筛选：结构与计数 ---------------- */
+ctx.__facets();
+const FAC = () => els['#facets'].innerHTML;
+const facCount = (k, v) => {
+  const key = String(v).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const m = FAC().match(new RegExp('data-facet="' + k + '" data-value="' + key +
+    '"[^>]*>[^<]*<span class="n">(\\d+)</span>'));
+  return m ? Number(m[1]) : null;
+};
+ck('分面维度行数', (FAC().match(/class="facet-row"/g) || []).length, 7);
+ck('分面胶囊总数', (FAC().match(/class="f-chip/g) || []).length, 52);
+ck('模态行胶囊数', (FAC().match(/data-facet="mod"/g) || []).length, 10);
+ck('补充模态虚线胶囊数', (FAC().match(/class="f-chip sub"/g) || []).length, 3);
+ck('年份胶囊数', (FAC().match(/data-facet="year"/g) || []).length, 11);
+ck('范围计数', [facCount('scope', 'la'), facCount('scope', 'gen')], [64, 14]);
+ck('模态计数（低空 / LiDAR）', [facCount('mod', 'la'), facCount('mod', 'lidar')], [64, 21]);
+ck('信道数据计数', ['full', 'part', 'rf', 'none'].map(v => facCount('chan', v)), [17, 9, 16, 36]);
+ck('获取方式计数', ['open', 'preview', 'register', 'request', 'pending'].map(v => facCount('access', v)), [64, 4, 4, 4, 2]);
+ck('数据来源计数', ['real', 'mixed', 'sim'].map(v => facCount('source', v)), [53, 10, 15]);
+ck('无线类型计数（MIMO CSI / 无适用）', [facCount('wtype', 'MIMO CSI'), facCount('wtype', 'none')], [17, 28]);
+ck('分面行标签', [...FAC().matchAll(/class="facet-name"[^>]*>([^<]+)</g)].map(m => m[1]),
+   ['范围', '年份', '模态', '信道数据', '无线类型', '获取方式', '数据来源']);
+ck('重置按钮初始文案', els['#reset'].textContent, '重置');
+ck('选中态与按下态', (FAC().match(/aria-pressed="true"/g) || []).length, 0);
+
+/* 计数必须随其他维度联动（忽略自身维度） */
+pick('year', '2026'); ctx.__facets();
+ck('分面计数随其他条件联动', facCount('scope', 'la'),
+   D.filter(d => d.year === 2026 && d.modality.la > 0).length);
+ck('自身维度计数不被自己清零', facCount('year', '2025'), 19);
+/* 年份取值是数字、选中集合存字符串，必须仍能高亮（曾因此全站年份胶囊无选中态） */
+ck('年份胶囊选中高亮', (FAC().match(/class="f-chip on" data-facet="year" data-value="2026" aria-pressed="true"/g) || []).length, 1);
+clearFacets(); ctx.__facets();
+ck('清空后年份胶囊无高亮', (FAC().match(/aria-pressed="true"/g) || []).length, 0);
+
+/* 激活筛选后重置按钮显示条数 */
+pick('mod', 'ir'); ctx.__facets();
+ck('激活筛选后的重置按钮', els['#reset'].textContent, '清空 1 项');
+pick('mod', 'ir', 'rf'); ctx.__facets();
+ck('两项筛选的重置按钮', els['#reset'].textContent, '清空 2 项');
+clearFacets(); ctx.__facets();
+ck('清空后重置按钮复原', els['#reset'].textContent, '重置');
 ctx.__stats();
 ck('hero 统计', (els['#stats'].innerHTML.match(/<div class="num[^"]*">([^<]*)<\/div>/g) || []).map(x => x.replace(/<[^>]+>/g, '')),
    ['78','64','14','18','16','2012\u20132026']);
@@ -183,13 +244,17 @@ ck('网页与 JSON 双语说明', D.filter(d => {
   const x = exportedById.get(d.id);
   return !x || x.descZh !== d.descZh || x.descEn !== d.descEn;
 }).map(d => d.id), []);
-el('#wireless-type').value = 'Radar I/Q';
+pick('wtype', 'Radar I/Q');
 ck('雷达 I/Q 使用细分类型筛选', ctx.__f().some(d => d.id === 'tsms-drone'), true);
 ck('雷达 I/Q 筛选排除纯射频条目', ctx.__f().some(d => d.id === 'rfuav'), false);
-el('#wireless-type').value = 'unverified';
+clearFacets();
+pick('wtype', 'unverified');
 ck('待核实筛选排除无适用类型', ctx.__f().some(d => d.id === 'kitti'), false);
-ck('待核实筛选保留待核实条目', ctx.__f().length > 0, true);
-el('#wireless-type').value = '';
+ck('待核实筛选保留待核实条目', ctx.__f().length, 5);
+clearFacets();
+pick('wtype', 'none');
+ck('无适用类型筛选', ctx.__f().length, 28);
+clearFacets();
 
 /* ---------------- i18n 基础设施 ---------------- */
 const ZK = Object.keys(ctx.__I18N.zh).sort(), EK = Object.keys(ctx.__I18N.en).sort();
@@ -218,8 +283,14 @@ ck('英文矩阵表头无中文', els['#matrix-table'].innerHTML.split('</thead>
 ck('英文矩阵计数', [els['#mx-la-count'].textContent, els['#mx-gen-count'].textContent], ['64 datasets','14 datasets']);
 ck('英文矩阵射频色条数', (els['#matrix-table'].innerHTML.match(/csi-bar csi-rf/g) || []).length, 14);
 
-ctx.__chips();
-ck('英文 chip 无中文', CJK.test(els['#chips'].innerHTML.replace(/data-mod="[^"]*"/g, '')), false);
+ctx.__facets();
+const FACE = FAC();
+ck('英文分面行数', (FACE.match(/class="facet-row"/g) || []).length, 7);
+ck('英文分面行标签', [...FACE.matchAll(/class="facet-name"[^>]*>([^<]+)</g)].map(m => m[1]),
+   ['Scope', 'Year', 'Modality', 'Channel data', 'Wireless type', 'Access', 'Data source']);
+/* data-value 里保留数据原始（中文）取值用于筛选，不算文案泄漏 */
+ck('英文分面胶囊无中文', CJK.test(FACE.replace(/data-value="[^"]*"/g, '')), false);
+ck('英文重置按钮', els['#reset'].textContent, 'Reset');
 ctx.__stats();
 ck('英文 hero 统计标签', els['#stats'].innerHTML.includes('Datasets'), true);
 ck('英文 hero 统计值不变', (els['#stats'].innerHTML.match(/<div class="num[^"]*">([^<]*)<\/div>/g) || []).map(x => x.replace(/<[^>]+>/g, '')),
